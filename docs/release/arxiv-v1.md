@@ -14,6 +14,8 @@ submission.
   `anc/leannumbench-v1-artifact.zip`
 - Top-level TeX file: `paper/arxiv2026/main.tex`
 - Appendix input: `paper/arxiv2026/appendix.tex`
+- Public GitHub release:
+  `https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv`
 
 ## No-API Checks
 

@@ -30,6 +30,8 @@ numerical-analysis proof patterns.
 ## Paper
 
 The public preprint package is in [`paper/arxiv2026`](paper/arxiv2026).
+The public GitHub release is
+[`v1.0-arxiv`](https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv).
 
 Important files:
 

@@ -23,6 +23,6 @@ shuffled/irrelevant-context control, or direct CAM-Bench numerical-subset rerun.
 - Release artifact SHA256: `e7e649f5ba0efd59de165ae36c31fca40bebf6a6e336f4b683b388198604bb22`.
 - Frozen 160-row proof prompt pack SHA256: `a02df6374ec92828389b3f1f59f56d2133e00378ade8eef4763b66e42c2adb78`.
 - Companion Lean `lake-manifest.json` SHA256: `b5199815f98f54813f7ff29fffebd34f0f421d16fd0eeacacd198f20cd7d73c1`.
-- Base repository commit: `1ecfb5e` plus the release edits in
-  this source package.
+- Public GitHub release:
+  `https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv`.
 
