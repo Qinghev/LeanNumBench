@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_conservative_update_zero_scale_1d",
+  "title": "Zero-scale Burgers conservative update is the identity update",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If the update scale is zero, the Burgers conservative update returns the original grid value.",
+    "latex": "If \\(s=0\\), then \\(u_i^+=u_i\\).",
+    "assumptions": [
+      "u is a real-valued grid state on natural-number indices",
+      "i is a natural-number grid index",
+      "the update scale is zero"
+    ],
+    "expected_conclusion": "The zero-scale Burgers update is the identity update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersConservativeUpdate",
+        "kind": "definition",
+        "statement": "def burgersConservativeUpdate (scale : Real) (u : Nat -> Real) (i : Nat) : Real := conservativeUpdate scale u (burgersFlux u) i"
+      },
+      {
+        "name": "burgersConservativeUpdate_zero_scale",
+        "kind": "theorem",
+        "statement": "theorem burgersConservativeUpdate_zero_scale (u : Nat -> Real) (i : Nat) : burgersConservativeUpdate 0 u i = u i"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: If the update scale is zero, the Burgers conservative update returns the original grid value.",
+      "target": "theorem burgersConservativeUpdate_zero_scale (u : Nat -> Real) (i : Nat) : burgersConservativeUpdate 0 u i = u i"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by unfolding burgersConservativeUpdate and reusing conservativeUpdate_zero_scale."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the generic conservation theorem proving that a zero-scale conservative update is the identity.",
+      "target": "conservativeUpdate_zero_scale"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "conservative_update",
+    "identity_update"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

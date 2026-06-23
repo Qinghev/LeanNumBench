@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_mass_update_1d",
+  "title": "The discrete mass after a KdV conservative update changes by boundary flux mismatch",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Domain-facing discrete-mass version of the KdV conservative total-balance theorem."
+  },
+  "informal": {
+    "statement": "The discrete mass after a KdV-like conservative update equals the old mass minus scale times the boundary flux mismatch.",
+    "latex": "\\(M(u^+)=M(u)-\\lambda(F_n^{KdV}-F_0^{KdV})\\).",
+    "assumptions": [
+      "scale, nonlinear, and dispersion are real numbers",
+      "u is a real-valued grid state",
+      "n is the number of cells in the finite range",
+      "discreteMass is the finite sum over the grid range"
+    ],
+    "expected_conclusion": "Discrete mass changes only by the KdV boundary flux mismatch."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "discreteMass",
+        "kind": "definition",
+        "statement": "def discreteMass (u : Nat -> Real) (n : Nat) : Real := totalOn u n"
+      },
+      {
+        "name": "discreteMass_kdvConservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem discreteMass_kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) : discreteMass (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = discreteMass u n - scale * (kdvConservativeFlux nonlinear dispersion u n - kdvConservativeFlux nonlinear dispersion u 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the discrete-mass balance theorem for the KdV conservative update into Lean 4.",
+      "target": "theorem discreteMass_kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) : discreteMass (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = discreteMass u n - scale * (kdvConservativeFlux nonlinear dispersion u n - kdvConservativeFlux nonlinear dispersion u 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given discreteMass and totalOn_kdvConservativeUpdate, complete the proof.",
+      "target": "A proof by unfolding discreteMass and applying totalOn_kdvConservativeUpdate."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the KdV theorem that gives total balance before rewriting it as a mass balance.",
+      "target": "totalOn_kdvConservativeUpdate"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "discrete_mass",
+    "conservation",
+    "boundary_flux"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

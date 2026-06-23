@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_conservative_update_eq_1d",
+  "title": "Burgers conservative update unfolds to a flux-difference update",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The Burgers conservative update equals the old state minus scale times the local Burgers flux difference.",
+    "latex": "\\(u_i^+ = u_i - s(F_{i+1}-F_i)\\).",
+    "assumptions": [
+      "scale is a real update scale",
+      "u is a real-valued grid state on natural-number indices",
+      "i is a natural-number grid index"
+    ],
+    "expected_conclusion": "The Burgers update unfolds to the expected conservative flux-difference form."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersConservativeUpdate",
+        "kind": "definition",
+        "statement": "def burgersConservativeUpdate (scale : Real) (u : Nat -> Real) (i : Nat) : Real := conservativeUpdate scale u (burgersFlux u) i"
+      },
+      {
+        "name": "burgersConservativeUpdate_eq",
+        "kind": "theorem",
+        "statement": "theorem burgersConservativeUpdate_eq (scale : Real) (u : Nat -> Real) (i : Nat) : burgersConservativeUpdate scale u i = u i - scale * (burgersFlux u (i + 1) - burgersFlux u i)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: The Burgers conservative update equals the old state minus scale times the local Burgers flux difference.",
+      "target": "theorem burgersConservativeUpdate_eq (scale : Real) (u : Nat -> Real) (i : Nat) : burgersConservativeUpdate scale u i = u i - scale * (burgersFlux u (i + 1) - burgersFlux u i)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by unfolding burgersConservativeUpdate, conservativeUpdate, and fluxDifference."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "conservative_update",
+    "definition_unfolding"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

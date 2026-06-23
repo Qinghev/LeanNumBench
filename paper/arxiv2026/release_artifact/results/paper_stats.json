@@ -1,0 +1,145 @@
+{
+  "ablation_decl_context_37": {
+    "deepseek_v4_pro_result": {
+      "both_fail_rows": 7,
+      "both_pass_rows": 17,
+      "context_helps_rows": 10,
+      "delta_passes_full_minus_no_context": 7,
+      "display_model": "DeepSeek v4 Pro",
+      "full_context_empty_rejections": 4,
+      "full_context_failures_or_rejections": 10,
+      "full_context_passes": 27,
+      "hard_delta_passes": 2,
+      "hard_full_context_passes": 4,
+      "hard_no_context_passes": 2,
+      "hard_records": 7,
+      "model": "deepseek/deepseek-v4-pro",
+      "no_context_better_rows": 3,
+      "no_context_empty_rejections": 3,
+      "no_context_failures_or_rejections": 17,
+      "no_context_passes": 20,
+      "records": 37,
+      "total_cost_usd": 0.59981198
+    },
+    "full_context_audit_passed": true,
+    "full_context_issues": 0,
+    "full_context_marker_rows": 37,
+    "full_context_mean_prompt_chars": 5004.9,
+    "full_context_pilot_id": "ablation_decl_context_37_full",
+    "hard_records": 7,
+    "mean_chars_removed": 1787.5,
+    "no_context_audit_passed": true,
+    "no_context_issues": 0,
+    "no_context_marker_rows": 0,
+    "no_context_mean_prompt_chars": 3217.3,
+    "no_context_pilot_id": "ablation_decl_context_37_no_context",
+    "no_context_theorem_statement_rows": 37,
+    "record_ids_aligned": true,
+    "rows": 37,
+    "targets_aligned": true
+  },
+  "dataset": {
+    "by_category": {
+      "fem_projection": 28,
+      "finite_difference_burgers": 10,
+      "finite_difference_conservation": 8,
+      "finite_difference_heat": 15,
+      "finite_difference_kdv": 25,
+      "finite_difference_stability": 10,
+      "interpolation_linear": 8,
+      "linear_algebra_stability": 14,
+      "ode_runge_kutta": 6,
+      "ode_symplectic": 7,
+      "quadrature_rules": 6,
+      "spectral_dft": 23
+    },
+    "by_difficulty": {
+      "1": 44,
+      "2": 53,
+      "3": 58,
+      "4": 5
+    },
+    "by_source": {
+      "classic": 4,
+      "internal_lean_seed": 97,
+      "paper": 1,
+      "textbook": 58
+    },
+    "by_task": {
+      "proof_completion": 160,
+      "statement_translation": 160,
+      "theorem_retrieval": 85
+    },
+    "external_textbook_or_paper_records": 59,
+    "records": 160,
+    "tasks": 405
+  },
+  "failure_taxonomy": {
+    "accuracy_pct": 87.3,
+    "available": true,
+    "failed": 102,
+    "failure_categories": {
+      "lean_syntax_error": 8,
+      "missing_context_or_identifier": 2,
+      "other_lean_failure": 14,
+      "proof_search_failure": 55,
+      "rejected_api_error": 2,
+      "rejected_empty_proof_body": 12,
+      "type_mismatch_or_typeclass": 9
+    },
+    "hard_subset_records": 11,
+    "passed": 698,
+    "total_model_record_pairs": 800
+  },
+  "frontier": {
+    "frontier_160_best_passed": 147,
+    "frontier_160_items": 160,
+    "frontier_160_models": 5,
+    "hard_subset_records": 11,
+    "pass3_api_rows": 165,
+    "pass3_best_records_solved": 9,
+    "pass3_records_unsolved_by_at_least_two_models": 4,
+    "pass3_samples_per_model_record": 3
+  },
+  "lean_theorem_coverage": {
+    "available": true,
+    "lean_theorem_declarations": 176,
+    "missing_by_category": {
+      "finite_difference_burgers": 1,
+      "finite_difference_conservation": 1,
+      "finite_difference_kdv": 4,
+      "interpolation_linear": 5,
+      "ode_symplectic": 2,
+      "quadrature_rules": 3
+    },
+    "missing_by_priority": {
+      "A": 10,
+      "C": 6
+    },
+    "missing_from_nabench": 16,
+    "nabench_represented_theorems": 160,
+    "priority_a_missing": 10
+  },
+  "rolling_probe": {
+    "rolling_probe_models": 2,
+    "rolling_probe_records": 37
+  },
+  "simple_repair_ablation": {
+    "available": true,
+    "items_per_model": 73,
+    "models": 5,
+    "total_contains_sorry": 0,
+    "total_final_passed": 313,
+    "total_items": 365,
+    "total_raw_passed": 306,
+    "total_repair_lift": 7,
+    "total_repair_lift_pct_points": 1.9
+  },
+  "verification": {
+    "local_smoke_160_passed": true,
+    "local_smoke_160_suites": 14,
+    "prompt_audit_160_issues": 0,
+    "prompt_audit_160_passed": true,
+    "prompt_audit_160_supplement_text_files": 193
+  }
+}

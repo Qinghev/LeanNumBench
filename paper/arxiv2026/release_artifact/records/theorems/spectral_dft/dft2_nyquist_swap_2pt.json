@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.dft2_nyquist_swap_2pt",
+  "title": "Swapping two inputs flips the sign of the Nyquist mode",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The Nyquist mode of a two-point signal changes sign when the two entries are swapped.",
+    "latex": "u_1-u_0 = -(u_0-u_1).",
+    "assumptions": [
+      "u0 and u1 are real numbers",
+      "the Nyquist mode is the difference u0 - u1"
+    ],
+    "expected_conclusion": "Swapping entries negates the Nyquist mode."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "dft2Nyquist",
+        "kind": "definition",
+        "statement": "def dft2Nyquist (u0 u1 : Real) : Real := u0 - u1"
+      },
+      {
+        "name": "dft2Nyquist_swap",
+        "kind": "theorem",
+        "statement": "theorem dft2Nyquist_swap (u0 u1 : Real) : dft2Nyquist u1 u0 = -dft2Nyquist u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate sign-flip symmetry of the two-point Nyquist mode into Lean 4.",
+      "target": "theorem dft2Nyquist_swap (u0 u1 : Real) : dft2Nyquist u1 u0 = -dft2Nyquist u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding dft2Nyquist and simplifying.",
+      "target": "Unfold dft2Nyquist and use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "fourier",
+    "symmetry",
+    "nyquist_mode",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

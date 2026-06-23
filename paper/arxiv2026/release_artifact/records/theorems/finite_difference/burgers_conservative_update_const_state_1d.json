@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_conservative_update_const_state_1d",
+  "title": "Burgers conservative update preserves constant states",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a constant grid state, the Burgers conservative update returns the same constant at every index.",
+    "latex": "If \\(u_i=c\\), then \\(u_i^+=c\\).",
+    "assumptions": [
+      "scale and c are real numbers",
+      "i is a natural-number grid index",
+      "the grid state is constant with value c"
+    ],
+    "expected_conclusion": "Constant states are preserved by the Burgers conservative update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersConservativeUpdate",
+        "kind": "definition",
+        "statement": "def burgersConservativeUpdate (scale : Real) (u : Nat -> Real) (i : Nat) : Real := conservativeUpdate scale u (burgersFlux u) i"
+      },
+      {
+        "name": "burgersConservativeUpdate_const_state",
+        "kind": "theorem",
+        "statement": "theorem burgersConservativeUpdate_const_state (scale c : Real) (i : Nat) : burgersConservativeUpdate scale (fun _ => c) i = c"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: For a constant grid state, the Burgers conservative update returns the same constant at every index.",
+      "target": "theorem burgersConservativeUpdate_const_state (scale c : Real) (i : Nat) : burgersConservativeUpdate scale (fun _ => c) i = c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by unfolding the update, flux difference, and Burgers flux, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "constant_state",
+    "conservative_update",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

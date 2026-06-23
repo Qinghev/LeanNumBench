@@ -1,0 +1,95 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.row_stochastic2_const_2d",
+  "title": "A two-row row-stochastic operator preserves constant vectors",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If each row of a two-by-two operator has weights summing to one, then the operator preserves constant two-vectors.",
+    "latex": "a+b=1 and c+d=1 imply A(u,u)=(u,u).",
+    "assumptions": [
+      "a+b=1 for the first row",
+      "c+d=1 for the second row",
+      "the input vector is (u,u)"
+    ],
+    "expected_conclusion": "Both output coordinates equal u."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "row2Apply",
+        "kind": "definition",
+        "statement": "def row2Apply (a b x y : Real) : Real := a * x + b * y"
+      },
+      {
+        "name": "rowStochastic2First",
+        "kind": "definition",
+        "statement": "def rowStochastic2First (a b x y : Real) : Real := row2Apply a b x y"
+      },
+      {
+        "name": "rowStochastic2Second",
+        "kind": "definition",
+        "statement": "def rowStochastic2Second (c d x y : Real) : Real := row2Apply c d x y"
+      },
+      {
+        "name": "rowStochastic2_const",
+        "kind": "theorem",
+        "statement": "theorem rowStochastic2_const (a b c d u : Real) (hrow1 : a + b = 1) (hrow2 : c + d = 1) : rowStochastic2First a b u u = u /\\ rowStochastic2Second c d u u = u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate constant-vector preservation for a two-row row-stochastic operator into Lean 4.",
+      "target": "theorem rowStochastic2_const (a b c d u : Real) (hrow1 : a + b = 1) (hrow2 : c + d = 1) : rowStochastic2First a b u u = u /\\ rowStochastic2Second c d u u = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by applying row2Apply_const to each row.",
+      "target": "Split the conjunction and solve each row with row2Apply_const."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma needed for each coordinate of row-stochastic constant-vector preservation.",
+      "target": "row2Apply_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "row_stochastic",
+    "constant_vector",
+    "two_by_two",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

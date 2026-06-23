@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_canonical_update_const_state_1d",
+  "title": "The canonical KdV update preserves constant states",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a constant state, the canonical KdV conservative update returns the same constant at every grid index.",
+    "latex": "If \\(u_i=c\\), then \\(u_i^+=c\\).",
+    "assumptions": [
+      "all scalar parameters are real numbers",
+      "u is a real-valued grid state on natural-number indices",
+      "n and i are natural-number grid or range indices as used in the theorem statement",
+      "the KdV scaffold definitions are those in LeanNumerics.FiniteDifference.Kdv"
+    ],
+    "expected_conclusion": "Constant states are preserved by the canonical KdV update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "kdvCanonicalUpdate_const_state",
+        "kind": "theorem",
+        "statement": "theorem kdvCanonicalUpdate_const_state (scale c : Real) (i : Nat) : kdvCanonicalUpdate scale (fun _ => c) i = c"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this KdV conservative scaffold theorem into Lean 4: For a constant state, the canonical KdV conservative update returns the same constant at every grid index.",
+      "target": "theorem kdvCanonicalUpdate_const_state (scale c : Real) (i : Nat) : kdvCanonicalUpdate scale (fun _ => c) i = c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the KdV scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by reusing kdvConservativeUpdate_const_state at coefficients 3 and 1."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "canonical_update",
+    "constant_state",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

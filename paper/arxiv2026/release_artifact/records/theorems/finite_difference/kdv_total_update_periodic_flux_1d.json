@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_total_update_periodic_flux_1d",
+  "title": "A KdV conservative update preserves total mass under periodic flux",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Periodic-flux version of the KdV conservative mass-preservation theorem."
+  },
+  "informal": {
+    "statement": "If the KdV-like flux satisfies the periodic boundary condition over n cells, then the KdV conservative update preserves the total.",
+    "latex": "If \\(F_n^{KdV}=F_0^{KdV}\\), then \\(\\sum_i u_i^+=\\sum_i u_i\\).",
+    "assumptions": [
+      "scale, nonlinear, and dispersion are real numbers",
+      "u is a real-valued grid state",
+      "n is the number of cells in the finite range",
+      "periodicBoundary holds for the KdV conservative flux"
+    ],
+    "expected_conclusion": "The finite total is invariant under the periodic-flux KdV conservative update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalOn_kdvConservativeUpdate_of_periodicFlux",
+        "kind": "theorem",
+        "statement": "theorem totalOn_kdvConservativeUpdate_of_periodicFlux (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvConservativeFlux nonlinear dispersion u) n) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = totalOn u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate periodic-flux total preservation for the KdV conservative update into Lean 4.",
+      "target": "theorem totalOn_kdvConservativeUpdate_of_periodicFlux (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvConservativeFlux nonlinear dispersion u) n) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = totalOn u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the boundary-equality KdV total theorem, complete the periodic-flux proof.",
+      "target": "A proof by applying totalOn_kdvConservativeUpdate_of_boundary_eq."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "periodic_boundary",
+    "mass_preservation",
+    "conservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

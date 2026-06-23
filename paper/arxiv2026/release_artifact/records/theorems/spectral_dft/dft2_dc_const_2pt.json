@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.dft2_dc_const_2pt",
+  "title": "The DC mode of a constant two-point signal is twice the constant",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a constant two-point signal (u,u), the DC Fourier mode equals 2u.",
+    "latex": "\\hat u_0 = u+u = 2u.",
+    "assumptions": [
+      "u is a real number",
+      "the two-point DC mode is u0 + u1",
+      "the signal is constant"
+    ],
+    "expected_conclusion": "The DC mode equals twice the constant value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "dft2DC",
+        "kind": "definition",
+        "statement": "def dft2DC (u0 u1 : Real) : Real := u0 + u1"
+      },
+      {
+        "name": "dft2DC_const",
+        "kind": "theorem",
+        "statement": "theorem dft2DC_const (u : Real) : dft2DC u u = 2 * u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the DC mode of a constant two-point signal into Lean 4.",
+      "target": "theorem dft2DC_const (u : Real) : dft2DC u u = 2 * u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the DC mode and simplifying.",
+      "target": "Unfold dft2DC and use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "fourier",
+    "dc_mode",
+    "constant_signal",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

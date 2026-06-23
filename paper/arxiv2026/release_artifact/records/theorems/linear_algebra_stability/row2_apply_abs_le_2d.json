@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.row2_apply_abs_le_2d",
+  "title": "A nonnegative row-stochastic row is infinity-norm stable",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "A nonnegative two-entry row whose weights sum to one maps inputs bounded by M in absolute value to an output bounded by M.",
+    "latex": "a,b >= 0, a+b=1, |x|,|y| <= M implies |a x + b y| <= M.",
+    "assumptions": [
+      "a and b are nonnegative real row weights",
+      "a + b = 1",
+      "|x| <= M and |y| <= M"
+    ],
+    "expected_conclusion": "The row output is bounded in absolute value by M."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "row2Apply",
+        "kind": "definition",
+        "statement": "def row2Apply (a b x y : Real) : Real := a * x + b * y"
+      },
+      {
+        "name": "row2Apply_abs_le",
+        "kind": "theorem",
+        "statement": "theorem row2Apply_abs_le (a b x y M : Real) (ha : 0 <= a) (hb : 0 <= b) (hsum : a + b = 1) (hx : |x| <= M) (hy : |y| <= M) : |row2Apply a b x y| <= M"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate infinity-norm stability of a nonnegative row-stochastic row into Lean 4.",
+      "target": "theorem row2Apply_abs_le (a b x y M : Real) (ha : 0 <= a) (hb : 0 <= b) (hsum : a + b = 1) (hx : |x| <= M) (hy : |y| <= M) : |row2Apply a b x y| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof using abs_add_le, abs_mul, nonnegativity of weights, and the row-sum identity.",
+      "target": "Unfold row2Apply, bound the absolute value by weighted absolute values, use hx/hy, then rewrite a+b=1."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "row_stochastic",
+    "infinity_norm",
+    "operator_stability",
+    "absolute_value",
+    "convexity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

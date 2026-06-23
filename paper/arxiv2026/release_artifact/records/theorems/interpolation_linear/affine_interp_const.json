@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "interpolation_linear.affine_interp_const",
+  "title": "Affine interpolation preserves constant data",
+  "domain": "interpolation",
+  "category": "interpolation_linear",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 8 (Polynomial Interpolation).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Affine interpolation between two equal endpoint values returns that constant for every parameter.",
+    "latex": "(1-\\theta)c+\\theta c=c.",
+    "assumptions": [
+      "theta is a real interpolation parameter",
+      "both endpoint values are c"
+    ],
+    "expected_conclusion": "The affine interpolant of constant data is constant."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Interpolation/Linear.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Interpolation"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "affineInterp",
+        "kind": "definition",
+        "statement": "def affineInterp (theta y0 y1 : Real) : Real := (1 - theta) * y0 + theta * y1"
+      },
+      {
+        "name": "affineInterp_const",
+        "kind": "theorem",
+        "statement": "theorem affineInterp_const (theta c : Real) : affineInterp theta c c = c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the interpolation theorem `affineInterp_const` into Lean 4.",
+      "target": "theorem affineInterp_const (theta c : Real) : affineInterp theta c c = c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `affineInterp_const`.",
+      "target": "unfold affineInterp; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the interpolation proof.",
+      "target": "ring"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "interpolation",
+    "linear_interpolation",
+    "affine_combination",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "constant_preservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,19 @@
+{
+  "lean_theorem_declarations": 176,
+  "missing_by_category": {
+    "finite_difference_burgers": 1,
+    "finite_difference_conservation": 1,
+    "finite_difference_kdv": 4,
+    "interpolation_linear": 5,
+    "ode_symplectic": 2,
+    "quadrature_rules": 3
+  },
+  "missing_by_priority": {
+    "A": 10,
+    "C": 6
+  },
+  "missing_from_nabench": 16,
+  "nabench_represented_theorems": 160,
+  "report_kind": "lean_theorem_coverage_audit",
+  "schema_version": "0.1.0"
+}

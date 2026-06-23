@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_grid_second_difference_1d",
+  "title": "Explicit heat grid step equals center plus scaled second difference",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a real-valued grid state u, the shifted three-point heat update equals the center value plus r times the second difference u(i) - 2u(i+1) + u(i+2).",
+    "latex": "\\({\\mathcal H}_r[u]_i = u_{i+1}+r(u_i-2u_{i+1}+u_{i+2})\\).",
+    "assumptions": [
+      "r is a real diffusion number",
+      "u is a real-valued grid state on natural-number indices",
+      "i is a natural-number grid index"
+    ],
+    "expected_conclusion": "The grid-window update unfolds to center plus scaled second difference."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatStepGrid",
+        "kind": "definition",
+        "statement": "def heatStepGrid (r : Real) (u : Nat -> Real) (i : Nat) : Real := heatStep r (u i) (u (i + 1)) (u (i + 2))"
+      },
+      {
+        "name": "heatStepGrid_eq_center_plus_second_difference",
+        "kind": "theorem",
+        "statement": "theorem heatStepGrid_eq_center_plus_second_difference (r : Real) (u : Nat -> Real) (i : Nat) : heatStepGrid r u i = u (i + 1) + r * (u i - 2 * u (i + 1) + u (i + 2))"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: For a real-valued grid state u, the shifted three-point heat update equals the center value plus r times the second difference u(i) - 2u(i+1) + u(i+2).",
+      "target": "theorem heatStepGrid_eq_center_plus_second_difference (r : Real) (u : Nat -> Real) (i : Nat) : heatStepGrid r u i = u (i + 1) + r * (u i - 2 * u (i + 1) + u (i + 2))"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding heatStepGrid, heatStep, and the weight definitions, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "grid_stencil",
+    "second_difference",
+    "definition_unfolding",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

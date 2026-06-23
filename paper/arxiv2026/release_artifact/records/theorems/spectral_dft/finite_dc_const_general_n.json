@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.finite_dc_const_general_n",
+  "title": "The finite DC mode of a constant signal is cardinality times the constant",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Lloyd N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000, Ch. 3, pp. 17-28.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any finite index set, the DC sum of a constant real-valued signal equals the number of sampled entries times the constant.",
+    "latex": "\\sum_{i\\in s} c = |s|c.",
+    "assumptions": [
+      "s is a finite index set",
+      "the signal is identically c"
+    ],
+    "expected_conclusion": "The finite DC mode is the cardinality of s times c."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteDC_const",
+        "kind": "theorem",
+        "statement": "theorem finiteDC_const {ι : Type} (s : Finset ι) (c : Real) : finiteDC s (fun _ => c) = (s.card : Real) * c"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite DC mode of a constant signal into Lean 4.",
+      "target": "theorem finiteDC_const {ι : Type} (s : Finset ι) (c : Real) : finiteDC s (fun _ => c) = (s.card : Real) * c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding finiteDC, summing a constant over a finite set, and normalizing scalar multiplication.",
+      "target": "Use Finset.sum_const and nsmul_eq_mul."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the finite-sum lemma for summing a constant over a finite set.",
+      "target": "Finset.sum_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "constant_signal",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

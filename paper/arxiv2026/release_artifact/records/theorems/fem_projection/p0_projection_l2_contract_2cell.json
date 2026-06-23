@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_l2_contract_2cell",
+  "title": "The two-cell P0 projection is L2-stable",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The squared L2 energy of the two-cell P0 projection is no larger than the original squared L2 energy.",
+    "latex": "\\|\\Pi_0 u\\|^2 \\le \\|u\\|^2.",
+    "assumptions": [
+      "u0 and u1 are real cell values",
+      "the P0 projection is the two-cell average on both cells",
+      "the squared L2 energy is the sum of the two squared coordinates"
+    ],
+    "expected_conclusion": "The projected squared energy is bounded above by the original squared energy."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "cellL2Sq2",
+        "kind": "definition",
+        "statement": "def cellL2Sq2 (u0 u1 : Real) : Real := u0 ^ 2 + u1 ^ 2"
+      },
+      {
+        "name": "p0Projection2_l2_contract",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_l2_contract (u0 u1 : Real) : cellL2Sq2 (p0Projection2Left u0 u1) (p0Projection2Right u0 u1) <= cellL2Sq2 u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate L2 stability of the two-cell P0 projection into Lean 4.",
+      "target": "theorem p0Projection2_l2_contract (u0 u1 : Real) : cellL2Sq2 (p0Projection2Left u0 u1) (p0Projection2Right u0 u1) <= cellL2Sq2 u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by rewriting with the Pythagorean identity and using nonnegativity of squared residuals.",
+      "target": "Rewrite by p0Projection2_pythagorean and use sq_nonneg with nlinarith for the residual energy."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics identity that decomposes original energy into projected energy plus residual energy.",
+      "target": "p0Projection2_pythagorean"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "l2_stability",
+    "energy_estimate",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

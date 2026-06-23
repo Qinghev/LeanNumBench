@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_weights_nonneg_cfl_1d",
+  "title": "Explicit heat-equation weights are nonnegative under the parabolic CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Difference Methods for Ordinary and Partial Differential Equations, SIAM, 2007, Ch. 9.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If r is nonnegative and 2r <= 1, then the three explicit heat-equation weights r, 1 - 2r, and r are all nonnegative.",
+    "latex": "If \\(0\\le r\\) and \\(2r\\le1\\), then \\(0\\le r\\), \\(0\\le1-2r\\), and \\(0\\le r\\).",
+    "assumptions": [
+      "r is a real diffusion number",
+      "0 <= r",
+      "2 * r <= 1"
+    ],
+    "expected_conclusion": "All three heat-equation update weights are nonnegative."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatLeftWeight",
+        "kind": "definition",
+        "statement": "def heatLeftWeight (r : Real) : Real := r"
+      },
+      {
+        "name": "heatCenterWeight",
+        "kind": "definition",
+        "statement": "def heatCenterWeight (r : Real) : Real := 1 - 2 * r"
+      },
+      {
+        "name": "heatRightWeight",
+        "kind": "definition",
+        "statement": "def heatRightWeight (r : Real) : Real := r"
+      },
+      {
+        "name": "heatWeights_nonneg",
+        "kind": "theorem",
+        "statement": "theorem heatWeights_nonneg (r : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) : And (0 <= heatLeftWeight r) (And (0 <= heatCenterWeight r) (0 <= heatRightWeight r))"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: If r is nonnegative and 2r <= 1, then the three explicit heat-equation weights r, 1 - 2r, and r are all nonnegative.",
+      "target": "theorem heatWeights_nonneg (r : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) : And (0 <= heatLeftWeight r) (And (0 <= heatCenterWeight r) (0 <= heatRightWeight r))"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding the weight definitions, splitting conjunctions, and using linarith."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "weights",
+    "nonnegativity",
+    "cfl",
+    "linarith"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,105 @@
+% Dataset family distribution, 160-record LeanNumBench v1 release
+\begin{tabular}{ll}
+\toprule
+Family & Records \\
+\midrule
+fem\_projection & 28 \\
+finite\_difference\_kdv & 25 \\
+spectral\_dft & 23 \\
+finite\_difference\_heat & 15 \\
+linear\_algebra\_stability & 14 \\
+finite\_difference\_burgers & 10 \\
+finite\_difference\_stability & 10 \\
+finite\_difference\_conservation & 8 \\
+interpolation\_linear & 8 \\
+ode\_symplectic & 7 \\
+ode\_runge\_kutta & 6 \\
+quadrature\_rules & 6 \\
+\bottomrule
+\end{tabular}
+
+
+
+% May-2026 160-record proof-completion panel
+\begin{tabular}{llll}
+\toprule
+Model & Passed & Total & Acc. \\
+\midrule
+Gemini 3.1 Pro Preview & 147 & 160 & 91.9\% \\
+GPT-5.5 Pro & 145 & 160 & 90.6\% \\
+Claude Opus 4.8 & 141 & 160 & 88.1\% \\
+Qwen3.6 Max Preview & 139 & 160 & 86.9\% \\
+DeepSeek v4 Pro & 126 & 160 & 78.8\% \\
+\bottomrule
+\end{tabular}
+
+
+
+% Final 160-panel hard-subset pass@3 probe
+\begin{tabular}{llll}
+\toprule
+Model & Pass@3 records & Sample passes & Rejected \\
+\midrule
+GPT-5.5 Pro & 9/11 & 21/33 & 4 \\
+Gemini 3.1 Pro Preview & 9/11 & 19/33 & 0 \\
+DeepSeek v4 Pro & 8/11 & 13/33 & 0 \\
+Claude Opus 4.8 & 7/11 & 19/33 & 0 \\
+Qwen3.6 Max Preview & 5/11 & 10/33 & 0 \\
+\bottomrule
+\end{tabular}
+
+
+
+% Declaration-context ablation on 37 rows
+\begin{tabular}{lllll}
+\toprule
+Model & Full ctx. & No decl. ctx. & Delta & Hard delta \\
+\midrule
+DeepSeek v4 Pro & 27/37 & 20/37 & +7 & +2/7 \\
+\bottomrule
+\end{tabular}
+
+
+
+% Simple deterministic repair ablation on delta73
+\begin{tabular}{llll}
+\toprule
+Model & Raw & With repair & Lift \\
+\midrule
+GPT-5.5 Pro & 66/73 & 68/73 & +2 \\
+Gemini 3.1 Pro Preview & 64/73 & 65/73 & +1 \\
+DeepSeek v4 Pro & 59/73 & 62/73 & +3 \\
+Claude Opus 4.7 & 59/73 & 60/73 & +1 \\
+Qwen3.6 Max Preview & 58/73 & 58/73 & +0 \\
+\bottomrule
+\end{tabular}
+
+
+
+% Failure taxonomy, May-2026 160-record panel
+\begin{tabular}{lll}
+\toprule
+Failure category & Count & Share \\
+\midrule
+proof\_search\_failure & 55 & 53.9\% \\
+other\_lean\_failure & 14 & 13.7\% \\
+rejected\_empty\_proof\_body & 12 & 11.8\% \\
+type\_mismatch\_or\_typeclass & 9 & 8.8\% \\
+lean\_syntax\_error & 8 & 7.8\% \\
+missing\_context\_or\_identifier & 2 & 2.0\% \\
+rejected\_api\_error & 2 & 2.0\% \\
+\bottomrule
+\end{tabular}
+
+
+
+% Provenance-stratified final-panel outcomes
+\begin{tabular}{llll}
+\toprule
+Provenance stratum & Pairs & Passed & Acc. \\
+\midrule
+classic\_or\_general & 20 & 15 & 75.0\% \\
+internal\_lean\_seed & 485 & 430 & 88.7\% \\
+textbook\_or\_paper & 295 & 253 & 85.8\% \\
+\bottomrule
+\end{tabular}

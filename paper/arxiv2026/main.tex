@@ -1,0 +1,706 @@
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usetikzlibrary{arrows.meta,positioning}
+\pgfplotsset{compat=1.18}
+
+
+\title{LeanNumBench: Diagnosing LLM Proof Completion in Lean-Checked Numerical Analysis}
+
+\author{Qinghe Wang\\
+Independent Researcher}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Language models increasingly solve Lean theorem-proving tasks, but aggregate
+pass rates can hide whether they can compose the local proof-engineering
+patterns needed in verified scientific computing. We introduce LeanNumBench,
+a Lean 4 diagnostic benchmark for numerical-analysis proof-body completion.
+LeanNumBench v1 contains 160 frozen proof-completion records spanning finite
+differences, FEM/P0 projection, spectral identities, ODE and Runge--Kutta
+identities, linear-algebra stability, interpolation, and quadrature. Each
+record exposes a Lean theorem statement together with fixed local declarations,
+and model outputs are checked locally without accepting \texttt{sorry}. In a
+dated May-2026 five-endpoint panel, the strongest pre-specified endpoint
+solves 147/160 records, but 11 records are failed by at least three endpoints.
+A hard-row pass@3 probe, declaration-context ablation, repair audit, and
+failure taxonomy show that residual failures are primarily proof-search and
+tactic-composition failures, rather than missing-identifier failures. The
+benchmark therefore turns routine-looking numerical-analysis lemmas into an
+auditable diagnostic for where direct Lean proof completion still breaks.
+\end{abstract}
+
+\section{Introduction}
+
+Formal theorem proving has become a central testbed for evaluating language
+models as mathematical assistants. Lean 4 offers a strict evaluation setting:
+a candidate proof either elaborates against the local environment or it does
+not. That strictness is useful, but it also makes benchmark design delicate.
+If a benchmark only reports a flat pass rate, it can miss the proof-engineering
+surface that determines whether models are useful in a scientific domain.
+
+Numerical analysis is a useful stress test because many of its formalization
+tasks are local, structured, and computational rather than long
+Olympiad-style searches. Finite sums telescope; boundary terms cancel; CFL
+conditions make update weights nonnegative; projection residuals are
+orthogonal; finite Fourier means normalize; row-stochastic operators preserve
+$L_\infty$ bounds. Informally, these facts can look routine. In Lean, they
+often require exact control of local definitions, helper lemmas, normalization
+steps, order side conditions, and APIs such as \texttt{Finset}, absolute
+values, \texttt{max\_le}, \texttt{mul\_le\_mul}, and arithmetic tactics. A
+model that recognizes the mathematics can still fail to compose a
+Lean-checking proof.
+
+Current theorem-proving benchmarks do not isolate this numerical-analysis
+surface. Broad formal-mathematics benchmarks, contest-math datasets, and
+newer computational/applied-mathematics Lean benchmarks are valuable for
+measuring general progress, but they answer different questions. Recent
+applied-mathematics Lean benchmarks such as CAM-Bench
+\citep{long2026cambench} emphasize broad coverage across computational and
+applied mathematics. LeanNumBench addresses a complementary question: whether
+models can complete local Lean proof bodies for numerical-analysis lemmas
+under frozen declaration context, and which proof-engineering patterns fail.
+It deliberately trades breadth for record-level provenance, frozen local
+context, Lean-checked proof bodies, hard-subset analysis, ablations, and a
+failure taxonomy. It is not intended to be the broadest applied-math benchmark,
+a complete numerical-analysis library, or an agentic proof-search environment.
+It asks a narrower question: when dated model endpoints receive a theorem
+statement and relevant local Lean context, which numerical-analysis proof
+patterns still break, and why?
+
+\begin{table}[H]
+\centering
+\caption{LeanNumBench is intended as a diagnostic complement to broader Lean applied-mathematics benchmarks.}
+\label{tab:benchmark-positioning}
+\scriptsize
+\begin{tabularx}{\linewidth}{lYYY}
+\toprule
+Axis & CAM-Bench & AMBER / Construction-Verification & LeanNumBench\\
+\midrule
+Primary task & Broad applied-math Lean targets & Construct-and-verify tasks
+& Proof-body completion\\
+Input surface & Theorem/problem target & Construction specification plus
+verification & Theorem statement plus frozen local declarations\\
+Main unit of evidence & Broad target coverage & Construction-verification
+success & Lean-checked model candidate plus row-level diagnostics\\
+Artifact emphasis & Benchmark suite & Construction tasks & Prompt packs,
+checked candidates, checker logs, repair audit, failure taxonomy\\
+Role & Coverage benchmark & Construction stress test & Local proof-failure
+diagnostic\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The answer is more structured than a leaderboard suggests. Our experiments
+give three findings. First, proof completion is still not saturated: in our
+May-2026 frozen panel, all five dated endpoint aliases solve most of the
+160-record proof set, with accuracies from 78.8\% to 91.9\%, yet 11 rows are
+failed by at least three models. A final pass@3 probe improves coverage but
+shows persistent per-endpoint fragility rather than absolute unsolvability:
+the best endpoint solves 9/11, four rows remain unsolved by at least two
+endpoints, and a cross-endpoint oracle solves all 11. Second, local Lean context matters:
+a two-model declaration-context ablation changes full-context performance
+from 48/74 to 59/74 paired model-row passes.
+Third, the residual failures are proof-engineering failures rather than
+simple retrieval failures. Our taxonomy shows that 55 of 102 failures are
+proof-search or tactic-composition failures, while only 2 are missing-context
+or missing-identifier failures.
+
+This paper contributes:
+
+\begin{itemize}
+\item \textbf{Dataset.} LeanNumBench v1, a Lean-checked numerical-analysis
+proof-completion benchmark with 160 frozen records, 12 theorem-family
+categories, provenance metadata, and fixed local declaration context.
+\item \textbf{Evaluation harness.} A local checker that materializes model
+outputs into Lean candidates and separately reports raw passes,
+repair-assisted passes, extraction failures, \texttt{sorry} usage, and Lean
+failures.
+\item \textbf{Frozen endpoint panel.} A dated May-2026 five-endpoint evaluation
+over all 160 proof-completion records, reported as a snapshot rather than a
+timeless model ranking.
+\item \textbf{Diagnostics.} Hard-subset analysis, pass@3 probing,
+declaration-context ablation, deterministic-repair audit, and failure taxonomy.
+\item \textbf{Artifact.} Released prompt packs, usage-stripped model outputs,
+materialized candidates, checker summaries, table data, hashes, and no-API
+replay scripts.
+\end{itemize}
+
+\input{figures/figure1_pipeline.tikz.tex}
+
+\section{Benchmark Design}
+
+\subsection{Records}
+
+Each LeanNumBench record packages one numerical-analysis theorem with metadata and
+tasks. A record contains an informal statement, a LaTeX-style statement, a
+Lean theorem declaration, local declarations used by the theorem, source and
+provenance metadata, difficulty tags, and the verification target. The
+record is not simply a theorem string: it is designed to preserve the
+mathematical intent, the Lean environment, and the evaluation task surface.
+
+LeanNumBench v1 contains 160 frozen records and 405 task specifications:
+160 proof-completion tasks, 160 statement-translation tasks, and 85
+theorem-retrieval tasks. The proof-completion task is the primary evaluation
+setting in this paper; statement translation is used only as a calibration
+slice, and theorem retrieval is included in the artifact but not evaluated as a
+headline result. The model receives the theorem statement and local declaration
+context, then must output only the proof body after \texttt{:= by}. Candidate
+outputs are checked locally against the companion Lean project; \texttt{sorry}
+is not accepted as a proof.
+
+\subsection{Mathematical Scope}
+
+LeanNumBench focuses on numerical-analysis theorem shapes rather than broad
+coverage of all applied mathematics. The 160-record v1 release spans 12
+families (Table~\ref{tab:families}). The goal is not to maximize theorem
+count. For a diagnostic benchmark, the unit of evidence is the checked
+record--model interaction plus controlled analysis around it: the final panel
+contains 800 model-record attempts, 786 materialized Lean candidates, and
+targeted pass@3, context, repair, provenance, and failure analyses. The dataset is curated to expose recurring
+proof surfaces: finite sums and telescoping, boundary bookkeeping, CFL
+convexity, local definition unfolding, operator/norm inequalities, projection
+orthogonality, spectral normalization, and elementary interpolation or
+quadrature algebra. Short rows are useful when they isolate a Lean
+proof-engineering failure that is easy to miss in aggregate metrics.
+
+\begin{table}[H]
+\centering
+\caption{Family coverage in the 160-record LeanNumBench v1 release.}
+\label{tab:families}
+\small
+\begin{tabular}{lr}
+\toprule
+Family & Records\\
+\midrule
+FEM/P0 projection & 28\\
+finite-difference KdV & 25\\
+spectral/DFT identities & 23\\
+finite-difference heat & 15\\
+linear-algebra stability & 14\\
+finite-difference Burgers & 10\\
+finite-difference stability & 10\\
+finite-difference conservation & 8\\
+interpolation & 8\\
+ODE symplectic invariants & 7\\
+Runge--Kutta identities & 6\\
+quadrature & 6\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Provenance}
+
+LeanNumBench v1 includes 59 records with textbook or paper provenance, 4
+classic/general records, and 97 internal Lean-seed records. Provenance is used
+to document mathematical motivation and reduce the risk that the dataset is a
+purely self-invented Lean exercise set. The Lean ground truth remains the
+companion formalization, while the provenance records the mathematical family
+and source alignment. LeanNumBench is not automatically mined from external
+corpora, and we do not claim that each record is a verbatim formalization of a
+textbook theorem. This is a curated diagnostic benchmark: provenance supports
+interpretability and audit, but the evaluation object is the Lean-checked
+proof task. In the final five-endpoint panel, textbook/paper records account for
+295 model-record pairs with 253 passes (85.8\%), while internal Lean-seed
+records account for 485 pairs with 430 passes (88.7\%); both strata therefore
+contribute to the measured signal.
+
+\subsection{Dataset Construction And Leakage Audit}
+
+The benchmark is frozen before the reported model panel. A record enters the
+release only after the theorem statement elaborates, the ground-truth proof is
+complete in the companion Lean project, and the prompt audit confirms target
+and local-declaration alignment. The May-2026 freeze note records 160 records,
+405 task specifications, a 14/14 local smoke-check pass, and a zero-issue
+160-row proof-prompt audit. The audit checks that prompt, target, and candidate
+template rows are aligned; candidate templates are empty; target proof hints
+are not copied verbatim into prompts; and the pre-target source-context block
+does not include the target theorem header.
+
+The 160-record release covers 160 of 176 companion theorem declarations. The
+remaining 16 are tracked as a future-expansion backlog rather than used as a
+hidden split: 10 are simple shape-balancing candidates in interpolation,
+quadrature, and symplectic one-step maps, while 6 are mostly additional
+conservation/KdV wrappers. Prompt audits check for author-identifying paths
+and repository-owner strings, and the released artifact strips raw usage
+metadata from model-output logs. The proof task exposes the theorem statement
+and local declarations by design: LeanNumBench is not a memorization-free
+theorem-retrieval benchmark, but a Lean-checked proof-body completion benchmark
+under fixed local context. The leakage claim is therefore narrow: the audit
+rules out copied target hints, target-theorem duplication in the local context,
+nonempty candidate templates, and environment-specific contamination, not
+semantic independence from all nearby helper lemmas.
+
+\section{Evaluation Pipeline}
+
+Figure~\ref{fig:leannumbench-pipeline} summarizes the evaluation pipeline. Records
+are converted into prompt packs; model outputs are assembled into Lean proof
+candidates; and the Lean checker verifies each candidate against the companion
+formalization. The output is not only pass/fail. The pipeline records
+extraction failures, empty proof bodies, deterministic repair steps, Lean
+error categories, \texttt{sorry} usage, and hard-subset membership.
+
+The materialization stage is important because model outputs often contain
+Markdown fences, repeated theorem statements, explanatory text, or accidental
+indentation. LeanNumBench separates these pipeline outcomes from Lean failures.
+This avoids silently converting formatting errors into proof failures or
+silently accepting non-proof text.
+
+The checker supports a narrow deterministic repair mode. It may drop a tactic
+line that Lean reports made no progress, replace a failing \texttt{ring} with
+\texttt{ring\_nf} when Lean suggests that shape, or drop a redundant final
+tactic when Lean reports no goals remain. It does not synthesize new
+mathematical proof steps, call an LLM, or search for new lemmas. We report
+repair-assisted passes separately from raw passes.
+
+We freeze dated endpoint protocols rather than claiming timeless rankings. Model
+APIs change quickly, and a benchmark paper should not pretend that a
+May-2026 endpoint table is a permanent ordering. LeanNumBench therefore uses
+dated prompt packs, explicit endpoint aliases, small rolling probes for new
+endpoints, and a final frozen panel only when the dataset and manuscript are
+stable.
+
+\section{Dataset Verification And Artifact Policy}
+
+The 160-record v1 release passes schema validation and Lean smoke
+checking. The smoke suite contains 14 verification suites and passes all 14.
+The frozen 160-record proof prompt pack has a zero-issue prompt audit: each
+prompt, target theorem, and generated proof obligation is aligned. A separate
+artifact audit checks that released prompts do not expose author identity or
+environment-specific paths.
+The companion artifact contains the frozen records, prompt packs,
+companion Lean source, API-free replay model-output logs, generated
+tables, and offline audit scripts. Reproduction does not require model API
+calls: readers can rerun metadata and identity/path checks directly, and can
+rerun Lean checking locally after fetching the public Mathlib dependencies
+specified by the included Lake files. The released companion Lean tree is
+audited for benchmark-relevant placeholders: this release contains no
+\texttt{sorry}, \texttt{admit}, or user-defined \texttt{axiom} declarations.
+Its Lean toolchain is \texttt{leanprover/lean4:v4.29.1}, the Mathlib
+dependency is pinned to revision \texttt{v4.29.1}, and the included Lake
+manifest SHA256 is
+\texttt{b5199815f98f54813\allowbreak f7ff29fffebd34f0\allowbreak f421d16fd0eeacac\allowbreak d198f20cd7d73c1}.
+
+\section{Experiments}
+
+The experiments are designed as diagnostics rather than a model race. We ask
+six questions. First, can a fixed tactic portfolio solve the benchmark without
+model generation? Second, is numerical-analysis proof completion already
+saturated by dated endpoint aliases? Third, is proof completion more
+discriminating than statement translation on a calibration slice? Fourth, do
+the remaining failures persist for individual endpoints under sampling, or are
+they one unlucky decoding? Fifth, does local Lean declaration context
+materially affect success? Sixth, are the reported passes driven by
+deterministic repair? Section~\ref{sec:failure-taxonomy} then asks what kind
+of failures remain after materialization and local checking.
+
+\subsection{Fixed Tactics Do Not Saturate LeanNumBench}
+
+As a no-LLM sanity baseline, we run a fixed portfolio of 13 generic Lean tactic
+scripts over all 160 v1 proof-completion statements, including reflexivity,
+simplification, arithmetic normalization, linear/nonlinear arithmetic, and
+\texttt{aesop}. The portfolio solves 68/160 records (42.5\%); individual
+tactics solve at most 59/160 (36.9\%). Thus the high endpoint scores
+below are not explained by the benchmark collapsing to one-step automated
+tactics.
+
+\subsection{Proof Completion Is High But Not Saturated}
+
+We evaluate five dated third-party endpoint aliases on the May-2026
+160-record frozen proof-completion panel. Candidates are checked locally and
+reported only when they pass without \texttt{sorry}. We report these as
+endpoint results, not immutable model-version results.
+
+\begin{table}[H]
+\centering
+\caption{May-2026 proof-completion panel over all 160 LeanNumBench v1 records.}
+\label{tab:proof-snapshot}
+\small
+\begin{tabular}{lrr}
+\toprule
+Endpoint alias & Passed & Accuracy\\
+\midrule
+Gemini 3.1 Pro Preview & 147/160 & 91.9\%\\
+GPT-5.5 Pro & 145/160 & 90.6\%\\
+Claude Opus 4.8 & 141/160 & 88.1\%\\
+Qwen3.6 Max Preview & 139/160 & 86.9\%\\
+DeepSeek v4 Pro & 126/160 & 78.8\%\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:proof-snapshot} shows high aggregate accuracy with persistent
+row-level failures. The top endpoint in this pre-specified five-endpoint panel
+scores 147/160, and the five-endpoint spread is 13.1 percentage points, but
+Wilson 95\% intervals overlap for the top rows (86.6--95.2\% for 147/160 and
+85.1--94.2\% for 145/160). We therefore do not treat this dated panel as a
+stable model ranking. Its role is to expose which proof patterns remain
+unsolved after high aggregate performance. Additional post-freeze
+endpoint-variant probes are reported in the appendix only as evidence of
+endpoint churn; they are not used to define the main panel, hard subset, or
+failure taxonomy.
+
+\subsection{Proof Completion Is More Discriminating Than Statements}
+
+We also evaluate a dated 50-record statement-translation snapshot. Statement
+translation is nearly saturated in this snapshot: Claude Opus 4.7,
+DeepSeek v4 Pro, and GPT-5.5 Pro solve 50/50 checked statement candidates;
+Gemini 3.1 Pro Preview and Qwen3.6 Max Preview solve 49/50. This contrast is
+useful because it rules out a weaker interpretation of the benchmark: the
+main difficulty is not simply writing Lean theorem headers that elaborate on
+this calibration slice. We do not treat the 50-record statement run as a full
+secondary leaderboard. Its role is to support the qualitative comparison:
+once the formal statement is fixed, proof completion remains the more
+discriminating task in our evidence.
+
+\subsection{Hard Rows Persist In The Frozen Panel}
+
+We define a hard subset as rows failed by at least three of five models in the
+one-shot 160-record frozen panel. This yields 11 rows covering FEM/P0
+projection, finite-difference stability, KdV definition unfolding, heat/CFL
+side conditions, spectral centered-DC normalization, and linear-algebra norm
+bounds.
+
+Five of the 11 hard rows are failed by four of five endpoints, and six are
+failed by three of five endpoints. We then run a final five-endpoint pass@3
+probe over the 11 hard rows. This post-hoc probe is a robustness check on
+persistent rows, not an unbiased estimate of pass@3 over the full benchmark.
+Sampling improves coverage: every hard row is solved by at least one endpoint
+under pass@3. Thus the claim is not absolute unsolvability: a cross-endpoint
+oracle would solve all 11. The diagnostic signal is per-endpoint fragility.
+The best endpoints solve 9/11 rows, and four rows remain unsolved by at least
+two of five endpoints.
+
+\begin{table}[H]
+\centering
+\caption{Representative hard rows remain diagnostic under pass@3.}
+\label{tab:hard-subset-mini}
+\scriptsize
+\begin{tabularx}{\linewidth}{Xrrr}
+\toprule
+Hard row & One-shot failures & Models solved by pass@3 & Passing samples\\
+\midrule
+P0 projection idempotence & 4/5 & 2/5 & 6/15\\
+Weighted P0 residual mass zero & 4/5 & 3/5 & 5/15\\
+KdV canonical flux const-difference & 3/5 & 2/5 & 4/15\\
+Diagonal infinity-norm bound & 3/5 & 1/5 & 3/15\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Local Declaration Context Is Part Of The Task}
+
+To test whether local Lean declarations matter, we construct a paired 37-row
+ablation. The full-context prompt includes local declaration names available
+through imports. The no-declaration-context prompt removes that block while
+preserving the theorem statement, record-local definitions listed in metadata,
+proof-output rules, and domain-specific guidance. This is not a no-hint
+ablation; it isolates the declaration-context block.
+
+For DeepSeek v4 Pro, full declaration context solves 27/37 while no-context
+solves 20/37; for Gemini 3.1 Pro Preview, the corresponding numbers are 32/37
+and 28/37. Aggregated over the two models, full context solves 59/74
+model-row pairs while no-context solves 48/74. Row-level flips remain
+non-monotone: full context helps on 16 paired rows, no-context helps on 5,
+both pass on 43, and both fail or reject on 10. An exact two-sided sign test
+over the 21 discordant model-row pairs gives \(p=0.0266\), but this
+descriptive test treats paired rows and model endpoints as independent and
+therefore ignores row/model clustering. We read it as exploratory evidence,
+not a confirmatory population-level claim. Thus LeanNumBench measures
+context-sensitive proof engineering, not just isolated mathematical recall. An
+appendix 8-pair controlled proof-surface pilot gives the same qualitative
+signal: in aggregate, two independent model families solve exposed proof
+surfaces more often than matched harder surfaces, but the pilot is diagnostic
+rather than a headline benchmark result.
+
+\subsection{Simple Repair Does Not Explain The Leaderboard}
+
+The evaluation pipeline uses a narrow deterministic repair mode, and we report
+its effect separately from raw checking. On the 73-record delta slice across
+five models, simple repair changes 306 raw passes to 313 final passes, a lift
+of 7 pairs or 1.9 percentage points. In the final 160-record panel, only
+17/800 model-record attempts are repair-assisted passes (2.1\%, Wilson 95\% CI
+1.3--3.4\%). All repair-assisted passes come from dropping redundant no-goals
+tactic lines; no reported pass uses \texttt{sorry}. The leaderboard is
+therefore not driven by hidden post-processing, and the remaining failures
+should be read as proof-generation failures rather than artifacts of a
+permissive repair loop.
+
+\input{figures/figure2_coverage_failure.pgfplots.tex}
+\input{figures/figure3_diagnostic_panel.tex}
+
+\section{Failure Taxonomy}
+\label{sec:failure-taxonomy}
+
+The failure taxonomy asks a more important question than the leaderboard:
+after a model has seen the theorem statement and local declarations, why does
+the candidate still fail Lean, or fail before Lean checking? The five-endpoint
+by 160-record frozen panel contains 800 model-record attempts
+(Figure~\ref{fig:diagnostic-panel}). Of these, 786 materialize as Lean proof
+candidates, 698 pass, 88 materialized candidates fail Lean, and 14 attempts
+are pre-Lean pipeline failures. These 14 are kept separate from Lean checker
+failures: 12 are model-output/materialization failures caused by empty proof
+bodies, and 2 are API/transport failures after the fixed collection protocol.
+We classify the 102 total non-pass outcomes.
+Proof-search or tactic-composition failures account for 55 of 102 non-pass
+outcomes (53.9\%, Wilson 95\% CI 44.3--63.3\%). Other Lean failures account
+for 14 outcomes, rejected empty proof bodies for 12, type mismatch or
+typeclass issues for 9, Lean syntax errors for 8, missing context or missing
+identifiers for 2, and API/transport failures for 2.
+
+This is the main diagnostic result. The residual failures are not primarily
+unknown names or absent imports. They are unsolved goals, failed rewrites,
+arithmetic/inequality tactics that do not close, local algebra left in the
+wrong normal form, or malformed proof blocks after partial progress. In other
+words, the bottleneck is proof construction under Lean checking, not just
+retrieval. The categories are assigned by fixed priority rules described in
+the appendix, and the artifact includes row-level model outputs, check
+reports, and failure-category summaries for audit.
+
+The family-level distribution supports the same interpretation. The highest
+failure rates appear in FEM/P0 projection and linear-algebra stability, with
+additional pressure in finite-difference stability, conservation, heat/CFL, and
+spectral/DFT rows (Figure~\ref{fig:coverage-failure}). These are exactly the
+families where informal numerical analysis hides proof-engineering pressure:
+projection algebra, CFL convexity, definition unfolding, finite sums, and norm
+inequalities.
+
+\section{Hard-Subset Case Studies}
+\label{sec:case-studies}
+
+The final 11-row hard subset makes the aggregate taxonomy concrete.
+Table~\ref{tab:representative-residues} shows three recurring failure
+mechanisms. The cases below then expand on them.
+
+\begin{table}[H]
+\centering
+\caption{Representative hard rows and typical failed residues.}
+\label{tab:representative-residues}
+\scriptsize
+\begin{tabularx}{\linewidth}{
+  >{\raggedright\arraybackslash}p{0.22\linewidth}
+  >{\raggedright\arraybackslash}p{0.25\linewidth}
+  >{\raggedright\arraybackslash}p{0.25\linewidth}
+  >{\raggedright\arraybackslash}X}
+\toprule
+Row & Informal math & Lean obstacle & Diagnostic lesson\\
+\midrule
+Lax--Friedrichs CFL stability & Convex combination preserves
+\(L_\infty\) bounds & Absolute values, nonnegative weights, and both
+inequality directions must align & Recognizing convexity is not enough for a
+Lean-checking inequality proof.\\
+Centered DC zero mode & Subtracting the finite mean kills the DC component &
+\texttt{Finset} rewriting, constant sums, and nonzero-cardinality algebra &
+Finite-sum normalization is a first-class proof-engineering obstacle.\\
+P0 projection idempotence & Averaging projected cell values is idempotent &
+Local projection API unfolding and normal form & Short numerical-analysis
+lemmas can fail on local definition choreography.\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Lax--Friedrichs CFL $L_\infty$ stability.}
+The Lax--Friedrichs CFL stability row is failed by four of five endpoints in the
+final panel. The proof is a small CFL convex-combination argument: use
+nonnegative weights, distribute absolute values, combine max bounds, and close
+arithmetic. In Lean, this becomes a brittle chain of local lemma selection,
+absolute-value rewriting, and inequality side conditions. This row separates
+recognizing a textbook stability argument from producing a checker-valid
+inequality proof.
+
+\paragraph{Centered signal has zero DC mode.}
+The general-$N$ centered-DC row is a finite-sum normalization fact:
+subtracting the finite mean makes the DC sum vanish. Several models reach a
+nearly algebraic remaining goal but fail to align \texttt{Finset} rewriting,
+constant sums, and the nonzero-cardinality assumption. This is a finite-sum
+bookkeeping failure, not a failure to understand the mathematical statement.
+
+\paragraph{P0 projection idempotence.}
+The two-cell P0 projection-idempotence row is short and mathematically
+elementary: averaging projected cell values gives the same average. Yet
+multiple models unfold only part of the local projection API or leave Lean
+with a normal-form mismatch. This demonstrates why small rows still matter:
+numerical-analysis formalization often fails on local definition unfolding and
+normalization details that informal mathematics hides. The case studies
+therefore justify LeanNumBench's diagnostic design: the hardest rows are not
+necessarily the longest statements, but the rows where local proof engineering
+must line up exactly with numerical-analysis structure.
+
+\section{Related Work}
+
+Lean 4 and Mathlib provide the proof-assistant substrate for LeanNumBench
+\citep{demoura2021lean4,mathlib2020}. Lean elaboration is useful for
+benchmarking because proof candidates must check against a precise local
+environment rather than only satisfy a natural-language judge.
+
+Formal theorem-proving and autoformalization benchmarks such as miniF2F,
+LeanDojo, and ProofNet measure broad theorem-proving ability, retrieval, and
+formalization across mathematical domains
+\citep{zheng2022minif2f,yang2023leandojo,azerbayev2023proofnet}. LeanNumBench is
+narrower by design. It isolates numerical-analysis proof patterns: CFL
+inequalities, finite-sum normalization, boundary bookkeeping, projection
+orthogonality, definition unfolding, and norm/API choreography.
+
+LeanNumBench is also related to LLM-assisted prover systems, including
+proof-assistant-feedback and Lean-copilot-style approaches
+\citep{xin2024deepseekprover,song2024leancopilot}. The present paper does not
+introduce a new prover. It evaluates direct proof completion so that the
+observed failures can be attributed to local proof-engineering behavior
+rather than to a larger agentic search stack. Agentic Lean-feedback systems
+are therefore downstream users of the benchmark, not baselines that v1 claims
+to dominate.
+
+Applied-mathematics Lean benchmarks have recently expanded. CAM-Bench
+\citep{long2026cambench} provides a broad computational and applied
+mathematics benchmark, while Construction-Verification/AMBER
+\citep{yang2026constructionverification} stresses tasks where a model must
+construct explicit objects or algorithms before proving correctness. LeanNumBench
+does not claim to be broader than these benchmarks. Its role is a focused
+numerical-analysis proof-completion diagnostic: a smaller Lean-checked suite
+whose contribution is curated local proof completion, dated endpoint
+protocols, hard-subset analysis, pass@3 robustness probes,
+declaration-context ablation, simple-repair ablation, and a failure taxonomy
+for local numerical-analysis proof patterns. It also releases usage-stripped
+model outputs, materialized candidate scripts, and row-level failure summaries
+so that the reported mechanisms can be audited without new model calls. In
+short, CAM-Bench measures
+broad applied-math coverage; LeanNumBench tries to explain why apparently routine
+numerical-analysis proof completions still fail the Lean checker.
+
+Finally, LeanNumBench connects to formal verification of numerical methods and
+scientific computing, including verified floating-point infrastructure,
+verified ODE analysis, and formalized numerical-analysis theorems in Coq and
+Isabelle/HOL
+\citep{boldo2011flocq,immler2012ode,boldo2017laxmilgram,tekriwal2021lax}.
+Those works verify mathematical and numerical-method properties directly.
+LeanNumBench instead packages Lean-checked theorem-family tasks and an evaluation
+harness for measuring how well language models can assist with this style of
+formalization.
+
+\section{Limitations}
+
+These limitations define the intended scope of LeanNumBench v1 rather than
+accidental omissions. LeanNumBench v1 freezes 160 records and 405 task
+specifications. This is smaller than broad applied-mathematics benchmark
+suites, and should be read as a diagnostic release rather than a scale claim.
+The companion Lean library contains 176 theorem declarations, of which
+160 are represented in LeanNumBench; the remaining 16 are tracked as a
+future-expansion backlog, not a hidden benchmark split. The
+dataset-construction audit rules out several direct leakage modes, but it does
+not prove that every local helper lemma is semantically independent of the
+target proof.
+
+The main model table is a dated May-2026 frozen panel. It should not be read
+as a timeless endpoint ranking because model APIs and endpoint aliases change
+quickly. The paper therefore treats the 160-record prompt pack, local checker,
+released candidates, and dated endpoint protocol as the reproducible
+evaluation object. The statement-translation result is a 50-record calibration
+snapshot rather than a full 160-record companion panel; we avoid using it for
+model ranking.
+
+Many records remain internally seeded from the Lean companion library.
+Textbook and paper provenance improves auditability, but the benchmark is
+curated rather than automatically mined from external corpora. The main task
+is proof completion, not agentic proof search. This is intentional: proof
+completion isolates local Lean proof engineering. Agentic settings,
+multi-step retrieval, and tool-using provers may behave differently.
+
+The declaration-context ablation covers two models, so it is diagnostic rather
+than exhaustive. Failure-taxonomy categories are assigned by fixed priority
+rules and released for audit, but we have not yet run an independent
+inter-annotator reliability study. LeanNumBench v1 also does not yet include a
+Lean-feedback agent baseline, full-160 pass@k panel, retrieval-augmented
+baseline, shuffled/irrelevant-context control, or direct comparison with a
+numerical-analysis subset of broader applied-mathematics Lean benchmarks.
+These are the next experiments needed to turn the diagnostic benchmark into a
+stronger prover-comparison study. Finally, LeanNumBench is infrastructure for
+future invariant-discovery work, but this paper does not claim an automated
+rediscovery of continuous KdV invariants or a full verified PDE discovery
+pipeline.
+
+\paragraph{Reproducibility.}
+All reported proof-completion results are checked locally against the
+companion Lean project, and proofs using \texttt{sorry} are never counted as
+passes. Dataset records, smoke checks, prompt audits, paper assets, and
+experiment tables are generated or validated from structured logs. The report
+separates raw passes, repair-assisted passes, pass@3 outcomes, and ablation
+results.
+
+\paragraph{Artifact availability.}
+The reproducibility artifact is included as arXiv ancillary material:
+\begin{center}
+\footnotesize
+\texttt{anc/leannumbench-v1-artifact.zip}
+\end{center}
+The same zip is mirrored in the local release directory. Its SHA256 is:
+\begin{center}
+\footnotesize
+\texttt{a576d3c7b7df0e371705dbf9e4a9ec78}\\
+\texttt{8f9719c4b4f8ff488483db1a9452d130}
+\end{center}
+These paper sources correspond to repository commit
+\texttt{1ecfb5e} plus the release edits included in this source package. The
+frozen 160-row proof prompt pack SHA256 is:
+\begin{center}
+\footnotesize
+\texttt{a02df6374ec92828389b3f1f59f56d21}\\
+\texttt{33e00378ade8eef4763b66e42c2adb78}
+\end{center}
+The companion Lean project uses \texttt{leanprover/lean4:v4.29.1}, pins
+Mathlib at \texttt{v4.29.1}, and includes the Lake manifest hash reported
+above. The benchmark metadata are released under CC-BY-4.0. The companion Lean
+source, evaluation scripts, and release tooling are released under
+Apache-2.0. The artifact contains usage-stripped model outputs,
+materialized-candidate scripts, row-level result summaries, and hashes
+sufficient to audit the tables without new model API calls.
+
+\section*{Use of AI Assistance}
+
+The author used language-model tools for copy-editing, code-review
+suggestions, consistency checks, and local automation support. All
+mathematical statements, Lean verification outcomes, experimental counts,
+references, hashes, and artifact claims were checked by the author against
+Lean runs, structured experiment logs, or the released artifact. No
+model-generated proof or experimental result is counted unless it is verified
+by the local Lean checker under the reported protocol.
+
+\section{Conclusion}
+
+LeanNumBench is a Lean-checked diagnostic benchmark for numerical-analysis proof
+completion. Dated endpoint aliases solve many local proofs, but their failures
+are systematic and interpretable. The hard subset, declaration-context
+ablation, simple-repair audit, and failure taxonomy show that
+numerical-analysis formalization is not captured by a flat leaderboard:
+models must compose Lean-checking steps around finite sums, boundary terms,
+CFL inequalities, projection identities, norm APIs, and local definitions.
+LeanNumBench turns those failure modes into a reproducible evaluation object
+and a foundation for AI-assisted verified scientific computing.
+
+\bibliography{references}
+\bibliographystyle{plainnat}
+
+\clearpage
+\appendix
+\input{appendix.tex}
+
+\end{document}
+

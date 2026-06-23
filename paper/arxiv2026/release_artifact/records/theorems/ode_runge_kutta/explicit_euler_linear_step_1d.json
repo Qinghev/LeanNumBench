@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_runge_kutta.explicit_euler_linear_step_1d",
+  "title": "Explicit Euler on the scalar linear test equation gives the first-order update",
+  "domain": "ode",
+  "category": "ode_runge_kutta",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar linear test equation y prime equals a y, one explicit Euler step equals (1 + dt * a) times y.",
+    "latex": "For \\(y\\prime=a y\\), explicit Euler gives \\(y_+=y+\\Delta t\\,a y=(1+\\Delta t\\,a)y\\).",
+    "assumptions": [
+      "dt, a, and y are real numbers",
+      "the right-hand side value is a * y",
+      "explicitEulerLinearStep wraps explicitEulerStep"
+    ],
+    "expected_conclusion": "The explicit Euler linear-test step is multiplication by 1 + dt * a."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/ODE/RungeKutta.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "ODE"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "explicitEulerStep",
+        "kind": "definition",
+        "statement": "def explicitEulerStep (dt y f : Real) : Real := y + dt * f"
+      },
+      {
+        "name": "explicitEulerLinearStep",
+        "kind": "definition",
+        "statement": "def explicitEulerLinearStep (dt a y : Real) : Real := explicitEulerStep dt y (a * y)"
+      },
+      {
+        "name": "explicitEulerLinearStep_eq",
+        "kind": "theorem",
+        "statement": "theorem explicitEulerLinearStep_eq (dt a y : Real) : explicitEulerLinearStep dt a y = (1 + dt * a) * y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the explicit Euler linear-test-equation update identity into Lean 4.",
+      "target": "theorem explicitEulerLinearStep_eq (dt a y : Real) : explicitEulerLinearStep dt a y = (1 + dt * a) * y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the explicit Euler definitions, complete the Lean 4 proof.",
+      "target": "A proof by unfolding explicitEulerLinearStep and explicitEulerStep, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "runge_kutta",
+    "explicit_euler",
+    "ode",
+    "linear_test_equation",
+    "one_step_method",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

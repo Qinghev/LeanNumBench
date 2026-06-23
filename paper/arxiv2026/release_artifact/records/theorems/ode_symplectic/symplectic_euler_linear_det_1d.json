@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_symplectic.symplectic_euler_linear_det_1d",
+  "title": "P-first symplectic Euler has determinant-one linear update",
+  "domain": "ode",
+  "category": "ode_symplectic",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Determinant-preservation seed for the p-first symplectic Euler linear update. It complements the orbit-invariant records with an area-preservation theorem shape."
+  },
+  "informal": {
+    "statement": "The p-first symplectic Euler update pNext = p - dt omega^2 q and qNext = q + dt pNext has linear coefficient matrix [[1 - dt^2 omega^2, dt], [-dt omega^2, 1]] in the state variables (q, p). The determinant of this 2-by-2 matrix is 1.",
+    "latex": "For the p-first symplectic Euler update \\(p_+=p-\\Delta t\\,\\omega^2q\\), \\(q_+=q+\\Delta t\\,p_+\\), the induced linear map on \\((q,p)\\) has coefficient matrix \\(\\begin{pmatrix}1-(\\Delta t)^2\\omega^2 & \\Delta t\\\\ -\\Delta t\\,\\omega^2 & 1\\end{pmatrix}\\). Its determinant is \\(1\\).",
+    "assumptions": [
+      "omega and dt are real numbers",
+      "the p-first symplectic Euler update is written as a linear map in q and p",
+      "the 2-by-2 determinant is represented as a * d - b * c"
+    ],
+    "expected_conclusion": "The determinant of the p-first symplectic Euler coefficient matrix equals one."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Symplectic/SymplecticEuler.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Symplectic"
+    ],
+    "declarations": [
+      {
+        "name": "det2",
+        "kind": "definition",
+        "statement": "def det2 (a b c d : ℝ) : ℝ := a * d - b * c"
+      },
+      {
+        "name": "symplecticEulerPNext_linear",
+        "kind": "theorem",
+        "statement": "theorem symplecticEulerPNext_linear (omega dt q p : ℝ) : symplecticEulerPNext omega dt q p = (-dt * omega ^ 2) * q + 1 * p"
+      },
+      {
+        "name": "symplecticEulerQNext_linear",
+        "kind": "theorem",
+        "statement": "theorem symplecticEulerQNext_linear (omega dt q p : ℝ) : symplecticEulerQNext omega dt q p = (1 - dt ^ 2 * omega ^ 2) * q + dt * p"
+      },
+      {
+        "name": "symplecticEulerLinear_det_eq_one",
+        "kind": "theorem",
+        "statement": "theorem symplecticEulerLinear_det_eq_one (omega dt : ℝ) : det2 (1 - dt ^ 2 * omega ^ 2) dt (-dt * omega ^ 2) 1 = 1"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the determinant-one statement for the p-first symplectic Euler coefficient matrix into Lean 4 using det2.",
+      "target": "theorem symplecticEulerLinear_det_eq_one (omega dt : ℝ) : det2 (1 - dt ^ 2 * omega ^ 2) dt (-dt * omega ^ 2) 1 = 1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the det2 definition and determinant theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using unfold det2 and ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify which LeanNumerics linear-coefficient lemmas justify the coefficient matrix used in the determinant theorem.",
+      "target": "symplecticEulerQNext_linear and symplecticEulerPNext_linear"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "symplectic_euler",
+    "harmonic_oscillator",
+    "symplectic",
+    "area_preservation",
+    "determinant",
+    "linear_map",
+    "matrix_coefficients",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

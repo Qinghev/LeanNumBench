@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "pilot_id": "hard_subset_frontier_160",
+  "description": "Frozen 11-record hard subset from the full 160-record five-model proof-completion panel.",
+  "intended_use": "Use this manifest for post-hoc diagnostic analysis or pass@k probes on rows failed by at least three of five models in the frozen 160-record panel. Do not report it as an unbiased full-dataset benchmark.",
+  "tasks": [
+    "proof_completion"
+  ],
+  "selection_policy": [
+    "Freeze the hard subset after the full 160-record one-shot leaderboard.",
+    "Include rows failed by at least three of five endpoint aliases after the same extraction and deterministic repair pipeline.",
+    "Use only as a conditional hard-subset diagnostic subset, not as the main leaderboard."
+  ],
+  "records": [
+    {
+      "record_id": "fem_projection.p0_projection_best_const_approx_2cell",
+      "failed_model_count": 4,
+      "role": "hard_fem_best_approx_projection",
+      "rationale": "Four endpoint aliases failed the two-cell P0 best-constant-approximation proof."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_idempotent_2cell",
+      "failed_model_count": 4,
+      "role": "hard_definition_unfolding_projection",
+      "rationale": "Four endpoint aliases failed the local FEM/P0 projection unfolding proof."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_average_smul_general_n",
+      "failed_model_count": 4,
+      "role": "hard_general_n_weighted_projection_linearity",
+      "rationale": "Four endpoint aliases failed the general-N weighted P0 scalar-multiplication proof."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_residual_mass_zero_general_n",
+      "failed_model_count": 4,
+      "role": "hard_general_n_weighted_residual_cancellation",
+      "rationale": "Four endpoint aliases failed the general-N mass-weighted residual cancellation proof."
+    },
+    {
+      "record_id": "finite_difference.lax_friedrichs_cfl_linf_stability_1d",
+      "failed_model_count": 4,
+      "role": "hard_abs_algebra_chaining",
+      "rationale": "Four endpoint aliases failed the Lax-Friedrichs CFL absolute-value stability proof."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_average_const_general_n",
+      "failed_model_count": 3,
+      "role": "hard_general_n_weighted_constant_projection",
+      "rationale": "Three endpoint aliases failed the general-N weighted P0 constant-average proof."
+    },
+    {
+      "record_id": "finite_difference.heat_weights_nonneg_cfl_1d",
+      "failed_model_count": 3,
+      "role": "hard_cfl_side_conditions",
+      "rationale": "Three endpoint aliases failed the heat-equation CFL nonnegativity side-condition proof."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_flux_const_difference_zero_1d",
+      "failed_model_count": 3,
+      "role": "hard_definition_unfolding_flux",
+      "rationale": "Three endpoint aliases failed the KdV canonical-flux constant-difference proof."
+    },
+    {
+      "record_id": "linear_algebra_stability.diag2_inf_norm_le_2d",
+      "failed_model_count": 3,
+      "role": "hard_norm_api_choreography",
+      "rationale": "Three endpoint aliases failed the low-dimensional diagonal infinity-norm bound proof."
+    },
+    {
+      "record_id": "linear_algebra_stability.finite_row_apply_const_general_n",
+      "failed_model_count": 3,
+      "role": "hard_general_n_row_stochastic_constant",
+      "rationale": "Three endpoint aliases failed the general-N finite-row constant-preservation proof."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_centered_signal_zero_general_n",
+      "failed_model_count": 3,
+      "role": "hard_sum_normalization_nonzero_card",
+      "rationale": "Three endpoint aliases failed the finite-index centered-DC normalization proof."
+    }
+  ]
+}

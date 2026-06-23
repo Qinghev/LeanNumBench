@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.total_change_conservative_update_1d",
+  "title": "The total change of a conservative update is the negative scaled boundary flux difference",
+  "domain": "finite_difference",
+  "category": "finite_difference_conservation",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Ch. 4, pp. 64-65.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a conservative update, the updated total minus the original total equals negative scale times the boundary flux difference flux(n)-flux(0).",
+    "latex": "\\(\\sum_{i=0}^{n-1}u_i^+-\\sum_{i=0}^{n-1}u_i=-\\lambda(F_n-F_0)\\).",
+    "assumptions": [
+      "scale is a real number",
+      "u and flux are real-valued functions on natural-number grid indices",
+      "n is a natural number",
+      "totalOn sums a state over Finset.range n"
+    ],
+    "expected_conclusion": "The total change is exactly the negative scaled boundary flux difference."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Conservation.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalOn_conservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem totalOn_conservativeUpdate (scale : Real) (u flux : Nat -> Real) (n : Nat) : totalOn (fun i => conservativeUpdate scale u flux i) n = totalOn u n - scale * (flux n - flux 0)"
+      },
+      {
+        "name": "totalChange_conservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem totalChange_conservativeUpdate (scale : Real) (u flux : Nat -> Real) (n : Nat) : totalOn (fun i => conservativeUpdate scale u flux i) n - totalOn u n = -scale * (flux n - flux 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the total-change identity for a conservative update into Lean 4.",
+      "target": "theorem totalChange_conservativeUpdate (scale : Real) (u flux : Nat -> Real) (n : Nat) : totalOn (fun i => conservativeUpdate scale u flux i) n - totalOn u n = -scale * (flux n - flux 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given totalOn_conservativeUpdate, complete the Lean 4 proof of the total-change identity.",
+      "target": "A proof by rewriting with totalOn_conservativeUpdate and closing with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "conservative_update",
+    "total_change",
+    "boundary_flux",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

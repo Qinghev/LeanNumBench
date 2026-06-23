@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_best_const_approx_2cell",
+  "title": "The two-cell P0 projection is the best constant approximation",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The residual error from the two-cell P0 projection is no larger than the squared error to any constant value c.",
+    "latex": "\\|u-\\Pi_0u\\|^2 \\le \\|u-c\\|^2 \\quad \\text{for every constant } c.",
+    "assumptions": [
+      "u0 and u1 are real cell values",
+      "c is any real constant comparison value",
+      "the P0 projection is the two-cell average on both cells"
+    ],
+    "expected_conclusion": "The projection residual energy is bounded by the error to any constant field."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "p0ProjectionResidualSq2",
+        "kind": "definition",
+        "statement": "def p0ProjectionResidualSq2 (u0 u1 : Real) : Real := (u0 - cellAverage2 u0 u1) ^ 2 + (u1 - cellAverage2 u0 u1) ^ 2"
+      },
+      {
+        "name": "constApproxError2",
+        "kind": "definition",
+        "statement": "def constApproxError2 (u0 u1 c : Real) : Real := (u0 - c) ^ 2 + (u1 - c) ^ 2"
+      },
+      {
+        "name": "p0Projection2_best_const_approx",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_best_const_approx (u0 u1 c : Real) : p0ProjectionResidualSq2 u0 u1 <= constApproxError2 u0 u1 c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the best constant approximation property of the two-cell P0 projection into Lean 4.",
+      "target": "theorem p0Projection2_best_const_approx (u0 u1 c : Real) : p0ProjectionResidualSq2 u0 u1 <= constApproxError2 u0 u1 c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by decomposing the error to c into projection residual plus nonnegative constant-projection error.",
+      "target": "Prove the error decomposition by ring, prove the remaining constant error nonnegative by sq_nonneg, and finish with linarith."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the Mathlib-style nonnegativity fact needed for the squared constant-projection error.",
+      "target": "sq_nonneg"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "best_approximation",
+    "energy_estimate",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

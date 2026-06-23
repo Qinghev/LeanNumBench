@@ -1,0 +1,17 @@
+target_id,pair_id,side,passed,diagnosis,finish_reason,family,primary_intervention,first_error,proof_chars,prediction_chars
+V4P01_easy,V4P01,easy,True,passed,stop,finite-difference heat stability,three_step_index_transport_hidden_grid_api,,1967,1967
+V4P01_hard,V4P01,hard,True,passed,stop,finite-difference heat stability,three_step_index_transport_hidden_grid_api,,1970,1970
+V4P04_easy,V4P04,easy,True,passed,stop,finite-difference Lax-Friedrichs stability,three_step_nested_api_vs_exposed_final_weights,,1959,1959
+V4P04_hard,V4P04,hard,False,extra_tactic_after_goal_closed,stop,finite-difference Lax-Friedrichs stability,three_step_nested_api_vs_exposed_final_weights,unsolved goals,687,767
+V4P06_easy,V4P06,easy,False,length_empty_output,length,finite-difference upwind stability,three_step_upwind_api_vs_exposed_final_weights,empty extracted proof,0,0
+V4P06_hard,V4P06,hard,False,extra_tactic_after_goal_closed,stop,finite-difference upwind stability,three_step_upwind_api_vs_exposed_final_weights,unsolved goals,586,666
+V4P10_easy,V4P10,easy,True,passed,stop,finite-difference KdV conservation,two_update_discrete_mass_api_vs_exposed_zero_change,,574,574
+V4P10_hard,V4P10,hard,True,passed,stop,finite-difference KdV conservation,two_update_discrete_mass_api_vs_exposed_zero_change,,916,916
+V4P14_easy,V4P14,easy,True,passed,stop,FEM/P0 projection,additive_residual_orthogonality_vs_exposed_weighted_average,,154,154
+V4P14_hard,V4P14,hard,True,passed,stop,FEM/P0 projection,additive_residual_orthogonality_vs_exposed_weighted_average,,113,115
+V4P19_easy,V4P19,easy,True,passed,stop,linear-algebra finite-row stability,two_stage_finite_row_api_vs_exposed_outer_sum,,271,271
+V4P19_hard,V4P19,hard,False,extra_tactic_after_goal_closed,stop,linear-algebra finite-row stability,two_stage_finite_row_api_vs_exposed_outer_sum,unsolved goals,141,143
+V4P20_easy,V4P20,easy,True,passed,stop,linear-algebra row-stochastic stability,three_stage_row_apply_vs_stochastic_wrapper,,1249,1249
+V4P20_hard,V4P20,hard,True,passed,stop,linear-algebra row-stochastic stability,three_stage_row_apply_vs_stochastic_wrapper,,1613,1613
+V4P22_easy,V4P22,easy,True,passed,stop,symplectic time integration,three_direct_steps_vs_three_orbit_recurrence_steps,,586,586
+V4P22_hard,V4P22,hard,True,passed,stop,symplectic time integration,three_direct_steps_vs_three_orbit_recurrence_steps,,362,362

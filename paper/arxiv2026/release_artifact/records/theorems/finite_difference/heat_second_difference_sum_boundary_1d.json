@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_second_difference_sum_boundary_1d",
+  "title": "Summed heat second differences telescope to boundary gradients",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The sum over a finite range of the heat second-difference operator equals the left boundary gradient plus the right boundary gradient.",
+    "latex": "\\(\\sum_{i=0}^{n-1} (u_i-2u_{i+1}+u_{i+2}) = u_0-u_1+u_{n+1}-u_n\\).",
+    "assumptions": [
+      "u is a real-valued grid state on natural-number indices",
+      "n is a natural-number range length"
+    ],
+    "expected_conclusion": "The finite sum of heatSecondDifference telescopes to heatBoundaryTerm."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatSecondDifference",
+        "kind": "definition",
+        "statement": "def heatSecondDifference (u : Nat -> Real) (i : Nat) : Real := u i - 2 * u (i + 1) + u (i + 2)"
+      },
+      {
+        "name": "heatBoundaryTerm",
+        "kind": "definition",
+        "statement": "def heatBoundaryTerm (u : Nat -> Real) (n : Nat) : Real := u 0 - u 1 + (u (n + 1) - u n)"
+      },
+      {
+        "name": "heatSecondDifference_sum_range",
+        "kind": "theorem",
+        "statement": "theorem heatSecondDifference_sum_range (u : Nat -> Real) : forall n : Nat, Finset.sum (Finset.range n) (fun i => heatSecondDifference u i) = heatBoundaryTerm u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation total-balance theorem into Lean 4: The sum over a finite range of the heat second-difference operator equals the left boundary gradient plus the right boundary gradient.",
+      "target": "theorem heatSecondDifference_sum_range (u : Nat -> Real) : forall n : Nat, Finset.sum (Finset.range n) (fun i => heatSecondDifference u i) = heatBoundaryTerm u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by induction on n, using Finset.sum_range_succ, unfolding definitions, and ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the Mathlib theorem used to peel off the last term of a range sum.",
+      "target": "Finset.sum_range_succ"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "total_balance",
+    "boundary_term",
+    "telescoping_sum",
+    "finset_range",
+    "second_difference",
+    "boundary_flux"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_symplectic.symplectic_euler_invariant_1d",
+  "title": "P-first symplectic Euler preserves a modified quadratic invariant along an orbit",
+  "domain": "ode",
+  "category": "ode_symplectic",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If real-valued sequences q and p satisfy the p-first symplectic Euler recurrence, then for every natural number n, the modified quadratic invariant p_n^2 + omega^2 q_n^2 - dt omega^2 q_n p_n equals its initial value at n = 0.",
+    "latex": "Let \\(q,p:\\mathbb{N}\\to\\mathbb{R}\\) satisfy \\(p_{n+1}=p_n-\\Delta t\\,\\omega^2q_n\\) and \\(q_{n+1}=q_n+\\Delta t\\,p_{n+1}\\). Then for every \\(n\\in\\mathbb{N}\\), \\(p_n^2+\\omega^2q_n^2-\\Delta t\\,\\omega^2q_np_n=p_0^2+\\omega^2q_0^2-\\Delta t\\,\\omega^2q_0p_0\\).",
+    "assumptions": [
+      "omega and dt are real numbers",
+      "q and p are real-valued sequences indexed by natural numbers",
+      "q and p satisfy the p-first symplectic Euler recurrence for every natural-number index"
+    ],
+    "expected_conclusion": "The modified quadratic invariant is constant along the indexed p-first symplectic Euler orbit."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Symplectic/SymplecticEuler.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Symplectic"
+    ],
+    "declarations": [
+      {
+        "name": "symplecticEulerPNext",
+        "kind": "definition",
+        "statement": "def symplecticEulerPNext (omega dt q p : ℝ) : ℝ := p - dt * omega ^ 2 * q"
+      },
+      {
+        "name": "symplecticEulerQNext",
+        "kind": "definition",
+        "statement": "def symplecticEulerQNext (omega dt q p : ℝ) : ℝ := q + dt * symplecticEulerPNext omega dt q p"
+      },
+      {
+        "name": "symplecticEulerInvariant",
+        "kind": "definition",
+        "statement": "def symplecticEulerInvariant (omega dt q p : ℝ) : ℝ := p ^ 2 + omega ^ 2 * q ^ 2 - dt * omega ^ 2 * q * p"
+      },
+      {
+        "name": "IsSymplecticEulerOrbit",
+        "kind": "definition",
+        "statement": "def IsSymplecticEulerOrbit (omega dt : ℝ) (q p : ℕ → ℝ) : Prop := ∀ n : ℕ, p (n + 1) = symplecticEulerPNext omega dt (q n) (p n) ∧ q (n + 1) = symplecticEulerQNext omega dt (q n) (p n)"
+      },
+      {
+        "name": "symplecticEulerInvariant_const_of_isSymplecticEulerOrbit",
+        "kind": "theorem",
+        "statement": "theorem symplecticEulerInvariant_const_of_isSymplecticEulerOrbit (omega dt : ℝ) (q p : ℕ → ℝ) (hqp : IsSymplecticEulerOrbit omega dt q p) : ∀ n : ℕ, symplecticEulerInvariant omega dt (q n) (p n) = symplecticEulerInvariant omega dt (q 0) (p 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the informal sequence-level symplectic Euler invariant statement into a Lean 4 theorem statement.",
+      "target": "theorem symplecticEulerInvariant_const_of_isSymplecticEulerOrbit (omega dt : ℝ) (q p : ℕ → ℝ) (hqp : IsSymplecticEulerOrbit omega dt q p) : ∀ n : ℕ, symplecticEulerInvariant omega dt (q n) (p n) = symplecticEulerInvariant omega dt (q 0) (p 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the formal declarations and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using the adjacent-step invariant theorem and induction on n."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "symplectic_euler",
+    "harmonic_oscillator",
+    "symplectic",
+    "modified_energy",
+    "quadratic_invariant",
+    "indexed_sequence",
+    "induction",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

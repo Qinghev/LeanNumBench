@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_average_smul_general_n",
+  "title": "The finite weighted P0 average commutes with scalar multiplication",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "S. C. Brenner and L. R. Scott, The Mathematical Theory of Finite Element Methods, 3rd ed., Springer, 2008, Ch. 4.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The finite weighted P0 average is homogeneous with respect to scalar multiplication of the cell-value function.",
+    "latex": "\\overline{cu}_m=c\\bar u_m.",
+    "assumptions": [
+      "s is finite",
+      "m is a mass function",
+      "u is a cell value function",
+      "c is a scalar"
+    ],
+    "expected_conclusion": "The weighted average of c times u is c times the weighted average of u."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Average",
+        "kind": "definition",
+        "statement": "def weightedP0Average {ι : Type} (s : Finset ι) (m u : ι → Real) : Real := (∑ i ∈ s, m i * u i) / (∑ i ∈ s, m i)"
+      },
+      {
+        "name": "weightedP0Residual",
+        "kind": "definition",
+        "statement": "def weightedP0Residual {ι : Type} (s : Finset ι) (m u : ι → Real) (i : ι) : Real := u i - weightedP0Average s m u"
+      },
+      {
+        "name": "weightedP0Average_smul",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Average_smul {ι : Type} (s : Finset ι) (m u : ι → Real) (c : Real) : weightedP0Average s m (fun i => c * u i) = c * weightedP0Average s m u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index weighted P0 projection fact `weightedP0Average_smul` into Lean 4.",
+      "target": "theorem weightedP0Average_smul {ι : Type} (s : Finset ι) (m u : ι → Real) (c : Real) : weightedP0Average s m (fun i => c * u i) = c * weightedP0Average s m u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `weightedP0Average_smul`.",
+      "target": "Commute the scalar through the finite sum with Finset.mul_sum and normalize by ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or weighted-projection lemma needed for the proof.",
+      "target": "Finset.mul_sum"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "p0_projection",
+    "weighted_projection",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

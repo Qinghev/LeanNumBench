@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_grid_total_neumann_boundary_1d",
+  "title": "Explicit heat grid total is preserved under zero-gradient boundary equalities",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Difference Methods for Ordinary and Partial Differential Equations, SIAM, 2007, Ch. 9.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If both boundary gradients vanish, then the total of the shifted heat grid update equals the original interior total.",
+    "latex": "If \\(u_0=u_1\\) and \\(u_{n+1}=u_n\\), then \\(\\sum_i {\\mathcal H}_r[u]_i=\\sum_i u_{i+1}\\).",
+    "assumptions": [
+      "r is a real diffusion number",
+      "u is a real-valued grid state on natural-number indices",
+      "n is a natural-number range length",
+      "u 0 = u 1",
+      "u (n + 1) = u n"
+    ],
+    "expected_conclusion": "The heat grid total is preserved under zero-gradient boundary equalities."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatInteriorTotal",
+        "kind": "definition",
+        "statement": "def heatInteriorTotal (u : Nat -> Real) (n : Nat) : Real := Finset.sum (Finset.range n) (fun i => u (i + 1))"
+      },
+      {
+        "name": "heatStepGridTotal",
+        "kind": "definition",
+        "statement": "def heatStepGridTotal (r : Real) (u : Nat -> Real) (n : Nat) : Real := Finset.sum (Finset.range n) (fun i => heatStepGrid r u i)"
+      },
+      {
+        "name": "heatBoundaryTerm",
+        "kind": "definition",
+        "statement": "def heatBoundaryTerm (u : Nat -> Real) (n : Nat) : Real := u 0 - u 1 + (u (n + 1) - u n)"
+      },
+      {
+        "name": "heatStepGridTotal_of_neumann_boundary",
+        "kind": "theorem",
+        "statement": "theorem heatStepGridTotal_of_neumann_boundary (r : Real) (u : Nat -> Real) (n : Nat) (hLeft : u 0 = u 1) (hRight : u (n + 1) = u n) : heatStepGridTotal r u n = heatInteriorTotal u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation total-balance theorem into Lean 4: If both boundary gradients vanish, then the total of the shifted heat grid update equals the original interior total.",
+      "target": "theorem heatStepGridTotal_of_neumann_boundary (r : Real) (u : Nat -> Real) (n : Nat) (hLeft : u 0 = u 1) (hRight : u (n + 1) = u n) : heatStepGridTotal r u n = heatInteriorTotal u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof combining heatBoundaryTerm_eq_zero_of_neumann with heatStepGridTotal_of_boundary_zero."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the two LeanNumerics theorems combined to prove heat total preservation under Neumann boundary equalities.",
+      "target": "heatBoundaryTerm_eq_zero_of_neumann, heatStepGridTotal_of_boundary_zero"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "total_balance",
+    "boundary_term",
+    "total_preservation",
+    "neumann_boundary",
+    "zero_gradient",
+    "boundary_flux"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

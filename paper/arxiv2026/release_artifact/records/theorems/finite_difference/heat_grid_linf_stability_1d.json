@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_grid_linf_stability_1d",
+  "title": "Explicit heat grid step is locally L-infinity stable under the parabolic CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If 0 <= r and 2r <= 1, and the three grid values u(i), u(i+1), and u(i+2) are bounded in absolute value by M, then the shifted heat grid update at i is also bounded by M.",
+    "latex": "If \\(0\\le r\\), \\(2r\\le1\\), and \\(|u_i|,|u_{i+1}|,|u_{i+2}|\\le M\\), then \\(|{\\mathcal H}_r[u]_i|\\le M\\).",
+    "assumptions": [
+      "r and M are real numbers",
+      "u is a real-valued grid state on natural-number indices",
+      "i is a natural-number grid index",
+      "0 <= r",
+      "2 * r <= 1",
+      "|u i| <= M",
+      "|u (i + 1)| <= M",
+      "|u (i + 2)| <= M"
+    ],
+    "expected_conclusion": "The local heat grid update remains bounded by M in absolute value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatStepGrid",
+        "kind": "definition",
+        "statement": "def heatStepGrid (r : Real) (u : Nat -> Real) (i : Nat) : Real := heatStep r (u i) (u (i + 1)) (u (i + 2))"
+      },
+      {
+        "name": "heatStepGrid_abs_le",
+        "kind": "theorem",
+        "statement": "theorem heatStepGrid_abs_le (r : Real) (u : Nat -> Real) (i : Nat) (M : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) (hLeft : |u i| <= M) (h : |u (i + 1)| <= M) (hRight : |u (i + 2)| <= M) : |heatStepGrid r u i| <= M"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: If 0 <= r and 2r <= 1, and the three grid values u(i), u(i+1), and u(i+2) are bounded in absolute value by M, then the shifted heat grid update at i is also bounded by M.",
+      "target": "theorem heatStepGrid_abs_le (r : Real) (u : Nat -> Real) (i : Nat) (M : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) (hLeft : |u i| <= M) (h : |u (i + 1)| <= M) (hRight : |u (i + 2)| <= M) : |heatStepGrid r u i| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding heatStepGrid and applying heatStep_abs_le to the three neighboring grid values."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the scalar theorem used to prove local L-infinity stability of the heat grid-window update.",
+      "target": "heatStep_abs_le"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "grid_stencil",
+    "linf_stability",
+    "absolute_value",
+    "cfl"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

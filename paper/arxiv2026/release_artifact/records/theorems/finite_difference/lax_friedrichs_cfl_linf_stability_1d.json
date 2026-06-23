@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.lax_friedrichs_cfl_linf_stability_1d",
+  "title": "Scalar Lax-Friedrichs update is L-infinity stable under the CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_stability",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Sec. 12.5, p. 232.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar Lax-Friedrichs update uNext = ((1 + cfl) / 2) uLeft + ((1 - cfl) / 2) uRight, if -1 <= cfl <= 1 and both |uLeft| and |uRight| are bounded by M, then |uNext| is also bounded by M.",
+    "latex": "Let \\(\\lambda\\in\\mathbb{R}\\) satisfy \\(-1\\le\\lambda\\le1\\). Define \\(u^{+}=((1+\\lambda)/2)u_L+((1-\\lambda)/2)u_R\\). If \\(|u_L|\\le M\\) and \\(|u_R|\\le M\\), then \\(|u^{+}|\\le M\\).",
+    "assumptions": [
+      "cfl, uLeft, uRight, and M are real numbers",
+      "-1 <= cfl",
+      "cfl <= 1",
+      "|uLeft| <= M",
+      "|uRight| <= M"
+    ],
+    "expected_conclusion": "The scalar Lax-Friedrichs update remains bounded by M in absolute value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/LaxFriedrichs.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "laxFriedrichsStep",
+        "kind": "definition",
+        "statement": "def laxFriedrichsStep (cfl uLeft uRight : ℝ) : ℝ := laxFriedrichsLeftWeight cfl * uLeft + laxFriedrichsRightWeight cfl * uRight"
+      },
+      {
+        "name": "laxFriedrichsStep_abs_le",
+        "kind": "theorem",
+        "statement": "theorem laxFriedrichsStep_abs_le (cfl uLeft uRight M : ℝ) (hcflLower : -1 ≤ cfl) (hcflUpper : cfl ≤ 1) (hLeft : |uLeft| ≤ M) (hRight : |uRight| ≤ M) : |laxFriedrichsStep cfl uLeft uRight| ≤ M"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the scalar Lax-Friedrichs CFL L-infinity stability statement into Lean 4 using laxFriedrichsStep.",
+      "target": "theorem laxFriedrichsStep_abs_le (cfl uLeft uRight M : ℝ) (hcflLower : -1 ≤ cfl) (hcflUpper : cfl ≤ 1) (hLeft : |uLeft| ≤ M) (hRight : |uRight| ≤ M) : |laxFriedrichsStep cfl uLeft uRight| ≤ M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Lax-Friedrichs step definition and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using weight nonnegativity, abs_add_le, abs_mul, mul_le_mul_of_nonneg_left, linarith, and ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics theorem needed to prove Lax-Friedrichs scalar CFL stability.",
+      "target": "laxFriedrichsWeights_nonneg"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "lax_friedrichs",
+    "finite_difference",
+    "finite_volume",
+    "advection",
+    "cfl",
+    "linf_stability",
+    "convex_combination",
+    "absolute_value"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

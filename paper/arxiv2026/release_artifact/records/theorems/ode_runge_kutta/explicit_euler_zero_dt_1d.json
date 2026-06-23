@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_runge_kutta.explicit_euler_zero_dt_1d",
+  "title": "Explicit Euler with zero step size is the identity",
+  "domain": "ode",
+  "category": "ode_runge_kutta",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any scalar state y and right-hand side value f, an explicit Euler step with time step zero returns y.",
+    "latex": "For \\(y,f\\in\\mathbb{R}\\), \\(E_0(y,f)=y+0\\cdot f=y\\).",
+    "assumptions": [
+      "y and f are real numbers",
+      "the explicit Euler step is y + dt * f",
+      "the time step is zero"
+    ],
+    "expected_conclusion": "The zero-step explicit Euler update equals the input state."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/ODE/RungeKutta.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "ODE"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "explicitEulerStep",
+        "kind": "definition",
+        "statement": "def explicitEulerStep (dt y f : Real) : Real := y + dt * f"
+      },
+      {
+        "name": "explicitEulerStep_zero_dt",
+        "kind": "theorem",
+        "statement": "theorem explicitEulerStep_zero_dt (y f : Real) : explicitEulerStep 0 y f = y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero-step explicit Euler identity into Lean 4 using explicitEulerStep.",
+      "target": "theorem explicitEulerStep_zero_dt (y f : Real) : explicitEulerStep 0 y f = y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the explicitEulerStep definition, complete the Lean 4 proof.",
+      "target": "A proof by unfolding explicitEulerStep and using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "runge_kutta",
+    "explicit_euler",
+    "ode",
+    "one_step_method",
+    "zero_step",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

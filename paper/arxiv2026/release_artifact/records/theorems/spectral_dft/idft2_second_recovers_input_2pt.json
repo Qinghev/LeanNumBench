@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.idft2_second_recovers_input_2pt",
+  "title": "The second inverse two-point DFT coordinate recovers the second input",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Applying the inverse two-point DFT second-coordinate formula to the DC and Nyquist modes recovers the second signal entry.",
+    "latex": "((u_0+u_1)-(u_0-u_1))/2 = u_1.",
+    "assumptions": [
+      "u0 and u1 are real numbers",
+      "low = u0 + u1",
+      "high = u0 - u1"
+    ],
+    "expected_conclusion": "The second inverse coordinate equals u1."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "dft2DC",
+        "kind": "definition",
+        "statement": "def dft2DC (u0 u1 : Real) : Real := u0 + u1"
+      },
+      {
+        "name": "dft2Nyquist",
+        "kind": "definition",
+        "statement": "def dft2Nyquist (u0 u1 : Real) : Real := u0 - u1"
+      },
+      {
+        "name": "idft2Second",
+        "kind": "definition",
+        "statement": "def idft2Second (low high : Real) : Real := (low - high) / 2"
+      },
+      {
+        "name": "idft2Second_dft2",
+        "kind": "theorem",
+        "statement": "theorem idft2Second_dft2 (u0 u1 : Real) : idft2Second (dft2DC u0 u1) (dft2Nyquist u0 u1) = u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate recovery of the second coordinate by the inverse two-point DFT into Lean 4.",
+      "target": "theorem idft2Second_dft2 (u0 u1 : Real) : idft2Second (dft2DC u0 u1) (dft2Nyquist u0 u1) = u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the transform definitions and simplifying.",
+      "target": "Unfold idft2Second, dft2DC, and dft2Nyquist, then use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "inverse_transform",
+    "fourier",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

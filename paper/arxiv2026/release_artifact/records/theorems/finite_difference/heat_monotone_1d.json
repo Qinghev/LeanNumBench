@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_monotone_1d",
+  "title": "Explicit heat-equation update is monotone under the parabolic CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If 0 <= r and 2r <= 1, then increasing each of the left, center, and right scalar inputs cannot decrease the explicit heat update.",
+    "latex": "If \\(0\\le r\\), \\(2r\\le1\\), and \\(u_L\\le v_L\\), \\(u\\le v\\), \\(u_R\\le v_R\\), then \\({\\mathcal H}_r(u_L,u,u_R)\\le {\\mathcal H}_r(v_L,v,v_R)\\).",
+    "assumptions": [
+      "r, uLeft, u, uRight, vLeft, v, and vRight are real numbers",
+      "0 <= r",
+      "2 * r <= 1",
+      "uLeft <= vLeft",
+      "u <= v",
+      "uRight <= vRight"
+    ],
+    "expected_conclusion": "The scalar heat update is monotone in all three state arguments."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatStep",
+        "kind": "definition",
+        "statement": "def heatStep (r uLeft u uRight : Real) : Real := heatLeftWeight r * uLeft + heatCenterWeight r * u + heatRightWeight r * uRight"
+      },
+      {
+        "name": "heatStep_monotone",
+        "kind": "theorem",
+        "statement": "theorem heatStep_monotone (r uLeft u uRight vLeft v vRight : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) (hLeft : uLeft <= vLeft) (h : u <= v) (hRight : uRight <= vRight) : heatStep r uLeft u uRight <= heatStep r vLeft v vRight"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: If 0 <= r and 2r <= 1, then increasing each of the left, center, and right scalar inputs cannot decrease the explicit heat update.",
+      "target": "theorem heatStep_monotone (r uLeft u uRight vLeft v vRight : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) (hLeft : uLeft <= vLeft) (h : u <= v) (hRight : uRight <= vRight) : heatStep r uLeft u uRight <= heatStep r vLeft v vRight"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using heatWeights_nonneg, mul_le_mul_of_nonneg_left, and linarith."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma that supplies nonnegative heat-equation weights under the CFL assumptions.",
+      "target": "heatWeights_nonneg"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "monotonicity",
+    "convex_combination",
+    "cfl",
+    "linarith"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

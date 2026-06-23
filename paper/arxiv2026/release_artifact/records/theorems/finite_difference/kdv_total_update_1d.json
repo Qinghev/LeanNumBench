@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_total_update_1d",
+  "title": "The total after a KdV conservative update changes only by boundary fluxes",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "KdV-specific total-balance theorem obtained by reusing the generic conservative-update ladder."
+  },
+  "informal": {
+    "statement": "For the KdV-like conservative update, the total over the first n cells equals the old total minus scale times the difference between the right and left KdV fluxes.",
+    "latex": "\\(\\sum_i u_i^+=\\sum_i u_i-\\lambda(F_n^{KdV}-F_0^{KdV})\\).",
+    "assumptions": [
+      "scale, nonlinear, and dispersion are real numbers",
+      "u is a real-valued grid state",
+      "n is the number of cells in the finite range",
+      "totalOn sums over Finset.range n"
+    ],
+    "expected_conclusion": "The updated total differs from the original total only by the KdV boundary flux mismatch."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalOn_kdvConservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem totalOn_kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = totalOn u n - scale * (kdvConservativeFlux nonlinear dispersion u n - kdvConservativeFlux nonlinear dispersion u 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the total-balance theorem for the KdV conservative update into Lean 4.",
+      "target": "theorem totalOn_kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = totalOn u n - scale * (kdvConservativeFlux nonlinear dispersion u n - kdvConservativeFlux nonlinear dispersion u 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given kdvConservativeUpdate and the generic totalOn_conservativeUpdate theorem, complete the proof.",
+      "target": "A proof by unfolding kdvConservativeUpdate and rewriting with totalOn_conservativeUpdate."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the existing theorem that gives total balance for any conservative update.",
+      "target": "totalOn_conservativeUpdate"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "total_balance",
+    "boundary_flux"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

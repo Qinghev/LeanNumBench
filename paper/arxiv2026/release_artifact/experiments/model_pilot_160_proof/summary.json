@@ -1,0 +1,40 @@
+{
+  "by_category": {
+    "fem_projection": 28,
+    "finite_difference_burgers": 10,
+    "finite_difference_conservation": 8,
+    "finite_difference_heat": 15,
+    "finite_difference_kdv": 25,
+    "finite_difference_stability": 10,
+    "interpolation_linear": 8,
+    "linear_algebra_stability": 14,
+    "ode_runge_kutta": 6,
+    "ode_symplectic": 7,
+    "quadrature_rules": 6,
+    "spectral_dft": 23
+  },
+  "by_difficulty": {
+    "1": 44,
+    "2": 53,
+    "3": 58,
+    "4": 5
+  },
+  "by_task": {
+    "proof_completion": 160
+  },
+  "files": {
+    "candidate_template": "experiments/model_pilot_160_proof\\candidate_template.jsonl",
+    "manifest": "experiments/model_pilot_160_proof\\manifest.json",
+    "prompts": "experiments/model_pilot_160_proof\\prompts.jsonl",
+    "targets": "experiments/model_pilot_160_proof\\targets.jsonl"
+  },
+  "output_dir": "experiments/model_pilot_160_proof",
+  "pilot_id": "model_pilot_160_proof",
+  "prompt_options": {
+    "source_declaration_context": "full"
+  },
+  "prompts": 160,
+  "records": 160,
+  "report_kind": "model_pilot_preparation",
+  "schema_version": "0.1.0"
+}

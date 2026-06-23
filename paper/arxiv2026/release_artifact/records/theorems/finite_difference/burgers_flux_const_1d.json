@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_flux_const_1d",
+  "title": "Burgers flux of a constant state is constant",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a constant grid state c, the Burgers flux at every index is c squared over two.",
+    "latex": "If \\(u_i=c\\), then \\(F_i=c^2/2\\).",
+    "assumptions": [
+      "c is a real scalar",
+      "i is a natural-number grid index",
+      "the grid state is constant with value c"
+    ],
+    "expected_conclusion": "The Burgers flux of a constant state is c squared over two."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersFlux",
+        "kind": "definition",
+        "statement": "def burgersFlux (u : Nat -> Real) (i : Nat) : Real := (u i) ^ 2 / 2"
+      },
+      {
+        "name": "burgersFlux_const",
+        "kind": "theorem",
+        "statement": "theorem burgersFlux_const (c : Real) (i : Nat) : burgersFlux (fun _ => c) i = c ^ 2 / 2"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: For a constant grid state c, the Burgers flux at every index is c squared over two.",
+      "target": "theorem burgersFlux_const (c : Real) (i : Nat) : burgersFlux (fun _ => c) i = c ^ 2 / 2"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by unfolding burgersFlux and using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "constant_state",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

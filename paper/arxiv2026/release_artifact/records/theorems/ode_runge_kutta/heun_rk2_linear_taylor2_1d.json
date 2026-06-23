@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_runge_kutta.heun_rk2_linear_taylor2_1d",
+  "title": "Heun RK2 matches the quadratic Taylor polynomial on the scalar linear test equation",
+  "domain": "ode",
+  "category": "ode_runge_kutta",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Ernst Hairer, Syvert P. Norsett, and Gerhard Wanner, Solving Ordinary Differential Equations I: Nonstiff Problems, 2nd ed., Springer, 1993, Ch. II, pp. 129-353.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar linear test equation y prime equals a y, one Heun RK2 step equals the second-order Taylor polynomial (1 + dt * a + (dt * a)^2 / 2) times y.",
+    "latex": "For \\(y\\prime=a y\\), Heun RK2 gives \\(y_+=(1+\\Delta t\\,a+(\\Delta t\\,a)^2/2)y\\).",
+    "assumptions": [
+      "dt, a, and y are real numbers",
+      "heunRK2Step averages the initial and endpoint slopes",
+      "linearTaylor2Step is the quadratic Taylor polynomial for the linear test equation"
+    ],
+    "expected_conclusion": "The Heun RK2 step equals the linear-test-equation quadratic Taylor step."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/ODE/RungeKutta.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "ODE"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "heunRK2Step",
+        "kind": "definition",
+        "statement": "def heunRK2Step (dt a y : Real) : Real := let k1 := a * y; let k2 := a * (y + dt * k1); y + dt * ((k1 + k2) / 2)"
+      },
+      {
+        "name": "linearTaylor2Step",
+        "kind": "definition",
+        "statement": "def linearTaylor2Step (dt a y : Real) : Real := (1 + dt * a + (dt * a) ^ 2 / 2) * y"
+      },
+      {
+        "name": "heunRK2Step_eq_taylor2",
+        "kind": "theorem",
+        "statement": "theorem heunRK2Step_eq_taylor2 (dt a y : Real) : heunRK2Step dt a y = linearTaylor2Step dt a y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the Heun RK2 second-order Taylor identity for the scalar linear test equation into Lean 4.",
+      "target": "theorem heunRK2Step_eq_taylor2 (dt a y : Real) : heunRK2Step dt a y = linearTaylor2Step dt a y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heunRK2Step and linearTaylor2Step definitions, complete the Lean 4 proof.",
+      "target": "A proof by unfolding heunRK2Step and linearTaylor2Step, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "runge_kutta",
+    "heun_method",
+    "rk2",
+    "ode",
+    "linear_test_equation",
+    "taylor_polynomial",
+    "order_two",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

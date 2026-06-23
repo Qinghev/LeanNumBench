@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_total_change_boundary_1d",
+  "title": "The total change of a KdV conservative update is zero when boundary fluxes match",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Zero-change form of KdV conservative mass preservation."
+  },
+  "informal": {
+    "statement": "If the right and left KdV-like fluxes match, then the total change caused by the KdV conservative update is zero.",
+    "latex": "If \\(F_n^{KdV}=F_0^{KdV}\\), then \\(\\sum_i u_i^+-\\sum_i u_i=0\\).",
+    "assumptions": [
+      "scale, nonlinear, and dispersion are real numbers",
+      "u is a real-valued grid state",
+      "n is the number of cells in the finite range",
+      "the KdV boundary flux mismatch is zero"
+    ],
+    "expected_conclusion": "The total change after the KdV conservative update is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalChange_kdvConservativeUpdate_of_boundary_eq",
+        "kind": "theorem",
+        "statement": "theorem totalChange_kdvConservativeUpdate_of_boundary_eq (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) (hflux : kdvConservativeFlux nonlinear dispersion u n = kdvConservativeFlux nonlinear dispersion u 0) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n - totalOn u n = 0"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero total-change theorem for a KdV conservative update under matching boundary fluxes into Lean 4.",
+      "target": "theorem totalChange_kdvConservativeUpdate_of_boundary_eq (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) (hflux : kdvConservativeFlux nonlinear dispersion u n = kdvConservativeFlux nonlinear dispersion u 0) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n - totalOn u n = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given totalChange_kdvConservativeUpdate and a boundary-flux equality, complete the proof.",
+      "target": "A proof by rewriting with totalChange_kdvConservativeUpdate, applying the boundary equality, and using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "total_change",
+    "boundary_flux",
+    "conservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

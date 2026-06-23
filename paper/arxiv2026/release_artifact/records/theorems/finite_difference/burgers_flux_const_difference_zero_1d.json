@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_flux_const_difference_zero_1d",
+  "title": "Burgers flux difference vanishes on constant states",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a constant grid state, the local flux difference of the Burgers flux is zero at every index.",
+    "latex": "If \\(u_i=c\\), then \\(F_{i+1}-F_i=0\\).",
+    "assumptions": [
+      "c is a real scalar",
+      "i is a natural-number grid index",
+      "the grid state is constant with value c"
+    ],
+    "expected_conclusion": "The flux difference of a constant Burgers flux is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersFlux",
+        "kind": "definition",
+        "statement": "def burgersFlux (u : Nat -> Real) (i : Nat) : Real := (u i) ^ 2 / 2"
+      },
+      {
+        "name": "burgersFlux_const_difference_zero",
+        "kind": "theorem",
+        "statement": "theorem burgersFlux_const_difference_zero (c : Real) (i : Nat) : fluxDifference (burgersFlux (fun _ => c)) i = 0"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: For a constant grid state, the local flux difference of the Burgers flux is zero at every index.",
+      "target": "theorem burgersFlux_const_difference_zero (c : Real) (i : Nat) : fluxDifference (burgersFlux (fun _ => c)) i = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by unfolding fluxDifference and burgersFlux, then using ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the generic definition used for local finite-volume flux differences.",
+      "target": "fluxDifference"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "constant_state",
+    "flux_difference",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

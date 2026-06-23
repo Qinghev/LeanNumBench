@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use LeanNumBench, please cite the arXiv preprint or this repository release."
+title: "LeanNumBench: Diagnosing LLM Proof Completion in Lean-Checked Numerical Analysis"
+authors:
+  - family-names: Wang
+    given-names: Qinghe
+    affiliation: Independent Researcher
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/Qinghev/LeanNumBench"
+keywords:
+  - Lean
+  - theorem proving
+  - numerical analysis
+  - benchmark
+  - large language models
+abstract: "LeanNumBench is a Lean 4 diagnostic benchmark for numerical-analysis proof-body completion under frozen theorem statements and local declaration context."
+date-released: "2026-06-23"

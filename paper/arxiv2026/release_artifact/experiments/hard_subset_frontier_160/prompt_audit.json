@@ -1,0 +1,43 @@
+{
+  "issues": [],
+  "issues_count": 0,
+  "passed": true,
+  "pilot": {
+    "by_category": {
+      "fem_projection": 5,
+      "finite_difference_heat": 1,
+      "finite_difference_kdv": 1,
+      "finite_difference_stability": 1,
+      "linear_algebra_stability": 2,
+      "spectral_dft": 1
+    },
+    "by_difficulty": {
+      "1": 1,
+      "2": 3,
+      "3": 6,
+      "4": 1
+    },
+    "by_task": {
+      "proof_completion": 11
+    },
+    "candidate_rows": 11,
+    "issues": [],
+    "pilot_dir": "experiments/hard_subset_frontier_160",
+    "pilot_id": "hard_subset_frontier_160",
+    "prompt_chars": {
+      "max": 9179,
+      "mean": 5331.5,
+      "median": 5320,
+      "min": 2744
+    },
+    "prompt_rows": 11,
+    "target_rows": 11
+  },
+  "report_kind": "model_pilot_prompt_audit",
+  "schema_version": "0.1.0",
+  "supplement": {
+    "issues": [],
+    "path": "paper/arxiv2026/LeanNumBench_arxiv2026_release_artifact.zip",
+    "scanned_files": 193
+  }
+}

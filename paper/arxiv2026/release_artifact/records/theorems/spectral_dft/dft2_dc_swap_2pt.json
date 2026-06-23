@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.dft2_dc_swap_2pt",
+  "title": "Swapping two inputs leaves the DC mode unchanged",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The DC mode of a two-point signal is invariant under swapping the two entries.",
+    "latex": "u_1+u_0 = u_0+u_1.",
+    "assumptions": [
+      "u0 and u1 are real numbers",
+      "the DC mode is the sum of the two entries"
+    ],
+    "expected_conclusion": "The DC mode is unchanged by swapping entries."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "dft2DC",
+        "kind": "definition",
+        "statement": "def dft2DC (u0 u1 : Real) : Real := u0 + u1"
+      },
+      {
+        "name": "dft2DC_swap",
+        "kind": "theorem",
+        "statement": "theorem dft2DC_swap (u0 u1 : Real) : dft2DC u1 u0 = dft2DC u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate swap invariance of the two-point DC mode into Lean 4.",
+      "target": "theorem dft2DC_swap (u0 u1 : Real) : dft2DC u1 u0 = dft2DC u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding dft2DC and using commutativity of addition.",
+      "target": "Unfold dft2DC and use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "fourier",
+    "symmetry",
+    "dc_mode",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

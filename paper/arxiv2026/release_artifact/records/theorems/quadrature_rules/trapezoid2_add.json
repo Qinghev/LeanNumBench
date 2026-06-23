@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "quadrature_rules.trapezoid2_add",
+  "title": "The two-point trapezoidal rule is additive",
+  "domain": "quadrature",
+  "category": "quadrature_rules",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 9 (Numerical Integration).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The one-cell trapezoidal rule applied to endpointwise-added data equals the sum of the two trapezoidal-rule values.",
+    "latex": "Q_T(f+g)=Q_T(f)+Q_T(g).",
+    "assumptions": [
+      "h is a cell width",
+      "two endpoint sample pairs are given"
+    ],
+    "expected_conclusion": "The trapezoidal rule is additive."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Quadrature/Basic.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Quadrature"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "trapezoid2",
+        "kind": "definition",
+        "statement": "def trapezoid2 (h f0 f1 : Real) : Real := h * (f0 + f1) / 2"
+      },
+      {
+        "name": "trapezoid2_add",
+        "kind": "theorem",
+        "statement": "theorem trapezoid2_add (h f0 f1 g0 g1 : Real) : trapezoid2 h (f0 + g0) (f1 + g1) = trapezoid2 h f0 f1 + trapezoid2 h g0 g1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the quadrature theorem `trapezoid2_add` into Lean 4.",
+      "target": "theorem trapezoid2_add (h f0 f1 g0 g1 : Real) : trapezoid2 h (f0 + g0) (f1 + g1) = trapezoid2 h f0 f1 + trapezoid2 h g0 g1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `trapezoid2_add`.",
+      "target": "unfold trapezoid2; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the quadrature proof.",
+      "target": "ring"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "quadrature",
+    "numerical_integration",
+    "newton_cotes",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

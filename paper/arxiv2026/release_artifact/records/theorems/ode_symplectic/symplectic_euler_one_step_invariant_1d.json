@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_symplectic.symplectic_euler_one_step_invariant_1d",
+  "title": "One p-first symplectic Euler step preserves a modified quadratic invariant",
+  "domain": "ode",
+  "category": "ode_symplectic",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Ernst Hairer, Christian Lubich, and Gerhard Wanner, Geometric Numerical Integration, 2nd ed., Springer, 2006, Ch. VI, pp. 179-236.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For real omega, dt, q, and p, define pNext = p - dt omega^2 q and qNext = q + dt pNext. Then the quantity p^2 + omega^2 q^2 - dt omega^2 q p has the same value at (qNext, pNext) as at (q, p).",
+    "latex": "Let \\(\\omega,\\Delta t,q,p\\in\\mathbb{R}\\). Define \\(p_{+}=p-\\Delta t\\,\\omega^2q\\) and \\(q_{+}=q+\\Delta t\\,p_{+}\\). Then \\(p_{+}^2+\\omega^2q_{+}^2-\\Delta t\\,\\omega^2q_{+}p_{+}=p^2+\\omega^2q^2-\\Delta t\\,\\omega^2qp\\).",
+    "assumptions": [
+      "omega, dt, q, and p are real numbers",
+      "pNext is defined by the p-first symplectic Euler momentum update",
+      "qNext is defined by the p-first symplectic Euler position update"
+    ],
+    "expected_conclusion": "The modified quadratic invariant is preserved by one p-first symplectic Euler step."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Symplectic/SymplecticEuler.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Symplectic"
+    ],
+    "declarations": [
+      {
+        "name": "symplecticEulerPNext",
+        "kind": "definition",
+        "statement": "def symplecticEulerPNext (omega dt q p : ℝ) : ℝ := p - dt * omega ^ 2 * q"
+      },
+      {
+        "name": "symplecticEulerQNext",
+        "kind": "definition",
+        "statement": "def symplecticEulerQNext (omega dt q p : ℝ) : ℝ := q + dt * symplecticEulerPNext omega dt q p"
+      },
+      {
+        "name": "symplecticEulerInvariant",
+        "kind": "definition",
+        "statement": "def symplecticEulerInvariant (omega dt q p : ℝ) : ℝ := p ^ 2 + omega ^ 2 * q ^ 2 - dt * omega ^ 2 * q * p"
+      },
+      {
+        "name": "symplecticEulerInvariant_preserved",
+        "kind": "theorem",
+        "statement": "theorem symplecticEulerInvariant_preserved (omega dt q p : ℝ) : symplecticEulerInvariant omega dt (symplecticEulerQNext omega dt q p) (symplecticEulerPNext omega dt q p) = symplecticEulerInvariant omega dt q p"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the one-step p-first symplectic Euler invariant statement into a Lean 4 theorem using the provided definitions.",
+      "target": "theorem symplecticEulerInvariant_preserved (omega dt q p : ℝ) : symplecticEulerInvariant omega dt (symplecticEulerQNext omega dt q p) (symplecticEulerPNext omega dt q p) = symplecticEulerInvariant omega dt q p"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the theorem statement and definitions, complete the Lean 4 proof.",
+      "target": "A proof using unfold and ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "symplectic_euler",
+    "harmonic_oscillator",
+    "symplectic",
+    "modified_energy",
+    "quadratic_invariant",
+    "one_step",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

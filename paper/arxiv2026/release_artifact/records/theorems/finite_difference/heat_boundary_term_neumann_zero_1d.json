@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_boundary_term_neumann_zero_1d",
+  "title": "Neumann boundary equalities make the heat boundary term vanish",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If the left ghost value equals the first interior value and the right ghost value equals the last interior value, then the heat boundary term is zero.",
+    "latex": "If \\(u_0=u_1\\) and \\(u_{n+1}=u_n\\), then \\(B_n(u)=0\\).",
+    "assumptions": [
+      "u is a real-valued grid state on natural-number indices",
+      "n is a natural-number range length",
+      "u 0 = u 1",
+      "u (n + 1) = u n"
+    ],
+    "expected_conclusion": "The heat boundary term vanishes under zero-gradient boundary equalities."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatBoundaryTerm",
+        "kind": "definition",
+        "statement": "def heatBoundaryTerm (u : Nat -> Real) (n : Nat) : Real := u 0 - u 1 + (u (n + 1) - u n)"
+      },
+      {
+        "name": "heatBoundaryTerm_eq_zero_of_neumann",
+        "kind": "theorem",
+        "statement": "theorem heatBoundaryTerm_eq_zero_of_neumann (u : Nat -> Real) (n : Nat) (hLeft : u 0 = u 1) (hRight : u (n + 1) = u n) : heatBoundaryTerm u n = 0"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation total-balance theorem into Lean 4: If the left ghost value equals the first interior value and the right ghost value equals the last interior value, then the heat boundary term is zero.",
+      "target": "theorem heatBoundaryTerm_eq_zero_of_neumann (u : Nat -> Real) (n : Nat) (hLeft : u 0 = u 1) (hRight : u (n + 1) = u n) : heatBoundaryTerm u n = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding heatBoundaryTerm, rewriting the boundary equalities, and using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "total_balance",
+    "boundary_term",
+    "neumann_boundary",
+    "zero_gradient",
+    "boundary_flux",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

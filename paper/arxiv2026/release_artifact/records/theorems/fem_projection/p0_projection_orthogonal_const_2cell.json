@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_orthogonal_const_2cell",
+  "title": "The two-cell P0 projection residual is orthogonal to constants",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The residual after subtracting the two-cell average is orthogonal to every constant test value c.",
+    "latex": "(u_0-\\bar u)c + (u_1-\\bar u)c = 0.",
+    "assumptions": [
+      "u0 and u1 are real cell values",
+      "c is a real constant test value",
+      "the residual is measured relative to the two-cell average"
+    ],
+    "expected_conclusion": "The residual has zero inner product with the constant test value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "cellAverage2",
+        "kind": "definition",
+        "statement": "def cellAverage2 (u0 u1 : Real) : Real := (u0 + u1) / 2"
+      },
+      {
+        "name": "p0Projection2_orthogonal_const",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_orthogonal_const (u0 u1 c : Real) : (u0 - cellAverage2 u0 u1) * c + (u1 - cellAverage2 u0 u1) * c = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate residual orthogonality to constant test functions for a two-cell P0 projection into Lean 4.",
+      "target": "theorem p0Projection2_orthogonal_const (u0 u1 c : Real) : (u0 - cellAverage2 u0 u1) * c + (u1 - cellAverage2 u0 u1) * c = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by factoring out c and using the zero-mean residual lemma.",
+      "target": "Rewrite the expression as the residual sum times c, then use p0Projection2_residual_mean_zero."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma that turns the residual sum into zero.",
+      "target": "p0Projection2_residual_mean_zero"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "residual",
+    "orthogonality",
+    "galerkin",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

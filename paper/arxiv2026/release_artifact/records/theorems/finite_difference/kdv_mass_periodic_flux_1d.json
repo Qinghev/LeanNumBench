@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_mass_periodic_flux_1d",
+  "title": "A KdV conservative update preserves discrete mass under periodic flux",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Discrete-mass preservation theorem for the configurable KdV-like conservative flux."
+  },
+  "informal": {
+    "statement": "If the configurable KdV-like conservative flux is periodic over the finite range, then the KdV conservative update preserves discrete mass.",
+    "latex": "If \\(F_n^{KdV}=F_0^{KdV}\\), then \\(M(u^+)=M(u)\\).",
+    "assumptions": [
+      "scale, nonlinear, and dispersion are real numbers",
+      "u is a real-valued grid state",
+      "n is the number of cells in the finite range",
+      "the KdV conservative flux satisfies periodicBoundary"
+    ],
+    "expected_conclusion": "Discrete mass is invariant under the periodic-flux KdV conservative update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "discreteMass_kdvConservativeUpdate_of_periodicFlux",
+        "kind": "theorem",
+        "statement": "theorem discreteMass_kdvConservativeUpdate_of_periodicFlux (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvConservativeFlux nonlinear dispersion u) n) : discreteMass (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = discreteMass u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate periodic-flux discrete-mass preservation for the configurable KdV conservative update into Lean 4.",
+      "target": "theorem discreteMass_kdvConservativeUpdate_of_periodicFlux (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvConservativeFlux nonlinear dispersion u) n) : discreteMass (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n = discreteMass u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given discreteMass and totalOn_kdvConservativeUpdate_of_periodicFlux, complete the proof.",
+      "target": "A proof by unfolding discreteMass and applying totalOn_kdvConservativeUpdate_of_periodicFlux."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "discrete_mass",
+    "periodic_boundary",
+    "conservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

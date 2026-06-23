@@ -1,0 +1,17 @@
+priority,name,category,lean_file,note
+C,totalChange_burgersConservativeUpdate_of_boundary_eq,finite_difference_burgers,LeanNumerics/FiniteDifference/Burgers.lean,mostly another conservation/KdV wrapper; defer unless KdV story needs it
+C,totalChange_conservativeUpdate_of_boundary_eq,finite_difference_conservation,LeanNumerics/FiniteDifference/Conservation.lean,mostly another conservation/KdV wrapper; defer unless KdV story needs it
+C,totalChange_kdvCanonicalUpdate_of_boundary_eq,finite_difference_kdv,LeanNumerics/FiniteDifference/Kdv.lean,mostly another conservation/KdV wrapper; defer unless KdV story needs it
+C,discreteMass_kdvConservativeUpdate_of_boundary_eq,finite_difference_kdv,LeanNumerics/FiniteDifference/Kdv.lean,mostly another conservation/KdV wrapper; defer unless KdV story needs it
+C,discreteMass_kdvCanonicalUpdate,finite_difference_kdv,LeanNumerics/FiniteDifference/Kdv.lean,mostly another conservation/KdV wrapper; defer unless KdV story needs it
+C,discreteMass_kdvCanonicalUpdate_of_boundary_eq,finite_difference_kdv,LeanNumerics/FiniteDifference/Kdv.lean,mostly another conservation/KdV wrapper; defer unless KdV story needs it
+A,affineInterp_left,interpolation_linear,LeanNumerics/Interpolation/Linear.lean,useful for cheap shape-balancing if kept concise
+A,affineInterp_right,interpolation_linear,LeanNumerics/Interpolation/Linear.lean,useful for cheap shape-balancing if kept concise
+A,affineInterp_weights_sum,interpolation_linear,LeanNumerics/Interpolation/Linear.lean,useful for cheap shape-balancing if kept concise
+A,linearInterp_add,interpolation_linear,LeanNumerics/Interpolation/Linear.lean,useful for cheap shape-balancing if kept concise
+A,linearInterp_smul,interpolation_linear,LeanNumerics/Interpolation/Linear.lean,useful for cheap shape-balancing if kept concise
+A,midpoint1_const,quadrature_rules,LeanNumerics/Quadrature/Basic.lean,useful for cheap shape-balancing if kept concise
+A,trapezoid2_zero_h,quadrature_rules,LeanNumerics/Quadrature/Basic.lean,useful for cheap shape-balancing if kept concise
+A,trapezoid2_eq_midpoint1_const,quadrature_rules,LeanNumerics/Quadrature/Basic.lean,useful for cheap shape-balancing if kept concise
+A,symplecticEulerPNext_linear,ode_symplectic,LeanNumerics/Symplectic/SymplecticEuler.lean,useful for cheap shape-balancing if kept concise
+A,symplecticEulerQNext_linear,ode_symplectic,LeanNumerics/Symplectic/SymplecticEuler.lean,useful for cheap shape-balancing if kept concise

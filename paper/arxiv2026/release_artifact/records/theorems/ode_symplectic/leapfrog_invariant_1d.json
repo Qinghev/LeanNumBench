@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_symplectic.leapfrog_invariant_1d",
+  "title": "Leapfrog preserves a scalar discrete invariant",
+  "domain": "ode",
+  "category": "ode_symplectic",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar leapfrog recurrence x_{n+2} = 2 x_{n+1} - x_n - dt^2 omega^2 x_{n+1}, with dt nonzero, the quantity ((x_{n+1} - x_n) / dt)^2 + omega^2 x_{n+1} x_n is independent of n.",
+    "latex": "Let \\(\\omega,\\Delta t\\in\\mathbb{R}\\) with \\(\\Delta t\\ne 0\\). If a sequence \\((x_n)_{n\\ge 0}\\) satisfies \\(x_{n+2}=2x_{n+1}-x_n-(\\Delta t)^2\\omega^2x_{n+1}\\), then \\(I_n=((x_{n+1}-x_n)/\\Delta t)^2+\\omega^2x_{n+1}x_n\\) satisfies \\(I_n=I_0\\) for all \\(n\\in\\mathbb{N}\\).",
+    "assumptions": [
+      "omega and dt are real numbers",
+      "dt is nonzero",
+      "x is a real-valued sequence indexed by natural numbers",
+      "x satisfies the scalar leapfrog recurrence for every natural-number index"
+    ],
+    "expected_conclusion": "The leapfrog discrete invariant is constant along the indexed orbit."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Symplectic/Leapfrog.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Symplectic"
+    ],
+    "declarations": [
+      {
+        "name": "leapfrogStep",
+        "kind": "definition",
+        "statement": "def leapfrogStep (omega dt x xPrev : ℝ) : ℝ := 2 * x - xPrev - dt ^ 2 * omega ^ 2 * x"
+      },
+      {
+        "name": "leapfrogInvariant",
+        "kind": "definition",
+        "statement": "def leapfrogInvariant (omega dt x xPrev : ℝ) : ℝ := ((x - xPrev) / dt) ^ 2 + omega ^ 2 * x * xPrev"
+      },
+      {
+        "name": "IsLeapfrogOrbit",
+        "kind": "definition",
+        "statement": "def IsLeapfrogOrbit (omega dt : ℝ) (x : ℕ → ℝ) : Prop := ∀ n : ℕ, x (n + 2) = leapfrogStep omega dt (x (n + 1)) (x n)"
+      },
+      {
+        "name": "leapfrogInvariant_const_of_isLeapfrogOrbit",
+        "kind": "theorem",
+        "statement": "theorem leapfrogInvariant_const_of_isLeapfrogOrbit (omega dt : ℝ) (hdt : dt ≠ 0) (x : ℕ → ℝ) (hx : IsLeapfrogOrbit omega dt x) : ∀ n : ℕ, leapfrogInvariant omega dt (x (n + 1)) (x n) = leapfrogInvariant omega dt (x 1) (x 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the informal LaTeX statement into a Lean 4 theorem statement using Mathlib.",
+      "target": "theorem leapfrogInvariant_const_of_isLeapfrogOrbit (omega dt : ℝ) (hdt : dt ≠ 0) (x : ℕ → ℝ) (hx : IsLeapfrogOrbit omega dt x) : ∀ n : ℕ, leapfrogInvariant omega dt (x (n + 1)) (x n) = leapfrogInvariant omega dt (x 1) (x 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the formal declarations and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using the one-step invariant theorem and induction on n."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "leapfrog",
+    "verlet",
+    "harmonic_oscillator",
+    "symplectic",
+    "discrete_invariant",
+    "induction",
+    "ring",
+    "field_simp"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.conservative_update_zero_scale_1d",
+  "title": "A conservative update with zero scale leaves the state unchanged",
+  "domain": "finite_difference",
+  "category": "finite_difference_conservation",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "A basic sanity theorem for the conservative update definition."
+  },
+  "informal": {
+    "statement": "If the conservative update scale is zero, then the update u_i - scale * (flux(i+1)-flux(i)) equals the original state u_i.",
+    "latex": "If \\(\\lambda=0\\), then \\(u_i-\\lambda(F_{i+1}-F_i)=u_i\\).",
+    "assumptions": [
+      "u is a real-valued grid state",
+      "flux is a real-valued grid flux",
+      "i is a natural-number grid index",
+      "scale is zero"
+    ],
+    "expected_conclusion": "The conservative update equals the original state at index i."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Conservation.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "conservativeUpdate",
+        "kind": "definition",
+        "statement": "def conservativeUpdate (scale : Real) (u flux : Nat -> Real) (i : Nat) : Real := u i - scale * fluxDifference flux i"
+      },
+      {
+        "name": "conservativeUpdate_zero_scale",
+        "kind": "theorem",
+        "statement": "theorem conservativeUpdate_zero_scale (u flux : Nat -> Real) (i : Nat) : conservativeUpdate 0 u flux i = u i"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero-scale conservative update identity into Lean 4 using conservativeUpdate.",
+      "target": "theorem conservativeUpdate_zero_scale (u flux : Nat -> Real) (i : Nat) : conservativeUpdate 0 u flux i = u i"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the conservativeUpdate definition and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding conservativeUpdate and closing with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "conservative_update",
+    "zero_scale",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_cell_average_const_2cell",
+  "title": "The weighted two-cell average preserves a constant field",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If the total mass m0+m1 is nonzero, the weighted average of two equal cell values u is u.",
+    "latex": "avg_w(u,u)=u when m0+m1 != 0.",
+    "assumptions": [
+      "m0, m1, and u are real numbers",
+      "m0 + m1 is nonzero",
+      "the weighted average is (m0*u0 + m1*u1)/(m0+m1)"
+    ],
+    "expected_conclusion": "The weighted average of a constant two-cell field equals that constant."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedCellAverage2",
+        "kind": "definition",
+        "statement": "def weightedCellAverage2 (m0 m1 u0 u1 : Real) : Real := (m0 * u0 + m1 * u1) / (m0 + m1)"
+      },
+      {
+        "name": "weightedCellAverage2_const",
+        "kind": "theorem",
+        "statement": "theorem weightedCellAverage2_const (m0 m1 u : Real) (hsum : m0 + m1 ≠ 0) : weightedCellAverage2 m0 m1 u u = u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate constant preservation for a nondegenerate weighted two-cell average into Lean 4.",
+      "target": "theorem weightedCellAverage2_const (m0 m1 u : Real) (hsum : m0 + m1 ≠ 0) : weightedCellAverage2 m0 m1 u u = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the weighted average and simplifying the nonzero denominator.",
+      "target": "Unfold weightedCellAverage2 and use field_simp with hsum."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "p0_projection",
+    "cell_average",
+    "constant_preservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

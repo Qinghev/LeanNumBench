@@ -1,0 +1,228 @@
+{
+  "baselines": [
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "aesop",
+      "failed": 101,
+      "passed": 59,
+      "proof": "aesop",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "linarith",
+      "failed": 101,
+      "passed": 59,
+      "proof": "linarith",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "nlinarith",
+      "failed": 101,
+      "passed": 59,
+      "proof": "nlinarith",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "norm_num",
+      "failed": 101,
+      "passed": 59,
+      "proof": "norm_num",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "omega",
+      "failed": 101,
+      "passed": 59,
+      "proof": "omega",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "rfl",
+      "failed": 101,
+      "passed": 59,
+      "proof": "rfl",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "ring",
+      "failed": 101,
+      "passed": 59,
+      "proof": "ring",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "ring_nf",
+      "failed": 101,
+      "passed": 59,
+      "proof": "ring_nf",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "simp",
+      "failed": 101,
+      "passed": 59,
+      "proof": "simp",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "simp_all",
+      "failed": 101,
+      "passed": 59,
+      "proof": "simp_all",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "simp_all_ring_nf",
+      "failed": 101,
+      "passed": 59,
+      "proof": "simp_all\nring_nf",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "simp_ring_nf",
+      "failed": 101,
+      "passed": 59,
+      "proof": "simp\nring_nf",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 36.9,
+      "baseline": "simpa",
+      "failed": 101,
+      "passed": 59,
+      "proof": "simpa",
+      "returncode": 1,
+      "timed_out": false,
+      "total": 160
+    }
+  ],
+  "dataset": "LeanNumBench",
+  "portfolio": {
+    "accuracy_pct": 42.5,
+    "by_difficulty": {
+      "1": {
+        "accuracy_pct": 36.4,
+        "solved": 16,
+        "total": 44
+      },
+      "2": {
+        "accuracy_pct": 35.8,
+        "solved": 19,
+        "total": 53
+      },
+      "3": {
+        "accuracy_pct": 50.0,
+        "solved": 29,
+        "total": 58
+      },
+      "4": {
+        "accuracy_pct": 80.0,
+        "solved": 4,
+        "total": 5
+      }
+    },
+    "by_family": {
+      "fem_projection": {
+        "accuracy_pct": 100.0,
+        "solved": 28,
+        "total": 28
+      },
+      "finite_difference_burgers": {
+        "accuracy_pct": 40.0,
+        "solved": 4,
+        "total": 10
+      },
+      "finite_difference_conservation": {
+        "accuracy_pct": 0.0,
+        "solved": 0,
+        "total": 8
+      },
+      "finite_difference_heat": {
+        "accuracy_pct": 0.0,
+        "solved": 0,
+        "total": 15
+      },
+      "finite_difference_kdv": {
+        "accuracy_pct": 12.0,
+        "solved": 3,
+        "total": 25
+      },
+      "finite_difference_stability": {
+        "accuracy_pct": 20.0,
+        "solved": 2,
+        "total": 10
+      },
+      "interpolation_linear": {
+        "accuracy_pct": 100.0,
+        "solved": 8,
+        "total": 8
+      },
+      "linear_algebra_stability": {
+        "accuracy_pct": 28.6,
+        "solved": 4,
+        "total": 14
+      },
+      "ode_runge_kutta": {
+        "accuracy_pct": 0.0,
+        "solved": 0,
+        "total": 6
+      },
+      "ode_symplectic": {
+        "accuracy_pct": 0.0,
+        "solved": 0,
+        "total": 7
+      },
+      "quadrature_rules": {
+        "accuracy_pct": 100.0,
+        "solved": 6,
+        "total": 6
+      },
+      "spectral_dft": {
+        "accuracy_pct": 56.5,
+        "solved": 13,
+        "total": 23
+      }
+    },
+    "solved_by_tactic_portfolio": 68,
+    "total": 160,
+    "unsolved_by_tactic_portfolio": 92
+  },
+  "records": 160,
+  "report_kind": "tactic_baseline",
+  "schema_version": "0.1.0"
+}

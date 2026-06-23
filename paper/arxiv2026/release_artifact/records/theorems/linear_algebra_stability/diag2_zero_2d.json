@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.diag2_zero_2d",
+  "title": "A diagonal two-dimensional operator maps zero to zero",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "A diagonal two-dimensional linear operator sends the zero vector to the zero vector.",
+    "latex": "diag(a,b)(0,0)=(0,0).",
+    "assumptions": [
+      "a and b are real diagonal coefficients",
+      "the input vector is zero"
+    ],
+    "expected_conclusion": "Both diagonal output coordinates are zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "diag2First",
+        "kind": "definition",
+        "statement": "def diag2First (a x : Real) : Real := a * x"
+      },
+      {
+        "name": "diag2Second",
+        "kind": "definition",
+        "statement": "def diag2Second (b y : Real) : Real := b * y"
+      },
+      {
+        "name": "diag2_zero",
+        "kind": "theorem",
+        "statement": "theorem diag2_zero (a b : Real) : diag2First a 0 = 0 /\\ diag2Second b 0 = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero-vector property for a diagonal two-dimensional operator into Lean 4.",
+      "target": "theorem diag2_zero (a b : Real) : diag2First a 0 = 0 /\\ diag2Second b 0 = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the diagonal coordinate definitions and simplifying.",
+      "target": "Split the conjunction, unfold each coordinate, and use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "diagonal_operator",
+    "zero_vector",
+    "linear_operator",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

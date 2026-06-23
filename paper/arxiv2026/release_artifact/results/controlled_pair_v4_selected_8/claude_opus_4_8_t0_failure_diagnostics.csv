@@ -1,0 +1,17 @@
+target_id,pair_id,side,passed,diagnosis,finish_reason,family,primary_intervention,first_error,proof_chars,prediction_chars
+V4P01_easy,V4P01,easy,False,tactic_failure,stop,finite-difference heat stability,three_step_index_transport_hidden_grid_api,Tactic `apply` failed: could not unify the type of `FiniteDifference.heatStepGrid_abs_le r u i M hr0 hrCfl h0 h1 h2`,286,286
+V4P01_hard,V4P01,hard,False,extra_tactic_after_goal_closed,stop,finite-difference heat stability,three_step_index_transport_hidden_grid_api,unsolved goals,957,975
+V4P04_easy,V4P04,easy,True,passed,stop,finite-difference Lax-Friedrichs stability,three_step_nested_api_vs_exposed_final_weights,,2178,2275
+V4P04_hard,V4P04,hard,False,extra_tactic_after_goal_closed,stop,finite-difference Lax-Friedrichs stability,three_step_nested_api_vs_exposed_final_weights,unsolved goals,589,597
+V4P06_easy,V4P06,easy,True,passed,stop,finite-difference upwind stability,three_step_upwind_api_vs_exposed_final_weights,,1831,2053
+V4P06_hard,V4P06,hard,False,extra_tactic_after_goal_closed,stop,finite-difference upwind stability,three_step_upwind_api_vs_exposed_final_weights,unsolved goals,480,488
+V4P10_easy,V4P10,easy,True,passed,stop,finite-difference KdV conservation,two_update_discrete_mass_api_vs_exposed_zero_change,,172,172
+V4P10_hard,V4P10,hard,False,syntax_or_parser_error,stop,finite-difference KdV conservation,two_update_discrete_mass_api_vs_exposed_zero_change,unexpected token 'fun'; expected '{' or tactic,986,1153
+V4P14_easy,V4P14,easy,True,passed,stop,FEM/P0 projection,additive_residual_orthogonality_vs_exposed_weighted_average,,126,126
+V4P14_hard,V4P14,hard,True,passed,stop,FEM/P0 projection,additive_residual_orthogonality_vs_exposed_weighted_average,,80,80
+V4P19_easy,V4P19,easy,True,passed,stop,linear-algebra finite-row stability,two_stage_finite_row_api_vs_exposed_outer_sum,,235,391
+V4P19_hard,V4P19,hard,True,passed,stop,linear-algebra finite-row stability,two_stage_finite_row_api_vs_exposed_outer_sum,,175,175
+V4P20_easy,V4P20,easy,False,extra_tactic_after_goal_closed,stop,linear-algebra row-stochastic stability,three_stage_row_apply_vs_stochastic_wrapper,unsolved goals,450,458
+V4P20_hard,V4P20,hard,False,type_mismatch,stop,linear-algebra row-stochastic stability,three_stage_row_apply_vs_stochastic_wrapper,expected no space before,1484,1782
+V4P22_easy,V4P22,easy,True,passed,stop,symplectic time integration,three_direct_steps_vs_three_orbit_recurrence_steps,,151,151
+V4P22_hard,V4P22,hard,True,passed,stop,symplectic time integration,three_direct_steps_vs_three_orbit_recurrence_steps,,163,260

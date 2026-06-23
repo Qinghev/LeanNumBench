@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "interpolation_linear.affine_interp_smul",
+  "title": "Affine interpolation commutes with scalar multiplication",
+  "domain": "interpolation",
+  "category": "interpolation_linear",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 8 (Polynomial Interpolation).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Affine interpolation of scalar-multiplied endpoint data equals the scalar multiple of the affine interpolant.",
+    "latex": "I_\\theta(cy)=cI_\\theta(y).",
+    "assumptions": [
+      "theta and c are real",
+      "endpoint values y0 and y1 are real"
+    ],
+    "expected_conclusion": "Affine interpolation is homogeneous."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Interpolation/Linear.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Interpolation"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "affineInterp",
+        "kind": "definition",
+        "statement": "def affineInterp (theta y0 y1 : Real) : Real := (1 - theta) * y0 + theta * y1"
+      },
+      {
+        "name": "affineInterp_smul",
+        "kind": "theorem",
+        "statement": "theorem affineInterp_smul (theta c y0 y1 : Real) : affineInterp theta (c * y0) (c * y1) = c * affineInterp theta y0 y1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the interpolation theorem `affineInterp_smul` into Lean 4.",
+      "target": "theorem affineInterp_smul (theta c y0 y1 : Real) : affineInterp theta (c * y0) (c * y1) = c * affineInterp theta y0 y1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `affineInterp_smul`.",
+      "target": "unfold affineInterp; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the interpolation proof.",
+      "target": "ring"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "interpolation",
+    "linear_interpolation",
+    "affine_combination",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

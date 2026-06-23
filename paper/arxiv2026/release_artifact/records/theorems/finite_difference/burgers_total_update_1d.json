@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_total_update_1d",
+  "title": "Burgers conservative update changes total by boundary flux mismatch",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Sec. 11.3, p. 208 and Ch. 4, pp. 64-65.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The finite total after a Burgers conservative update equals the old finite total minus scale times the boundary Burgers flux mismatch.",
+    "latex": "\\(\\sum_i u_i^+ = \\sum_i u_i - s(F_n-F_0)\\).",
+    "assumptions": [
+      "scale is a real update scale",
+      "u is a real-valued grid state on natural-number indices",
+      "n is a natural-number range length"
+    ],
+    "expected_conclusion": "The total balance for the Burgers conservative update is controlled by boundary flux mismatch."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersConservativeUpdate",
+        "kind": "definition",
+        "statement": "def burgersConservativeUpdate (scale : Real) (u : Nat -> Real) (i : Nat) : Real := conservativeUpdate scale u (burgersFlux u) i"
+      },
+      {
+        "name": "totalOn_burgersConservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem totalOn_burgersConservativeUpdate (scale : Real) (u : Nat -> Real) (n : Nat) : totalOn (fun i => burgersConservativeUpdate scale u i) n = totalOn u n - scale * (burgersFlux u n - burgersFlux u 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: The finite total after a Burgers conservative update equals the old finite total minus scale times the boundary Burgers flux mismatch.",
+      "target": "theorem totalOn_burgersConservativeUpdate (scale : Real) (u : Nat -> Real) (n : Nat) : totalOn (fun i => burgersConservativeUpdate scale u i) n = totalOn u n - scale * (burgersFlux u n - burgersFlux u 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by unfolding burgersConservativeUpdate and applying totalOn_conservativeUpdate."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the generic total-balance theorem used for conservative finite-volume updates.",
+      "target": "totalOn_conservativeUpdate"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "total_balance",
+    "boundary_flux"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

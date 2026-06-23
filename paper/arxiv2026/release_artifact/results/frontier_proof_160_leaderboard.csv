@@ -1,0 +1,6 @@
+model,display_model,passed,total,accuracy_pct,repaired_passes,contains_sorry,rejected_outputs,complete
+google/gemini-3.1-pro-preview,Gemini 3.1 Pro Preview,147,160,91.9,3,0,0,True
+openai/gpt-5.5-pro,GPT-5.5 Pro,145,160,90.6,3,0,6,True
+anthropic/claude-opus-4.8,Claude Opus 4.8,141,160,88.1,1,0,0,True
+qwen/qwen3.6-max-preview,Qwen3.6 Max Preview,139,160,86.9,5,0,0,True
+deepseek/deepseek-v4-pro,DeepSeek v4 Pro,126,160,78.8,5,0,8,True

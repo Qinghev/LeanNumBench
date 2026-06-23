@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "id": "interpolation_linear.affine_interp_abs_le",
+  "title": "Convex affine interpolation preserves an absolute-value bound",
+  "domain": "interpolation",
+  "category": "interpolation_linear",
+  "difficulty": 4,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 8 (Polynomial Interpolation).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If the interpolation parameter lies in [0,1] and both endpoint values are bounded in absolute value by M, then the affine interpolant is also bounded by M.",
+    "latex": "|I_\\theta(y_0,y_1)|\\le M.",
+    "assumptions": [
+      "0 <= theta <= 1",
+      "|y0| <= M",
+      "|y1| <= M"
+    ],
+    "expected_conclusion": "The convex interpolant preserves the absolute-value bound."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Interpolation/Linear.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Interpolation"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "affineInterp",
+        "kind": "definition",
+        "statement": "def affineInterp (theta y0 y1 : Real) : Real := (1 - theta) * y0 + theta * y1"
+      },
+      {
+        "name": "affineInterp_abs_le",
+        "kind": "theorem",
+        "statement": "theorem affineInterp_abs_le (theta y0 y1 M : Real) (htheta0 : 0 <= theta) (htheta1 : theta <= 1) (hy0 : |y0| <= M) (hy1 : |y1| <= M) : |affineInterp theta y0 y1| <= M"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the interpolation theorem `affineInterp_abs_le` into Lean 4.",
+      "target": "theorem affineInterp_abs_le (theta y0 y1 M : Real) (htheta0 : 0 <= theta) (htheta1 : theta <= 1) (hy0 : |y0| <= M) (hy1 : |y1| <= M) : |affineInterp theta y0 y1| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `affineInterp_abs_le`.",
+      "target": "Use abs_add_le, abs_mul, abs_of_nonneg, and mul_le_mul_of_nonneg_left."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the interpolation proof.",
+      "target": "abs_add_le"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "interpolation",
+    "linear_interpolation",
+    "affine_combination",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "convex_combination",
+    "stability",
+    "absolute_value"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,331 @@
+{
+  "candidate_file": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/model_outputs_openrouter_gpt_5_5_t0.jsonl",
+  "empty_proof_as_sorry": false,
+  "lean_project": "LeanNumerics",
+  "lean_returncode": 1,
+  "passed": false,
+  "report_kind": "minimal_pair_candidate_check",
+  "results": [
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "error": "empty proof",
+      "family": "finite-difference upwind stability",
+      "finish_reason": "length",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P06",
+      "passed": false,
+      "primary_intervention": "three_step_upwind_api_vs_exposed_final_weights",
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P06_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference heat stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P01",
+      "passed": true,
+      "primary_intervention": "three_step_index_transport_hidden_grid_api",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P01_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference heat stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P01",
+      "passed": true,
+      "primary_intervention": "three_step_index_transport_hidden_grid_api",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P01_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference Lax-Friedrichs stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P04",
+      "passed": true,
+      "primary_intervention": "three_step_nested_api_vs_exposed_final_weights",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P04_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference Lax-Friedrichs stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P04",
+      "passed": false,
+      "primary_intervention": "three_step_nested_api_vs_exposed_final_weights",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P04_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference upwind stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P06",
+      "passed": false,
+      "primary_intervention": "three_step_upwind_api_vs_exposed_final_weights",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P06_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference KdV conservation",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P10",
+      "passed": true,
+      "primary_intervention": "two_update_discrete_mass_api_vs_exposed_zero_change",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P10_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "finite-difference KdV conservation",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P10",
+      "passed": true,
+      "primary_intervention": "two_update_discrete_mass_api_vs_exposed_zero_change",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P10_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "FEM/P0 projection",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P14",
+      "passed": true,
+      "primary_intervention": "additive_residual_orthogonality_vs_exposed_weighted_average",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P14_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "FEM/P0 projection",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P14",
+      "passed": true,
+      "primary_intervention": "additive_residual_orthogonality_vs_exposed_weighted_average",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P14_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "linear-algebra finite-row stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P19",
+      "passed": true,
+      "primary_intervention": "two_stage_finite_row_api_vs_exposed_outer_sum",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P19_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "linear-algebra finite-row stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P19",
+      "passed": false,
+      "primary_intervention": "two_stage_finite_row_api_vs_exposed_outer_sum",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P19_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "linear-algebra row-stochastic stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P20",
+      "passed": true,
+      "primary_intervention": "three_stage_row_apply_vs_stochastic_wrapper",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P20_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "linear-algebra row-stochastic stability",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P20",
+      "passed": true,
+      "primary_intervention": "three_stage_row_apply_vs_stochastic_wrapper",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P20_hard"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "symplectic time integration",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P22",
+      "passed": true,
+      "primary_intervention": "three_direct_steps_vs_three_orbit_recurrence_steps",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "easy",
+      "target_id": "V4P22_easy"
+    },
+    {
+      "candidate_id": null,
+      "contains_sorry": false,
+      "family": "symplectic time integration",
+      "finish_reason": "stop",
+      "model": "openai/gpt-5.5",
+      "pair_id": "V4P22",
+      "passed": true,
+      "primary_intervention": "three_direct_steps_vs_three_orbit_recurrence_steps",
+      "proof_after_repair": null,
+      "repair_steps": [],
+      "repaired": false,
+      "sample_id": "v4_selected_8_guided_v3_t0",
+      "side": "hard",
+      "target_id": "V4P22_hard"
+    }
+  ],
+  "schema_version": "0.1.0",
+  "summary": {
+    "by_error": {
+      "empty proof": 1
+    },
+    "by_finish_reason": {
+      "length": {
+        "passed": 0,
+        "total": 1
+      },
+      "stop": {
+        "passed": 12,
+        "total": 15
+      }
+    },
+    "by_pair": {
+      "V4P01": {
+        "passed": 2,
+        "total": 2
+      },
+      "V4P04": {
+        "passed": 1,
+        "total": 2
+      },
+      "V4P06": {
+        "passed": 0,
+        "total": 2
+      },
+      "V4P10": {
+        "passed": 2,
+        "total": 2
+      },
+      "V4P14": {
+        "passed": 2,
+        "total": 2
+      },
+      "V4P19": {
+        "passed": 1,
+        "total": 2
+      },
+      "V4P20": {
+        "passed": 2,
+        "total": 2
+      },
+      "V4P22": {
+        "passed": 2,
+        "total": 2
+      }
+    },
+    "by_side": {
+      "easy": {
+        "passed": 7,
+        "total": 8
+      },
+      "hard": {
+        "passed": 5,
+        "total": 8
+      }
+    },
+    "contains_sorry": 0,
+    "empty_proof": 1,
+    "failed": 4,
+    "passed": 12,
+    "passed_without_sorry": 12,
+    "repaired": 0,
+    "total": 16
+  }
+}

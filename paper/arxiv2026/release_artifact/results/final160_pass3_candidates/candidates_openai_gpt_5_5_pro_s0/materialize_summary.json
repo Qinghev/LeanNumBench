@@ -1,0 +1,18 @@
+{
+  "candidate_counts": {
+    "proof_completion": 10,
+    "statement_translation": 0
+  },
+  "files": {
+    "proof_candidates": "experiments/hard_subset_frontier_160\\final160_pass3_candidates\\candidates_openai_gpt_5_5_pro_s0\\proof_candidates.jsonl",
+    "rejected_outputs": "experiments/hard_subset_frontier_160\\final160_pass3_candidates\\candidates_openai_gpt_5_5_pro_s0\\rejected_outputs.jsonl",
+    "statement_candidates": "experiments/hard_subset_frontier_160\\final160_pass3_candidates\\candidates_openai_gpt_5_5_pro_s0\\statement_candidates.jsonl"
+  },
+  "output_dir": "experiments/hard_subset_frontier_160\\final160_pass3_candidates\\candidates_openai_gpt_5_5_pro_s0",
+  "rejected_outputs": 1,
+  "rejections_by_reason": {
+    "empty_proof_body": 1
+  },
+  "report_kind": "model_pilot_candidate_materialization",
+  "schema_version": "0.1.0"
+}

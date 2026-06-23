@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.conservative_update_const_flux_1d",
+  "title": "A conservative update with constant flux leaves the state unchanged",
+  "domain": "finite_difference",
+  "category": "finite_difference_conservation",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Combines the conservative update definition with the zero flux-difference structure of a constant flux."
+  },
+  "informal": {
+    "statement": "For any update scale, if the flux is constant across all grid indices, then the conservative update equals the original state.",
+    "latex": "If \\(F_i=c\\) for every \\(i\\), then \\(u_i-\\lambda(F_{i+1}-F_i)=u_i\\).",
+    "assumptions": [
+      "scale and c are real numbers",
+      "u is a real-valued grid state",
+      "i is a natural-number grid index",
+      "the flux is the constant function with value c"
+    ],
+    "expected_conclusion": "The conservative update with constant flux equals u_i."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Conservation.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "conservativeUpdate",
+        "kind": "definition",
+        "statement": "def conservativeUpdate (scale : Real) (u flux : Nat -> Real) (i : Nat) : Real := u i - scale * fluxDifference flux i"
+      },
+      {
+        "name": "conservativeUpdate_const_flux",
+        "kind": "theorem",
+        "statement": "theorem conservativeUpdate_const_flux (scale c : Real) (u : Nat -> Real) (i : Nat) : conservativeUpdate scale u (fun _ => c) i = u i"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the constant-flux conservative update identity into Lean 4.",
+      "target": "theorem conservativeUpdate_const_flux (scale c : Real) (u : Nat -> Real) (i : Nat) : conservativeUpdate scale u (fun _ => c) i = u i"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given fluxDifference and conservativeUpdate, complete the Lean 4 proof.",
+      "target": "A proof by unfolding conservativeUpdate and fluxDifference, then closing with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "conservative_update",
+    "constant_flux",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

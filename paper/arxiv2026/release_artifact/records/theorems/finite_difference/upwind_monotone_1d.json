@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.upwind_monotone_1d",
+  "title": "Scalar upwind update is monotone under the CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_stability",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Ch. 4 and Sec. 6.4.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If 0 <= cfl <= 1, uLeft <= vLeft, and u <= v, then the scalar upwind update at (uLeft, u) is less than or equal to the update at (vLeft, v).",
+    "latex": "If \\(0\\le\\lambda\\le1\\), \\(u_L\\le v_L\\), and \\(u\\le v\\), then \\((1-\\lambda)u+\\lambda u_L\\le(1-\\lambda)v+\\lambda v_L\\).",
+    "assumptions": [
+      "cfl, uLeft, u, vLeft, and v are real numbers",
+      "0 <= cfl",
+      "cfl <= 1",
+      "uLeft <= vLeft",
+      "u <= v"
+    ],
+    "expected_conclusion": "The scalar upwind update is monotone in both input values under the CFL condition."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Upwind.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "upwindStep",
+        "kind": "definition",
+        "statement": "def upwindStep (cfl uLeft u : ℝ) : ℝ := (1 - cfl) * u + cfl * uLeft"
+      },
+      {
+        "name": "upwindStep_monotone",
+        "kind": "theorem",
+        "statement": "theorem upwindStep_monotone (cfl uLeft u vLeft v : ℝ) (hcfl0 : 0 ≤ cfl) (hcfl1 : cfl ≤ 1) (hLeft : uLeft ≤ vLeft) (h : u ≤ v) : upwindStep cfl uLeft u ≤ upwindStep cfl vLeft v"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the scalar upwind monotonicity statement into Lean 4 using upwindStep.",
+      "target": "theorem upwindStep_monotone (cfl uLeft u vLeft v : ℝ) (hcfl0 : 0 ≤ cfl) (hcfl1 : cfl ≤ 1) (hLeft : uLeft ≤ vLeft) (h : u ≤ v) : upwindStep cfl uLeft u ≤ upwindStep cfl vLeft v"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given upwindStep and the theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using nonnegative weights, mul_le_mul_of_nonneg_left, and linarith."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the Mathlib lemmas needed to prove monotonicity of a two-term convex combination.",
+      "target": "mul_le_mul_of_nonneg_left and linarith"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "upwind",
+    "finite_difference",
+    "finite_volume",
+    "advection",
+    "cfl",
+    "monotonicity",
+    "convex_combination",
+    "linarith"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

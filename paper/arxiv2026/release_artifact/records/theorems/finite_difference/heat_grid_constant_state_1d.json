@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_grid_constant_state_1d",
+  "title": "Explicit heat grid step preserves constant grid states",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a constant grid state, the shifted three-point explicit heat update returns the same constant value at every natural-number index.",
+    "latex": "If \\(u_i=c\\) for all \\(i\\), then \\({\\mathcal H}_r[u]_i=c\\).",
+    "assumptions": [
+      "r and c are real numbers",
+      "i is a natural-number grid index",
+      "the grid state is constant with value c"
+    ],
+    "expected_conclusion": "The heat grid update preserves a constant grid state."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatStepGrid",
+        "kind": "definition",
+        "statement": "def heatStepGrid (r : Real) (u : Nat -> Real) (i : Nat) : Real := heatStep r (u i) (u (i + 1)) (u (i + 2))"
+      },
+      {
+        "name": "heatStepGrid_const",
+        "kind": "theorem",
+        "statement": "theorem heatStepGrid_const (r c : Real) (i : Nat) : heatStepGrid r (fun _ => c) i = c"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: For a constant grid state, the shifted three-point explicit heat update returns the same constant value at every natural-number index.",
+      "target": "theorem heatStepGrid_const (r c : Real) (i : Nat) : heatStepGrid r (fun _ => c) i = c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding heatStepGrid and reusing heatStep_const."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the scalar heat theorem used to prove constant-state preservation for the grid-window update.",
+      "target": "heatStep_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "grid_stencil",
+    "constant_state",
+    "consistency"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

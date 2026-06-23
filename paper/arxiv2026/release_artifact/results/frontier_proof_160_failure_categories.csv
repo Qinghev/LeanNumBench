@@ -1,0 +1,8 @@
+failure_category,failures,share_pct
+proof_search_failure,55,53.9
+other_lean_failure,14,13.7
+rejected_empty_proof_body,12,11.8
+type_mismatch_or_typeclass,9,8.8
+lean_syntax_error,8,7.8
+missing_context_or_identifier,2,2.0
+rejected_api_error,2,2.0

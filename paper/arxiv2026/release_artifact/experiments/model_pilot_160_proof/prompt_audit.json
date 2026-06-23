@@ -1,0 +1,49 @@
+{
+  "issues": [],
+  "issues_count": 0,
+  "passed": true,
+  "pilot": {
+    "by_category": {
+      "fem_projection": 28,
+      "finite_difference_burgers": 10,
+      "finite_difference_conservation": 8,
+      "finite_difference_heat": 15,
+      "finite_difference_kdv": 25,
+      "finite_difference_stability": 10,
+      "interpolation_linear": 8,
+      "linear_algebra_stability": 14,
+      "ode_runge_kutta": 6,
+      "ode_symplectic": 7,
+      "quadrature_rules": 6,
+      "spectral_dft": 23
+    },
+    "by_difficulty": {
+      "1": 44,
+      "2": 53,
+      "3": 58,
+      "4": 5
+    },
+    "by_task": {
+      "proof_completion": 160
+    },
+    "candidate_rows": 160,
+    "issues": [],
+    "pilot_dir": "experiments/model_pilot_160_proof",
+    "pilot_id": "model_pilot_160_proof",
+    "prompt_chars": {
+      "max": 10443,
+      "mean": 5090.4,
+      "median": 4967.0,
+      "min": 2471
+    },
+    "prompt_rows": 160,
+    "target_rows": 160
+  },
+  "report_kind": "model_pilot_prompt_audit",
+  "schema_version": "0.1.0",
+  "supplement": {
+    "issues": [],
+    "path": "paper/arxiv2026/LeanNumBench_arxiv2026_release_artifact.zip",
+    "scanned_files": 193
+  }
+}

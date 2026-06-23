@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.finite_weighted_abs_sum_le_general_n",
+  "title": "A finite convex combination stays inside a uniform absolute-value bound",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 4,
+  "proof_status": "complete",
+  "source": {
+    "kind": "classic",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "A finite weighted sum with nonnegative weights summing to one remains bounded by M whenever every input is bounded by M in absolute value.",
+    "latex": "a_i\\ge 0,\\ \\sum_{i\\in s} a_i=1,\\ |x_i|\\le M \\Rightarrow |\\sum_{i\\in s} a_i x_i|\\le M.",
+    "assumptions": [
+      "s is a finite index set",
+      "a is nonnegative on s",
+      "the weights sum to one over s",
+      "x is uniformly bounded by M on s"
+    ],
+    "expected_conclusion": "The absolute value of the finite weighted sum is at most M."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "declarations": [
+      {
+        "name": "finiteWeightedAbsSum_le",
+        "kind": "theorem",
+        "statement": "theorem finiteWeightedAbsSum_le {ι : Type} (s : Finset ι) (a x : ι → Real) (M : Real) (ha : ∀ i, i ∈ s → 0 <= a i) (hsum : ∑ i ∈ s, a i = 1) (hx : ∀ i, i ∈ s → |x i| <= M) : |∑ i ∈ s, a i * x i| <= M"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite convex-combination absolute-value bound into Lean 4.",
+      "target": "theorem finiteWeightedAbsSum_le {ι : Type} (s : Finset ι) (a x : ι → Real) (M : Real) (ha : ∀ i, i ∈ s → 0 <= a i) (hsum : ∑ i ∈ s, a i = 1) (hx : ∀ i, i ∈ s → |x i| <= M) : |∑ i ∈ s, a i * x i| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof using the finite triangle inequality, nonnegative weights, and the row-sum identity.",
+      "target": "Use Finset.abs_sum_le_sum_abs, abs_mul, abs_of_nonneg, Finset.sum_le_sum, Finset.sum_mul, and the weight-sum identity."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the finite-sum absolute-value inequality needed for the proof.",
+      "target": "Finset.abs_sum_le_sum_abs"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "convex_combination",
+    "row_stochastic",
+    "finite_sum",
+    "infinity_norm",
+    "general_n",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

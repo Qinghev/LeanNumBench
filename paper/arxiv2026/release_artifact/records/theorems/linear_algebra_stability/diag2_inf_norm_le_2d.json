@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.diag2_inf_norm_le_2d",
+  "title": "A bounded diagonal two-dimensional operator has an infinity-norm bound",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If both diagonal coefficients are bounded in absolute value by rho, then the diagonal two-dimensional operator is bounded by rho in the two-entry infinity norm.",
+    "latex": "|a|,|b| <= rho and rho >= 0 imply ||diag(a,b)(x,y)||_infty <= rho ||(x,y)||_infty.",
+    "assumptions": [
+      "|a| <= rho",
+      "|b| <= rho",
+      "rho is nonnegative",
+      "the norm is max of the two absolute values"
+    ],
+    "expected_conclusion": "The diagonal operator output norm is at most rho times the input norm."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "vec2InfNorm",
+        "kind": "definition",
+        "statement": "def vec2InfNorm (x y : Real) : Real := max |x| |y|"
+      },
+      {
+        "name": "diag2First",
+        "kind": "definition",
+        "statement": "def diag2First (a x : Real) : Real := a * x"
+      },
+      {
+        "name": "diag2Second",
+        "kind": "definition",
+        "statement": "def diag2Second (b y : Real) : Real := b * y"
+      },
+      {
+        "name": "diag2_infNorm_le",
+        "kind": "theorem",
+        "statement": "theorem diag2_infNorm_le (a b rho x y : Real) (ha : |a| <= rho) (hb : |b| <= rho) (hrho : 0 <= rho) : vec2InfNorm (diag2First a x) (diag2Second b y) <= rho * vec2InfNorm x y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the infinity-norm bound for a bounded diagonal two-dimensional operator into Lean 4.",
+      "target": "theorem diag2_infNorm_le (a b rho x y : Real) (ha : |a| <= rho) (hb : |b| <= rho) (hrho : 0 <= rho) : vec2InfNorm (diag2First a x) (diag2Second b y) <= rho * vec2InfNorm x y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof using abs_mul, max_le, and coordinate bounds by the input infinity norm.",
+      "target": "Unfold definitions, apply max_le, then use mul_le_mul with the coefficient and coordinate bounds."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics coordinate-bound lemmas that motivate the diagonal infinity-norm proof.",
+      "target": "abs_left_le_vec2InfNorm and abs_right_le_vec2InfNorm"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "diagonal_operator",
+    "infinity_norm",
+    "operator_bound",
+    "absolute_value",
+    "max",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

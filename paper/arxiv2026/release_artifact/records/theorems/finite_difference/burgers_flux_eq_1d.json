@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.burgers_flux_eq_1d",
+  "title": "Burgers flux is one half u squared",
+  "domain": "finite_difference",
+  "category": "finite_difference_burgers",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Sec. 11.3, p. 208.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The scalar Burgers flux at a grid index is one half of the square of the grid state at that index.",
+    "latex": "\\(F_i = u_i^2/2\\).",
+    "assumptions": [
+      "u is a real-valued grid state on natural-number indices",
+      "i is a natural-number grid index"
+    ],
+    "expected_conclusion": "The Burgers flux unfolds to one half u squared."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Burgers.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "burgersFlux",
+        "kind": "definition",
+        "statement": "def burgersFlux (u : Nat -> Real) (i : Nat) : Real := (u i) ^ 2 / 2"
+      },
+      {
+        "name": "burgersFlux_eq",
+        "kind": "theorem",
+        "statement": "theorem burgersFlux_eq (u : Nat -> Real) (i : Nat) : burgersFlux u i = (u i) ^ 2 / 2"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this Burgers conservative finite-difference theorem into Lean 4: The scalar Burgers flux at a grid index is one half of the square of the grid state at that index.",
+      "target": "theorem burgersFlux_eq (u : Nat -> Real) (i : Nat) : burgersFlux u i = (u i) ^ 2 / 2"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the Burgers scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by reflexivity after unfolding the definition."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "burgers",
+    "nonlinear_flux",
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "definition_unfolding"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

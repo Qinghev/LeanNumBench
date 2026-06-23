@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "quadrature_rules.trapezoid2_const",
+  "title": "The two-point trapezoidal rule is exact on constants",
+  "domain": "quadrature",
+  "category": "quadrature_rules",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 9 (Numerical Integration).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The one-cell trapezoidal rule applied to equal endpoint samples c returns h times c.",
+    "latex": "Q_T(c,c)=hc.",
+    "assumptions": [
+      "h is a cell width",
+      "both endpoint samples equal c"
+    ],
+    "expected_conclusion": "The trapezoidal rule is exact for constants."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Quadrature/Basic.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Quadrature"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "trapezoid2",
+        "kind": "definition",
+        "statement": "def trapezoid2 (h f0 f1 : Real) : Real := h * (f0 + f1) / 2"
+      },
+      {
+        "name": "trapezoid2_const",
+        "kind": "theorem",
+        "statement": "theorem trapezoid2_const (h c : Real) : trapezoid2 h c c = h * c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the quadrature theorem `trapezoid2_const` into Lean 4.",
+      "target": "theorem trapezoid2_const (h c : Real) : trapezoid2 h c c = h * c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `trapezoid2_const`.",
+      "target": "unfold trapezoid2; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the quadrature proof.",
+      "target": "ring"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "quadrature",
+    "numerical_integration",
+    "newton_cotes",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "constant_exactness"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

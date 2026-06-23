@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_orthogonal_const_2cell",
+  "title": "The weighted P0 projection residual is orthogonal to constants",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonzero total mass, the weighted projection residual has zero weighted inner product with every constant c.",
+    "latex": "m0*(u0-avg_w)*c + m1*(u1-avg_w)*c=0.",
+    "assumptions": [
+      "m0 + m1 is nonzero",
+      "c is a real constant test value",
+      "the residual is measured relative to the weighted average"
+    ],
+    "expected_conclusion": "The mass-weighted residual is orthogonal to the constant test value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Projection2_orthogonal_const",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_orthogonal_const (m0 m1 u0 u1 c : Real) (hsum : m0 + m1 ≠ 0) : m0 * (u0 - weightedCellAverage2 m0 m1 u0 u1) * c + m1 * (u1 - weightedCellAverage2 m0 m1 u0 u1) * c = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate weighted residual orthogonality to constant test functions for a two-cell P0 projection into Lean 4.",
+      "target": "theorem weightedP0Projection2_orthogonal_const (m0 m1 u0 u1 c : Real) (hsum : m0 + m1 ≠ 0) : m0 * (u0 - weightedCellAverage2 m0 m1 u0 u1) * c + m1 * (u1 - weightedCellAverage2 m0 m1 u0 u1) * c = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by factoring out c and using the zero weighted-mean residual lemma.",
+      "target": "Rewrite the expression as the weighted residual sum times c, then use weightedP0Projection2_residual_weighted_mean_zero."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma that turns the weighted residual sum into zero.",
+      "target": "weightedP0Projection2_residual_weighted_mean_zero"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "residual",
+    "orthogonality",
+    "galerkin",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

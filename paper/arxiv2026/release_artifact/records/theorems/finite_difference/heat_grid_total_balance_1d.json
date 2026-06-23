@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_grid_total_balance_1d",
+  "title": "Explicit heat grid total changes by the boundary term",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Difference Methods for Ordinary and Partial Differential Equations, SIAM, 2007, Ch. 9.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The total of the shifted heat grid update equals the original interior total plus r times the heat boundary term.",
+    "latex": "\\(\\sum_i {\\mathcal H}_r[u]_i = \\sum_i u_{i+1} + r\\,B_n(u)\\).",
+    "assumptions": [
+      "r is a real diffusion number",
+      "u is a real-valued grid state on natural-number indices",
+      "n is a natural-number range length"
+    ],
+    "expected_conclusion": "The heat grid total balance is controlled by heatBoundaryTerm."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatInteriorTotal",
+        "kind": "definition",
+        "statement": "def heatInteriorTotal (u : Nat -> Real) (n : Nat) : Real := Finset.sum (Finset.range n) (fun i => u (i + 1))"
+      },
+      {
+        "name": "heatStepGridTotal",
+        "kind": "definition",
+        "statement": "def heatStepGridTotal (r : Real) (u : Nat -> Real) (n : Nat) : Real := Finset.sum (Finset.range n) (fun i => heatStepGrid r u i)"
+      },
+      {
+        "name": "heatBoundaryTerm",
+        "kind": "definition",
+        "statement": "def heatBoundaryTerm (u : Nat -> Real) (n : Nat) : Real := u 0 - u 1 + (u (n + 1) - u n)"
+      },
+      {
+        "name": "heatStepGridTotal_eq",
+        "kind": "theorem",
+        "statement": "theorem heatStepGridTotal_eq (r : Real) (u : Nat -> Real) (n : Nat) : heatStepGridTotal r u n = heatInteriorTotal u n + r * heatBoundaryTerm u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation total-balance theorem into Lean 4: The total of the shifted heat grid update equals the original interior total plus r times the heat boundary term.",
+      "target": "theorem heatStepGridTotal_eq (r : Real) (u : Nat -> Real) (n : Nat) : heatStepGridTotal r u n = heatInteriorTotal u n + r * heatBoundaryTerm u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using heatStepGrid_eq_center_plus_heatSecondDifference, Finset.sum_add_distrib, Finset.mul_sum, heatSecondDifference_sum_range, and ring-normalized arithmetic."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics theorem that telescopes summed heat second differences to the boundary term.",
+      "target": "heatSecondDifference_sum_range"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "total_balance",
+    "boundary_term",
+    "total_balance",
+    "boundary_flux",
+    "finset_range"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

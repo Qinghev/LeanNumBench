@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_best_const_approx_2cell",
+  "title": "The weighted two-cell P0 projection is the best constant approximation",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonnegative masses and nonzero total mass, the weighted P0 projection residual is no larger than the weighted error to any constant c.",
+    "latex": "||u-Pi_w u||_w^2 <= ||u-c||_w^2.",
+    "assumptions": [
+      "0 <= m0",
+      "0 <= m1",
+      "m0 + m1 is nonzero",
+      "c is any constant comparison value"
+    ],
+    "expected_conclusion": "The weighted projection residual energy is bounded by the weighted error to any constant field."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Projection2_best_const_approx",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_best_const_approx (m0 m1 u0 u1 c : Real) (hm0 : 0 <= m0) (hm1 : 0 <= m1) (hsum : m0 + m1 ≠ 0) : weightedP0ProjectionResidualSq2 m0 m1 u0 u1 <= weightedConstApproxError2 m0 m1 u0 u1 c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the weighted best constant approximation property of the two-cell P0 projection into Lean 4.",
+      "target": "theorem weightedP0Projection2_best_const_approx (m0 m1 u0 u1 c : Real) (hm0 : 0 <= m0) (hm1 : 0 <= m1) (hsum : m0 + m1 ≠ 0) : weightedP0ProjectionResidualSq2 m0 m1 u0 u1 <= weightedConstApproxError2 m0 m1 u0 u1 c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by rewriting with weighted error decomposition and using nonnegativity of the projected-constant error.",
+      "target": "Rewrite by weightedP0Projection2_error_decomposition, then use weightedConstApproxError2_nonneg and le_add_of_nonneg_right."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemmas needed to prove weighted best constant approximation.",
+      "target": "weightedP0Projection2_error_decomposition; weightedConstApproxError2_nonneg"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "best_approximation",
+    "energy_estimate",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

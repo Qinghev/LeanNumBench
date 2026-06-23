@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_total_change_update_1d",
+  "title": "The total change of a KdV conservative update is the negative boundary flux mismatch",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the configurable KdV conservative update, the total change equals minus scale times the right-left KdV boundary flux mismatch.",
+    "latex": "\\(\\sum_i u_i^+-\\sum_i u_i=-\\lambda(F_n^{KdV}-F_0^{KdV})\\).",
+    "assumptions": [
+      "all scalar parameters are real numbers",
+      "u is a real-valued grid state on natural-number indices",
+      "n and i are natural-number grid or range indices as used in the theorem statement",
+      "the KdV scaffold definitions are those in LeanNumerics.FiniteDifference.Kdv"
+    ],
+    "expected_conclusion": "The total change is controlled exactly by the boundary flux mismatch."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalChange_kdvConservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem totalChange_kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n - totalOn u n = -scale * (kdvConservativeFlux nonlinear dispersion u n - kdvConservativeFlux nonlinear dispersion u 0)"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this KdV conservative scaffold theorem into Lean 4: For the configurable KdV conservative update, the total change equals minus scale times the right-left KdV boundary flux mismatch.",
+      "target": "theorem totalChange_kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (n : Nat) : totalOn (fun i => kdvConservativeUpdate scale nonlinear dispersion u i) n - totalOn u n = -scale * (kdvConservativeFlux nonlinear dispersion u n - kdvConservativeFlux nonlinear dispersion u 0)"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the KdV scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by rewriting with totalOn_kdvConservativeUpdate and closing with ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics theorem or definition most directly used in this KdV conservation proof.",
+      "target": "rewriting with totalOn_kdvConservativeUpdate and closing with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "conservation",
+    "total_change",
+    "boundary_flux",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

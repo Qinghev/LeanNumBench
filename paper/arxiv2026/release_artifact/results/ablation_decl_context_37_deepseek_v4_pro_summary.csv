@@ -1,0 +1,2 @@
+model,display_model,records,hard_records,full_context_passes,no_context_passes,delta_passes_full_minus_no_context,full_context_failures_or_rejections,no_context_failures_or_rejections,full_context_empty_rejections,no_context_empty_rejections,hard_full_context_passes,hard_no_context_passes,hard_delta_passes,context_helps_rows,no_context_better_rows,both_pass_rows,both_fail_rows,total_cost_usd
+deepseek/deepseek-v4-pro,DeepSeek v4 Pro,37,7,27,20,7,10,17,4,3,4,2,2,10,3,17,7,0.59981198

@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_discrete_mass_eq_total_on_1d",
+  "title": "Discrete mass is the finite total over the grid range",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The discrete mass functional is definitionally the totalOn finite sum.",
+    "latex": "\\(M(u)=\\sum_{i=0}^{n-1}u_i\\).",
+    "assumptions": [
+      "all scalar parameters are real numbers",
+      "u is a real-valued grid state on natural-number indices",
+      "n and i are natural-number grid or range indices as used in the theorem statement",
+      "the KdV scaffold definitions are those in LeanNumerics.FiniteDifference.Kdv"
+    ],
+    "expected_conclusion": "The discreteMass definition agrees with totalOn."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "discreteMass_eq_totalOn",
+        "kind": "theorem",
+        "statement": "theorem discreteMass_eq_totalOn (u : Nat -> Real) (n : Nat) : discreteMass u n = totalOn u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this KdV conservative scaffold theorem into Lean 4: The discrete mass functional is definitionally the totalOn finite sum.",
+      "target": "theorem discreteMass_eq_totalOn (u : Nat -> Real) (n : Nat) : discreteMass u n = totalOn u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the KdV scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by reflexivity."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics theorem or definition most directly used in this KdV conservation proof.",
+      "target": "reflexivity."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "discrete_mass",
+    "total_balance",
+    "definition_unfolding"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

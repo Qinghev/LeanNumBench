@@ -1,0 +1,89 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_preserves_const_2cell",
+  "title": "The two-cell P0 projection preserves constant fields",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Projecting a constant two-cell field onto constants returns the same constant on both cells.",
+    "latex": "\\Pi_0(u,u)=(u,u).",
+    "assumptions": [
+      "u is a real number",
+      "both projected coordinates are defined as the two-cell average"
+    ],
+    "expected_conclusion": "The left and right projected cell values both equal u."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "p0Projection2Left",
+        "kind": "definition",
+        "statement": "def p0Projection2Left (u0 u1 : Real) : Real := cellAverage2 u0 u1"
+      },
+      {
+        "name": "p0Projection2Right",
+        "kind": "definition",
+        "statement": "def p0Projection2Right (u0 u1 : Real) : Real := cellAverage2 u0 u1"
+      },
+      {
+        "name": "p0Projection2_preserves_const",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_preserves_const (u : Real) : p0Projection2Left u u = u /\\ p0Projection2Right u u = u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate constant preservation of the two-cell P0 projection into Lean 4.",
+      "target": "theorem p0Projection2_preserves_const (u : Real) : p0Projection2Left u u = u /\\ p0Projection2Right u u = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by splitting the conjunction and using the average-of-a-constant lemma on both coordinates.",
+      "target": "Split the conjunction, unfold each projected coordinate, and use cellAverage2_const."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma needed to prove each constant-projection coordinate.",
+      "target": "cellAverage2_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "constant_preservation",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

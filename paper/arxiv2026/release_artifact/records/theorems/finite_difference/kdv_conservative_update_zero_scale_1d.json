@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_conservative_update_zero_scale_1d",
+  "title": "A zero-scale KdV conservative update leaves the state unchanged",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Basic sanity check for the KdV conservative update."
+  },
+  "informal": {
+    "statement": "If the update scale is zero, the KdV conservative update returns the original state value at every grid index.",
+    "latex": "If \\(\\lambda=0\\), then \\(u_i^+=u_i\\).",
+    "assumptions": [
+      "nonlinear and dispersion are real numbers",
+      "u is a real-valued grid state",
+      "i is a natural-number grid index"
+    ],
+    "expected_conclusion": "The zero-scale update is the identity update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "kdvConservativeUpdate",
+        "kind": "definition",
+        "statement": "def kdvConservativeUpdate (scale nonlinear dispersion : Real) (u : Nat -> Real) (i : Nat) : Real := conservativeUpdate scale u (kdvConservativeFlux nonlinear dispersion u) i"
+      },
+      {
+        "name": "kdvConservativeUpdate_zero_scale",
+        "kind": "theorem",
+        "statement": "theorem kdvConservativeUpdate_zero_scale (nonlinear dispersion : Real) (u : Nat -> Real) (i : Nat) : kdvConservativeUpdate 0 nonlinear dispersion u i = u i"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the identity property of a zero-scale KdV conservative update into Lean 4.",
+      "target": "theorem kdvConservativeUpdate_zero_scale (nonlinear dispersion : Real) (u : Nat -> Real) (i : Nat) : kdvConservativeUpdate 0 nonlinear dispersion u i = u i"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given kdvConservativeUpdate and conservativeUpdate_zero_scale, complete the proof.",
+      "target": "A proof by unfolding kdvConservativeUpdate and applying conservativeUpdate_zero_scale."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the existing LeanNumerics theorem that proves zero-scale conservative updates are identity updates.",
+      "target": "conservativeUpdate_zero_scale"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "conservative_update",
+    "zero_scale",
+    "identity_update"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

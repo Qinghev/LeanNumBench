@@ -1,0 +1,50 @@
+{
+  "by_family": {
+    "FEM/P0 projection": 2,
+    "finite-difference KdV conservation": 2,
+    "finite-difference Lax-Friedrichs stability": 2,
+    "finite-difference heat stability": 2,
+    "finite-difference upwind stability": 2,
+    "linear-algebra finite-row stability": 2,
+    "linear-algebra row-stochastic stability": 2,
+    "symplectic time integration": 2
+  },
+  "by_side": {
+    "easy": 8,
+    "hard": 8
+  },
+  "files": {
+    "candidate_template": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\candidate_template.jsonl",
+    "manifest": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\manifest.json",
+    "prompt_audit": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\prompt_audit.json",
+    "prompts": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\prompts.jsonl",
+    "targets": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\targets.jsonl"
+  },
+  "imports": [
+    "LeanNumerics.FEM.Projection",
+    "LeanNumerics.FiniteDifference.Heat",
+    "LeanNumerics.FiniteDifference.Kdv",
+    "LeanNumerics.FiniteDifference.LaxFriedrichs",
+    "LeanNumerics.FiniteDifference.Upwind",
+    "LeanNumerics.LinearAlgebra.Stability",
+    "LeanNumerics.Symplectic.Leapfrog"
+  ],
+  "manifest_version": "nabench-minimal-pairs-v4-selected-8-v0.1",
+  "output_dir": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3",
+  "pairs": 8,
+  "prompt_pack_id": "minimal_pairs_v4_selected_8_proof_guided_v3",
+  "prompt_style": "guided_v3",
+  "prompts": 16,
+  "report_kind": "minimal_pair_prompt_preparation",
+  "schema_version": "0.1.0",
+  "selected_imported_module_counts": {
+    "LeanNumerics.FEM.Projection": 2,
+    "LeanNumerics.FiniteDifference.Conservation": 2,
+    "LeanNumerics.FiniteDifference.Heat": 2,
+    "LeanNumerics.FiniteDifference.Kdv": 2,
+    "LeanNumerics.FiniteDifference.LaxFriedrichs": 2,
+    "LeanNumerics.FiniteDifference.Upwind": 2,
+    "LeanNumerics.LinearAlgebra.Stability": 4,
+    "LeanNumerics.Symplectic.Leapfrog": 2
+  }
+}

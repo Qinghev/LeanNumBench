@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_idempotent_2cell",
+  "title": "The weighted two-cell P0 projection is idempotent at the average level",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonzero total mass, taking the weighted average of the two weighted projected coordinates gives the original weighted average.",
+    "latex": "avg_w(Pi_w u)=avg_w(u).",
+    "assumptions": [
+      "m0 + m1 is nonzero",
+      "both weighted projected coordinates equal the weighted average"
+    ],
+    "expected_conclusion": "The weighted average after projection equals the original weighted average."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedCellAverage2",
+        "kind": "definition",
+        "statement": "def weightedCellAverage2 (m0 m1 u0 u1 : Real) : Real := (m0 * u0 + m1 * u1) / (m0 + m1)"
+      },
+      {
+        "name": "weightedP0Projection2_idempotent",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_idempotent (m0 m1 u0 u1 : Real) (hsum : m0 + m1 ≠ 0) : weightedCellAverage2 m0 m1 (weightedP0Projection2Left m0 m1 u0 u1) (weightedP0Projection2Right m0 m1 u0 u1) = weightedCellAverage2 m0 m1 u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate idempotence of the weighted two-cell P0 projection at the average level into Lean 4.",
+      "target": "theorem weightedP0Projection2_idempotent (m0 m1 u0 u1 : Real) (hsum : m0 + m1 ≠ 0) : weightedCellAverage2 m0 m1 (weightedP0Projection2Left m0 m1 u0 u1) (weightedP0Projection2Right m0 m1 u0 u1) = weightedCellAverage2 m0 m1 u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the weighted projection and weighted average.",
+      "target": "Unfold weightedP0Projection2Left, weightedP0Projection2Right, and weightedCellAverage2; use field_simp with hsum."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "p0_projection",
+    "idempotence"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

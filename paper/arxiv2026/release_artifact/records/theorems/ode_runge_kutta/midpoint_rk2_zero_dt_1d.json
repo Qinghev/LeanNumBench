@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_runge_kutta.midpoint_rk2_zero_dt_1d",
+  "title": "Explicit midpoint RK2 with zero step size is the identity",
+  "domain": "ode",
+  "category": "ode_runge_kutta",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar linear test equation y prime equals a y, the explicit midpoint RK2 update with time step zero returns y.",
+    "latex": "For midpoint RK2 on \\(y\\prime=a y\\), \\(M_0(a,y)=y\\).",
+    "assumptions": [
+      "a and y are real numbers",
+      "midpointRK2Step is the explicit midpoint RK2 step for y prime equals a y",
+      "the time step is zero"
+    ],
+    "expected_conclusion": "The zero-step midpoint RK2 update equals the input state."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/ODE/RungeKutta.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "ODE"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "midpointRK2Step",
+        "kind": "definition",
+        "statement": "def midpointRK2Step (dt a y : Real) : Real := let k1 := a * y; let k2 := a * (y + (dt / 2) * k1); y + dt * k2"
+      },
+      {
+        "name": "midpointRK2Step_zero_dt",
+        "kind": "theorem",
+        "statement": "theorem midpointRK2Step_zero_dt (a y : Real) : midpointRK2Step 0 a y = y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero-step explicit midpoint RK2 identity into Lean 4.",
+      "target": "theorem midpointRK2Step_zero_dt (a y : Real) : midpointRK2Step 0 a y = y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the midpointRK2Step definition, complete the Lean 4 proof.",
+      "target": "A proof by unfolding midpointRK2Step and using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "runge_kutta",
+    "midpoint_method",
+    "rk2",
+    "ode",
+    "linear_test_equation",
+    "zero_step",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

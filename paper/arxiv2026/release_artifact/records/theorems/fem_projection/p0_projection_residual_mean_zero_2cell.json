@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_residual_mean_zero_2cell",
+  "title": "The two-cell P0 projection residual has zero mean",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Subtracting the two-cell average from both cell values gives residuals whose sum is zero.",
+    "latex": "(u_0-\\bar u)+(u_1-\\bar u)=0, \\quad \\bar u=(u_0+u_1)/2.",
+    "assumptions": [
+      "u0 and u1 are real cell values",
+      "the projected constant is the arithmetic mean"
+    ],
+    "expected_conclusion": "The residual sum is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "cellAverage2",
+        "kind": "definition",
+        "statement": "def cellAverage2 (u0 u1 : Real) : Real := (u0 + u1) / 2"
+      },
+      {
+        "name": "p0Projection2_residual_mean_zero",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_residual_mean_zero (u0 u1 : Real) : (u0 - cellAverage2 u0 u1) + (u1 - cellAverage2 u0 u1) = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero-mean residual property of a two-cell P0 projection into Lean 4.",
+      "target": "theorem p0Projection2_residual_mean_zero (u0 u1 : Real) : (u0 - cellAverage2 u0 u1) + (u1 - cellAverage2 u0 u1) = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the average and simplifying.",
+      "target": "Unfold cellAverage2 and use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "residual",
+    "zero_mean"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

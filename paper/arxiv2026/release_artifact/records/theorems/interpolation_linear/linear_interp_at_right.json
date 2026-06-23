@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "id": "interpolation_linear.linear_interp_at_right",
+  "title": "Linear interpolation matches the right endpoint",
+  "domain": "interpolation",
+  "category": "interpolation_linear",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 8 (Polynomial Interpolation).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If the interpolation interval has nonzero length, the two-point linear interpolant evaluated at the right node returns the right datum.",
+    "latex": "L(x_1)=y_1.",
+    "assumptions": [
+      "x1 - x0 is nonzero"
+    ],
+    "expected_conclusion": "The linear interpolant matches y1 at x1."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Interpolation/Linear.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Interpolation"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "linearInterp",
+        "kind": "definition",
+        "statement": "def linearInterp (x0 x1 y0 y1 x : Real) : Real := ((x1 - x) / (x1 - x0)) * y0 + ((x - x0) / (x1 - x0)) * y1"
+      },
+      {
+        "name": "linearInterp_at_right",
+        "kind": "theorem",
+        "statement": "theorem linearInterp_at_right (x0 x1 y0 y1 : Real) (h : x1 - x0 ≠ 0) : linearInterp x0 x1 y0 y1 x1 = y1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the interpolation theorem `linearInterp_at_right` into Lean 4.",
+      "target": "theorem linearInterp_at_right (x0 x1 y0 y1 : Real) (h : x1 - x0 ≠ 0) : linearInterp x0 x1 y0 y1 x1 = y1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `linearInterp_at_right`.",
+      "target": "unfold linearInterp; field_simp [h]; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the interpolation proof.",
+      "target": "field_simp"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "interpolation",
+    "linear_interpolation",
+    "affine_combination",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "endpoint_exactness"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

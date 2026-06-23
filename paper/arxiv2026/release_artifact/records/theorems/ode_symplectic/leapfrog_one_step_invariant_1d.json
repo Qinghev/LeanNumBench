@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_symplectic.leapfrog_one_step_invariant_1d",
+  "title": "One leapfrog step preserves a scalar discrete invariant",
+  "domain": "ode",
+  "category": "ode_symplectic",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "paper",
+    "citation": "Ernst Hairer, Christian Lubich, and Gerhard Wanner, Geometric numerical integration illustrated by the Stormer-Verlet method, Acta Numerica 12 (2003), pp. 399-450.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For real omega, nonzero dt, current state x, and previous state xPrev, define xNext = 2 x - xPrev - dt^2 omega^2 x. Then the discrete invariant ((xNext - x) / dt)^2 + omega^2 xNext x equals ((x - xPrev) / dt)^2 + omega^2 x xPrev.",
+    "latex": "Let \\(\\omega,\\Delta t,x,x_{-}\\in\\mathbb{R}\\) with \\(\\Delta t\\ne 0\\). Define \\(x_{+}=2x-x_{-}-(\\Delta t)^2\\omega^2x\\). Then \\(((x_{+}-x)/\\Delta t)^2+\\omega^2x_{+}x=((x-x_{-})/\\Delta t)^2+\\omega^2xx_{-}\\).",
+    "assumptions": [
+      "omega, dt, x, and xPrev are real numbers",
+      "dt is nonzero",
+      "xNext is defined by one scalar leapfrog update"
+    ],
+    "expected_conclusion": "The discrete invariant has the same value before and after one leapfrog step."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Symplectic/Leapfrog.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Symplectic"
+    ],
+    "declarations": [
+      {
+        "name": "leapfrogStep",
+        "kind": "definition",
+        "statement": "def leapfrogStep (omega dt x xPrev : ℝ) : ℝ := 2 * x - xPrev - dt ^ 2 * omega ^ 2 * x"
+      },
+      {
+        "name": "leapfrogInvariant",
+        "kind": "definition",
+        "statement": "def leapfrogInvariant (omega dt x xPrev : ℝ) : ℝ := ((x - xPrev) / dt) ^ 2 + omega ^ 2 * x * xPrev"
+      },
+      {
+        "name": "leapfrogInvariant_preserved",
+        "kind": "theorem",
+        "statement": "theorem leapfrogInvariant_preserved (omega dt x xPrev : ℝ) (hdt : dt ≠ 0) : leapfrogInvariant omega dt (leapfrogStep omega dt x xPrev) x = leapfrogInvariant omega dt x xPrev"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the one-step informal invariant statement into a Lean 4 theorem statement using the provided definitions.",
+      "target": "theorem leapfrogInvariant_preserved (omega dt x xPrev : ℝ) (hdt : dt ≠ 0) : leapfrogInvariant omega dt (leapfrogStep omega dt x xPrev) x = leapfrogInvariant omega dt x xPrev"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the theorem statement and definitions, complete the Lean 4 proof.",
+      "target": "A proof using unfold, field_simp [hdt], and ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "leapfrog",
+    "verlet",
+    "harmonic_oscillator",
+    "symplectic",
+    "discrete_invariant",
+    "one_step",
+    "ring",
+    "field_simp"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

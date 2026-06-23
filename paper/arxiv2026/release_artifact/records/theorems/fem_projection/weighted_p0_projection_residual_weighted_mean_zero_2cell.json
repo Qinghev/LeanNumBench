@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_residual_weighted_mean_zero_2cell",
+  "title": "The weighted P0 projection residual has zero weighted mean",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonzero total mass, the residual after subtracting the weighted average has zero weighted mean.",
+    "latex": "m0*(u0-avg_w) + m1*(u1-avg_w)=0.",
+    "assumptions": [
+      "m0 + m1 is nonzero",
+      "the residual is measured relative to the weighted average"
+    ],
+    "expected_conclusion": "The weighted residual sum is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Projection2_residual_weighted_mean_zero",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_residual_weighted_mean_zero (m0 m1 u0 u1 : Real) (hsum : m0 + m1 ≠ 0) : m0 * (u0 - weightedCellAverage2 m0 m1 u0 u1) + m1 * (u1 - weightedCellAverage2 m0 m1 u0 u1) = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero weighted-mean residual property of a two-cell weighted P0 projection into Lean 4.",
+      "target": "theorem weightedP0Projection2_residual_weighted_mean_zero (m0 m1 u0 u1 : Real) (hsum : m0 + m1 ≠ 0) : m0 * (u0 - weightedCellAverage2 m0 m1 u0 u1) + m1 * (u1 - weightedCellAverage2 m0 m1 u0 u1) = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the weighted average and simplifying the denominator.",
+      "target": "Unfold weightedCellAverage2, use field_simp with hsum, and finish with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "residual",
+    "zero_mean",
+    "mass_weighted"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

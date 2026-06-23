@@ -1,0 +1,41 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=0.52cm and 0.34cm,
+  stage/.style={draw, rounded corners=2pt, align=center, minimum height=0.75cm,
+                text width=1.95cm, font=\scriptsize, fill=black!2},
+  result/.style={draw, rounded corners=2pt, align=center, minimum height=0.65cm,
+                 text width=2.15cm, font=\scriptsize},
+  label/.style={font=\scriptsize\bfseries, align=center},
+  arrow/.style={-{Latex[length=1.8mm]}, line width=0.35pt}
+]
+\node[stage] (record) {Record\\informal + Lean\\+ provenance};
+\node[stage, right=of record] (prompt) {Prompt pack\\theorem + local\\declarations};
+\node[stage, right=of prompt] (model) {Model endpoint\\proof body only};
+\node[stage, right=of model] (mat) {Materializer\\extract +\\normalize};
+\node[stage, right=of mat] (lean) {Lean oracle\\compile, no\\\texttt{sorry}};
+
+\node[result, below=of model] (format) {Format / rejection\\accounting};
+\node[result, below=of mat] (repair) {Raw vs. repair\\audit};
+\node[result, below=of lean] (tax) {Failure taxonomy\\+ hard subset};
+
+\node[label, above=0.18cm of record] {Dataset};
+\node[label, above=0.18cm of model] {Model call};
+\node[label, above=0.18cm of lean] {Local oracle};
+\node[label, below=0.18cm of repair] {Diagnostics for tables, figures, and case studies};
+
+\draw[arrow] (record) -- (prompt);
+\draw[arrow] (prompt) -- (model);
+\draw[arrow] (model) -- (mat);
+\draw[arrow] (mat) -- (lean);
+\draw[arrow] (model) -- (format);
+\draw[arrow] (lean) |- (repair);
+\draw[arrow] (lean) -- (tax);
+\end{tikzpicture}
+\caption{LeanNumBench evaluates numerical-analysis proof completion with a
+local-first pipeline. Curated records produce prompt packs; model outputs are
+materialized into Lean candidates; the local Lean oracle accepts only compiling
+proofs without \texttt{sorry}; and the same run emits rejection accounting,
+repair auditing, failure taxonomy, and hard-subset case studies.}
+\label{fig:leannumbench-pipeline}
+\end{figure}

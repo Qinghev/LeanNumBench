@@ -1,0 +1,218 @@
+{
+  "failure_categories": [
+    {
+      "failure_category": "proof_search_failure",
+      "failures": 55,
+      "share_pct": 53.9
+    },
+    {
+      "failure_category": "other_lean_failure",
+      "failures": 14,
+      "share_pct": 13.7
+    },
+    {
+      "failure_category": "rejected_empty_proof_body",
+      "failures": 12,
+      "share_pct": 11.8
+    },
+    {
+      "failure_category": "type_mismatch_or_typeclass",
+      "failures": 9,
+      "share_pct": 8.8
+    },
+    {
+      "failure_category": "lean_syntax_error",
+      "failures": 8,
+      "share_pct": 7.8
+    },
+    {
+      "failure_category": "missing_context_or_identifier",
+      "failures": 2,
+      "share_pct": 2.0
+    },
+    {
+      "failure_category": "rejected_api_error",
+      "failures": 2,
+      "share_pct": 2.0
+    }
+  ],
+  "hard_subset": [
+    {
+      "category": "fem_projection",
+      "difficulty": 3,
+      "failed_models": "openai/gpt-5.5-pro;google/gemini-3.1-pro-preview;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 4,
+      "passes": 1,
+      "record_id": "fem_projection.p0_projection_best_const_approx_2cell"
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": 1,
+      "failed_models": "anthropic/claude-opus-4.8;google/gemini-3.1-pro-preview;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 4,
+      "passes": 1,
+      "record_id": "fem_projection.p0_projection_idempotent_2cell"
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": 3,
+      "failed_models": "openai/gpt-5.5-pro;anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 4,
+      "passes": 1,
+      "record_id": "fem_projection.weighted_p0_average_smul_general_n"
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": 4,
+      "failed_models": "openai/gpt-5.5-pro;anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 4,
+      "passes": 1,
+      "record_id": "fem_projection.weighted_p0_residual_mass_zero_general_n"
+    },
+    {
+      "category": "finite_difference_stability",
+      "difficulty": 3,
+      "failed_models": "openai/gpt-5.5-pro;anthropic/claude-opus-4.8;google/gemini-3.1-pro-preview;deepseek/deepseek-v4-pro",
+      "failures": 4,
+      "passes": 1,
+      "record_id": "finite_difference.lax_friedrichs_cfl_linf_stability_1d"
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": 3,
+      "failed_models": "anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 3,
+      "passes": 2,
+      "record_id": "fem_projection.weighted_p0_average_const_general_n"
+    },
+    {
+      "category": "finite_difference_heat",
+      "difficulty": 2,
+      "failed_models": "openai/gpt-5.5-pro;google/gemini-3.1-pro-preview;deepseek/deepseek-v4-pro",
+      "failures": 3,
+      "passes": 2,
+      "record_id": "finite_difference.heat_weights_nonneg_cfl_1d"
+    },
+    {
+      "category": "finite_difference_kdv",
+      "difficulty": 2,
+      "failed_models": "anthropic/claude-opus-4.8;google/gemini-3.1-pro-preview;qwen/qwen3.6-max-preview",
+      "failures": 3,
+      "passes": 2,
+      "record_id": "finite_difference.kdv_canonical_flux_const_difference_zero_1d"
+    },
+    {
+      "category": "linear_algebra_stability",
+      "difficulty": 3,
+      "failed_models": "openai/gpt-5.5-pro;google/gemini-3.1-pro-preview;qwen/qwen3.6-max-preview",
+      "failures": 3,
+      "passes": 2,
+      "record_id": "linear_algebra_stability.diag2_inf_norm_le_2d"
+    },
+    {
+      "category": "linear_algebra_stability",
+      "difficulty": 2,
+      "failed_models": "anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 3,
+      "passes": 2,
+      "record_id": "linear_algebra_stability.finite_row_apply_const_general_n"
+    },
+    {
+      "category": "spectral_dft",
+      "difficulty": 3,
+      "failed_models": "openai/gpt-5.5-pro;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "failures": 3,
+      "passes": 2,
+      "record_id": "spectral_dft.finite_dc_centered_signal_zero_general_n"
+    }
+  ],
+  "hard_subset_records": 11,
+  "leaderboard": [
+    {
+      "accuracy_pct": 91.9,
+      "complete": true,
+      "contains_sorry": 0,
+      "display_model": "Gemini 3.1 Pro Preview",
+      "model": "google/gemini-3.1-pro-preview",
+      "passed": 147,
+      "rejected_outputs": 0,
+      "repaired_passes": 3,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 90.6,
+      "complete": true,
+      "contains_sorry": 0,
+      "display_model": "GPT-5.5 Pro",
+      "model": "openai/gpt-5.5-pro",
+      "passed": 145,
+      "rejected_outputs": 6,
+      "repaired_passes": 3,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 88.1,
+      "complete": true,
+      "contains_sorry": 0,
+      "display_model": "Claude Opus 4.8",
+      "model": "anthropic/claude-opus-4.8",
+      "passed": 141,
+      "rejected_outputs": 0,
+      "repaired_passes": 1,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 86.9,
+      "complete": true,
+      "contains_sorry": 0,
+      "display_model": "Qwen3.6 Max Preview",
+      "model": "qwen/qwen3.6-max-preview",
+      "passed": 139,
+      "rejected_outputs": 0,
+      "repaired_passes": 5,
+      "total": 160
+    },
+    {
+      "accuracy_pct": 78.8,
+      "complete": true,
+      "contains_sorry": 0,
+      "display_model": "DeepSeek v4 Pro",
+      "model": "deepseek/deepseek-v4-pro",
+      "passed": 126,
+      "rejected_outputs": 8,
+      "repaired_passes": 5,
+      "total": 160
+    }
+  ],
+  "missing_reports": [],
+  "model_record_pairs": 800,
+  "models_available": 5,
+  "models_complete": 5,
+  "models_expected": 5,
+  "provenance_strata": [
+    {
+      "accuracy_pct": 75.0,
+      "failed": 5,
+      "pairs": 20,
+      "passed": 15,
+      "provenance_stratum": "classic_or_general"
+    },
+    {
+      "accuracy_pct": 88.7,
+      "failed": 55,
+      "pairs": 485,
+      "passed": 430,
+      "provenance_stratum": "internal_lean_seed"
+    },
+    {
+      "accuracy_pct": 85.8,
+      "failed": 42,
+      "pairs": 295,
+      "passed": 253,
+      "provenance_stratum": "textbook_or_paper"
+    }
+  ],
+  "record_count": 160,
+  "report_kind": "frontier_proof_160_panel_summary",
+  "schema_version": "0.1.0"
+}

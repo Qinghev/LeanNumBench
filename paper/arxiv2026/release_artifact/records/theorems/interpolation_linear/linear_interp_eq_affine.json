@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "id": "interpolation_linear.linear_interp_eq_affine",
+  "title": "Two-point linear interpolation is affine interpolation in normalized coordinates",
+  "domain": "interpolation",
+  "category": "interpolation_linear",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 8 (Polynomial Interpolation).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "On a nondegenerate interval, the two-point linear interpolant is the affine interpolant with normalized coordinate (x-x0)/(x1-x0).",
+    "latex": "L(x)=I_{(x-x_0)/(x_1-x_0)}(y_0,y_1).",
+    "assumptions": [
+      "x1 - x0 is nonzero"
+    ],
+    "expected_conclusion": "Linear interpolation reduces to affine interpolation in normalized coordinates."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Interpolation/Linear.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Interpolation"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "linearInterp",
+        "kind": "definition",
+        "statement": "def linearInterp (x0 x1 y0 y1 x : Real) : Real := ((x1 - x) / (x1 - x0)) * y0 + ((x - x0) / (x1 - x0)) * y1"
+      },
+      {
+        "name": "affineInterp",
+        "kind": "definition",
+        "statement": "def affineInterp (theta y0 y1 : Real) : Real := (1 - theta) * y0 + theta * y1"
+      },
+      {
+        "name": "linearInterp_eq_affine",
+        "kind": "theorem",
+        "statement": "theorem linearInterp_eq_affine (x0 x1 y0 y1 x : Real) (h : x1 - x0 ≠ 0) : linearInterp x0 x1 y0 y1 x = affineInterp ((x - x0) / (x1 - x0)) y0 y1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the interpolation theorem `linearInterp_eq_affine` into Lean 4.",
+      "target": "theorem linearInterp_eq_affine (x0 x1 y0 y1 x : Real) (h : x1 - x0 ≠ 0) : linearInterp x0 x1 y0 y1 x = affineInterp ((x - x0) / (x1 - x0)) y0 y1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `linearInterp_eq_affine`.",
+      "target": "unfold linearInterp affineInterp; field_simp [h]; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the interpolation proof.",
+      "target": "field_simp"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "interpolation",
+    "linear_interpolation",
+    "affine_combination",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "coordinate_normalization"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

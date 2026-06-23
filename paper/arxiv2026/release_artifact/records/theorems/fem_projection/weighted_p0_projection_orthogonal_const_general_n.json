@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_orthogonal_const_general_n",
+  "title": "Finite-mass P0 projection residuals are orthogonal to constants",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 4,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "S. C. Brenner and L. R. Scott, The Mathematical Theory of Finite Element Methods, 3rd ed., Springer, 2008, Ch. 4.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any finite mass vector with nonzero total mass, the residual from weighted P0 projection has zero mass-weighted inner product with every constant test value.",
+    "latex": "\\sum_{i\\in s} m_i (u_i-\\bar u_m)c=0,\\quad \\bar u_m=(\\sum_i m_i u_i)/(\\sum_i m_i).",
+    "assumptions": [
+      "s is a finite index set",
+      "m and u are real-valued functions on the index type",
+      "the total mass sum over s is nonzero",
+      "c is a real constant test value"
+    ],
+    "expected_conclusion": "The weighted residual is orthogonal to constant test functions in the mass inner product."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Average",
+        "kind": "definition",
+        "statement": "def weightedP0Average {ι : Type} (s : Finset ι) (m u : ι → Real) : Real := (∑ i ∈ s, m i * u i) / (∑ i ∈ s, m i)"
+      },
+      {
+        "name": "weightedP0Residual",
+        "kind": "definition",
+        "statement": "def weightedP0Residual {ι : Type} (s : Finset ι) (m u : ι → Real) (i : ι) : Real := u i - weightedP0Average s m u"
+      },
+      {
+        "name": "weightedP0Residual_mass_zero",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Residual_mass_zero {ι : Type} (s : Finset ι) (m u : ι → Real) (hmass : (∑ i ∈ s, m i) ≠ 0) : ∑ i ∈ s, m i * weightedP0Residual s m u i = 0"
+      },
+      {
+        "name": "weightedP0Projection_orthogonal_const",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection_orthogonal_const {ι : Type} (s : Finset ι) (m u : ι → Real) (c : Real) (hmass : (∑ i ∈ s, m i) ≠ 0) : ∑ i ∈ s, m i * weightedP0Residual s m u i * c = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate mass-matrix P0 residual orthogonality to constants over an arbitrary finite index set into Lean 4.",
+      "target": "theorem weightedP0Projection_orthogonal_const {ι : Type} (s : Finset ι) (m u : ι → Real) (c : Real) (hmass : (∑ i ∈ s, m i) ≠ 0) : ∑ i ∈ s, m i * weightedP0Residual s m u i * c = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by factoring the constant c out of the finite sum and using the mass-zero residual lemma.",
+      "target": "Rewrite the sum as the residual mass sum times c, then use weightedP0Residual_mass_zero."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma that proves the mass-weighted P0 residual has zero total mass.",
+      "target": "weightedP0Residual_mass_zero"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0",
+    "mass_matrix",
+    "orthogonality",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

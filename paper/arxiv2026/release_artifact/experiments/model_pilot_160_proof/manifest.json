@@ -1,0 +1,817 @@
+{
+  "schema_version": "0.1.0",
+  "pilot_id": "model_pilot_160_proof",
+  "description": "Frozen proof-completion prompt manifest for the 160-record LeanNumBench v1 May-2026 panel.",
+  "intended_use": "Use this manifest to reproduce the May-2026 160-record proof-completion panel and local no-API checks. It is the prompt-pack freeze for the current public release leaderboard.",
+  "tasks": [
+    "proof_completion"
+  ],
+  "selection_policy": [
+    "Include every checked record in the frozen 160-record LeanNumBench v1 release exactly once.",
+    "Use one proof-completion prompt per record under the full local declaration-context protocol.",
+    "Report only model outputs checked against this exact prompt pack for the 160-record proof-completion panel.",
+    "Keep earlier 123-record pilot snapshots out of the main leaderboard, hard-subset definition, and failure taxonomy."
+  ],
+  "records": [
+    {
+      "record_id": "ode_symplectic.leapfrog_one_step_invariant_1d",
+      "role": "ode_symplectic_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_symplectic.leapfrog_orbit_step_invariant_1d",
+      "role": "ode_symplectic_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_symplectic.leapfrog_invariant_1d",
+      "role": "ode_symplectic_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_symplectic.symplectic_euler_one_step_invariant_1d",
+      "role": "ode_symplectic_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_symplectic.symplectic_euler_orbit_step_invariant_1d",
+      "role": "ode_symplectic_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_symplectic.symplectic_euler_invariant_1d",
+      "role": "ode_symplectic_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_symplectic.symplectic_euler_linear_det_1d",
+      "role": "ode_symplectic_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_symplectic (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_runge_kutta.explicit_euler_zero_dt_1d",
+      "role": "ode_runge_kutta_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_runge_kutta (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_runge_kutta.explicit_euler_linear_step_1d",
+      "role": "ode_runge_kutta_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_runge_kutta (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_runge_kutta.midpoint_rk2_zero_dt_1d",
+      "role": "ode_runge_kutta_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_runge_kutta (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_runge_kutta.midpoint_rk2_linear_taylor2_1d",
+      "role": "ode_runge_kutta_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_runge_kutta (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_runge_kutta.heun_rk2_linear_taylor2_1d",
+      "role": "ode_runge_kutta_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_runge_kutta (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "ode_runge_kutta.midpoint_heun_agree_linear_1d",
+      "role": "ode_runge_kutta_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from ode_runge_kutta (ode); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.vec2_inf_norm_nonneg_2d",
+      "role": "linear_algebra_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.abs_left_le_vec2_inf_norm_2d",
+      "role": "linear_algebra_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.abs_right_le_vec2_inf_norm_2d",
+      "role": "linear_algebra_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.row2_apply_const_2d",
+      "role": "linear_algebra_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.row2_apply_abs_le_2d",
+      "role": "linear_algebra_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.row_stochastic2_const_2d",
+      "role": "linear_algebra_stability_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.row_stochastic2_inf_norm_abs_le_2d",
+      "role": "linear_algebra_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.diag2_zero_2d",
+      "role": "linear_algebra_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.diag2_inf_norm_le_2d",
+      "role": "linear_algebra_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.finite_row_apply_abs_le_general_n",
+      "role": "linear_algebra_stability_difficulty_4",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_dc_const_2pt",
+      "role": "spectral_dft_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_nyquist_const_zero_2pt",
+      "role": "spectral_dft_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_dc_zero_sum_2pt",
+      "role": "spectral_dft_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.idft2_first_recovers_input_2pt",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.idft2_second_recovers_input_2pt",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_inverse_2pt",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_dc_swap_2pt",
+      "role": "spectral_dft_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_nyquist_swap_2pt",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_energy_eq_two_physical_energy_2pt",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.dft2_parseval_2pt",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_centered_signal_zero_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.upwind_weights_sum_1d",
+      "role": "finite_difference_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.upwind_weights_nonneg_1d",
+      "role": "finite_difference_stability_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.upwind_constant_state_1d",
+      "role": "finite_difference_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.upwind_monotone_1d",
+      "role": "finite_difference_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.upwind_cfl_linf_stability_1d",
+      "role": "finite_difference_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.lax_friedrichs_weights_sum_1d",
+      "role": "finite_difference_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.lax_friedrichs_weights_nonneg_1d",
+      "role": "finite_difference_stability_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.lax_friedrichs_constant_state_1d",
+      "role": "finite_difference_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.lax_friedrichs_monotone_1d",
+      "role": "finite_difference_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.lax_friedrichs_cfl_linf_stability_1d",
+      "role": "finite_difference_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_stability (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.flux_difference_const_zero_1d",
+      "role": "finite_difference_conservation_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.conservative_update_zero_scale_1d",
+      "role": "finite_difference_conservation_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.conservative_update_const_flux_1d",
+      "role": "finite_difference_conservation_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.flux_difference_sum_range_1d",
+      "role": "finite_difference_conservation_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.total_conservative_update_1d",
+      "role": "finite_difference_conservation_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.total_conservative_update_boundary_1d",
+      "role": "finite_difference_conservation_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.total_conservative_update_periodic_boundary_1d",
+      "role": "finite_difference_conservation_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.total_change_conservative_update_1d",
+      "role": "finite_difference_conservation_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_conservation (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_second_forward_difference_const_zero_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_conservative_flux_const_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_conservative_flux_const_difference_zero_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_conservative_update_zero_scale_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_conservative_update_const_state_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_update_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_update_boundary_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_update_periodic_flux_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_change_boundary_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_mass_update_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_mass_periodic_flux_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_mass_periodic_flux_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_conservative_update_eq_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_discrete_mass_eq_total_on_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_change_update_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_flux_eq_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_flux_const_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_flux_const_difference_zero_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_update_eq_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_update_zero_scale_1d",
+      "role": "finite_difference_kdv_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_canonical_update_const_state_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_canonical_update_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_canonical_update_boundary_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_canonical_update_periodic_flux_1d",
+      "role": "finite_difference_kdv_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.kdv_total_change_canonical_update_1d",
+      "role": "finite_difference_kdv_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_kdv (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_weights_sum_1d",
+      "role": "finite_difference_heat_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_weights_nonneg_cfl_1d",
+      "role": "finite_difference_heat_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_constant_state_1d",
+      "role": "finite_difference_heat_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_monotone_1d",
+      "role": "finite_difference_heat_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_cfl_linf_stability_1d",
+      "role": "finite_difference_heat_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_second_difference_1d",
+      "role": "finite_difference_heat_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_constant_state_1d",
+      "role": "finite_difference_heat_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_linf_stability_1d",
+      "role": "finite_difference_heat_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_heat_second_difference_1d",
+      "role": "finite_difference_heat_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_second_difference_sum_boundary_1d",
+      "role": "finite_difference_heat_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_total_balance_1d",
+      "role": "finite_difference_heat_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_total_change_1d",
+      "role": "finite_difference_heat_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_boundary_term_neumann_zero_1d",
+      "role": "finite_difference_heat_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_total_boundary_zero_1d",
+      "role": "finite_difference_heat_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.heat_grid_total_neumann_boundary_1d",
+      "role": "finite_difference_heat_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_heat (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_flux_eq_1d",
+      "role": "finite_difference_burgers_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_flux_const_1d",
+      "role": "finite_difference_burgers_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_flux_const_difference_zero_1d",
+      "role": "finite_difference_burgers_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_conservative_update_eq_1d",
+      "role": "finite_difference_burgers_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_conservative_update_zero_scale_1d",
+      "role": "finite_difference_burgers_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_conservative_update_const_state_1d",
+      "role": "finite_difference_burgers_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_total_update_1d",
+      "role": "finite_difference_burgers_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_total_update_boundary_1d",
+      "role": "finite_difference_burgers_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_total_update_periodic_flux_1d",
+      "role": "finite_difference_burgers_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "finite_difference.burgers_total_change_update_1d",
+      "role": "finite_difference_burgers_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from finite_difference_burgers (finite_difference); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.cell_average_const_2cell",
+      "role": "fem_projection_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_preserves_const_2cell",
+      "role": "fem_projection_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_idempotent_2cell",
+      "role": "fem_projection_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_residual_mean_zero_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_orthogonal_const_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_pythagorean_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_l2_contract_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.p0_projection_best_const_approx_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_cell_average_const_2cell",
+      "role": "fem_projection_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_preserves_const_2cell",
+      "role": "fem_projection_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_idempotent_2cell",
+      "role": "fem_projection_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_residual_weighted_mean_zero_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_orthogonal_const_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_cell_l2_sq_nonneg_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_residual_sq_nonneg_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_const_approx_error_nonneg_2cell",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_pythagorean_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_l2_contract_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_error_decomposition_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_best_const_approx_2cell",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_projection_orthogonal_const_general_n",
+      "role": "fem_projection_difficulty_4",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.finite_weighted_abs_sum_le_general_n",
+      "role": "linear_algebra_stability_difficulty_4",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.finite_row_apply_const_general_n",
+      "role": "linear_algebra_stability_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.finite_row_apply_zero_general_n",
+      "role": "linear_algebra_stability_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "linear_algebra_stability.finite_row_apply_add_general_n",
+      "role": "linear_algebra_stability_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from linear_algebra_stability (linear_algebra); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_const_general_n",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_add_general_n",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_mean_const_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.centered_signal_const_zero_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_residual_mass_zero_general_n",
+      "role": "fem_projection_difficulty_4",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_average_const_general_n",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_residual_const_zero_general_n",
+      "role": "fem_projection_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_average_add_general_n",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_average_smul_general_n",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_residual_add_general_n",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "fem_projection.weighted_p0_residual_smul_general_n",
+      "role": "fem_projection_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from fem_projection (fem); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_zero_general_n",
+      "role": "spectral_dft_difficulty_1",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_neg_general_n",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_sub_general_n",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_dc_smul_general_n",
+      "role": "spectral_dft_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_mean_add_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.finite_mean_smul_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.centered_signal_add_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "spectral_dft.centered_signal_smul_general_n",
+      "role": "spectral_dft_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from spectral_dft (spectral); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.affine_interp_const",
+      "role": "interpolation_linear_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.affine_interp_add",
+      "role": "interpolation_linear_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.affine_interp_smul",
+      "role": "interpolation_linear_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.affine_interp_abs_le",
+      "role": "interpolation_linear_difficulty_4",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.linear_interp_at_left",
+      "role": "interpolation_linear_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.linear_interp_at_right",
+      "role": "interpolation_linear_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.linear_interp_const",
+      "role": "interpolation_linear_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "interpolation_linear.linear_interp_eq_affine",
+      "role": "interpolation_linear_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from interpolation_linear (interpolation); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "quadrature_rules.midpoint1_add",
+      "role": "quadrature_rules_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from quadrature_rules (quadrature); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "quadrature_rules.midpoint1_smul",
+      "role": "quadrature_rules_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from quadrature_rules (quadrature); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "quadrature_rules.trapezoid2_const",
+      "role": "quadrature_rules_difficulty_2",
+      "rationale": "Frozen 160-record proof-completion panel item from quadrature_rules (quadrature); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "quadrature_rules.trapezoid2_add",
+      "role": "quadrature_rules_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from quadrature_rules (quadrature); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "quadrature_rules.trapezoid2_smul",
+      "role": "quadrature_rules_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from quadrature_rules (quadrature); included to preserve full development-set coverage for the next leaderboard."
+    },
+    {
+      "record_id": "quadrature_rules.trapezoid2_nonneg",
+      "role": "quadrature_rules_difficulty_3",
+      "rationale": "Frozen 160-record proof-completion panel item from quadrature_rules (quadrature); included to preserve full development-set coverage for the next leaderboard."
+    }
+  ]
+}

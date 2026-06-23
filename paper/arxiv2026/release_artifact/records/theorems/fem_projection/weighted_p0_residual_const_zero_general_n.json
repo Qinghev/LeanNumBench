@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_residual_const_zero_general_n",
+  "title": "The finite weighted P0 residual of a constant signal is zero",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "S. C. Brenner and L. R. Scott, The Mathematical Theory of Finite Element Methods, 3rd ed., Springer, 2008, Ch. 4.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any finite set with nonzero total mass, every residual entry of a constant signal after weighted P0 projection is zero.",
+    "latex": "c-\\bar c_m=0.",
+    "assumptions": [
+      "s is finite",
+      "m has nonzero total mass",
+      "the input is the constant c"
+    ],
+    "expected_conclusion": "Each weighted P0 residual of the constant signal is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Average",
+        "kind": "definition",
+        "statement": "def weightedP0Average {ι : Type} (s : Finset ι) (m u : ι → Real) : Real := (∑ i ∈ s, m i * u i) / (∑ i ∈ s, m i)"
+      },
+      {
+        "name": "weightedP0Residual",
+        "kind": "definition",
+        "statement": "def weightedP0Residual {ι : Type} (s : Finset ι) (m u : ι → Real) (i : ι) : Real := u i - weightedP0Average s m u"
+      },
+      {
+        "name": "weightedP0Residual_const_zero",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Residual_const_zero {ι : Type} (s : Finset ι) (m : ι → Real) (c : Real) (i : ι) (hmass : (∑ j ∈ s, m j) ≠ 0) : weightedP0Residual s m (fun _ => c) i = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index weighted P0 projection fact `weightedP0Residual_const_zero` into Lean 4.",
+      "target": "theorem weightedP0Residual_const_zero {ι : Type} (s : Finset ι) (m : ι → Real) (c : Real) (i : ι) (hmass : (∑ j ∈ s, m j) ≠ 0) : weightedP0Residual s m (fun _ => c) i = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `weightedP0Residual_const_zero`.",
+      "target": "Unfold the residual and use weightedP0Average_const."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or weighted-projection lemma needed for the proof.",
+      "target": "weightedP0Average_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "p0_projection",
+    "weighted_projection",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "constant_preservation",
+    "residual"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.total_conservative_update_boundary_1d",
+  "title": "A conservative update preserves total mass when boundary fluxes agree",
+  "domain": "finite_difference",
+  "category": "finite_difference_conservation",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Ch. 4, pp. 64-65.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If the two boundary fluxes flux(n) and flux(0) are equal, then the conservative update preserves the total over the first n cells.",
+    "latex": "If \\(F_n=F_0\\), then \\(\\sum_{i=0}^{n-1}u_i^+=\\sum_{i=0}^{n-1}u_i\\).",
+    "assumptions": [
+      "scale is a real number",
+      "u and flux are real-valued functions on natural-number grid indices",
+      "n is a natural number",
+      "flux n = flux 0"
+    ],
+    "expected_conclusion": "The total after the conservative update equals the original total."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Conservation.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalOn_conservativeUpdate",
+        "kind": "theorem",
+        "statement": "theorem totalOn_conservativeUpdate (scale : Real) (u flux : Nat -> Real) (n : Nat) : totalOn (fun i => conservativeUpdate scale u flux i) n = totalOn u n - scale * (flux n - flux 0)"
+      },
+      {
+        "name": "totalOn_conservativeUpdate_of_boundary_eq",
+        "kind": "theorem",
+        "statement": "theorem totalOn_conservativeUpdate_of_boundary_eq (scale : Real) (u flux : Nat -> Real) (n : Nat) (hflux : flux n = flux 0) : totalOn (fun i => conservativeUpdate scale u flux i) n = totalOn u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the boundary-flux total-preservation theorem into Lean 4.",
+      "target": "theorem totalOn_conservativeUpdate_of_boundary_eq (scale : Real) (u flux : Nat -> Real) (n : Nat) (hflux : flux n = flux 0) : totalOn (fun i => conservativeUpdate scale u flux i) n = totalOn u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given totalOn_conservativeUpdate and the boundary equality assumption, complete the Lean 4 proof.",
+      "target": "A proof by rewriting with totalOn_conservativeUpdate and the boundary equality, then closing with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "finite_difference",
+    "finite_volume",
+    "conservation",
+    "conservative_update",
+    "mass_conservation",
+    "boundary_flux",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

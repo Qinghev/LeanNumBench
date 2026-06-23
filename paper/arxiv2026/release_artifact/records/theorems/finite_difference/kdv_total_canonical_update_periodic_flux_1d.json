@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_total_canonical_update_periodic_flux_1d",
+  "title": "The canonical KdV update preserves total mass under periodic flux",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Under periodic canonical KdV flux, the canonical conservative update preserves the finite total.",
+    "latex": "Periodic \\(F^{KdV}\\) implies \\(\\sum_i u_i^+=\\sum_i u_i\\).",
+    "assumptions": [
+      "all scalar parameters are real numbers",
+      "u is a real-valued grid state on natural-number indices",
+      "n and i are natural-number grid or range indices as used in the theorem statement",
+      "the KdV scaffold definitions are those in LeanNumerics.FiniteDifference.Kdv"
+    ],
+    "expected_conclusion": "Periodic flux is enough for total preservation."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "totalOn_kdvCanonicalUpdate_of_periodicFlux",
+        "kind": "theorem",
+        "statement": "theorem totalOn_kdvCanonicalUpdate_of_periodicFlux (scale : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvCanonicalFlux u) n) : totalOn (fun i => kdvCanonicalUpdate scale u i) n = totalOn u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this KdV conservative scaffold theorem into Lean 4: Under periodic canonical KdV flux, the canonical conservative update preserves the finite total.",
+      "target": "theorem totalOn_kdvCanonicalUpdate_of_periodicFlux (scale : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvCanonicalFlux u) n) : totalOn (fun i => kdvCanonicalUpdate scale u i) n = totalOn u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the KdV scaffold definitions and referenced conservation lemmas, complete the Lean 4 proof.",
+      "target": "A proof by applying the boundary-equality canonical total theorem."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics theorem or definition most directly used in this KdV conservation proof.",
+      "target": "applying the boundary-equality canonical total theorem."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "canonical_update",
+    "periodic_boundary",
+    "mass_preservation",
+    "conservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

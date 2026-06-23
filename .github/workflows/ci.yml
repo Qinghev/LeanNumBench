@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  artifact-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Compile artifact smoke check
+        run: python -m py_compile paper/arxiv2026/release_artifact/reproduction_scripts/artifact_smoke_check.py
+      - name: Run no-API artifact smoke check
+        working-directory: paper/arxiv2026/release_artifact
+        run: python reproduction_scripts/artifact_smoke_check.py
+
+  companion-lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build companion Lean project
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: paper/arxiv2026/release_artifact/companion_lean

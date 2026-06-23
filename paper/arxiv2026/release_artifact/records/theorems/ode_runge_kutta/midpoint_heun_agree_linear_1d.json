@@ -1,0 +1,108 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_runge_kutta.midpoint_heun_agree_linear_1d",
+  "title": "Explicit midpoint RK2 and Heun RK2 agree on the scalar linear test equation",
+  "domain": "ode",
+  "category": "ode_runge_kutta",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Ernst Hairer, Syvert P. Norsett, and Gerhard Wanner, Solving Ordinary Differential Equations I: Nonstiff Problems, 2nd ed., Springer, 1993, Ch. II, pp. 129-353.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar linear test equation y prime equals a y, the explicit midpoint RK2 and Heun RK2 one-step updates are equal.",
+    "latex": "For \\(y\\prime=a y\\), \\(M_{\\Delta t}(a,y)=H_{\\Delta t}(a,y)\\).",
+    "assumptions": [
+      "dt, a, and y are real numbers",
+      "both RK2 methods are specialized to the same scalar linear test equation",
+      "both methods equal the same quadratic Taylor polynomial"
+    ],
+    "expected_conclusion": "The midpoint and Heun RK2 updates agree on the scalar linear test equation."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/ODE/RungeKutta.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "ODE"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "midpointRK2Step",
+        "kind": "definition",
+        "statement": "def midpointRK2Step (dt a y : Real) : Real := let k1 := a * y; let k2 := a * (y + (dt / 2) * k1); y + dt * k2"
+      },
+      {
+        "name": "heunRK2Step",
+        "kind": "definition",
+        "statement": "def heunRK2Step (dt a y : Real) : Real := let k1 := a * y; let k2 := a * (y + dt * k1); y + dt * ((k1 + k2) / 2)"
+      },
+      {
+        "name": "linearTaylor2Step",
+        "kind": "definition",
+        "statement": "def linearTaylor2Step (dt a y : Real) : Real := (1 + dt * a + (dt * a) ^ 2 / 2) * y"
+      },
+      {
+        "name": "midpointRK2Step_eq_taylor2",
+        "kind": "theorem",
+        "statement": "theorem midpointRK2Step_eq_taylor2 (dt a y : Real) : midpointRK2Step dt a y = linearTaylor2Step dt a y"
+      },
+      {
+        "name": "heunRK2Step_eq_taylor2",
+        "kind": "theorem",
+        "statement": "theorem heunRK2Step_eq_taylor2 (dt a y : Real) : heunRK2Step dt a y = linearTaylor2Step dt a y"
+      },
+      {
+        "name": "midpointRK2Step_eq_heunRK2Step",
+        "kind": "theorem",
+        "statement": "theorem midpointRK2Step_eq_heunRK2Step (dt a y : Real) : midpointRK2Step dt a y = heunRK2Step dt a y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the statement that midpoint RK2 and Heun RK2 agree on the scalar linear test equation into Lean 4.",
+      "target": "theorem midpointRK2Step_eq_heunRK2Step (dt a y : Real) : midpointRK2Step dt a y = heunRK2Step dt a y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the two Taylor-polynomial lemmas, complete the Lean 4 proof that the two RK2 steps agree.",
+      "target": "A proof by rewriting both sides with midpointRK2Step_eq_taylor2 and heunRK2Step_eq_taylor2."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemmas needed to show that midpoint RK2 and Heun RK2 agree on the scalar linear test equation.",
+      "target": "midpointRK2Step_eq_taylor2 and heunRK2Step_eq_taylor2"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "runge_kutta",
+    "midpoint_method",
+    "heun_method",
+    "rk2",
+    "ode",
+    "linear_test_equation",
+    "method_equivalence",
+    "rewrite"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

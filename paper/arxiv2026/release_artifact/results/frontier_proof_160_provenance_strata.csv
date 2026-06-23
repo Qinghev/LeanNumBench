@@ -1,0 +1,4 @@
+provenance_stratum,pairs,passed,failed,accuracy_pct
+classic_or_general,20,15,5,75.0
+internal_lean_seed,485,430,55,88.7
+textbook_or_paper,295,253,42,85.8

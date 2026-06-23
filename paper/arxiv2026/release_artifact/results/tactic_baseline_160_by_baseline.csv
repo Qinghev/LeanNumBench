@@ -1,0 +1,16 @@
+baseline,proof,total,passed,failed,accuracy_pct,timed_out,returncode
+aesop,aesop,160,59,101,36.9,False,1
+linarith,linarith,160,59,101,36.9,False,1
+nlinarith,nlinarith,160,59,101,36.9,False,1
+norm_num,norm_num,160,59,101,36.9,False,1
+omega,omega,160,59,101,36.9,False,1
+rfl,rfl,160,59,101,36.9,False,1
+ring,ring,160,59,101,36.9,False,1
+ring_nf,ring_nf,160,59,101,36.9,False,1
+simp,simp,160,59,101,36.9,False,1
+simp_all,simp_all,160,59,101,36.9,False,1
+simp_all_ring_nf,"simp_all
+ring_nf",160,59,101,36.9,False,1
+simp_ring_nf,"simp
+ring_nf",160,59,101,36.9,False,1
+simpa,simpa,160,59,101,36.9,False,1

@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.finite_dc_add_general_n",
+  "title": "The finite DC mode is additive",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Lloyd N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000, Ch. 3, pp. 17-28.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The DC sum of the pointwise sum of two finite signals equals the sum of their DC sums.",
+    "latex": "\\sum_{i\\in s}(u_i+v_i)=\\sum_{i\\in s}u_i+\\sum_{i\\in s}v_i.",
+    "assumptions": [
+      "s is a finite index set",
+      "u and v are real-valued signals on s"
+    ],
+    "expected_conclusion": "The finite DC functional is additive."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteDC_add",
+        "kind": "theorem",
+        "statement": "theorem finiteDC_add {ι : Type} (s : Finset ι) (u v : ι → Real) : finiteDC s (fun i => u i + v i) = finiteDC s u + finiteDC s v"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate additivity of the finite DC mode into Lean 4.",
+      "target": "theorem finiteDC_add {ι : Type} (s : Finset ι) (u v : ι → Real) : finiteDC s (fun i => u i + v i) = finiteDC s u + finiteDC s v"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding finiteDC and applying finite-sum additivity.",
+      "target": "Unfold finiteDC and use Finset.sum_add_distrib."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the finite-sum additivity lemma needed for this proof.",
+      "target": "Finset.sum_add_distrib"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "linearity",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

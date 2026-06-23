@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.abs_left_le_vec2_inf_norm_2d",
+  "title": "Left coordinate absolute value is bounded by the two-entry infinity norm",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any two real entries, the absolute value of the left coordinate is at most max(|x|, |y|).",
+    "latex": "|x| <= max(|x|, |y|).",
+    "assumptions": [
+      "x and y are real numbers",
+      "the infinity norm is max(|x|, |y|)"
+    ],
+    "expected_conclusion": "The left coordinate is bounded by the two-entry infinity norm."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "vec2InfNorm",
+        "kind": "definition",
+        "statement": "def vec2InfNorm (x y : Real) : Real := max |x| |y|"
+      },
+      {
+        "name": "abs_left_le_vec2InfNorm",
+        "kind": "theorem",
+        "statement": "theorem abs_left_le_vec2InfNorm (x y : Real) : |x| <= vec2InfNorm x y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the left-coordinate bound for the two-entry infinity norm into Lean 4.",
+      "target": "theorem abs_left_le_vec2InfNorm (x y : Real) : |x| <= vec2InfNorm x y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding vec2InfNorm and using the left max inequality.",
+      "target": "Unfold vec2InfNorm and use le_max_left."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "infinity_norm",
+    "coordinate_bound",
+    "absolute_value",
+    "max"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

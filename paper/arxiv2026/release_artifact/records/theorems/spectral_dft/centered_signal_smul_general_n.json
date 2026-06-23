@@ -1,0 +1,100 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.centered_signal_smul_general_n",
+  "title": "Mean-centering commutes with scalar multiplication for finite signals",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Lloyd N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000, Ch. 3, pp. 17-28.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Mean-centering a scalar multiple equals the scalar multiple of the mean-centered signal.",
+    "latex": "c u_i-\\overline{cu}=c(u_i-\\bar u).",
+    "assumptions": [
+      "s is finite",
+      "u is a real-valued signal",
+      "c is a scalar",
+      "i is an index"
+    ],
+    "expected_conclusion": "Mean-centering is homogeneous."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteMean",
+        "kind": "definition",
+        "statement": "def finiteMean {ι : Type} (s : Finset ι) (u : ι → Real) : Real := finiteDC s u / (s.card : Real)"
+      },
+      {
+        "name": "centeredSignal",
+        "kind": "definition",
+        "statement": "def centeredSignal {ι : Type} (s : Finset ι) (u : ι → Real) (i : ι) : Real := u i - finiteMean s u"
+      },
+      {
+        "name": "centeredSignal_smul",
+        "kind": "theorem",
+        "statement": "theorem centeredSignal_smul {ι : Type} (s : Finset ι) (u : ι → Real) (c : Real) (i : ι) : centeredSignal s (fun j => c * u j) i = c * centeredSignal s u i"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index spectral/DC identity `centeredSignal_smul` into Lean 4.",
+      "target": "theorem centeredSignal_smul {ι : Type} (s : Finset ι) (u : ι → Real) (c : Real) (i : ι) : centeredSignal s (fun j => c * u j) i = c * centeredSignal s u i"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `centeredSignal_smul`.",
+      "target": "Unfold centeredSignal, use finiteMean_smul, and ring-normalize."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or mean-centering lemma needed for the proof.",
+      "target": "finiteMean_smul"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "finite_mean",
+    "centered_signal",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

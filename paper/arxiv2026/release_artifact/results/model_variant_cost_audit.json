@@ -1,0 +1,128 @@
+{
+  "comparisons": {
+    "claude_opus_4_8_vs_4_7": {
+      "cost_ratio_4_8_over_4_7": 0.96,
+      "opus_4_7_cost_usd": 2.238515,
+      "opus_4_7_passed": 134,
+      "opus_4_8_cost_usd": 2.15814,
+      "opus_4_8_passed": 141,
+      "pass_delta_4_8_minus_4_7": 7
+    },
+    "gpt_5_5_standard_vs_pro": {
+      "cost_ratio_pro_over_standard": 17.44,
+      "pass_delta_standard_minus_pro": 4,
+      "pro_cost_usd": 61.85691,
+      "pro_passed": 145,
+      "standard_cost_usd": 3.547815,
+      "standard_passed": 149
+    }
+  },
+  "report_kind": "model_variant_cost_audit",
+  "rows": [
+    {
+      "accuracy_pct": 93.1,
+      "api_errors": 0,
+      "api_rows": 160,
+      "comparison": "GPT-5.5 standard vs Pro",
+      "completion_tokens": 79220,
+      "contains_sorry": 0,
+      "cost_per_pass_usd": 0.023811,
+      "cost_usd": 3.547815,
+      "display_model": "GPT-5.5",
+      "failed": 11,
+      "failure_categories": {
+        "lean_syntax_error": 3,
+        "missing_context_or_identifier": 1,
+        "proof_search_failure": 7
+      },
+      "length_stops": 0,
+      "model": "openai/gpt-5.5",
+      "passed": 149,
+      "prompt_tokens": 234243,
+      "rejected_outputs": 0,
+      "repaired_passes": 1,
+      "total": 160,
+      "total_tokens": 313463
+    },
+    {
+      "accuracy_pct": 90.6,
+      "api_errors": 0,
+      "api_rows": 160,
+      "comparison": "GPT-5.5 standard vs Pro",
+      "completion_tokens": 304609,
+      "contains_sorry": 0,
+      "cost_per_pass_usd": 0.426599,
+      "cost_usd": 61.85691,
+      "display_model": "GPT-5.5 Pro",
+      "failed": 15,
+      "failure_categories": {
+        "proof_search_failure": 7,
+        "rejected_empty_proof_body": 6,
+        "type_mismatch_or_typeclass": 2
+      },
+      "length_stops": 6,
+      "model": "openai/gpt-5.5-pro",
+      "passed": 145,
+      "prompt_tokens": 234243,
+      "rejected_outputs": 6,
+      "repaired_passes": 3,
+      "total": 160,
+      "total_tokens": 538852
+    },
+    {
+      "accuracy_pct": 83.8,
+      "api_errors": 0,
+      "api_rows": 160,
+      "comparison": "Claude Opus 4.7 vs 4.8",
+      "completion_tokens": 12789,
+      "contains_sorry": 0,
+      "cost_per_pass_usd": 0.016705,
+      "cost_usd": 2.238515,
+      "display_model": "Claude Opus 4.7",
+      "failed": 26,
+      "failure_categories": {
+        "lean_syntax_error": 1,
+        "missing_context_or_identifier": 1,
+        "other_lean_failure": 6,
+        "proof_search_failure": 16,
+        "type_mismatch_or_typeclass": 2
+      },
+      "length_stops": 0,
+      "model": "anthropic/claude-opus-4.7",
+      "passed": 134,
+      "prompt_tokens": 383758,
+      "rejected_outputs": 0,
+      "repaired_passes": 1,
+      "total": 160,
+      "total_tokens": 396547
+    },
+    {
+      "accuracy_pct": 88.1,
+      "api_errors": 0,
+      "api_rows": 160,
+      "comparison": "Claude Opus 4.7 vs 4.8",
+      "completion_tokens": 9734,
+      "contains_sorry": 0,
+      "cost_per_pass_usd": 0.015306,
+      "cost_usd": 2.15814,
+      "display_model": "Claude Opus 4.8",
+      "failed": 19,
+      "failure_categories": {
+        "missing_context_or_identifier": 1,
+        "other_lean_failure": 3,
+        "proof_search_failure": 13,
+        "type_mismatch_or_typeclass": 2
+      },
+      "length_stops": 0,
+      "model": "anthropic/claude-opus-4.8",
+      "passed": 141,
+      "prompt_tokens": 382958,
+      "rejected_outputs": 0,
+      "repaired_passes": 1,
+      "total": 160,
+      "total_tokens": 392692
+    }
+  ],
+  "schema_version": "0.1.0",
+  "scope": "Post-freeze same-prompt-pack audit; not used to define the primary five-model hard subset or failure taxonomy."
+}

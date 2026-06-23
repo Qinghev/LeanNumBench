@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.row_stochastic2_inf_norm_abs_le_2d",
+  "title": "A nonnegative two-row row-stochastic operator is coordinatewise infinity-norm stable",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If both rows of a two-by-two operator are nonnegative and row-stochastic, then inputs bounded by M in absolute value produce two outputs bounded by M.",
+    "latex": "A >= 0, A 1 = 1, |x|,|y| <= M implies |(A(x,y))_1|, |(A(x,y))_2| <= M.",
+    "assumptions": [
+      "all four row weights are nonnegative",
+      "a+b=1 and c+d=1",
+      "|x| <= M and |y| <= M"
+    ],
+    "expected_conclusion": "Both output coordinates are bounded in absolute value by M."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "row2Apply",
+        "kind": "definition",
+        "statement": "def row2Apply (a b x y : Real) : Real := a * x + b * y"
+      },
+      {
+        "name": "rowStochastic2First",
+        "kind": "definition",
+        "statement": "def rowStochastic2First (a b x y : Real) : Real := row2Apply a b x y"
+      },
+      {
+        "name": "rowStochastic2Second",
+        "kind": "definition",
+        "statement": "def rowStochastic2Second (c d x y : Real) : Real := row2Apply c d x y"
+      },
+      {
+        "name": "rowStochastic2_infNorm_abs_le",
+        "kind": "theorem",
+        "statement": "theorem rowStochastic2_infNorm_abs_le (a b c d x y M : Real) (ha : 0 <= a) (hb : 0 <= b) (hc : 0 <= c) (hd : 0 <= d) (hrow1 : a + b = 1) (hrow2 : c + d = 1) (hx : |x| <= M) (hy : |y| <= M) : |rowStochastic2First a b x y| <= M /\\ |rowStochastic2Second c d x y| <= M"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate coordinatewise infinity-norm stability of a nonnegative two-row row-stochastic operator into Lean 4.",
+      "target": "theorem rowStochastic2_infNorm_abs_le (a b c d x y M : Real) (ha : 0 <= a) (hb : 0 <= b) (hc : 0 <= c) (hd : 0 <= d) (hrow1 : a + b = 1) (hrow2 : c + d = 1) (hx : |x| <= M) (hy : |y| <= M) : |rowStochastic2First a b x y| <= M /\\ |rowStochastic2Second c d x y| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by applying row2Apply_abs_le to each row.",
+      "target": "Split the conjunction and solve each row with row2Apply_abs_le."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma needed for each row-stability coordinate.",
+      "target": "row2Apply_abs_le"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "row_stochastic",
+    "infinity_norm",
+    "operator_stability",
+    "two_by_two",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

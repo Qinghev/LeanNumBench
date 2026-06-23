@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_preserves_const_2cell",
+  "title": "The weighted two-cell P0 projection preserves constants",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonzero total mass, the weighted P0 projection of a constant two-cell field returns that constant on both cells.",
+    "latex": "Pi_w(u,u)=(u,u) when m0+m1 != 0.",
+    "assumptions": [
+      "m0 + m1 is nonzero",
+      "both weighted projected coordinates equal the weighted average"
+    ],
+    "expected_conclusion": "Both projected coordinates equal u."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Projection2Left",
+        "kind": "definition",
+        "statement": "def weightedP0Projection2Left (m0 m1 u0 u1 : Real) : Real := weightedCellAverage2 m0 m1 u0 u1"
+      },
+      {
+        "name": "weightedP0Projection2Right",
+        "kind": "definition",
+        "statement": "def weightedP0Projection2Right (m0 m1 u0 u1 : Real) : Real := weightedCellAverage2 m0 m1 u0 u1"
+      },
+      {
+        "name": "weightedP0Projection2_preserves_const",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_preserves_const (m0 m1 u : Real) (hsum : m0 + m1 ≠ 0) : weightedP0Projection2Left m0 m1 u u = u /\\ weightedP0Projection2Right m0 m1 u u = u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate constant preservation of the weighted two-cell P0 projection into Lean 4.",
+      "target": "theorem weightedP0Projection2_preserves_const (m0 m1 u : Real) (hsum : m0 + m1 ≠ 0) : weightedP0Projection2Left m0 m1 u u = u /\\ weightedP0Projection2Right m0 m1 u u = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by splitting the conjunction and using weightedCellAverage2_const.",
+      "target": "Split the conjunction, unfold each projected coordinate, and use weightedCellAverage2_const."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma needed for each weighted constant-projection coordinate.",
+      "target": "weightedCellAverage2_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "p0_projection",
+    "constant_preservation",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

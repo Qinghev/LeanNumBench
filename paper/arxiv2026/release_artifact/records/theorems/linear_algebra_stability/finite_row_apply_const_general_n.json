@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.finite_row_apply_const_general_n",
+  "title": "A finite row-stochastic row preserves constant inputs",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "classic",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If finite row weights sum to one, applying the finite row to a constant input returns that same constant.",
+    "latex": "\\sum_{i\\in s} a_i u = u \\quad\\text{when}\\quad \\sum_{i\\in s}a_i=1.",
+    "assumptions": [
+      "s is a finite index set",
+      "the finite row weights sum to one",
+      "the input vector is constant"
+    ],
+    "expected_conclusion": "The finite row application equals the constant value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "declarations": [
+      {
+        "name": "finiteRowApply",
+        "kind": "definition",
+        "statement": "def finiteRowApply {ι : Type} (s : Finset ι) (a x : ι → Real) : Real := ∑ i ∈ s, a i * x i"
+      },
+      {
+        "name": "finiteRowApply_const",
+        "kind": "theorem",
+        "statement": "theorem finiteRowApply_const {ι : Type} (s : Finset ι) (a : ι → Real) (u : Real) (hsum : ∑ i ∈ s, a i = 1) : finiteRowApply s a (fun _ => u) = u"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate finite row-stochastic constant preservation into Lean 4.",
+      "target": "theorem finiteRowApply_const {ι : Type} (s : Finset ι) (a : ι → Real) (u : Real) (hsum : ∑ i ∈ s, a i = 1) : finiteRowApply s a (fun _ => u) = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding finiteRowApply, factoring the constant from the finite sum, rewriting the row sum, and simplifying.",
+      "target": "Unfold finiteRowApply, use Finset.sum_mul, rewrite hsum, and ring-normalize."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "row_stochastic",
+    "constant_vector",
+    "finite_sum",
+    "general_n",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

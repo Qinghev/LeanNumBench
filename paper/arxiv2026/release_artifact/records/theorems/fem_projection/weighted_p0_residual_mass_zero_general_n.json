@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_residual_mass_zero_general_n",
+  "title": "Finite weighted P0 residuals have zero weighted mass",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 4,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "S. C. Brenner and L. R. Scott, The Mathematical Theory of Finite Element Methods, 3rd ed., Springer, 2008, Ch. 4.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any finite cell set with nonzero total mass, the mass-weighted residual from the weighted P0 average has zero total mass.",
+    "latex": "\\sum_{i\\in s} m_i (u_i - \\bar u_m)=0.",
+    "assumptions": [
+      "s is a finite index set",
+      "m is a cell-mass function",
+      "the total mass is nonzero",
+      "u is a cell value function"
+    ],
+    "expected_conclusion": "The weighted residual has zero weighted sum."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Average",
+        "kind": "definition",
+        "statement": "def weightedP0Average {ι : Type} (s : Finset ι) (m u : ι → Real) : Real := (∑ i ∈ s, m i * u i) / (∑ i ∈ s, m i)"
+      },
+      {
+        "name": "weightedP0Residual",
+        "kind": "definition",
+        "statement": "def weightedP0Residual {ι : Type} (s : Finset ι) (m u : ι → Real) (i : ι) : Real := u i - weightedP0Average s m u"
+      },
+      {
+        "name": "weightedP0Residual_mass_zero",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Residual_mass_zero {ι : Type} (s : Finset ι) (m u : ι → Real) (hmass : (∑ i ∈ s, m i) ≠ 0) : ∑ i ∈ s, m i * weightedP0Residual s m u i = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index weighted P0 projection fact `weightedP0Residual_mass_zero` into Lean 4.",
+      "target": "theorem weightedP0Residual_mass_zero {ι : Type} (s : Finset ι) (m u : ι → Real) (hmass : (∑ i ∈ s, m i) ≠ 0) : ∑ i ∈ s, m i * weightedP0Residual s m u i = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `weightedP0Residual_mass_zero`.",
+      "target": "Unfold weightedP0Residual and weightedP0Average, distribute the finite sum, use Finset.sum_mul, and field_simp with the nonzero total mass."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or weighted-projection lemma needed for the proof.",
+      "target": "Finset.sum_sub_distrib; Finset.sum_mul"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "p0_projection",
+    "weighted_projection",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "orthogonality",
+    "mass_matrix"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

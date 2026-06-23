@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "ode_runge_kutta.midpoint_rk2_linear_taylor2_1d",
+  "title": "Explicit midpoint RK2 matches the quadratic Taylor polynomial on the scalar linear test equation",
+  "domain": "ode",
+  "category": "ode_runge_kutta",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Ernst Hairer, Syvert P. Norsett, and Gerhard Wanner, Solving Ordinary Differential Equations I: Nonstiff Problems, 2nd ed., Springer, 1993, Ch. II, pp. 129-353.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the scalar linear test equation y prime equals a y, one explicit midpoint RK2 step equals the second-order Taylor polynomial (1 + dt * a + (dt * a)^2 / 2) times y.",
+    "latex": "For \\(y\\prime=a y\\), midpoint RK2 gives \\(y_+=(1+\\Delta t\\,a+(\\Delta t\\,a)^2/2)y\\).",
+    "assumptions": [
+      "dt, a, and y are real numbers",
+      "midpointRK2Step uses the explicit midpoint stage",
+      "linearTaylor2Step is the quadratic Taylor polynomial for the linear test equation"
+    ],
+    "expected_conclusion": "The midpoint RK2 step equals the linear-test-equation quadratic Taylor step."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/ODE/RungeKutta.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "ODE"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "midpointRK2Step",
+        "kind": "definition",
+        "statement": "def midpointRK2Step (dt a y : Real) : Real := let k1 := a * y; let k2 := a * (y + (dt / 2) * k1); y + dt * k2"
+      },
+      {
+        "name": "linearTaylor2Step",
+        "kind": "definition",
+        "statement": "def linearTaylor2Step (dt a y : Real) : Real := (1 + dt * a + (dt * a) ^ 2 / 2) * y"
+      },
+      {
+        "name": "midpointRK2Step_eq_taylor2",
+        "kind": "theorem",
+        "statement": "theorem midpointRK2Step_eq_taylor2 (dt a y : Real) : midpointRK2Step dt a y = linearTaylor2Step dt a y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the explicit midpoint RK2 second-order Taylor identity for the scalar linear test equation into Lean 4.",
+      "target": "theorem midpointRK2Step_eq_taylor2 (dt a y : Real) : midpointRK2Step dt a y = linearTaylor2Step dt a y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the midpointRK2Step and linearTaylor2Step definitions, complete the Lean 4 proof.",
+      "target": "A proof by unfolding midpointRK2Step and linearTaylor2Step, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "runge_kutta",
+    "midpoint_method",
+    "rk2",
+    "ode",
+    "linear_test_equation",
+    "taylor_polynomial",
+    "order_two",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

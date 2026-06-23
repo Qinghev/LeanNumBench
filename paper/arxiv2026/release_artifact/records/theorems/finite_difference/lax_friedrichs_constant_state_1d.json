@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.lax_friedrichs_constant_state_1d",
+  "title": "Scalar Lax-Friedrichs update preserves constant states",
+  "domain": "finite_difference",
+  "category": "finite_difference_stability",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Consistency seed for the scalar Lax-Friedrichs update: equal left and right states are preserved."
+  },
+  "informal": {
+    "statement": "For any real cfl and constant value u, the scalar Lax-Friedrichs update with uLeft = uRight = u returns u.",
+    "latex": "For any \\(\\lambda,u\\in\\mathbb{R}\\), \\(((1+\\lambda)/2)u+((1-\\lambda)/2)u=u\\).",
+    "assumptions": [
+      "cfl and u are real numbers",
+      "the left and right neighboring values are equal"
+    ],
+    "expected_conclusion": "The scalar Lax-Friedrichs update preserves constant states."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/LaxFriedrichs.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "laxFriedrichsStep",
+        "kind": "definition",
+        "statement": "def laxFriedrichsStep (cfl uLeft uRight : ℝ) : ℝ := laxFriedrichsLeftWeight cfl * uLeft + laxFriedrichsRightWeight cfl * uRight"
+      },
+      {
+        "name": "laxFriedrichsStep_const",
+        "kind": "theorem",
+        "statement": "theorem laxFriedrichsStep_const (cfl u : ℝ) : laxFriedrichsStep cfl u u = u"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the constant-state preservation statement for the scalar Lax-Friedrichs update into Lean 4.",
+      "target": "theorem laxFriedrichsStep_const (cfl u : ℝ) : laxFriedrichsStep cfl u u = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the weight and step definitions, complete the Lean 4 proof.",
+      "target": "A proof using unfold and ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "lax_friedrichs",
+    "finite_difference",
+    "finite_volume",
+    "advection",
+    "constant_state",
+    "consistency",
+    "convex_combination",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

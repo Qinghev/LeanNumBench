@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_conservative_flux_const_1d",
+  "title": "The KdV conservative flux of a constant state is nonlinear times c squared",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Constant-state simplification for the configurable KdV-like conservative flux."
+  },
+  "informal": {
+    "statement": "For a constant state u_i=c, the KdV-like flux nonlinear*u_i^2 + dispersion*secondDifference(u)_i reduces to nonlinear*c^2.",
+    "latex": "If \\(u_i=c\\), then \\(a u_i^2 + b\\Delta^2u_i = a c^2\\).",
+    "assumptions": [
+      "nonlinear, dispersion, and c are real numbers",
+      "i is a natural-number grid index",
+      "the second forward difference of a constant state is zero"
+    ],
+    "expected_conclusion": "The dispersion contribution vanishes for a constant state."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "kdvConservativeFlux",
+        "kind": "definition",
+        "statement": "def kdvConservativeFlux (nonlinear dispersion : Real) (u : Nat -> Real) (i : Nat) : Real := nonlinear * (u i) ^ 2 + dispersion * secondForwardDifference u i"
+      },
+      {
+        "name": "kdvConservativeFlux_const",
+        "kind": "theorem",
+        "statement": "theorem kdvConservativeFlux_const (nonlinear dispersion c : Real) (i : Nat) : kdvConservativeFlux nonlinear dispersion (fun _ => c) i = nonlinear * c ^ 2"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the constant-state simplification of the KdV conservative flux into Lean 4.",
+      "target": "theorem kdvConservativeFlux_const (nonlinear dispersion c : Real) (i : Nat) : kdvConservativeFlux nonlinear dispersion (fun _ => c) i = nonlinear * c ^ 2"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given kdvConservativeFlux and secondForwardDifference, complete the constant-state proof.",
+      "target": "A proof by unfolding definitions and using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "conservative_flux",
+    "constant_state",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

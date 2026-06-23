@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_cfl_linf_stability_1d",
+  "title": "Explicit heat-equation update is L-infinity stable under the parabolic CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Difference Methods for Ordinary and Partial Differential Equations, SIAM, 2007, Ch. 9.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If 0 <= r and 2r <= 1, and the left, center, and right scalar inputs are all bounded in absolute value by M, then the explicit heat update is also bounded by M.",
+    "latex": "If \\(0\\le r\\), \\(2r\\le1\\), \\(|u_L|\\le M\\), \\(|u|\\le M\\), and \\(|u_R|\\le M\\), then \\(|{\\mathcal H}_r(u_L,u,u_R)|\\le M\\).",
+    "assumptions": [
+      "r, uLeft, u, uRight, and M are real numbers",
+      "0 <= r",
+      "2 * r <= 1",
+      "|uLeft| <= M",
+      "|u| <= M",
+      "|uRight| <= M"
+    ],
+    "expected_conclusion": "The scalar explicit heat update remains bounded by M in absolute value."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatStep",
+        "kind": "definition",
+        "statement": "def heatStep (r uLeft u uRight : Real) : Real := heatLeftWeight r * uLeft + heatCenterWeight r * u + heatRightWeight r * uRight"
+      },
+      {
+        "name": "heatStep_abs_le",
+        "kind": "theorem",
+        "statement": "theorem heatStep_abs_le (r uLeft u uRight M : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) (hLeft : |uLeft| <= M) (h : |u| <= M) (hRight : |uRight| <= M) : |heatStep r uLeft u uRight| <= M"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: If 0 <= r and 2r <= 1, and the left, center, and right scalar inputs are all bounded in absolute value by M, then the explicit heat update is also bounded by M.",
+      "target": "theorem heatStep_abs_le (r uLeft u uRight M : Real) (hr0 : 0 <= r) (hrCfl : 2 * r <= 1) (hLeft : |uLeft| <= M) (h : |u| <= M) (hRight : |uRight| <= M) : |heatStep r uLeft u uRight| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using heatWeights_nonneg, repeated abs_add_le, abs_mul, abs_of_nonneg, mul_le_mul_of_nonneg_left, linarith, and ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find core Mathlib lemmas needed to prove L-infinity stability of a three-term convex combination.",
+      "target": "abs_add_le, abs_mul, abs_of_nonneg, mul_le_mul_of_nonneg_left, linarith"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "linf_stability",
+    "absolute_value",
+    "convex_combination",
+    "cfl"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

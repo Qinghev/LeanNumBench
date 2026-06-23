@@ -1,0 +1,33 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=0.42cm and 0.42cm,
+  box/.style={draw, rounded corners=2pt, align=center, minimum height=0.82cm,
+              text width=2.75cm, font=\scriptsize, fill=black!2},
+  smallbox/.style={draw, rounded corners=2pt, align=center, minimum height=0.72cm,
+                   text width=2.85cm, font=\scriptsize},
+  arrow/.style={-{Latex[length=1.8mm]}, line width=0.35pt}
+]
+\node[box] (panel) {Frozen panel\\5 models $\times$ 160 records\\800 Lean checks};
+\node[box, right=of panel] (split) {Outcome split\\698 passes\\102 failures};
+\node[box, right=of split] (tax) {Failure localization\\55 proof-search failures\\only 2 missing-context};
+\node[box, right=of tax] (hard) {Shared hard rows\\11 rows failed by $\geq$3 models\\5 rows failed by 4/5};
+
+\node[smallbox, below=0.56cm of split] (context) {Context ablation\\59/74 full-context\\48/74 no-context};
+\node[smallbox, below=0.56cm of tax] (repair) {Repair audit\\17/800 assisted passes\\0 \texttt{sorry} passes};
+\node[smallbox, below=0.56cm of hard] (passk) {Hard-subset pass@3\\best models 9/11\\4 rows persist for $\geq$2 models};
+
+\draw[arrow] (panel) -- (split);
+\draw[arrow] (split) -- (tax);
+\draw[arrow] (tax) -- (hard);
+\draw[arrow] (split) -- (context);
+\draw[arrow] (tax) -- (repair);
+\draw[arrow] (hard) -- (passk);
+\end{tikzpicture}
+\caption{LeanNumBench turns a high aggregate pass rate into a diagnostic object. The
+frozen panel first separates passes from Lean-checked failures, then localizes
+the dominant residual failure mode, identifies shared hard rows, and probes
+whether those rows persist under sampling. Context and repair audits check that
+the signal is not merely missing declarations or permissive post-processing.}
+\label{fig:diagnostic-panel}
+\end{figure}

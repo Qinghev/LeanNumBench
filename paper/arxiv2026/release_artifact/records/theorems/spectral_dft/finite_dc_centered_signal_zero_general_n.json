@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.finite_dc_centered_signal_zero_general_n",
+  "title": "Finite centered signals have zero DC mode",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any finite index set with nonzero cardinality, subtracting the finite mean from a real-valued signal makes its DC sum vanish.",
+    "latex": "\\sum_{i\\in s}(u_i-\\bar u)=0,\\quad \\bar u=|s|^{-1}\\sum_{i\\in s}u_i.",
+    "assumptions": [
+      "s is a finite index set",
+      "u is a real-valued signal on the index type",
+      "the cardinality of s is nonzero when cast to Real"
+    ],
+    "expected_conclusion": "The DC mode of the centered signal over s is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteMean",
+        "kind": "definition",
+        "statement": "def finiteMean {ι : Type} (s : Finset ι) (u : ι → Real) : Real := finiteDC s u / (s.card : Real)"
+      },
+      {
+        "name": "centeredSignal",
+        "kind": "definition",
+        "statement": "def centeredSignal {ι : Type} (s : Finset ι) (u : ι → Real) (i : ι) : Real := u i - finiteMean s u"
+      },
+      {
+        "name": "finiteDC_centeredSignal_zero",
+        "kind": "theorem",
+        "statement": "theorem finiteDC_centeredSignal_zero {ι : Type} (s : Finset ι) (u : ι → Real) (hcard : (s.card : Real) ≠ 0) : finiteDC s (centeredSignal s u) = 0"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the statement that finite mean-centering removes the DC mode of a real signal into Lean 4.",
+      "target": "theorem finiteDC_centeredSignal_zero {ι : Type} (s : Finset ι) (u : ι → Real) (hcard : (s.card : Real) ≠ 0) : finiteDC s (centeredSignal s u) = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the finite mean and centered signal, summing constants, simplifying scalar multiplication, and clearing the nonzero cardinal denominator.",
+      "target": "Unfold centeredSignal, finiteMean, and finiteDC; rewrite the sum of differences and the sum of a constant; then use field_simp and ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the finite-sum facts needed to prove centered finite signals have zero DC mode.",
+      "target": "Finset.sum_sub_distrib and Finset.sum_const"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "finite_sum",
+    "mean_centering",
+    "general_n",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_const_approx_error_nonneg_2cell",
+  "title": "The weighted error to a constant field is nonnegative",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If both cell masses are nonnegative, the weighted squared error from a two-cell field to any constant c is nonnegative.",
+    "latex": "0 <= m0*(u0-c)^2 + m1*(u1-c)^2.",
+    "assumptions": [
+      "0 <= m0",
+      "0 <= m1",
+      "c is any real constant comparison value"
+    ],
+    "expected_conclusion": "The weighted constant-approximation error is nonnegative."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedConstApproxError2",
+        "kind": "definition",
+        "statement": "def weightedConstApproxError2 (m0 m1 u0 u1 c : Real) : Real := m0 * (u0 - c) ^ 2 + m1 * (u1 - c) ^ 2"
+      },
+      {
+        "name": "weightedConstApproxError2_nonneg",
+        "kind": "theorem",
+        "statement": "theorem weightedConstApproxError2_nonneg (m0 m1 u0 u1 c : Real) (hm0 : 0 <= m0) (hm1 : 0 <= m1) : 0 <= weightedConstApproxError2 m0 m1 u0 u1 c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate nonnegativity of weighted squared error to a constant field into Lean 4.",
+      "target": "theorem weightedConstApproxError2_nonneg (m0 m1 u0 u1 c : Real) (hm0 : 0 <= m0) (hm1 : 0 <= m1) : 0 <= weightedConstApproxError2 m0 m1 u0 u1 c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the weighted constant-error expression.",
+      "target": "Unfold weightedConstApproxError2 and use mul_nonneg, sq_nonneg, and nlinarith."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "best_approximation",
+    "nonnegativity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

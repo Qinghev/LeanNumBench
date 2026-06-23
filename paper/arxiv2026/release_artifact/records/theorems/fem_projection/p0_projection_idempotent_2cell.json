@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_idempotent_2cell",
+  "title": "The two-cell P0 projection is idempotent at the average level",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Averaging the two projected coordinates gives the same average as the original two cell values.",
+    "latex": "\\operatorname{avg}(\\Pi_0 u)_0,(\\Pi_0 u)_1)=\\operatorname{avg}(u_0,u_1).",
+    "assumptions": [
+      "u0 and u1 are real cell values",
+      "both projected coordinates are the arithmetic mean"
+    ],
+    "expected_conclusion": "The average after projection equals the original average."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "cellAverage2",
+        "kind": "definition",
+        "statement": "def cellAverage2 (u0 u1 : Real) : Real := (u0 + u1) / 2"
+      },
+      {
+        "name": "p0Projection2_idempotent",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_idempotent (u0 u1 : Real) : cellAverage2 (p0Projection2Left u0 u1) (p0Projection2Right u0 u1) = cellAverage2 u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate idempotence of the two-cell P0 projection at the average level into Lean 4.",
+      "target": "theorem p0Projection2_idempotent (u0 u1 : Real) : cellAverage2 (p0Projection2Left u0 u1) (p0Projection2Right u0 u1) = cellAverage2 u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the average and projected coordinates.",
+      "target": "Unfold p0Projection2Left, p0Projection2Right, and cellAverage2, then use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "idempotence",
+    "cell_average"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

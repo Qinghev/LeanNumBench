@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.finite_dc_neg_general_n",
+  "title": "The finite DC mode commutes with negation",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Lloyd N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000, Ch. 3, pp. 17-28.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any finite signal, the DC sum of the pointwise negation is the negation of the DC sum.",
+    "latex": "\\sum_{i\\in s}(-u_i)=-\\sum_{i\\in s}u_i.",
+    "assumptions": [
+      "s is finite",
+      "u is a real-valued signal on s"
+    ],
+    "expected_conclusion": "The DC mode commutes with negation."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteDC_neg",
+        "kind": "theorem",
+        "statement": "theorem finiteDC_neg {ι : Type} (s : Finset ι) (u : ι → Real) : finiteDC s (fun i => -u i) = -finiteDC s u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index spectral/DC identity `finiteDC_neg` into Lean 4.",
+      "target": "theorem finiteDC_neg {ι : Type} (s : Finset ι) (u : ι → Real) : finiteDC s (fun i => -u i) = -finiteDC s u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `finiteDC_neg`.",
+      "target": "Unfold finiteDC and use finite-sum negation."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or mean-centering lemma needed for the proof.",
+      "target": "Finset.sum_neg_distrib"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

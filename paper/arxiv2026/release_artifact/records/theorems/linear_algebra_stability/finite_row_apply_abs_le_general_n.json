@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.finite_row_apply_abs_le_general_n",
+  "title": "A finite nonnegative row-stochastic row is infinity-norm stable",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 4,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "A finite nonnegative row whose weights sum to one maps any input vector bounded by M in absolute value to an output bounded by M.",
+    "latex": "a_i\\ge 0,\\ \\sum_i a_i=1,\\ |x_i|\\le M \\Rightarrow |\\sum_i a_i x_i|\\le M.",
+    "assumptions": [
+      "s is a finite index set",
+      "a is a nonnegative real-valued row over s",
+      "the row weights sum to one over s",
+      "x is bounded by M in absolute value on s"
+    ],
+    "expected_conclusion": "The finite row application is bounded in absolute value by M."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "finiteRowApply",
+        "kind": "definition",
+        "statement": "def finiteRowApply {ι : Type} (s : Finset ι) (a x : ι → Real) : Real := ∑ i ∈ s, a i * x i"
+      },
+      {
+        "name": "finiteRowApply_abs_le",
+        "kind": "theorem",
+        "statement": "theorem finiteRowApply_abs_le {ι : Type} (s : Finset ι) (a x : ι → Real) (M : Real) (ha : ∀ i, i ∈ s → 0 <= a i) (hsum : ∑ i ∈ s, a i = 1) (hx : ∀ i, i ∈ s → |x i| <= M) : |finiteRowApply s a x| <= M"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate finite row-stochastic infinity-norm stability into Lean 4.",
+      "target": "theorem finiteRowApply_abs_le {ι : Type} (s : Finset ι) (a x : ι → Real) (M : Real) (ha : ∀ i, i ∈ s → 0 <= a i) (hsum : ∑ i ∈ s, a i = 1) (hx : ∀ i, i ∈ s → |x i| <= M) : |finiteRowApply s a x| <= M"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by applying the triangle inequality for finite sums, simplifying absolute values of nonnegative weights, using the pointwise bound, and rewriting the row sum.",
+      "target": "Use Finset.abs_sum_le_sum_abs, abs_mul, abs_of_nonneg, Finset.sum_le_sum, Finset.sum_mul, and the row-sum identity."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the Mathlib lemma that bounds the absolute value of a finite sum by the sum of absolute values.",
+      "target": "Finset.abs_sum_le_sum_abs"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "row_stochastic",
+    "infinity_norm",
+    "operator_stability",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

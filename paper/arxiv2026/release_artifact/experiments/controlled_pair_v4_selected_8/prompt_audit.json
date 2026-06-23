@@ -1,0 +1,39 @@
+{
+  "by_family": {
+    "FEM/P0 projection": 2,
+    "finite-difference KdV conservation": 2,
+    "finite-difference Lax-Friedrichs stability": 2,
+    "finite-difference heat stability": 2,
+    "finite-difference upwind stability": 2,
+    "linear-algebra finite-row stability": 2,
+    "linear-algebra row-stochastic stability": 2,
+    "symplectic time integration": 2
+  },
+  "by_intervention": {
+    "additive_residual_orthogonality_vs_exposed_weighted_average": 2,
+    "three_direct_steps_vs_three_orbit_recurrence_steps": 2,
+    "three_stage_row_apply_vs_stochastic_wrapper": 2,
+    "three_step_index_transport_hidden_grid_api": 2,
+    "three_step_nested_api_vs_exposed_final_weights": 2,
+    "three_step_upwind_api_vs_exposed_final_weights": 2,
+    "two_stage_finite_row_api_vs_exposed_outer_sum": 2,
+    "two_update_discrete_mass_api_vs_exposed_zero_change": 2
+  },
+  "by_side": {
+    "easy": 8,
+    "hard": 8
+  },
+  "candidate_rows": 16,
+  "issues": [],
+  "issues_count": 0,
+  "passed": true,
+  "prompt_chars": {
+    "max": 12611,
+    "mean": 6893.9,
+    "min": 4458
+  },
+  "prompt_rows": 16,
+  "report_kind": "minimal_pair_prompt_audit",
+  "schema_version": "0.1.0",
+  "target_rows": 16
+}

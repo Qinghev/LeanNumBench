@@ -1,0 +1,74 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_error_decomposition_2cell",
+  "title": "Weighted constant-approximation error decomposes into projection residual plus constant error",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonzero total mass, the weighted error from u to any constant c equals the projection residual energy plus the weighted error from the projected constant to c.",
+    "latex": "||u-c||_w^2 = ||u-Pi_w u||_w^2 + ||Pi_w u-c||_w^2.",
+    "assumptions": [
+      "m0 + m1 is nonzero",
+      "c is any constant comparison value"
+    ],
+    "expected_conclusion": "The weighted error decomposes into residual and projected-constant error terms."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Projection2_error_decomposition",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_error_decomposition (m0 m1 u0 u1 c : Real) (hsum : m0 + m1 ≠ 0) : weightedConstApproxError2 m0 m1 u0 u1 c = weightedP0ProjectionResidualSq2 m0 m1 u0 u1 + weightedConstApproxError2 m0 m1 (weightedCellAverage2 m0 m1 u0 u1) (weightedCellAverage2 m0 m1 u0 u1) c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate weighted constant-error decomposition for a two-cell P0 projection into Lean 4.",
+      "target": "theorem weightedP0Projection2_error_decomposition (m0 m1 u0 u1 c : Real) (hsum : m0 + m1 ≠ 0) : weightedConstApproxError2 m0 m1 u0 u1 c = weightedP0ProjectionResidualSq2 m0 m1 u0 u1 + weightedConstApproxError2 m0 m1 (weightedCellAverage2 m0 m1 u0 u1) (weightedCellAverage2 m0 m1 u0 u1) c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding weighted errors and the weighted average.",
+      "target": "Unfold weightedConstApproxError2, weightedP0ProjectionResidualSq2, and weightedCellAverage2; use field_simp with hsum and ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "error_decomposition",
+    "best_approximation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

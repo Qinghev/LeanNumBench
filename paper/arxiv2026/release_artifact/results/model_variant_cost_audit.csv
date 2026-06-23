@@ -1,0 +1,5 @@
+comparison,model,display_model,passed,total,accuracy_pct,failed,repaired_passes,rejected_outputs,contains_sorry,api_rows,api_errors,prompt_tokens,completion_tokens,total_tokens,length_stops,cost_usd,cost_per_pass_usd
+GPT-5.5 standard vs Pro,openai/gpt-5.5,GPT-5.5,149,160,93.1,11,1,0,0,160,0,234243,79220,313463,0,3.547815,0.023811
+GPT-5.5 standard vs Pro,openai/gpt-5.5-pro,GPT-5.5 Pro,145,160,90.6,15,3,6,0,160,0,234243,304609,538852,6,61.85691,0.426599
+Claude Opus 4.7 vs 4.8,anthropic/claude-opus-4.7,Claude Opus 4.7,134,160,83.8,26,1,0,0,160,0,383758,12789,396547,0,2.238515,0.016705
+Claude Opus 4.7 vs 4.8,anthropic/claude-opus-4.8,Claude Opus 4.8,141,160,88.1,19,1,0,0,160,0,382958,9734,392692,0,2.15814,0.015306

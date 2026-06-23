@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.dft2_parseval_2pt",
+  "title": "Two-point Parseval identity for the real DFT",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For the real two-point DFT, spectral energy divided by two equals physical energy.",
+    "latex": "((u_0+u_1)^2 + (u_0-u_1)^2)/2 = u_0^2+u_1^2.",
+    "assumptions": [
+      "u0 and u1 are real numbers",
+      "spectral energy is DC squared plus Nyquist squared",
+      "physical energy is u0 squared plus u1 squared"
+    ],
+    "expected_conclusion": "The normalized spectral energy equals the physical energy."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "dft2Energy",
+        "kind": "definition",
+        "statement": "def dft2Energy (u0 u1 : Real) : Real := dft2DC u0 u1 ^ 2 + dft2Nyquist u0 u1 ^ 2"
+      },
+      {
+        "name": "physical2Energy",
+        "kind": "definition",
+        "statement": "def physical2Energy (u0 u1 : Real) : Real := u0 ^ 2 + u1 ^ 2"
+      },
+      {
+        "name": "dft2_parseval",
+        "kind": "theorem",
+        "statement": "theorem dft2_parseval (u0 u1 : Real) : dft2Energy u0 u1 / 2 = physical2Energy u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the two-point Parseval identity into Lean 4.",
+      "target": "theorem dft2_parseval (u0 u1 : Real) : dft2Energy u0 u1 / 2 = physical2Energy u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by rewriting with the doubled-energy identity and simplifying.",
+      "target": "Rewrite by dft2Energy_eq_two_physical2Energy and use ring."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the LeanNumerics lemma needed to prove the normalized two-point Parseval identity.",
+      "target": "dft2Energy_eq_two_physical2Energy"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "fourier",
+    "parseval",
+    "energy_identity",
+    "theorem_retrieval"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

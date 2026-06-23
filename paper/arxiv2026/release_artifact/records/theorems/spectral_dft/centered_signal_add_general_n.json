@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.centered_signal_add_general_n",
+  "title": "Mean-centering is additive for finite signals",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Lloyd N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000, Ch. 3, pp. 17-28.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "Mean-centering a pointwise sum equals the pointwise sum of the mean-centered signals.",
+    "latex": "(u_i+v_i)-\\overline{u+v}=(u_i-\\bar u)+(v_i-\\bar v).",
+    "assumptions": [
+      "s is finite",
+      "u and v are real-valued signals",
+      "i is an index"
+    ],
+    "expected_conclusion": "Mean-centering is additive."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteMean",
+        "kind": "definition",
+        "statement": "def finiteMean {ι : Type} (s : Finset ι) (u : ι → Real) : Real := finiteDC s u / (s.card : Real)"
+      },
+      {
+        "name": "centeredSignal",
+        "kind": "definition",
+        "statement": "def centeredSignal {ι : Type} (s : Finset ι) (u : ι → Real) (i : ι) : Real := u i - finiteMean s u"
+      },
+      {
+        "name": "centeredSignal_add",
+        "kind": "theorem",
+        "statement": "theorem centeredSignal_add {ι : Type} (s : Finset ι) (u v : ι → Real) (i : ι) : centeredSignal s (fun j => u j + v j) i = centeredSignal s u i + centeredSignal s v i"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index spectral/DC identity `centeredSignal_add` into Lean 4.",
+      "target": "theorem centeredSignal_add {ι : Type} (s : Finset ι) (u v : ι → Real) (i : ι) : centeredSignal s (fun j => u j + v j) i = centeredSignal s u i + centeredSignal s v i"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `centeredSignal_add`.",
+      "target": "Unfold centeredSignal, use finiteMean_add, and ring-normalize."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or mean-centering lemma needed for the proof.",
+      "target": "finiteMean_add"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "finite_mean",
+    "centered_signal",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

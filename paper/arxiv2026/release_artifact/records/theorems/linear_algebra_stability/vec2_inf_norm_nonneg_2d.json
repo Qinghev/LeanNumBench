@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1.0",
+  "id": "linear_algebra_stability.vec2_inf_norm_nonneg_2d",
+  "title": "Two-entry infinity norm is nonnegative",
+  "domain": "linear_algebra",
+  "category": "linear_algebra_stability",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any two real entries, the two-entry infinity norm max(|x|, |y|) is nonnegative.",
+    "latex": "For all x,y in R, 0 <= ||(x,y)||_infty := max(|x|,|y|).",
+    "assumptions": [
+      "x and y are real numbers",
+      "the infinity norm is defined as max of the two absolute values"
+    ],
+    "expected_conclusion": "The two-entry infinity norm is nonnegative."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/LinearAlgebra/Stability.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "LinearAlgebra"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "vec2InfNorm",
+        "kind": "definition",
+        "statement": "def vec2InfNorm (x y : Real) : Real := max |x| |y|"
+      },
+      {
+        "name": "vec2InfNorm_nonneg",
+        "kind": "theorem",
+        "statement": "theorem vec2InfNorm_nonneg (x y : Real) : 0 <= vec2InfNorm x y"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the nonnegativity of the two-entry infinity norm into Lean 4.",
+      "target": "theorem vec2InfNorm_nonneg (x y : Real) : 0 <= vec2InfNorm x y"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof using nonnegativity of absolute value and the left max bound.",
+      "target": "Unfold vec2InfNorm and use le_max_of_le_left with abs_nonneg."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "linear_algebra",
+    "infinity_norm",
+    "norm_nonneg",
+    "absolute_value",
+    "max"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

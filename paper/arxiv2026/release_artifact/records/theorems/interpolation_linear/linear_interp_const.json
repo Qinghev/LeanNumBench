@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "interpolation_linear.linear_interp_const",
+  "title": "Linear interpolation preserves constant data",
+  "domain": "interpolation",
+  "category": "interpolation_linear",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 8 (Polynomial Interpolation).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "On a nondegenerate interval, the two-point linear interpolant of constant endpoint data is constant at every evaluation point.",
+    "latex": "L(x)=c.",
+    "assumptions": [
+      "x1 - x0 is nonzero",
+      "both endpoint values are c"
+    ],
+    "expected_conclusion": "The linear interpolant of constant data is constant."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Interpolation/Linear.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Interpolation"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "linearInterp",
+        "kind": "definition",
+        "statement": "def linearInterp (x0 x1 y0 y1 x : Real) : Real := ((x1 - x) / (x1 - x0)) * y0 + ((x - x0) / (x1 - x0)) * y1"
+      },
+      {
+        "name": "linearInterp_const",
+        "kind": "theorem",
+        "statement": "theorem linearInterp_const (x0 x1 c x : Real) (h : x1 - x0 ≠ 0) : linearInterp x0 x1 c c x = c"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the interpolation theorem `linearInterp_const` into Lean 4.",
+      "target": "theorem linearInterp_const (x0 x1 c x : Real) (h : x1 - x0 ≠ 0) : linearInterp x0 x1 c c x = c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `linearInterp_const`.",
+      "target": "unfold linearInterp; field_simp [h]; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the interpolation proof.",
+      "target": "field_simp"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "interpolation",
+    "linear_interpolation",
+    "affine_combination",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "constant_preservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

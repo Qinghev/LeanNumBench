@@ -1,0 +1,170 @@
+{
+  "manifest_version": "nabench-minimal-pairs-v4-selected-8-v0.1",
+  "created_date": "2026-06-04",
+  "status": "v4_selected_8_no_api_ready_for_manual_review",
+  "api_policy": "No model-generation API calls are authorized by this manifest. Paid runs require local checks, fresh pricing, balance check, and explicit user approval.",
+  "lean_project": "LeanNumerics",
+  "lean_module": "LeanNumerics.LeanNumBenchMinimalPairsV4",
+  "lean_file": "LeanNumerics/LeanNumBenchMinimalPairsV4.lean",
+  "selection_summary": {
+    "pair_count": 8,
+    "theorem_target_count": 16,
+    "source_record_count": 10,
+    "family_count": 8,
+    "primary_intervention_count": 8
+  },
+  "local_checks": [
+    {
+      "name": "lake build LeanNumerics.LeanNumBenchMinimalPairsV4",
+      "status": "passed",
+      "date": "2026-06-04",
+      "notes": "Initial build and post-ASCII-fix incremental build both completed; final explicit rerun completed successfully."
+    },
+    {
+      "name": "no-LLM tactic baseline",
+      "status": "passed",
+      "date": "2026-06-04",
+      "artifact": "data/minimal_pairs/v4_selected_8_tactic_baseline.json",
+      "notes": "Fixed tactic portfolio solved 0/16 targets: 0/8 easy and 0/8 hard, with --timeout 20."
+    },
+    {
+      "name": "guided_v3 prompt preparation and audit",
+      "status": "passed",
+      "date": "2026-06-04",
+      "artifact": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/prompt_audit.json",
+      "notes": "Generated 16 prompts; audit issues_count = 0; prompt chars min/mean/max = 4458/6893.9/12611."
+    },
+    {
+      "name": "empty-template negative check",
+      "status": "passed_expected_failure",
+      "date": "2026-06-04",
+      "artifact": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/check_candidate_template_empty.json",
+      "notes": "Normal checker passed 0/16 empty candidate proofs."
+    },
+    {
+      "name": "statement elaboration positive check",
+      "status": "passed",
+      "date": "2026-06-04",
+      "artifact": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/check_candidate_template_sorry.json",
+      "notes": "Empty proofs treated as sorry passed 16/16 targets. V4P01_easy required the longer --timeout 240 check."
+    },
+    {
+      "name": "prompt-field leak scan",
+      "status": "passed",
+      "date": "2026-06-04",
+      "notes": "No model-visible prompt/template hits for local paths, user or repository owner strings, API-key patterns, ground-truth v4 module name, or target theorem names."
+    },
+    {
+      "name": "OpenRouter runner dry-run",
+      "status": "passed_no_api",
+      "date": "2026-06-04",
+      "notes": "Selected 16 GPT-5.5 standard prompts with max_paid_prompts=16 and made no API calls."
+    }
+  ],
+  "pairs": [
+    {
+      "pair_id": "V4P01",
+      "source_record": "finite_difference.heat_cfl_linf_stability_1d",
+      "family": "finite-difference heat stability",
+      "primary_intervention": "three_step_index_transport_hidden_grid_api",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p01_easy_heat_three_step_outer_exposed_abs_le",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p01_hard_heat_three_step_grid_api_abs_le",
+      "easy_surface": "The outer heat step is exposed while the two-step grid values remain visible at adjacent indices.",
+      "hard_surface": "The same three-step local heat stability fact is hidden behind nested heatStepGrid APIs.",
+      "equivalence_note": "Both sides prove the same three-step heat-grid Linf bound from the same seven local input bounds.",
+      "risk_note": "High-value stress pair; may still saturate if the model composes heatStepGrid_abs_le perfectly.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P04",
+      "source_record": "finite_difference.lax_friedrichs_cfl_linf_stability_1d",
+      "family": "finite-difference Lax-Friedrichs stability",
+      "primary_intervention": "three_step_nested_api_vs_exposed_final_weights",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p04_easy_lax_three_step_exposed_final_weights_abs_le",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p04_hard_lax_three_step_nested_api_abs_le",
+      "easy_surface": "The final convex-combination weights are exposed after two inner Lax-Friedrichs steps.",
+      "hard_surface": "The same third step is written only through nested Lax-Friedrichs step APIs.",
+      "equivalence_note": "Both sides prove the same three-step CFL Linf bound under the same CFL and input-bound assumptions.",
+      "risk_note": "Designed to improve on the saturated v3 wrapper pairs by requiring multiple one-step bound compositions.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P06",
+      "source_record": "finite_difference.upwind_cfl_linf_stability_1d",
+      "family": "finite-difference upwind stability",
+      "primary_intervention": "three_step_upwind_api_vs_exposed_final_weights",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p06_easy_upwind_three_step_exposed_final_weights_abs_le",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p06_hard_upwind_three_step_nested_api_abs_le",
+      "easy_surface": "The final upwind convex weights are exposed while the two-step neighbor values remain named.",
+      "hard_surface": "The same proof obligation is presented as a nested three-step upwind API expression.",
+      "equivalence_note": "Both sides prove the same three-step upwind Linf bound under the same CFL and input bounds.",
+      "risk_note": "Good companion to V4P04; checks whether directionality and asymmetric stencil choreography matter.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P10",
+      "source_record": "finite_difference.kdv_canonical_mass_boundary_flux_1d",
+      "family": "finite-difference KdV conservation",
+      "primary_intervention": "two_update_discrete_mass_api_vs_exposed_zero_change",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p10_easy_kdv_two_updates_mass_direct",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p10_hard_kdv_two_updates_exposed_mass_change_zero",
+      "easy_surface": "The two-update mass preservation theorem is stated with the discreteMass API.",
+      "hard_surface": "The same two-update mass preservation fact is stated as exposed range-sum zero change.",
+      "equivalence_note": "Both sides compose the same KdV boundary-flux mass-preservation lemma twice.",
+      "risk_note": "High-value conservation pair because it requires carrying two boundary-flux hypotheses through composition.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P14",
+      "source_record": "fem_projection.weighted_p0_projection_orthogonal_const_general_n",
+      "family": "FEM/P0 projection",
+      "primary_intervention": "additive_residual_orthogonality_vs_exposed_weighted_average",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p14_easy_weighted_p0_additive_orthogonal_split",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p14_hard_weighted_p0_additive_exposed_residual",
+      "easy_surface": "Two residual orthogonality terms are exposed separately.",
+      "hard_surface": "The same orthogonality fact is stated for the residual of u+v with the weighted average exposed.",
+      "equivalence_note": "Both sides reduce to weighted P0 residual orthogonality under the same nonzero mass assumption.",
+      "risk_note": "Targets finite-sum and denominator choreography; reviewer note must explain the additive residual equivalence.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P19",
+      "source_record": "linear_algebra_stability.finite_row_apply_abs_le_general_n",
+      "family": "linear-algebra finite-row stability",
+      "primary_intervention": "two_stage_finite_row_api_vs_exposed_outer_sum",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p19_easy_finite_row_two_stage_exposed_sum_abs_le",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p19_hard_finite_row_two_stage_nested_api_abs_le",
+      "easy_surface": "The outer weighted finite sum is exposed and the inner finiteRowApply remains as a scalar.",
+      "hard_surface": "The same two-stage bound is hidden behind nested finiteRowApply APIs.",
+      "equivalence_note": "Both sides apply the same finite weighted absolute-sum bound to the inner row and then the outer row.",
+      "risk_note": "Useful general finite-index pair; no-LLM baseline must confirm it is not solved by simp alone.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P20",
+      "source_record": "linear_algebra_stability.row2_apply_abs_le_2d",
+      "family": "linear-algebra row-stochastic stability",
+      "primary_intervention": "three_stage_row_apply_vs_stochastic_wrapper",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p20_easy_row2_three_stage_abs_le",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p20_hard_row_stochastic_three_stage_wrapper_abs_le",
+      "easy_surface": "The three-stage two-row computation is written with row2Apply at every layer.",
+      "hard_surface": "The same computation is written with rowStochastic2First wrappers at every layer.",
+      "equivalence_note": "Both sides compose the same row2Apply absolute-value stability lemma across three stages.",
+      "risk_note": "Extends the earlier two-stage pair to reduce saturation risk.",
+      "status": "lean_declared"
+    },
+    {
+      "pair_id": "V4P22",
+      "source_record": "symplectic.leapfrog_invariant_step_of_isLeapfrogOrbit",
+      "family": "symplectic time integration",
+      "primary_intervention": "three_direct_steps_vs_three_orbit_recurrence_steps",
+      "easy_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p22_easy_leapfrog_three_direct_steps",
+      "hard_theorem": "LeanNumerics.LeanNumBenchMinimalPairsV4.v4p22_hard_leapfrog_three_orbit_steps",
+      "easy_surface": "Three direct leapfrog invariant-preservation steps are composed explicitly.",
+      "hard_surface": "The same three invariant-preservation steps must be recovered from an orbit recurrence and shifted Nat indices.",
+      "equivalence_note": "Both sides prove three-step invariant preservation by repeated use of the same one-step invariant lemma.",
+      "risk_note": "High-value index-transport pair; Lean Nat normalization must remain a proof-engineering issue, not a mathematical strengthening.",
+      "status": "lean_declared"
+    }
+  ]
+}

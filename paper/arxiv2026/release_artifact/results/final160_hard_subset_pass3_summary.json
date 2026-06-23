@@ -1,0 +1,200 @@
+{
+  "api_rows": 165,
+  "checked_candidates": 161,
+  "hard_subset_records": 11,
+  "model_summary": [
+    {
+      "api_rows": 33,
+      "display_model": "GPT-5.5 Pro",
+      "model": "openai/gpt-5.5-pro",
+      "passing_samples": 21,
+      "records_solved_by_pass3": 9,
+      "rejected_outputs": 4,
+      "repaired_passes": 0,
+      "total_records": 11
+    },
+    {
+      "api_rows": 33,
+      "display_model": "Gemini 3.1 Pro Preview",
+      "model": "google/gemini-3.1-pro-preview",
+      "passing_samples": 19,
+      "records_solved_by_pass3": 9,
+      "rejected_outputs": 0,
+      "repaired_passes": 4,
+      "total_records": 11
+    },
+    {
+      "api_rows": 33,
+      "display_model": "DeepSeek v4 Pro",
+      "model": "deepseek/deepseek-v4-pro",
+      "passing_samples": 13,
+      "records_solved_by_pass3": 8,
+      "rejected_outputs": 0,
+      "repaired_passes": 0,
+      "total_records": 11
+    },
+    {
+      "api_rows": 33,
+      "display_model": "Claude Opus 4.8",
+      "model": "anthropic/claude-opus-4.8",
+      "passing_samples": 19,
+      "records_solved_by_pass3": 7,
+      "rejected_outputs": 0,
+      "repaired_passes": 0,
+      "total_records": 11
+    },
+    {
+      "api_rows": 33,
+      "display_model": "Qwen3.6 Max Preview",
+      "model": "qwen/qwen3.6-max-preview",
+      "passing_samples": 10,
+      "records_solved_by_pass3": 5,
+      "rejected_outputs": 0,
+      "repaired_passes": 0,
+      "total_records": 11
+    }
+  ],
+  "models": 5,
+  "passing_samples": 82,
+  "record_summary": [
+    {
+      "category": "finite_difference_stability",
+      "difficulty": "3",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 5,
+      "one_shot_failures": "4",
+      "one_shot_passes": "1",
+      "passing_samples": 11,
+      "persistent_fail_models": 0,
+      "record_id": "finite_difference.lax_friedrichs_cfl_linf_stability_1d",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": "3",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview",
+      "models_with_pass_at_3": 4,
+      "one_shot_failures": "4",
+      "one_shot_passes": "1",
+      "passing_samples": 8,
+      "persistent_fail_models": 1,
+      "record_id": "fem_projection.p0_projection_best_const_approx_2cell",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": "3",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 4,
+      "one_shot_failures": "4",
+      "one_shot_passes": "1",
+      "passing_samples": 5,
+      "persistent_fail_models": 1,
+      "record_id": "fem_projection.weighted_p0_average_smul_general_n",
+      "rejected_outputs": 1
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": "4",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 3,
+      "one_shot_failures": "4",
+      "one_shot_passes": "1",
+      "passing_samples": 5,
+      "persistent_fail_models": 2,
+      "record_id": "fem_projection.weighted_p0_residual_mass_zero_general_n",
+      "rejected_outputs": 2
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": "1",
+      "models_with_pass": "openai/gpt-5.5-pro;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 2,
+      "one_shot_failures": "4",
+      "one_shot_passes": "1",
+      "passing_samples": 6,
+      "persistent_fail_models": 3,
+      "record_id": "fem_projection.p0_projection_idempotent_2cell",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "spectral_dft",
+      "difficulty": "3",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 5,
+      "one_shot_failures": "3",
+      "one_shot_passes": "2",
+      "passing_samples": 10,
+      "persistent_fail_models": 0,
+      "record_id": "spectral_dft.finite_dc_centered_signal_zero_general_n",
+      "rejected_outputs": 1
+    },
+    {
+      "category": "fem_projection",
+      "difficulty": "3",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;anthropic/claude-opus-4.8;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 4,
+      "one_shot_failures": "3",
+      "one_shot_passes": "2",
+      "passing_samples": 11,
+      "persistent_fail_models": 1,
+      "record_id": "fem_projection.weighted_p0_average_const_general_n",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "finite_difference_heat",
+      "difficulty": "2",
+      "models_with_pass": "google/gemini-3.1-pro-preview;anthropic/claude-opus-4.8;qwen/qwen3.6-max-preview;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 4,
+      "one_shot_failures": "3",
+      "one_shot_passes": "2",
+      "passing_samples": 7,
+      "persistent_fail_models": 1,
+      "record_id": "finite_difference.heat_weights_nonneg_cfl_1d",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "linear_algebra_stability",
+      "difficulty": "2",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro;anthropic/claude-opus-4.8;deepseek/deepseek-v4-pro",
+      "models_with_pass_at_3": 4,
+      "one_shot_failures": "3",
+      "one_shot_passes": "2",
+      "passing_samples": 12,
+      "persistent_fail_models": 1,
+      "record_id": "linear_algebra_stability.finite_row_apply_const_general_n",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "finite_difference_kdv",
+      "difficulty": "2",
+      "models_with_pass": "google/gemini-3.1-pro-preview;openai/gpt-5.5-pro",
+      "models_with_pass_at_3": 2,
+      "one_shot_failures": "3",
+      "one_shot_passes": "2",
+      "passing_samples": 4,
+      "persistent_fail_models": 3,
+      "record_id": "finite_difference.kdv_canonical_flux_const_difference_zero_1d",
+      "rejected_outputs": 0
+    },
+    {
+      "category": "linear_algebra_stability",
+      "difficulty": "3",
+      "models_with_pass": "anthropic/claude-opus-4.8",
+      "models_with_pass_at_3": 1,
+      "one_shot_failures": "3",
+      "one_shot_passes": "2",
+      "passing_samples": 3,
+      "persistent_fail_models": 4,
+      "record_id": "linear_algebra_stability.diag2_inf_norm_le_2d",
+      "rejected_outputs": 0
+    }
+  ],
+  "records_persistent_for_all_models": 0,
+  "records_solved_by_any_model_pass3": 11,
+  "records_unsolved_by_at_least_two_models": 4,
+  "rejected_outputs": 4,
+  "report_kind": "final160_hard_subset_pass3_summary",
+  "samples_per_model_record": 3,
+  "schema_version": "0.1.0"
+}

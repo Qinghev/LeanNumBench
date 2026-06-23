@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_cell_l2_sq_nonneg_2cell",
+  "title": "The weighted two-cell squared L2 energy is nonnegative",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If both cell masses are nonnegative, the weighted squared L2 energy is nonnegative.",
+    "latex": "0 <= m0*u0^2 + m1*u1^2.",
+    "assumptions": [
+      "0 <= m0",
+      "0 <= m1"
+    ],
+    "expected_conclusion": "The weighted two-cell squared energy is nonnegative."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedCellL2Sq2",
+        "kind": "definition",
+        "statement": "def weightedCellL2Sq2 (m0 m1 u0 u1 : Real) : Real := m0 * u0 ^ 2 + m1 * u1 ^ 2"
+      },
+      {
+        "name": "weightedCellL2Sq2_nonneg",
+        "kind": "theorem",
+        "statement": "theorem weightedCellL2Sq2_nonneg (m0 m1 u0 u1 : Real) (hm0 : 0 <= m0) (hm1 : 0 <= m1) : 0 <= weightedCellL2Sq2 m0 m1 u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate nonnegativity of the weighted two-cell squared L2 energy into Lean 4.",
+      "target": "theorem weightedCellL2Sq2_nonneg (m0 m1 u0 u1 : Real) (hm0 : 0 <= m0) (hm1 : 0 <= m1) : 0 <= weightedCellL2Sq2 m0 m1 u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the energy and combining nonnegative masses with nonnegative squares.",
+      "target": "Unfold weightedCellL2Sq2 and use mul_nonneg, sq_nonneg, and nlinarith."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "l2",
+    "energy_estimate",
+    "nonnegativity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

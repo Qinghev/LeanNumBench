@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_conservative_flux_const_difference_zero_1d",
+  "title": "The KdV conservative flux of a constant state has zero flux difference",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Links the KdV flux scaffold to the generic fluxDifference operator."
+  },
+  "informal": {
+    "statement": "For a constant grid state, the KdV-like conservative flux is constant, so its local flux difference is zero.",
+    "latex": "If \\(u_i=c\\), then \\(F_{i+1}-F_i=0\\) for the KdV-like flux.",
+    "assumptions": [
+      "nonlinear, dispersion, and c are real numbers",
+      "i is a natural-number grid index",
+      "fluxDifference F i is F(i+1)-F(i)"
+    ],
+    "expected_conclusion": "The local flux difference of the constant-state KdV flux is zero."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "fluxDifference",
+        "kind": "definition",
+        "statement": "def fluxDifference (flux : Nat -> Real) (i : Nat) : Real := flux (i + 1) - flux i"
+      },
+      {
+        "name": "kdvConservativeFlux_const_difference_zero",
+        "kind": "theorem",
+        "statement": "theorem kdvConservativeFlux_const_difference_zero (nonlinear dispersion c : Real) (i : Nat) : fluxDifference (kdvConservativeFlux nonlinear dispersion (fun _ => c)) i = 0"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the zero flux-difference property for the KdV flux of a constant state into Lean 4.",
+      "target": "theorem kdvConservativeFlux_const_difference_zero (nonlinear dispersion c : Real) (i : Nat) : fluxDifference (kdvConservativeFlux nonlinear dispersion (fun _ => c)) i = 0"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given fluxDifference and kdvConservativeFlux, complete the proof.",
+      "target": "A proof by unfolding definitions and closing with ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "conservative_flux",
+    "flux_difference",
+    "constant_state"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

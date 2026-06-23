@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "public benchmark repository/schemas/theorem-v0.1.schema.json",
+  "title": "LeanNumBench theorem record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "domain",
+    "category",
+    "difficulty",
+    "proof_status",
+    "source",
+    "informal",
+    "formal",
+    "tasks",
+    "mathlib",
+    "tags",
+    "license"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([._-][a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "ode",
+        "pde",
+        "finite_volume",
+        "finite_difference",
+        "fem",
+        "spectral",
+        "linear_algebra",
+        "optimization",
+        "misc"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "difficulty": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "proof_status": {
+      "type": "string",
+      "enum": [
+        "complete",
+        "skeleton",
+        "statement_only"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "citation",
+        "notes"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "internal_lean_seed",
+            "textbook",
+            "paper",
+            "paper_user",
+            "classic"
+          ]
+        },
+        "citation": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "informal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "latex",
+        "assumptions",
+        "expected_conclusion"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "latex": {
+          "type": "string"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_conclusion": {
+          "type": "string"
+        }
+      }
+    },
+    "formal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "lean_version",
+        "repository",
+        "commit",
+        "file",
+        "imports",
+        "namespace",
+        "declarations",
+        "compilation"
+      ],
+      "properties": {
+        "language": {
+          "const": "Lean 4"
+        },
+        "lean_version": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        },
+        "file": {
+          "type": "string"
+        },
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "namespace": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "declarations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "kind",
+              "statement"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "definition",
+                  "theorem"
+                ]
+              },
+              "statement": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "compilation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "command",
+            "passed"
+          ],
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "passed": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "task",
+          "input",
+          "target"
+        ],
+        "properties": {
+          "task": {
+            "type": "string",
+            "enum": [
+              "statement_translation",
+              "proof_completion",
+              "proof_repair",
+              "theorem_retrieval"
+            ]
+          },
+          "input": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "mathlib": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "imports",
+        "known_missing_lemmas"
+      ],
+      "properties": {
+        "imports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "known_missing_lemmas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "license": {
+      "type": "string"
+    }
+  }
+}

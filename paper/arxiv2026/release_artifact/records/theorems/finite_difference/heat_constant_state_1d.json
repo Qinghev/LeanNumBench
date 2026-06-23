@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.heat_constant_state_1d",
+  "title": "Explicit heat-equation update preserves constant states",
+  "domain": "finite_difference",
+  "category": "finite_difference_heat",
+  "difficulty": 1,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For any real diffusion number r and constant value u, the scalar explicit heat update of three equal neighboring values returns u.",
+    "latex": "For any \\(r,u\\in\\mathbb{R}\\), \\({\\mathcal H}_r(u,u,u)=u\\).",
+    "assumptions": [
+      "r and u are real numbers",
+      "the left, center, and right states are all u"
+    ],
+    "expected_conclusion": "The scalar heat update preserves a constant state."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Heat.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "heatStep",
+        "kind": "definition",
+        "statement": "def heatStep (r uLeft u uRight : Real) : Real := heatLeftWeight r * uLeft + heatCenterWeight r * u + heatRightWeight r * uRight"
+      },
+      {
+        "name": "heatStep_const",
+        "kind": "theorem",
+        "statement": "theorem heatStep_const (r u : Real) : heatStep r u u u = u"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate this explicit heat-equation finite-difference theorem into Lean 4: For any real diffusion number r and constant value u, the scalar explicit heat update of three equal neighboring values returns u.",
+      "target": "theorem heatStep_const (r u : Real) : heatStep r u u u = u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the heat-equation scaffold definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof by unfolding heatStep and the weight definitions, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "heat_equation",
+    "diffusion",
+    "finite_difference",
+    "parabolic_cfl",
+    "constant_state",
+    "consistency",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

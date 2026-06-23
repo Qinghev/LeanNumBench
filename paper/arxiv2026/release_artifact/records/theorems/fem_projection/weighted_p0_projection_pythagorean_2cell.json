@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.weighted_p0_projection_pythagorean_2cell",
+  "title": "The weighted two-cell P0 projection satisfies a Pythagorean identity",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For nonzero total mass, the weighted squared L2 energy splits into projected energy plus weighted residual energy.",
+    "latex": "||u||_w^2 = ||Pi_w u||_w^2 + ||u-Pi_w u||_w^2.",
+    "assumptions": [
+      "m0 + m1 is nonzero",
+      "the weighted projection is the weighted average on both cells",
+      "the weighted energy uses masses m0 and m1"
+    ],
+    "expected_conclusion": "Original weighted energy equals projected weighted energy plus weighted residual energy."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "weightedP0Projection2_pythagorean",
+        "kind": "theorem",
+        "statement": "theorem weightedP0Projection2_pythagorean (m0 m1 u0 u1 : Real) (hsum : m0 + m1 ≠ 0) : weightedCellL2Sq2 m0 m1 u0 u1 = weightedCellL2Sq2 m0 m1 (weightedP0Projection2Left m0 m1 u0 u1) (weightedP0Projection2Right m0 m1 u0 u1) + weightedP0ProjectionResidualSq2 m0 m1 u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the weighted Pythagorean energy identity for a two-cell P0 projection into Lean 4.",
+      "target": "theorem weightedP0Projection2_pythagorean (m0 m1 u0 u1 : Real) (hsum : m0 + m1 ≠ 0) : weightedCellL2Sq2 m0 m1 u0 u1 = weightedCellL2Sq2 m0 m1 (weightedP0Projection2Left m0 m1 u0 u1) (weightedP0Projection2Right m0 m1 u0 u1) + weightedP0ProjectionResidualSq2 m0 m1 u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the weighted energy, weighted projection, residual, and average.",
+      "target": "Unfold weightedCellL2Sq2, weightedP0Projection2Left, weightedP0Projection2Right, weightedP0ProjectionResidualSq2, and weightedCellAverage2; use field_simp with hsum and ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "weighted_projection",
+    "pythagorean_identity",
+    "energy_identity",
+    "l2"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

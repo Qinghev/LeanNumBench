@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.lax_friedrichs_weights_nonneg_1d",
+  "title": "Scalar Lax-Friedrichs weights are nonnegative under the CFL condition",
+  "domain": "finite_difference",
+  "category": "finite_difference_stability",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Randall J. LeVeque, Finite Volume Methods for Hyperbolic Problems, Cambridge University Press, 2002, Sec. 12.5, p. 232.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "If -1 <= cfl <= 1, then the Lax-Friedrichs weights (1 + cfl) / 2 and (1 - cfl) / 2 are both nonnegative.",
+    "latex": "If \\(-1\\le\\lambda\\le1\\), then \\(0\\le(1+\\lambda)/2\\) and \\(0\\le(1-\\lambda)/2\\).",
+    "assumptions": [
+      "cfl is a real number",
+      "-1 <= cfl",
+      "cfl <= 1"
+    ],
+    "expected_conclusion": "Both scalar Lax-Friedrichs weights are nonnegative."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/LaxFriedrichs.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "laxFriedrichsLeftWeight",
+        "kind": "definition",
+        "statement": "def laxFriedrichsLeftWeight (cfl : ℝ) : ℝ := (1 + cfl) / 2"
+      },
+      {
+        "name": "laxFriedrichsRightWeight",
+        "kind": "definition",
+        "statement": "def laxFriedrichsRightWeight (cfl : ℝ) : ℝ := (1 - cfl) / 2"
+      },
+      {
+        "name": "laxFriedrichsWeights_nonneg",
+        "kind": "theorem",
+        "statement": "theorem laxFriedrichsWeights_nonneg (cfl : ℝ) (hcflLower : -1 ≤ cfl) (hcflUpper : cfl ≤ 1) : 0 ≤ laxFriedrichsLeftWeight cfl ∧ 0 ≤ laxFriedrichsRightWeight cfl"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the CFL nonnegative-weight statement for Lax-Friedrichs into Lean 4.",
+      "target": "theorem laxFriedrichsWeights_nonneg (cfl : ℝ) (hcflLower : -1 ≤ cfl) (hcflUpper : cfl ≤ 1) : 0 ≤ laxFriedrichsLeftWeight cfl ∧ 0 ≤ laxFriedrichsRightWeight cfl"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the weight definitions and theorem statement, complete the Lean 4 proof.",
+      "target": "A proof using unfold, constructor, and linarith."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "lax_friedrichs",
+    "finite_difference",
+    "finite_volume",
+    "advection",
+    "cfl",
+    "convex_combination",
+    "nonnegative_weights",
+    "linarith"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

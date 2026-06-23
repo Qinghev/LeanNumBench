@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1.0",
+  "id": "quadrature_rules.trapezoid2_smul",
+  "title": "The two-point trapezoidal rule commutes with scalar multiplication",
+  "domain": "quadrature",
+  "category": "quadrature_rules",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Alfio Quarteroni, Riccardo Sacco, and Fausto Saleri, Numerical Mathematics, 2nd ed., Springer, 2007, Ch. 9 (Numerical Integration).",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The one-cell trapezoidal rule applied to scalar-multiplied endpoint samples equals the scalar multiple of the trapezoidal-rule value.",
+    "latex": "Q_T(cf)=cQ_T(f).",
+    "assumptions": [
+      "h is a cell width",
+      "c is a scalar",
+      "endpoint samples f0 and f1 are given"
+    ],
+    "expected_conclusion": "The trapezoidal rule is homogeneous."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Quadrature/Basic.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Quadrature"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "trapezoid2",
+        "kind": "definition",
+        "statement": "def trapezoid2 (h f0 f1 : Real) : Real := h * (f0 + f1) / 2"
+      },
+      {
+        "name": "trapezoid2_smul",
+        "kind": "theorem",
+        "statement": "theorem trapezoid2_smul (h c f0 f1 : Real) : trapezoid2 h (c * f0) (c * f1) = c * trapezoid2 h f0 f1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the quadrature theorem `trapezoid2_smul` into Lean 4.",
+      "target": "theorem trapezoid2_smul (h c f0 f1 : Real) : trapezoid2 h (c * f0) (c * f1) = c * trapezoid2 h f0 f1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `trapezoid2_smul`.",
+      "target": "unfold trapezoid2; ring"
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main algebraic or order lemma needed for the quadrature proof.",
+      "target": "ring"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "quadrature",
+    "numerical_integration",
+    "newton_cotes",
+    "numerical_analysis",
+    "ring",
+    "theorem_retrieval",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

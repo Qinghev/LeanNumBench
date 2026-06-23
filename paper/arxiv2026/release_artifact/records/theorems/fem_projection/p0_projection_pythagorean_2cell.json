@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1.0",
+  "id": "fem_projection.p0_projection_pythagorean_2cell",
+  "title": "A two-cell P0 projection satisfies a Pythagorean energy identity",
+  "domain": "fem",
+  "category": "fem_projection",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "The two-cell squared L2 energy splits into the squared energy of the constant projection plus the squared residual energy.",
+    "latex": "\\|u\\|^2 = \\|\\Pi_0 u\\|^2 + \\|u-\\Pi_0 u\\|^2.",
+    "assumptions": [
+      "u0 and u1 are real cell values",
+      "the P0 projection is the two-cell average on both cells",
+      "the squared L2 energy is the sum of the two squared coordinates"
+    ],
+    "expected_conclusion": "The original squared energy equals projected squared energy plus residual squared energy."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FEM/Projection.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FEM"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "cellL2Sq2",
+        "kind": "definition",
+        "statement": "def cellL2Sq2 (u0 u1 : Real) : Real := u0 ^ 2 + u1 ^ 2"
+      },
+      {
+        "name": "p0ProjectionResidualSq2",
+        "kind": "definition",
+        "statement": "def p0ProjectionResidualSq2 (u0 u1 : Real) : Real := (u0 - cellAverage2 u0 u1) ^ 2 + (u1 - cellAverage2 u0 u1) ^ 2"
+      },
+      {
+        "name": "p0Projection2_pythagorean",
+        "kind": "theorem",
+        "statement": "theorem p0Projection2_pythagorean (u0 u1 : Real) : cellL2Sq2 u0 u1 = cellL2Sq2 (p0Projection2Left u0 u1) (p0Projection2Right u0 u1) + p0ProjectionResidualSq2 u0 u1"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the Pythagorean energy identity for a two-cell P0 projection into Lean 4.",
+      "target": "theorem p0Projection2_pythagorean (u0 u1 : Real) : cellL2Sq2 u0 u1 = cellL2Sq2 (p0Projection2Left u0 u1) (p0Projection2Right u0 u1) + p0ProjectionResidualSq2 u0 u1"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof by unfolding the squared-energy, projected-coordinate, residual, and average definitions.",
+      "target": "Unfold cellL2Sq2, p0Projection2Left, p0Projection2Right, p0ProjectionResidualSq2, and cellAverage2, then use ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "fem",
+    "projection",
+    "p0_projection",
+    "pythagorean_identity",
+    "energy_identity",
+    "l2"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

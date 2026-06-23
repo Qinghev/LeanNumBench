@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_canonical_mass_periodic_flux_1d",
+  "title": "The canonical KdV conservative update preserves discrete mass under periodic flux",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Canonical KdV specialization using flux coefficient 3 and dispersion coefficient 1."
+  },
+  "informal": {
+    "statement": "For the canonical KdV-like flux 3*u_i^2 + secondForwardDifference(u)_i, periodic flux implies that the canonical conservative update preserves discrete mass.",
+    "latex": "For \\(F_i=3u_i^2+\\Delta^2u_i\\), if \\(F_n=F_0\\), then \\(M(u^+)=M(u)\\).",
+    "assumptions": [
+      "scale is a real number",
+      "u is a real-valued grid state",
+      "n is the number of cells in the finite range",
+      "periodicBoundary holds for kdvCanonicalFlux u"
+    ],
+    "expected_conclusion": "The canonical KdV conservative update preserves discrete mass under periodic flux."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "kdvCanonicalFlux",
+        "kind": "definition",
+        "statement": "def kdvCanonicalFlux (u : Nat -> Real) (i : Nat) : Real := kdvConservativeFlux 3 1 u i"
+      },
+      {
+        "name": "kdvCanonicalUpdate",
+        "kind": "definition",
+        "statement": "def kdvCanonicalUpdate (scale : Real) (u : Nat -> Real) (i : Nat) : Real := kdvConservativeUpdate scale 3 1 u i"
+      },
+      {
+        "name": "discreteMass_kdvCanonicalUpdate_of_periodicFlux",
+        "kind": "theorem",
+        "statement": "theorem discreteMass_kdvCanonicalUpdate_of_periodicFlux (scale : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvCanonicalFlux u) n) : discreteMass (fun i => kdvCanonicalUpdate scale u i) n = discreteMass u n"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the canonical KdV periodic-flux discrete-mass preservation theorem into Lean 4.",
+      "target": "theorem discreteMass_kdvCanonicalUpdate_of_periodicFlux (scale : Real) (u : Nat -> Real) (n : Nat) (hflux : periodicBoundary (kdvCanonicalFlux u) n) : discreteMass (fun i => kdvCanonicalUpdate scale u i) n = discreteMass u n"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the configurable KdV mass-preservation theorem, complete the canonical specialization proof.",
+      "target": "A proof by unfolding kdvCanonicalUpdate and converting the periodic-flux hypothesis with kdvCanonicalFlux."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Find the configurable KdV theorem used to prove the canonical KdV mass-preservation theorem.",
+      "target": "discreteMass_kdvConservativeUpdate_of_periodicFlux"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "canonical_flux",
+    "discrete_mass",
+    "periodic_boundary",
+    "conservation"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

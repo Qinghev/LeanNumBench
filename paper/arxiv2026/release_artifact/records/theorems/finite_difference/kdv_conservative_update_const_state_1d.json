@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1.0",
+  "id": "finite_difference.kdv_conservative_update_const_state_1d",
+  "title": "The KdV conservative update preserves constant states",
+  "domain": "finite_difference",
+  "category": "finite_difference_kdv",
+  "difficulty": 2,
+  "proof_status": "complete",
+  "source": {
+    "kind": "internal_lean_seed",
+    "citation": "LeanNumerics companion source",
+    "notes": "Constant-state preservation for the KdV conservative update."
+  },
+  "informal": {
+    "statement": "For a constant grid state, the KdV conservative update returns the same constant value at every grid index.",
+    "latex": "If \\(u_i=c\\) for all \\(i\\), then \\(u_i^+=c\\).",
+    "assumptions": [
+      "scale, nonlinear, dispersion, and c are real numbers",
+      "i is a natural-number grid index",
+      "the KdV flux of a constant state has zero flux difference"
+    ],
+    "expected_conclusion": "Constant states are preserved by the KdV conservative update."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/FiniteDifference/Kdv.lean",
+    "imports": [
+      "Mathlib.Tactic",
+      "LeanNumerics.FiniteDifference.Conservation"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "FiniteDifference"
+    ],
+    "declarations": [
+      {
+        "name": "kdvConservativeUpdate_const_state",
+        "kind": "theorem",
+        "statement": "theorem kdvConservativeUpdate_const_state (scale nonlinear dispersion c : Real) (i : Nat) : kdvConservativeUpdate scale nonlinear dispersion (fun _ => c) i = c"
+      }
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate constant-state preservation for the KdV conservative update into Lean 4.",
+      "target": "theorem kdvConservativeUpdate_const_state (scale nonlinear dispersion c : Real) (i : Nat) : kdvConservativeUpdate scale nonlinear dispersion (fun _ => c) i = c"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Given the KdV conservative update and flux definitions, complete the constant-state proof.",
+      "target": "A proof by unfolding kdvConservativeUpdate, conservativeUpdate, fluxDifference, kdvConservativeFlux, and secondForwardDifference, then using ring."
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "kdv",
+    "finite_difference",
+    "conservative_update",
+    "constant_state",
+    "ring"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}

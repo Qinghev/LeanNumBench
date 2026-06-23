@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1.0",
+  "id": "spectral_dft.finite_mean_smul_general_n",
+  "title": "The finite mean commutes with scalar multiplication",
+  "domain": "spectral",
+  "category": "spectral_dft",
+  "difficulty": 3,
+  "proof_status": "complete",
+  "source": {
+    "kind": "textbook",
+    "citation": "Lloyd N. Trefethen, Spectral Methods in MATLAB, SIAM, 2000, Ch. 3, pp. 17-28.",
+    "notes": "Generated from checked Lean ground truth; source repository withheld during public release."
+  },
+  "informal": {
+    "statement": "For a finite signal, the finite mean of a scalar multiple is the scalar multiple of the finite mean.",
+    "latex": "\\overline{cu}=c\\bar u.",
+    "assumptions": [
+      "s is finite",
+      "u is a real-valued signal",
+      "c is a scalar"
+    ],
+    "expected_conclusion": "The finite mean is homogeneous."
+  },
+  "formal": {
+    "language": "Lean 4",
+    "lean_version": "leanprover/lean4:v4.29.1",
+    "repository": "LeanNumerics companion source",
+    "commit": "withheld during public release",
+    "file": "LeanNumerics/Spectral/DFT.lean",
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "namespace": [
+      "LeanNumerics",
+      "Spectral"
+    ],
+    "compilation": {
+      "command": "lake build LeanNumerics",
+      "passed": true
+    },
+    "declarations": [
+      {
+        "name": "finiteDC",
+        "kind": "definition",
+        "statement": "def finiteDC {ι : Type} (s : Finset ι) (u : ι → Real) : Real := ∑ i ∈ s, u i"
+      },
+      {
+        "name": "finiteMean",
+        "kind": "definition",
+        "statement": "def finiteMean {ι : Type} (s : Finset ι) (u : ι → Real) : Real := finiteDC s u / (s.card : Real)"
+      },
+      {
+        "name": "finiteMean_smul",
+        "kind": "theorem",
+        "statement": "theorem finiteMean_smul {ι : Type} (s : Finset ι) (u : ι → Real) (c : Real) : finiteMean s (fun i => c * u i) = c * finiteMean s u"
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task": "statement_translation",
+      "input": "Translate the finite-index spectral/DC identity `finiteMean_smul` into Lean 4.",
+      "target": "theorem finiteMean_smul {ι : Type} (s : Finset ι) (u : ι → Real) (c : Real) : finiteMean s (fun i => c * u i) = c * finiteMean s u"
+    },
+    {
+      "task": "proof_completion",
+      "input": "Complete the Lean proof of `finiteMean_smul`.",
+      "target": "Unfold finiteMean, use finiteDC_smul, and normalize division algebra."
+    },
+    {
+      "task": "theorem_retrieval",
+      "input": "Identify the main finite-sum or mean-centering lemma needed for the proof.",
+      "target": "finiteDC_smul"
+    }
+  ],
+  "mathlib": {
+    "imports": [
+      "Mathlib.Tactic"
+    ],
+    "known_missing_lemmas": []
+  },
+  "tags": [
+    "spectral",
+    "dft",
+    "dc_mode",
+    "finite_sum",
+    "general_n",
+    "theorem_retrieval",
+    "finite_mean",
+    "linearity"
+  ],
+  "license": "CC-BY-4.0 for benchmark metadata; Lean source follows LeanNumerics repository license"
+}
