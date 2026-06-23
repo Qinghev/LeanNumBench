@@ -1,5 +1,7 @@
 * text=auto eol=lf
 
+paper/arxiv2026/release_artifact/** -text
+
 *.zip binary
 *.pdf binary
 *.png binary
