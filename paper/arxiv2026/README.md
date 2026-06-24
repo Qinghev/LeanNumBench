@@ -18,11 +18,12 @@ check.
 
 ## Files
 
-- `main.tex`, `main.pdf`: public preprint with appendix included.
+- `main.tex`: top-level arXiv source file.
 - `appendix.tex`: appendix body loaded by `main.tex`.
+- `references.bib`: bibliography database.
+- `figures/`: TikZ/PGFPlots figure sources loaded by `main.tex`.
 - `anc/LeanNumBench_arxiv2026_release_artifact.zip`: arXiv ancillary
   reproducibility artifact.
-- `release_artifact/`: path-sanitized public reproducibility artifact.
-- `LeanNumBench_arxiv2026_source.zip`: TeX source bundle for arXiv upload.
-- `LeanNumBench_arxiv2026_release_artifact.zip`: separate reproducibility
-  artifact bundle.
+- `arxiv-source-manifest.txt`: SHA256 manifest for the source package
+  contents.
+- `release-notes.md`: release metadata and hashes.

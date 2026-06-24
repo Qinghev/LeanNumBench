@@ -20,7 +20,7 @@ shuffled/irrelevant-context control, or direct CAM-Bench numerical-subset rerun.
 
 - Release artifact zip: `LeanNumBench_arxiv2026_release_artifact.zip`.
 - arXiv ancillary artifact path: `anc/LeanNumBench_arxiv2026_release_artifact.zip`.
-- Release artifact SHA256: `1bc18eb0d3ba0bbe8f0d6b10ccc521019407089823cc8eb6d873f79684186c00`.
+- Release artifact SHA256: `7c43bc13edfa1e4fd80dee535028f0553456dffb40d2ff67e7e293a9b19552d4`.
 - Frozen 160-row proof prompt pack SHA256: `1271dbbde48bd5ab0a995df270547404468a3cd27330497f87fa9ae2bc881238`.
 - Companion Lean `lake-manifest.json` SHA256: `2ed57a7e536783afef8fbb708429ea371e2524c941d8e7152f7a9bd3eca4b63b`.
 - Public GitHub release:

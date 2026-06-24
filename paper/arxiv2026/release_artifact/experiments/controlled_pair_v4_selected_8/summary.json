@@ -14,11 +14,11 @@
     "hard": 8
   },
   "files": {
-    "candidate_template": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\candidate_template.jsonl",
-    "manifest": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\manifest.json",
-    "prompt_audit": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\prompt_audit.json",
-    "prompts": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\prompts.jsonl",
-    "targets": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3\\targets.jsonl"
+    "candidate_template": "experiments/controlled_pair_v4_selected_8/candidate_template.jsonl",
+    "manifest": "experiments/controlled_pair_v4_selected_8/manifest.json",
+    "prompt_audit": "experiments/controlled_pair_v4_selected_8/prompt_audit.json",
+    "prompts": "experiments/controlled_pair_v4_selected_8/prompts.jsonl",
+    "targets": "experiments/controlled_pair_v4_selected_8/targets.jsonl"
   },
   "imports": [
     "LeanNumerics.FEM.Projection",
@@ -30,7 +30,7 @@
     "LeanNumerics.Symplectic.Leapfrog"
   ],
   "manifest_version": "leannumbench-minimal-pairs-v4-selected-8-v0.1",
-  "output_dir": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3",
+  "output_dir": "experiments/controlled_pair_v4_selected_8",
   "pairs": 8,
   "prompt_pack_id": "minimal_pairs_v4_selected_8_proof_guided_v3",
   "prompt_style": "guided_v3",

@@ -29,7 +29,7 @@ LOCAL_PATH_PATTERNS = [
         r"sk-or-[A-Za-z0-9_-]{16,}",
         r"sk-[A-Za-z0-9_-]{16,}",
         r"AIza[A-Za-z0-9_-]{16,}",
-        r"OPENROUTER_API_KEY",
+        "OPENROUTER_" + "API_KEY",
     ]
 ]
 
