@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "public benchmark repository/schemas/theorem-v0.1.schema.json",
+  "$id": "https://github.com/Qinghev/LeanNumBench/schemas/theorem-v0.1.schema.json",
   "title": "LeanNumBench theorem record",
   "type": "object",
   "additionalProperties": false,
@@ -42,6 +42,8 @@
         "fem",
         "spectral",
         "linear_algebra",
+        "interpolation",
+        "quadrature",
         "optimization",
         "misc"
       ]

@@ -812,7 +812,7 @@ author paths. The LeanNumBench v1 release package includes a reproducibility
 artifact zip, also mirrored at
 \url{https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv}, with
 SHA256
-\texttt{e7e649f5ba0efd59}\allowbreak\texttt{de165ae36c31fca4}\allowbreak\texttt{0bebf6a6e336f4b}\allowbreak\texttt{683b388198604bb22}.
+\texttt{1bc18eb0d3ba0bbe}\allowbreak\texttt{8f0d6b10ccc52101}\allowbreak\texttt{9407089823cc8eb6}\allowbreak\texttt{d873f79684186c00}.
 The package contains the components in the checklist below.
 
 \begin{center}
@@ -853,6 +853,13 @@ is a metadata, hash, and identity/path smoke test:
 python reproduction_scripts/artifact_smoke_check.py
 \end{verbatim}
 
+The smoke check calls the standalone schema validator; it can also be run
+directly:
+
+\begin{verbatim}
+python reproduction_scripts/validate_record_schemas.py
+\end{verbatim}
+
 To rerun Lean checking, the reader can build the companion Lean project and
 materialize candidates from the included usage-stripped model outputs. The
 artifact README gives the concrete package target for the build command:
@@ -883,7 +890,7 @@ Table~\ref{tab:supp-proof-snapshot}. The companion Lean project is pinned to
 \texttt{leanprover/lean4:v4.29.1} with Mathlib revision \texttt{v4.29.1}. The
 included \texttt{lake-manifest.json} SHA256 is:
 \begin{verbatim}
-b5199815f98f54813f7ff29fffebd34f0f421d16fd0eeacacd198f20cd7d73c1
+2ed57a7e536783afef8fbb708429ea371e2524c941d8e7152f7a9bd3eca4b63b
 \end{verbatim}
 The released companion Lean source has also been scanned for
 benchmark-relevant \texttt{sorry}, \texttt{admit}, and user-defined

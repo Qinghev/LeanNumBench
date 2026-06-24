@@ -15,6 +15,11 @@ jobs:
           python-version: "3.12"
       - name: Compile artifact smoke check
         run: python -m py_compile paper/arxiv2026/release_artifact/reproduction_scripts/artifact_smoke_check.py
+      - name: Compile record schema validator
+        run: python -m py_compile paper/arxiv2026/release_artifact/reproduction_scripts/validate_record_schemas.py
+      - name: Run record schema validation
+        working-directory: paper/arxiv2026/release_artifact
+        run: python reproduction_scripts/validate_record_schemas.py
       - name: Run no-API artifact smoke check
         working-directory: paper/arxiv2026/release_artifact
         run: python reproduction_scripts/artifact_smoke_check.py

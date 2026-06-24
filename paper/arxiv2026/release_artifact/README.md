@@ -34,9 +34,10 @@ Numerical Analysis".
 
 ## Public-Release Sanitization
 
-Local filesystem paths, API-key patterns, raw token-usage metadata, and raw
-cost fields have been removed or replaced. Aggregate model-variant cost
-summaries are retained only in `results/model_variant_cost_audit.*`.
+Local filesystem paths and API-key patterns have been removed or replaced.
+Raw per-call token-usage metadata and raw per-call cost fields have been
+removed. Aggregate model-variant token and cost summaries are retained only in
+`results/model_variant_cost_audit.*`.
 
 ## License
 
@@ -50,6 +51,12 @@ Quick no-API artifact check:
 
 ```bash
 python reproduction_scripts/artifact_smoke_check.py
+```
+
+Standalone schema validation:
+
+```bash
+python reproduction_scripts/validate_record_schemas.py
 ```
 
 Full local Lean replay of the 160-record proof panel:
@@ -75,4 +82,4 @@ These commands do not call model APIs. The cache-get step only accelerates
 Mathlib setup; if unavailable, Lake can build from source. The companion Lean
 project uses `leanprover/lean4:v4.29.1`, pins Mathlib at `v4.29.1`, and ships
 with `lake-manifest.json` SHA256
-`b5199815f98f54813f7ff29fffebd34f0f421d16fd0eeacacd198f20cd7d73c1`.
+`2ed57a7e536783afef8fbb708429ea371e2524c941d8e7152f7a9bd3eca4b63b`.

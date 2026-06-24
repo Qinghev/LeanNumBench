@@ -1,5 +1,5 @@
 {
-  "manifest_version": "nabench-minimal-pairs-v4-selected-8-v0.1",
+  "manifest_version": "leannumbench-minimal-pairs-v4-selected-8-v0.1",
   "created_date": "2026-06-04",
   "status": "v4_selected_8_no_api_ready_for_manual_review",
   "api_policy": "No model-generation API calls are authorized by this manifest. Paid runs require local checks, fresh pricing, balance check, and explicit user approval.",
@@ -24,28 +24,28 @@
       "name": "no-LLM tactic baseline",
       "status": "passed",
       "date": "2026-06-04",
-      "artifact": "data/minimal_pairs/v4_selected_8_tactic_baseline.json",
+      "artifact": "results/controlled_pair_v4_selected_8/tactic_baseline.json",
       "notes": "Fixed tactic portfolio solved 0/16 targets: 0/8 easy and 0/8 hard, with --timeout 20."
     },
     {
       "name": "guided_v3 prompt preparation and audit",
       "status": "passed",
       "date": "2026-06-04",
-      "artifact": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/prompt_audit.json",
+      "artifact": "experiments/controlled_pair_v4_selected_8/prompt_audit.json",
       "notes": "Generated 16 prompts; audit issues_count = 0; prompt chars min/mean/max = 4458/6893.9/12611."
     },
     {
       "name": "empty-template negative check",
       "status": "passed_expected_failure",
       "date": "2026-06-04",
-      "artifact": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/check_candidate_template_empty.json",
+      "artifact": "results/controlled_pair_v4_selected_8/check_candidate_template_empty.json",
       "notes": "Normal checker passed 0/16 empty candidate proofs."
     },
     {
       "name": "statement elaboration positive check",
       "status": "passed",
       "date": "2026-06-04",
-      "artifact": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/check_candidate_template_sorry.json",
+      "artifact": "results/controlled_pair_v4_selected_8/check_candidate_template_sorry.json",
       "notes": "Empty proofs treated as sorry passed 16/16 targets. V4P01_easy required the longer --timeout 240 check."
     },
     {

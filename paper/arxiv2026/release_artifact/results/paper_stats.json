@@ -116,8 +116,8 @@
       "A": 10,
       "C": 6
     },
-    "missing_from_nabench": 16,
-    "nabench_represented_theorems": 160,
+    "missing_from_leannumbench": 16,
+    "leannumbench_represented_theorems": 160,
     "priority_a_missing": 10
   },
   "rolling_probe": {

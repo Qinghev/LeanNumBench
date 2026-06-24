@@ -1,6 +1,6 @@
 {
-  "candidate_file": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/model_outputs_openrouter_claude_opus_4_8_t0.jsonl",
-  "check_results": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/check_claude_opus_4_8_t0_repair_timeout240.json",
+  "candidate_file": "results/raw_outputs/controlled_pair_v4_selected_8_no_usage.jsonl",
+  "check_results": "results/controlled_pair_v4_selected_8/check_claude_opus_4_8_t0_repair_timeout240.json",
   "lean_project": "LeanNumerics",
   "report_kind": "minimal_pair_failure_diagnostics",
   "results": [

@@ -14,6 +14,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from validate_record_schemas import validate_records
+
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -96,6 +98,9 @@ def main() -> int:
     index = load_json(index_path)
     frontier = load_json(frontier_path)
     pass3 = load_json(pass3_path)
+    schema_payload = validate_records(ROOT)
+    if not schema_payload.get("passed", False):
+        issues.extend(f"schema validation: {issue}" for issue in schema_payload.get("issues", [])[:20])
 
     records = index.get("records", [])
     task_count = 0
@@ -154,6 +159,7 @@ def main() -> int:
         "frontier_model_record_pairs": frontier.get("model_record_pairs"),
         "hard_subset_records": frontier.get("hard_subset_records"),
         "pass3_api_rows": pass3.get("api_rows"),
+        "schema_errors": schema_payload.get("schema_errors"),
         "issues": issues,
     }
     print(json.dumps(payload, indent=2, sort_keys=True))

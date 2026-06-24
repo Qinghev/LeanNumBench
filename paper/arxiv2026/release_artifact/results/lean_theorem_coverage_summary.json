@@ -12,8 +12,8 @@
     "A": 10,
     "C": 6
   },
-  "missing_from_nabench": 16,
-  "nabench_represented_theorems": 160,
+  "missing_from_leannumbench": 16,
+  "leannumbench_represented_theorems": 160,
   "report_kind": "lean_theorem_coverage_audit",
   "schema_version": "0.1.0"
 }

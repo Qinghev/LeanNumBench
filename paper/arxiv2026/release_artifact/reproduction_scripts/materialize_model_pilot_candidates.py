@@ -283,6 +283,13 @@ def materialize(
     return statement_candidates, proof_candidates, rejected
 
 
+def display_path(path: Path) -> str:
+    try:
+        return path.relative_to(ROOT).as_posix()
+    except ValueError:
+        return str(path)
+
+
 def summary(
     statement_candidates: list[dict[str, Any]],
     proof_candidates: list[dict[str, Any]],
@@ -294,14 +301,14 @@ def summary(
     return {
         "schema_version": "0.1.0",
         "report_kind": "model_pilot_candidate_materialization",
-        "output_dir": str(output_dir.relative_to(ROOT)),
+        "output_dir": display_path(output_dir),
         "candidate_counts": dict(task_counts),
         "rejected_outputs": len(rejected),
         "rejections_by_reason": dict(sorted(rejection_counts.items())),
         "files": {
-            "statement_candidates": str((output_dir / "statement_candidates.jsonl").relative_to(ROOT)),
-            "proof_candidates": str((output_dir / "proof_candidates.jsonl").relative_to(ROOT)),
-            "rejected_outputs": str((output_dir / "rejected_outputs.jsonl").relative_to(ROOT)),
+            "statement_candidates": display_path(output_dir / "statement_candidates.jsonl"),
+            "proof_candidates": display_path(output_dir / "proof_candidates.jsonl"),
+            "rejected_outputs": display_path(output_dir / "rejected_outputs.jsonl"),
         },
     }
 

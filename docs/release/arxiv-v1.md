@@ -11,7 +11,7 @@ submission.
 - Paper source bundle: `paper/arxiv2026/LeanNumBench_arxiv2026_source.zip`
 - Reproducibility artifact: `paper/arxiv2026/LeanNumBench_arxiv2026_release_artifact.zip`
 - arXiv ancillary artifact path inside the source bundle:
-  `anc/leannumbench-v1-artifact.zip`
+  `anc/LeanNumBench_arxiv2026_release_artifact.zip`
 - Top-level TeX file: `paper/arxiv2026/main.tex`
 - Appendix input: `paper/arxiv2026/appendix.tex`
 - Public GitHub release:
@@ -24,6 +24,7 @@ cd paper/arxiv2026
 latexmk -pdf main.tex
 cd release_artifact
 python reproduction_scripts/artifact_smoke_check.py
+python reproduction_scripts/validate_record_schemas.py
 ```
 
 The artifact smoke check should report:
@@ -35,7 +36,8 @@ The artifact smoke check should report:
   "tasks": 405,
   "frontier_model_record_pairs": 800,
   "hard_subset_records": 11,
-  "pass3_api_rows": 165
+  "pass3_api_rows": 165,
+  "schema_errors": 0
 }
 ```
 
@@ -46,9 +48,8 @@ metadata are released under CC-BY-4.0. Companion Lean source, evaluation
 scripts, and release tooling are released under Apache-2.0.
 
 Some frozen experiment files preserve legacy lowercase internal identifiers in
-record names, prompt theorem placeholders, scratch-directory names, or coverage
-table columns. These identifiers are part of the released experimental record;
-the public paper and release name is LeanNumBench.
+prompt theorem placeholders. These identifiers are part of the released
+experimental record; the public paper and release name is LeanNumBench.
 
 The development repository may contain historical notes and planning files.
 For public use, the frozen v1 artifact under `paper/arxiv2026/release_artifact`

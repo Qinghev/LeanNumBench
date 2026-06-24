@@ -1,5 +1,5 @@
 {
-  "candidate_file": "data/minimal_pairs/prompt_pack_v4_selected_8_guided_v3/model_outputs_openrouter_gpt_5_5_t0.jsonl",
+  "candidate_file": "results/raw_outputs/controlled_pair_v4_selected_8_no_usage.jsonl",
   "empty_proof_as_sorry": false,
   "lean_project": "LeanNumerics",
   "lean_returncode": 1,

@@ -42,7 +42,7 @@ Important files:
   arXiv source bundle.
 - [`paper/arxiv2026/LeanNumBench_arxiv2026_release_artifact.zip`](paper/arxiv2026/LeanNumBench_arxiv2026_release_artifact.zip):
   standalone reproducibility artifact.
-- [`paper/arxiv2026/anc/leannumbench-v1-artifact.zip`](paper/arxiv2026/anc/leannumbench-v1-artifact.zip):
+- [`paper/arxiv2026/anc/LeanNumBench_arxiv2026_release_artifact.zip`](paper/arxiv2026/anc/LeanNumBench_arxiv2026_release_artifact.zip):
   arXiv ancillary artifact included in the source bundle.
 
 Build the paper locally:
@@ -62,6 +62,7 @@ Run the fast no-API artifact smoke check:
 ```bash
 cd paper/arxiv2026/release_artifact
 python reproduction_scripts/artifact_smoke_check.py
+python reproduction_scripts/validate_record_schemas.py
 ```
 
 Expected summary:
@@ -73,7 +74,8 @@ Expected summary:
   "tasks": 405,
   "frontier_model_record_pairs": 800,
   "hard_subset_records": 11,
-  "pass3_api_rows": 165
+  "pass3_api_rows": 165,
+  "schema_errors": 0
 }
 ```
 

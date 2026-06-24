@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def resolve_layout(root: Path) -> tuple[Path, Path, Path, Path]:
-    repo_theorem_root = root / "nabench" / "theorems"
+    repo_theorem_root = root / "records" / "theorems"
     repo_index = repo_theorem_root / "index.json"
     if repo_index.is_file():
         return (

@@ -20,7 +20,8 @@ check.
 
 - `main.tex`, `main.pdf`: public preprint with appendix included.
 - `appendix.tex`: appendix body loaded by `main.tex`.
-- `anc/leannumbench-v1-artifact.zip`: arXiv ancillary reproducibility artifact.
+- `anc/LeanNumBench_arxiv2026_release_artifact.zip`: arXiv ancillary
+  reproducibility artifact.
 - `release_artifact/`: path-sanitized public reproducibility artifact.
 - `LeanNumBench_arxiv2026_source.zip`: TeX source bundle for arXiv upload.
 - `LeanNumBench_arxiv2026_release_artifact.zip`: separate reproducibility

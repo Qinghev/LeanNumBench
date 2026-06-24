@@ -29,7 +29,7 @@
     "LeanNumerics.LinearAlgebra.Stability",
     "LeanNumerics.Symplectic.Leapfrog"
   ],
-  "manifest_version": "nabench-minimal-pairs-v4-selected-8-v0.1",
+  "manifest_version": "leannumbench-minimal-pairs-v4-selected-8-v0.1",
   "output_dir": "data\\minimal_pairs\\prompt_pack_v4_selected_8_guided_v3",
   "pairs": 8,
   "prompt_pack_id": "minimal_pairs_v4_selected_8_proof_guided_v3",

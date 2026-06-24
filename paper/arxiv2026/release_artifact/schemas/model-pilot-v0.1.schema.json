@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "public benchmark repository/schemas/model-pilot-v0.1.schema.json",
+  "$id": "https://github.com/Qinghev/LeanNumBench/schemas/model-pilot-v0.1.schema.json",
   "title": "LeanNumBench model pilot manifest",
   "type": "object",
   "additionalProperties": false,
@@ -34,11 +34,7 @@
       "minItems": 1,
       "items": {
         "type": "string",
-        "enum": [
-          "statement_translation",
-          "proof_completion",
-          "theorem_retrieval"
-        ]
+        "enum": ["statement_translation", "proof_completion", "theorem_retrieval"]
       },
       "uniqueItems": true
     },
@@ -56,10 +52,7 @@
       "properties": {
         "source_declaration_context": {
           "type": "string",
-          "enum": [
-            "full",
-            "none"
-          ],
+          "enum": ["full", "none"],
           "default": "full"
         }
       }
@@ -70,11 +63,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "record_id",
-          "role",
-          "rationale"
-        ],
+        "required": ["record_id", "role", "rationale"],
         "properties": {
           "record_id": {
             "type": "string",
@@ -92,11 +81,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              "enum": [
-                "statement_translation",
-                "proof_completion",
-                "theorem_retrieval"
-              ]
+              "enum": ["statement_translation", "proof_completion", "theorem_retrieval"]
             },
             "uniqueItems": true
           }

@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def resolve_layout(root: Path) -> tuple[Path, Path, Path]:
-    repo_theorem_root = root / "nabench" / "theorems"
+    repo_theorem_root = root / "records" / "theorems"
     repo_index = repo_theorem_root / "index.json"
     if repo_index.is_file():
         return repo_theorem_root, repo_index, (root / ".." / "LeanNumerics").resolve()
@@ -119,7 +119,7 @@ def load_candidate_items(path: Path) -> list[dict[str, Any]]:
 
 
 def candidate_name(record_id: str) -> str:
-    return "nabench_candidate_" + re.sub(r"[^A-Za-z0-9_]", "_", record_id)
+    return "leannumbench_candidate_" + re.sub(r"[^A-Za-z0-9_]", "_", record_id)
 
 
 def proof_candidate_name(item: dict[str, Any], index: int) -> str:
@@ -128,7 +128,7 @@ def proof_candidate_name(item: dict[str, Any], index: int) -> str:
     return f"{candidate_name(item['record_id'])}__{suffix}"
 
 
-def rename_theorem(statement: str, name: str = "nabench_candidate") -> str:
+def rename_theorem(statement: str, name: str = "leannumbench_candidate") -> str:
     statement = statement.strip()
     if not statement.startswith("theorem "):
         raise ValueError("candidate statement must start with `theorem `")
@@ -138,7 +138,7 @@ def rename_theorem(statement: str, name: str = "nabench_candidate") -> str:
     return renamed
 
 
-def build_candidate_source(record: dict[str, Any], statement: str, proof: str, name: str = "nabench_candidate") -> str:
+def build_candidate_source(record: dict[str, Any], statement: str, proof: str, name: str = "leannumbench_candidate") -> str:
     module_name = module_from_file(record["formal"]["file"])
     opens, closes = namespace_lines(record)
     body = [
@@ -162,7 +162,7 @@ def run_lean(source: str, lean_project: Path, timeout: int) -> dict[str, Any]:
     lean_project = lean_project.resolve()
     if not lean_project.is_dir():
         raise ValueError(f"Lean project not found: {lean_project}")
-    scratch_root = lean_project / ".nabench_tmp"
+    scratch_root = lean_project / ".leannumbench_tmp"
     scratch_root.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="run_", dir=scratch_root) as tmp_dir:
         candidate_path = Path(tmp_dir) / "Candidate.lean"

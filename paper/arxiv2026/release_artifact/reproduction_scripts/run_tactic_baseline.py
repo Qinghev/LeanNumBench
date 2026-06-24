@@ -55,7 +55,7 @@ BASELINE_PROOFS: dict[str, str] = {
 
 def run_lean_source(source: str, lean_project: Path, timeout: int) -> dict[str, Any]:
     lean_project = lean_project.resolve()
-    scratch_root = lean_project / ".nabench_tmp"
+    scratch_root = lean_project / ".leannumbench_tmp"
     scratch_root.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix="tactic_baseline_", dir=scratch_root) as tmp_dir:
         candidate_path = Path(tmp_dir) / "Candidate.lean"
