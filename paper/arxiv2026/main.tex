@@ -147,8 +147,8 @@ timeless model ranking.
 \item \textbf{Diagnostics.} Hard-subset analysis, pass@3 probing,
 declaration-context ablation, deterministic-repair audit, and failure taxonomy.
 \item \textbf{Artifact.} Released prompt packs, usage-stripped model outputs,
-materialized candidates, checker summaries, table data, hashes, and no-API
-replay scripts.
+materialized candidates, checker summaries, table data, and no-API replay
+scripts.
 \end{itemize}
 
 \input{figures/figure1_pipeline.tikz.tex}
@@ -302,8 +302,8 @@ specified by the included Lake files. The released companion Lean tree is
 audited for benchmark-relevant placeholders: this release contains no
 \texttt{sorry}, \texttt{admit}, or user-defined \texttt{axiom} declarations.
 Its Lean toolchain is \texttt{leanprover/lean4:v4.29.1}, the Mathlib
-dependency is pinned to revision \texttt{v4.29.1}, and the full Lake manifest
-hash is reported in the artifact appendix.
+dependency is pinned to revision \texttt{v4.29.1}, and the corresponding Lake
+files are included with the released companion Lean project.
 
 \section{Experiments}
 
@@ -660,16 +660,16 @@ artifact includes the frozen records, companion Lean project, prompt packs,
 usage-stripped model outputs, table data, and reproduction scripts needed to
 audit the reported results without new model API calls. Benchmark metadata are
 released under CC-BY-4.0, and the companion Lean source, evaluation scripts,
-and release tooling are released under Apache-2.0. Full file manifests,
-checksums, and replay commands are provided in the artifact README and
-the artifact appendix.
+and release tooling are released under Apache-2.0. Additional package details
+and replay commands are provided in the artifact README and the artifact
+appendix.
 
 \section*{Use of AI Assistance}
 
 The author used language-model tools for copy-editing, code-review
 suggestions, consistency checks, and local automation support. All
 mathematical statements, Lean verification outcomes, experimental counts,
-references, hashes, and artifact claims were checked by the author against
+references, and artifact claims were checked by the author against
 Lean runs, structured experiment logs, or the released artifact. No
 model-generated proof or experimental result is counted unless it is verified
 by the local Lean checker under the reported protocol.

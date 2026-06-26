@@ -811,9 +811,7 @@ The reproducibility artifact contains enough material to audit the
 reported tables and rerun the local Lean checks without relying on local
 author paths. The LeanNumBench v1 release package includes a reproducibility
 artifact zip, also mirrored at
-\url{https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv}, with
-SHA256
-\texttt{7c43bc13edfa1e4f}\allowbreak\texttt{d80dee535028f055}\allowbreak\texttt{3456dffb40d2ff67}\allowbreak\texttt{e7e293a9b19552d4}.
+\url{https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv}.
 The package contains the components in the checklist below.
 
 \begin{center}
@@ -848,7 +846,7 @@ identity, credentials, or environment-specific paths.\\
 \end{center}
 
 The artifact README includes exact no-API commands. The fastest artifact check
-is a metadata, hash, and identity/path smoke test:
+is a metadata and identity/path smoke test:
 
 \begin{verbatim}
 python reproduction_scripts/artifact_smoke_check.py
@@ -888,11 +886,8 @@ dependency setup; if unavailable, Lake can build from source. The commands do
 not call model APIs. The expected replay materializes 786 proof candidates and
 reproduces the frozen per-model pass counts in
 Table~\ref{tab:supp-proof-snapshot}. The companion Lean project is pinned to
-\texttt{leanprover/lean4:v4.29.1} with Mathlib revision \texttt{v4.29.1}. The
-included \texttt{lake-manifest.json} SHA256 is:
-\begin{verbatim}
-2ed57a7e536783afef8fbb708429ea371e2524c941d8e7152f7a9bd3eca4b63b
-\end{verbatim}
+\texttt{leanprover/lean4:v4.29.1} with Mathlib revision \texttt{v4.29.1};
+the corresponding Lake files are included in the companion Lean project.
 The released companion Lean source has also been scanned for
 benchmark-relevant \texttt{sorry}, \texttt{admit}, and user-defined
 \texttt{axiom} declarations, with zero matches.

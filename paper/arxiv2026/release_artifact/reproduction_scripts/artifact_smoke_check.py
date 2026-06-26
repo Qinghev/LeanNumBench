@@ -1,8 +1,8 @@
 """Offline smoke checks for the LeanNumBench arXiv artifact.
 
 This script checks metadata consistency, usage-stripping, local path
-sanitization, and checksums. It does not call model APIs and does not require
-Lean.
+sanitization, and package integrity. It does not call model APIs and does not
+require Lean.
 """
 
 from __future__ import annotations

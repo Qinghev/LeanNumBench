@@ -81,5 +81,4 @@ python $RS/check_lean_candidates_divide.py \
 These commands do not call model APIs. The cache-get step only accelerates
 Mathlib setup; if unavailable, Lake can build from source. The companion Lean
 project uses `leanprover/lean4:v4.29.1`, pins Mathlib at `v4.29.1`, and ships
-with `lake-manifest.json` SHA256
-`2ed57a7e536783afef8fbb708429ea371e2524c941d8e7152f7a9bd3eca4b63b`.
+with the corresponding Lake files.

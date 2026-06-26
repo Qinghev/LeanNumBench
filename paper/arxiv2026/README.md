@@ -24,6 +24,4 @@ check.
 - `figures/`: TikZ/PGFPlots figure sources loaded by `main.tex`.
 - `anc/LeanNumBench_arxiv2026_release_artifact.zip`: arXiv ancillary
   reproducibility artifact.
-- `arxiv-source-manifest.txt`: SHA256 manifest for the source package
-  contents.
-- `release-notes.md`: release metadata and hashes.
+- `release-notes.md`: release metadata.
