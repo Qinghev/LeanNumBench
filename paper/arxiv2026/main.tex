@@ -652,36 +652,18 @@ separates raw passes, repair-assisted passes, pass@3 outcomes, and ablation
 results.
 
 \paragraph{Artifact availability.}
-The reproducibility artifact is included as arXiv ancillary material:
-\begin{center}
-\footnotesize
-\texttt{anc/LeanNumBench\_arxiv2026\_release\_artifact.zip}
-\end{center}
-The same artifact is mirrored in the public GitHub release:
-\begin{center}
-\footnotesize
-\url{https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv}
-\end{center}
-The artifact zip SHA256 is:
-\begin{center}
-\footnotesize
-\texttt{7c43bc13edfa1e4fd80dee535028f055}\\
-\texttt{3456dffb40d2ff67e7e293a9b19552d4}
-\end{center}
-The source package and local release directory include the same artifact. The
-frozen 160-row proof prompt pack SHA256 is:
-\begin{center}
-\footnotesize
-\texttt{1271dbbde48bd5ab0a995df27054740}\\
-\texttt{4468a3cd27330497f87fa9ae2bc881238}
-\end{center}
-The companion Lean project uses \texttt{leanprover/lean4:v4.29.1}, pins
-Mathlib at \texttt{v4.29.1}, and includes the Lake manifest hash reported
-above. The benchmark metadata are released under CC-BY-4.0. The companion Lean
-source, evaluation scripts, and release tooling are released under
-Apache-2.0. The artifact contains usage-stripped model outputs,
-materialized-candidate scripts, row-level result summaries, and hashes
-sufficient to audit the tables without new model API calls.
+The LeanNumBench v1 reproducibility artifact is included with this arXiv
+submission as ancillary material under
+\texttt{anc/LeanNumBench\_arxiv2026\_release\_artifact.zip} and is mirrored in
+the public GitHub release
+\url{https://github.com/Qinghev/LeanNumBench/releases/tag/v1.0-arxiv}. The
+artifact includes the frozen records, companion Lean project, prompt packs,
+usage-stripped model outputs, table data, and reproduction scripts needed to
+audit the reported results without new model API calls. Benchmark metadata are
+released under CC-BY-4.0, and the companion Lean source, evaluation scripts,
+and release tooling are released under Apache-2.0. Full file manifests,
+checksums, and replay commands are provided in the artifact README and
+Appendix~\ref{app:artifact}.
 
 \section*{Use of AI Assistance}
 
