@@ -9,7 +9,7 @@ here use a neutral article style.
 
 ## Build
 
-```powershell
+```sh
 latexmk -pdf main.tex
 ```
 
