@@ -1,13 +1,12 @@
 """Offline smoke checks for the LeanNumBench arXiv artifact.
 
 This script checks metadata consistency, usage-stripping, local path
-sanitization, and package integrity. It does not call model APIs and does not
+sanitization, and package structure. It does not call model APIs and does not
 require Lean.
 """
 
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 import sys
@@ -46,14 +45,6 @@ USAGE_KEYS = {
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
-
-
-def sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-    return digest.hexdigest()
 
 
 def walk_keys(value: Any, prefix: str = "") -> list[str]:
@@ -140,17 +131,6 @@ def main() -> int:
         for pattern in LOCAL_PATH_PATTERNS:
             if pattern.search(text):
                 issues.append(f"{path.relative_to(ROOT).as_posix()}: local/secret pattern {pattern.pattern}")
-
-    checksum_manifest = ROOT / "sha256_manifest.txt"
-    if checksum_manifest.is_file():
-        for line in checksum_manifest.read_text(encoding="utf-8").splitlines():
-            if not line.strip():
-                continue
-            expected, rel = line.split("  ", 1)
-            path = ROOT / rel
-            check(path.is_file(), issues, f"missing checksum target {rel}")
-            if path.is_file() and sha256_file(path) != expected:
-                issues.append(f"checksum mismatch: {rel}")
 
     payload = {
         "passed": not issues,

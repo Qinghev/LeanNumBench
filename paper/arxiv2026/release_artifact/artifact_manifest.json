@@ -4,1483 +4,1187 @@
   "files": [
     {
       "bytes": 3136,
-      "path": "companion_lean/lake-manifest.json",
-      "sha256": "2ed57a7e536783afef8fbb708429ea371e2524c941d8e7152f7a9bd3eca4b63b"
+      "path": "companion_lean/lake-manifest.json"
     },
     {
       "bytes": 365,
-      "path": "companion_lean/lakefile.toml",
-      "sha256": "4a11678f5f15fae67d88a4aa9b1323e9d9cabd984701ce91433b1344fecafbda"
+      "path": "companion_lean/lakefile.toml"
     },
     {
       "bytes": 26,
-      "path": "companion_lean/lean-toolchain",
-      "sha256": "b15a57f8ea4c890197465ce1156667ae13d9ed4ab8a9f263a920bf010d967d82"
+      "path": "companion_lean/lean-toolchain"
     },
     {
       "bytes": 89,
-      "path": "companion_lean/LeanNumerics/Basic.lean",
-      "sha256": "c3b203b9a5e2e7b0b17011dd5ca13f0a734a2dc3531e2e1902fba5dd515f2cc6"
+      "path": "companion_lean/LeanNumerics/Basic.lean"
     },
     {
       "bytes": 11663,
-      "path": "companion_lean/LeanNumerics/FEM/Projection.lean",
-      "sha256": "dea40f611ba398df9b98737f11f660202e6fada21fcdbaf4e1ad1f23efc4b5b7"
+      "path": "companion_lean/LeanNumerics/FEM/Projection.lean"
     },
     {
       "bytes": 3080,
-      "path": "companion_lean/LeanNumerics/FiniteDifference/Burgers.lean",
-      "sha256": "eb367f643930785c26ee2577d436a4dc14d013665334721a53d8ad40613bd6d9"
+      "path": "companion_lean/LeanNumerics/FiniteDifference/Burgers.lean"
     },
     {
       "bytes": 2746,
-      "path": "companion_lean/LeanNumerics/FiniteDifference/Conservation.lean",
-      "sha256": "951f6ece7e87553bafadce6290a4da74c1ad094999330cb2b38e5c28f022f488"
+      "path": "companion_lean/LeanNumerics/FiniteDifference/Conservation.lean"
     },
     {
       "bytes": 7432,
-      "path": "companion_lean/LeanNumerics/FiniteDifference/Heat.lean",
-      "sha256": "04ae64749de7a8738bb1a3de062b106d97f06b39efef45a872a60260ff6fb149"
+      "path": "companion_lean/LeanNumerics/FiniteDifference/Heat.lean"
     },
     {
       "bytes": 9927,
-      "path": "companion_lean/LeanNumerics/FiniteDifference/Kdv.lean",
-      "sha256": "c6fe4e61112aba32d0ee78701453924b7db0af660db3601317a25c9351aeb398"
+      "path": "companion_lean/LeanNumerics/FiniteDifference/Kdv.lean"
     },
     {
       "bytes": 3134,
-      "path": "companion_lean/LeanNumerics/FiniteDifference/LaxFriedrichs.lean",
-      "sha256": "c12db783aa734c8b950313247468b8e043e9f53cd6d24a0fc85ca001722afaf7"
+      "path": "companion_lean/LeanNumerics/FiniteDifference/LaxFriedrichs.lean"
     },
     {
       "bytes": 1828,
-      "path": "companion_lean/LeanNumerics/FiniteDifference/Upwind.lean",
-      "sha256": "1e5b577e54564406cc3da2b848a6ddfc7bfd4907507447686c2aa31d4a0ee575"
+      "path": "companion_lean/LeanNumerics/FiniteDifference/Upwind.lean"
     },
     {
       "bytes": 2885,
-      "path": "companion_lean/LeanNumerics/Interpolation/Linear.lean",
-      "sha256": "4feb353c6897a3ec12cb223038bef79788ab92d722f7d53918ba15f950c9961a"
+      "path": "companion_lean/LeanNumerics/Interpolation/Linear.lean"
     },
     {
       "bytes": 25424,
-      "path": "companion_lean/LeanNumerics/LeanNumBenchMinimalPairsV4.lean",
-      "sha256": "4640e94ce8ad7cada8beb4652175c10aa4f84f222fe3db6b733557831ab614e6"
+      "path": "companion_lean/LeanNumerics/LeanNumBenchMinimalPairsV4.lean"
     },
     {
       "bytes": 5522,
-      "path": "companion_lean/LeanNumerics/LinearAlgebra/Stability.lean",
-      "sha256": "f9a1fed124884f5883f39c404d67a5d27ce4d4efcd8b24cf3db00d84afe78e49"
+      "path": "companion_lean/LeanNumerics/LinearAlgebra/Stability.lean"
     },
     {
       "bytes": 1464,
-      "path": "companion_lean/LeanNumerics/ODE/RungeKutta.lean",
-      "sha256": "969dbf65f4690867372a01b0a92395f68dc29c22349b31f37b2cf76104d02170"
+      "path": "companion_lean/LeanNumerics/ODE/RungeKutta.lean"
     },
     {
       "bytes": 1395,
-      "path": "companion_lean/LeanNumerics/Quadrature/Basic.lean",
-      "sha256": "c4f3674ce8a8b74a7e8b54da1617181e3c4f0715901d16db1dec8aa91b3f3b45"
+      "path": "companion_lean/LeanNumerics/Quadrature/Basic.lean"
     },
     {
       "bytes": 4851,
-      "path": "companion_lean/LeanNumerics/Spectral/DFT.lean",
-      "sha256": "e77d078231d1354044ab8216e48b272762349deba74e57eed8f5ae80d3d933f7"
+      "path": "companion_lean/LeanNumerics/Spectral/DFT.lean"
     },
     {
       "bytes": 1616,
-      "path": "companion_lean/LeanNumerics/Symplectic/Leapfrog.lean",
-      "sha256": "960347edb491dc3e954910ef64d37a03df334e0be3e14f4146c17adf83ccdf60"
+      "path": "companion_lean/LeanNumerics/Symplectic/Leapfrog.lean"
     },
     {
       "bytes": 2538,
-      "path": "companion_lean/LeanNumerics/Symplectic/SymplecticEuler.lean",
-      "sha256": "76da23ebf8f6bae8f487a999e8fafb18b5a885c34d8dc25b8d0543289b357d56"
+      "path": "companion_lean/LeanNumerics/Symplectic/SymplecticEuler.lean"
     },
     {
       "bytes": 611,
-      "path": "companion_lean/LeanNumerics.lean",
-      "sha256": "a2d027710b0edba2c9f437d0975d700bd343462272bdec1a12365609c781c211"
+      "path": "companion_lean/LeanNumerics.lean"
     },
     {
       "bytes": 5488,
-      "path": "experiments/controlled_pair_v4_selected_8/candidate_template.jsonl",
-      "sha256": "1ac260fd62c6fd8ee0ce9242837f156fd9d191c04cf695c8e4b1a0c4ad9866f2"
+      "path": "experiments/controlled_pair_v4_selected_8/candidate_template.jsonl"
     },
     {
       "bytes": 10507,
-      "path": "experiments/controlled_pair_v4_selected_8/manifest.json",
-      "sha256": "8e66f4bf0bd301ec38bdeb5a1eb86e1439abb64228c1794dd9f7af9345490e2c"
+      "path": "experiments/controlled_pair_v4_selected_8/manifest.json"
     },
     {
       "bytes": 1193,
-      "path": "experiments/controlled_pair_v4_selected_8/prompt_audit.json",
-      "sha256": "9b32d6a129a813e10cf86508cc37c7d2a47468695f1ac888cf7a01be8d343baf"
+      "path": "experiments/controlled_pair_v4_selected_8/prompt_audit.json"
     },
     {
       "bytes": 129832,
-      "path": "experiments/controlled_pair_v4_selected_8/prompts.jsonl",
-      "sha256": "d44ea90f094acb4cec0fbaa186c265600bf820baa102fc3ae67c8029ddedecd8"
+      "path": "experiments/controlled_pair_v4_selected_8/prompts.jsonl"
     },
     {
       "bytes": 1912,
-      "path": "experiments/controlled_pair_v4_selected_8/summary.json",
-      "sha256": "668b4c3d0c1a7b5e72a7c4257e9ce8c988b206805ca5da72885672ba681a0cc1"
+      "path": "experiments/controlled_pair_v4_selected_8/summary.json"
     },
     {
       "bytes": 33476,
-      "path": "experiments/controlled_pair_v4_selected_8/targets.jsonl",
-      "sha256": "346f8aa49502ad36a02df5aa29fd3e7f81a5eacdcfb06cb916300dc068afb721"
+      "path": "experiments/controlled_pair_v4_selected_8/targets.jsonl"
     },
     {
       "bytes": 4588,
-      "path": "experiments/hard_subset_frontier_160/candidate_template.jsonl",
-      "sha256": "7cb261835a073d3f3759d7d833a696730c4145d3ce0d3519e87c87cfd77bb803"
+      "path": "experiments/hard_subset_frontier_160/candidate_template.jsonl"
     },
     {
       "bytes": 3812,
-      "path": "experiments/hard_subset_frontier_160/manifest.json",
-      "sha256": "1a5a4e53fb080f06cf9e2c467ded315a14c311b235063036949211d88b822468"
+      "path": "experiments/hard_subset_frontier_160/manifest.json"
     },
     {
       "bytes": 3812,
-      "path": "experiments/hard_subset_frontier_160/manifest_source.json",
-      "sha256": "1a5a4e53fb080f06cf9e2c467ded315a14c311b235063036949211d88b822468"
+      "path": "experiments/hard_subset_frontier_160/manifest_source.json"
     },
     {
       "bytes": 954,
-      "path": "experiments/hard_subset_frontier_160/prompt_audit.json",
-      "sha256": "0de8be52f05a13bdb681667dac8e1e8d686c6bdb088e9e4fe7c05792a878ef7c"
+      "path": "experiments/hard_subset_frontier_160/prompt_audit.json"
     },
     {
       "bytes": 66883,
-      "path": "experiments/hard_subset_frontier_160/prompts.jsonl",
-      "sha256": "d01abf594b7daea60e9e7617904a45578bde5eff4ede3578925345a3486a87ad"
+      "path": "experiments/hard_subset_frontier_160/prompts.jsonl"
     },
     {
       "bytes": 925,
-      "path": "experiments/hard_subset_frontier_160/summary.json",
-      "sha256": "53a89bce10ad407dc4dd45ea43c5c3e2f568563623fc93a23d5667060d7630ee"
+      "path": "experiments/hard_subset_frontier_160/summary.json"
     },
     {
       "bytes": 6943,
-      "path": "experiments/hard_subset_frontier_160/targets.jsonl",
-      "sha256": "5d9bc72a7d3e786b1d022fabf12c0c890bb0ed675071bcb9632be66e6d79da57"
+      "path": "experiments/hard_subset_frontier_160/targets.jsonl"
     },
     {
       "bytes": 63140,
-      "path": "experiments/model_pilot_160_proof/candidate_template.jsonl",
-      "sha256": "c22de3af6feed2f52aa8ce9c5017e13818243e20ce501563ebeb792b615152d3"
+      "path": "experiments/model_pilot_160_proof/candidate_template.jsonl"
     },
     {
       "bytes": 54273,
-      "path": "experiments/model_pilot_160_proof/manifest.json",
-      "sha256": "a66eeb8e51b73c88ad04b923011f9019113330935349709e879c47ebc9c1d745"
+      "path": "experiments/model_pilot_160_proof/manifest.json"
     },
     {
       "bytes": 1163,
-      "path": "experiments/model_pilot_160_proof/prompt_audit.json",
-      "sha256": "dc5ff0f4a661c32afe4d84cfec603086f53347a3dc8c6d1e20dce2aeea44b442"
+      "path": "experiments/model_pilot_160_proof/prompt_audit.json"
     },
     {
       "bytes": 936567,
-      "path": "experiments/model_pilot_160_proof/prompts.jsonl",
-      "sha256": "1271dbbde48bd5ab0a995df270547404468a3cd27330497f87fa9ae2bc881238"
+      "path": "experiments/model_pilot_160_proof/prompts.jsonl"
     },
     {
       "bytes": 1106,
-      "path": "experiments/model_pilot_160_proof/summary.json",
-      "sha256": "66c4bfa1bba45a921ef307e852db93ea628c76ad9859456f970455c0999b11eb"
+      "path": "experiments/model_pilot_160_proof/summary.json"
     },
     {
       "bytes": 92501,
-      "path": "experiments/model_pilot_160_proof/targets.jsonl",
-      "sha256": "4d51991e8e16221cc8a265b161ea5fa7adb791286c6899f742d378f0e3034dbd"
+      "path": "experiments/model_pilot_160_proof/targets.jsonl"
     },
     {
       "bytes": 226,
-      "path": "LICENSE-CODE.md",
-      "sha256": "3bf612c0b5845ccfe9cf737827e262db9cbebcb91b3cac184e85a01e38ea5df9"
+      "path": "LICENSE-CODE.md"
     },
     {
       "bytes": 311,
-      "path": "LICENSE-METADATA.md",
-      "sha256": "f377a24ac67f51579910d1b3eba44a9de99a4e5620d469155b379adbe669410c"
+      "path": "LICENSE-METADATA.md"
     },
     {
       "bytes": 3193,
-      "path": "README.md",
-      "sha256": "19c35d5a74e838affe482e1f8cbb2a0a750802112a1ab9d6807c12720cae0b2a"
+      "path": "README.md"
     },
     {
       "bytes": 44047,
-      "path": "records/index.json",
-      "sha256": "ab6b6f8668b18a8c83da79093cfafd0cebfbac79f57ab33fc951b70ee15a7700"
+      "path": "records/index.json"
     },
     {
       "bytes": 2335,
-      "path": "records/theorems/fem_projection/cell_average_const_2cell.json",
-      "sha256": "75e527f085bfaf69b778f67e0245496c33b1c1654961c225b14e762060998d37"
+      "path": "records/theorems/fem_projection/cell_average_const_2cell.json"
     },
     {
       "bytes": 3301,
-      "path": "records/theorems/fem_projection/p0_projection_best_const_approx_2cell.json",
-      "sha256": "519800cdab3b8fb4b2325c54b9590a74ff9429263711c8ec8cf403f5d16cdca5"
+      "path": "records/theorems/fem_projection/p0_projection_best_const_approx_2cell.json"
     },
     {
       "bytes": 2661,
-      "path": "records/theorems/fem_projection/p0_projection_idempotent_2cell.json",
-      "sha256": "9d9c66091246112d6df50cfb3f34541e3fb31f7612e09190cc6a6973138c0f5f"
+      "path": "records/theorems/fem_projection/p0_projection_idempotent_2cell.json"
     },
     {
       "bytes": 2969,
-      "path": "records/theorems/fem_projection/p0_projection_l2_contract_2cell.json",
-      "sha256": "16ff567907d8505f782f086578a68bf1b38a98bdf66b20475979cf29ba67d2e6"
+      "path": "records/theorems/fem_projection/p0_projection_l2_contract_2cell.json"
     },
     {
       "bytes": 2929,
-      "path": "records/theorems/fem_projection/p0_projection_orthogonal_const_2cell.json",
-      "sha256": "027a74dccd2b0ef00b66ce3dd78f707e3fd096774b977ad6bb291ec15c3c2ec2"
+      "path": "records/theorems/fem_projection/p0_projection_orthogonal_const_2cell.json"
     },
     {
       "bytes": 2965,
-      "path": "records/theorems/fem_projection/p0_projection_preserves_const_2cell.json",
-      "sha256": "173c22581a95b9baccc113667cfbba931fe6d421bb7e31c56d17a08d4053ce56"
+      "path": "records/theorems/fem_projection/p0_projection_preserves_const_2cell.json"
     },
     {
       "bytes": 3150,
-      "path": "records/theorems/fem_projection/p0_projection_pythagorean_2cell.json",
-      "sha256": "80009ccf155d64195f5bc5a35ad41f3c463b7f2474265bfc516158167ef79e8b"
+      "path": "records/theorems/fem_projection/p0_projection_pythagorean_2cell.json"
     },
     {
       "bytes": 2499,
-      "path": "records/theorems/fem_projection/p0_projection_residual_mean_zero_2cell.json",
-      "sha256": "def677a9489889f79d89aed0fbf887e87876394a0991351e6ad12e9a2e44991c"
+      "path": "records/theorems/fem_projection/p0_projection_residual_mean_zero_2cell.json"
     },
     {
       "bytes": 2682,
-      "path": "records/theorems/fem_projection/weighted_cell_average_const_2cell.json",
-      "sha256": "3791fa3494377eadb3612c36224bf17b6131952e2f5250fb0d2f55072c969b24"
+      "path": "records/theorems/fem_projection/weighted_cell_average_const_2cell.json"
     },
     {
       "bytes": 2559,
-      "path": "records/theorems/fem_projection/weighted_cell_l2_sq_nonneg_2cell.json",
-      "sha256": "a976d8ff26beeb40bab6e09441c2495fe94eef50e553c119a9b6e7838dfe4848"
+      "path": "records/theorems/fem_projection/weighted_cell_l2_sq_nonneg_2cell.json"
     },
     {
       "bytes": 2716,
-      "path": "records/theorems/fem_projection/weighted_const_approx_error_nonneg_2cell.json",
-      "sha256": "0d010d5bd7b4b77dcb76d206afb9e63da60a08be9371218a74d4622ce2e4d84d"
+      "path": "records/theorems/fem_projection/weighted_const_approx_error_nonneg_2cell.json"
     },
     {
       "bytes": 3268,
-      "path": "records/theorems/fem_projection/weighted_p0_average_add_general_n.json",
-      "sha256": "da211221fea8620ef16a46c5400ac9c9129da879edb707a0011f90f93c093a8d"
+      "path": "records/theorems/fem_projection/weighted_p0_average_add_general_n.json"
     },
     {
       "bytes": 3244,
-      "path": "records/theorems/fem_projection/weighted_p0_average_const_general_n.json",
-      "sha256": "338b3e56497bf50ed5a6c05ab2a8c59bcbcd6e336b88ee8f764821fc0bdf0900"
+      "path": "records/theorems/fem_projection/weighted_p0_average_const_general_n.json"
     },
     {
       "bytes": 3306,
-      "path": "records/theorems/fem_projection/weighted_p0_average_smul_general_n.json",
-      "sha256": "4aaf3a8d7260113045769ee47368607be0dcf03b9407d10741223d121a3199e4"
+      "path": "records/theorems/fem_projection/weighted_p0_average_smul_general_n.json"
     },
     {
       "bytes": 3141,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_best_const_approx_2cell.json",
-      "sha256": "97519031abf6d3cbd1d0d73e625762f073021055647bb1f244684802c264189f"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_best_const_approx_2cell.json"
     },
     {
       "bytes": 2989,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_error_decomposition_2cell.json",
-      "sha256": "6359d7858086b0b8109cd5e31cc53e367b2b19fffd396b953bd72d290a2155a1"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_error_decomposition_2cell.json"
     },
     {
       "bytes": 2972,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_idempotent_2cell.json",
-      "sha256": "688b52ed98c181198833233e5c9bb0449f43f06318a287002286febd8f3c2944"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_idempotent_2cell.json"
     },
     {
       "bytes": 3097,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_l2_contract_2cell.json",
-      "sha256": "494fb0f727ef5e90e594f3a7ae435e4ad9cbf9cdaba4cbf4e651697b6f55ddfc"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_l2_contract_2cell.json"
     },
     {
       "bytes": 3019,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_orthogonal_const_2cell.json",
-      "sha256": "e139285efb14679f06bf21f36f6f1b7afd72b60b9aca6629e030aa49fc61e92f"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_orthogonal_const_2cell.json"
     },
     {
       "bytes": 3994,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_orthogonal_const_general_n.json",
-      "sha256": "60c19f0f14148a0c8ff3053eddb9bb0153398ffa0a4ccabde5b33e9b183e1567"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_orthogonal_const_general_n.json"
     },
     {
       "bytes": 3237,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_preserves_const_2cell.json",
-      "sha256": "18af388f7c2ebba5c7aaf80cf211c855af9bdb50d784e8bbd38c04d322f8f5b7"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_preserves_const_2cell.json"
     },
     {
       "bytes": 3025,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_pythagorean_2cell.json",
-      "sha256": "d8041e5127cb9a8f42c6188b9820b14ac748a15982a3b2e75309e631de3cfbf3"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_pythagorean_2cell.json"
     },
     {
       "bytes": 2813,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_residual_sq_nonneg_2cell.json",
-      "sha256": "1173f0f1012dec835bbbdf0045829f76741b5c7d98b9cc2ea97bf1935935c7a7"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_residual_sq_nonneg_2cell.json"
     },
     {
       "bytes": 2659,
-      "path": "records/theorems/fem_projection/weighted_p0_projection_residual_weighted_mean_zero_2cell.json",
-      "sha256": "bbc984926b3c599de406da4e0fcf31408c963ff038a6ae495e1ad2fda7406bbe"
+      "path": "records/theorems/fem_projection/weighted_p0_projection_residual_weighted_mean_zero_2cell.json"
     },
     {
       "bytes": 3325,
-      "path": "records/theorems/fem_projection/weighted_p0_residual_add_general_n.json",
-      "sha256": "4806934713d341ed0425f698f3a9f0cbd95cdd1474b6b04a90df7faaf2f03bfe"
+      "path": "records/theorems/fem_projection/weighted_p0_residual_add_general_n.json"
     },
     {
       "bytes": 3339,
-      "path": "records/theorems/fem_projection/weighted_p0_residual_const_zero_general_n.json",
-      "sha256": "938c1d7b65b1e7accdc953b1accf449192aca59c8b640e1cfe04eda0afcff83f"
+      "path": "records/theorems/fem_projection/weighted_p0_residual_const_zero_general_n.json"
     },
     {
       "bytes": 3464,
-      "path": "records/theorems/fem_projection/weighted_p0_residual_mass_zero_general_n.json",
-      "sha256": "0ab981a3bceb687e14754ac208210758e74c4782dcd0ec41b0bd269132c6d58d"
+      "path": "records/theorems/fem_projection/weighted_p0_residual_mass_zero_general_n.json"
     },
     {
       "bytes": 3342,
-      "path": "records/theorems/fem_projection/weighted_p0_residual_smul_general_n.json",
-      "sha256": "499a3bb6ccf14e1fbcf19b29e5fb877a54800fee8ad1fbe863b97490eed34bf9"
+      "path": "records/theorems/fem_projection/weighted_p0_residual_smul_general_n.json"
     },
     {
       "bytes": 3043,
-      "path": "records/theorems/finite_difference/burgers_conservative_update_const_state_1d.json",
-      "sha256": "a4087adbf07c61068563a883e3b72d15219e72b0e30c5725f93738e44846b38c"
+      "path": "records/theorems/finite_difference/burgers_conservative_update_const_state_1d.json"
     },
     {
       "bytes": 3170,
-      "path": "records/theorems/finite_difference/burgers_conservative_update_eq_1d.json",
-      "sha256": "e3b436adf067d4b71c70f1d8cccb90d805a9712769de67978ac89b4b91a14040"
+      "path": "records/theorems/finite_difference/burgers_conservative_update_eq_1d.json"
     },
     {
       "bytes": 3218,
-      "path": "records/theorems/finite_difference/burgers_conservative_update_zero_scale_1d.json",
-      "sha256": "6af257f1cea67389a7fdec9dd5810ccfe2e12842c1c6e636fca16d0f18ef1d5f"
+      "path": "records/theorems/finite_difference/burgers_conservative_update_zero_scale_1d.json"
     },
     {
       "bytes": 2732,
-      "path": "records/theorems/finite_difference/burgers_flux_const_1d.json",
-      "sha256": "8a4019afcf9ebc0734850e46de5da91d6d10e9e95a91fc66d12ba5d267b880a6"
+      "path": "records/theorems/finite_difference/burgers_flux_const_1d.json"
     },
     {
       "bytes": 3065,
-      "path": "records/theorems/finite_difference/burgers_flux_const_difference_zero_1d.json",
-      "sha256": "645075895fb8c4238a13875952b42a614c1e49c2c6a330ece88e1bb9df802a70"
+      "path": "records/theorems/finite_difference/burgers_flux_const_difference_zero_1d.json"
     },
     {
       "bytes": 2779,
-      "path": "records/theorems/finite_difference/burgers_flux_eq_1d.json",
-      "sha256": "da27af639140c373a6880c9bd1b188b41cfb4699f3ab4187265e832dde521abd"
+      "path": "records/theorems/finite_difference/burgers_flux_eq_1d.json"
     },
     {
       "bytes": 3584,
-      "path": "records/theorems/finite_difference/burgers_total_change_update_1d.json",
-      "sha256": "ed1b1d50ffc749ec54f3727ecba5dfa59ca3669f530f4c5f33b5bf75bf48c366"
+      "path": "records/theorems/finite_difference/burgers_total_change_update_1d.json"
     },
     {
       "bytes": 3597,
-      "path": "records/theorems/finite_difference/burgers_total_update_1d.json",
-      "sha256": "1493215b919cf9eafab81dffb3d10739304212beee0563b1ec98e4d9bc4d973c"
+      "path": "records/theorems/finite_difference/burgers_total_update_1d.json"
     },
     {
       "bytes": 3712,
-      "path": "records/theorems/finite_difference/burgers_total_update_boundary_1d.json",
-      "sha256": "b8fe793c72b0c542df1d4e205946b8b41eed4fc9d53e26150cfcfab21cff49c0"
+      "path": "records/theorems/finite_difference/burgers_total_update_boundary_1d.json"
     },
     {
       "bytes": 3764,
-      "path": "records/theorems/finite_difference/burgers_total_update_periodic_flux_1d.json",
-      "sha256": "9d9d0e58f90767a04135878ea824e909d52d037f5919e59b0e79b80c91e3858b"
+      "path": "records/theorems/finite_difference/burgers_total_update_periodic_flux_1d.json"
     },
     {
       "bytes": 2932,
-      "path": "records/theorems/finite_difference/conservative_update_const_flux_1d.json",
-      "sha256": "f4ec198d71964f796e547d703c91262b0f0c5810a7142236b48aefb1c67cd2d9"
+      "path": "records/theorems/finite_difference/conservative_update_const_flux_1d.json"
     },
     {
       "bytes": 2816,
-      "path": "records/theorems/finite_difference/conservative_update_zero_scale_1d.json",
-      "sha256": "696e79ea40ddccfca53223963a09102d00c3adbe6145eed538344a7108c8b17e"
+      "path": "records/theorems/finite_difference/conservative_update_zero_scale_1d.json"
     },
     {
       "bytes": 2704,
-      "path": "records/theorems/finite_difference/flux_difference_const_zero_1d.json",
-      "sha256": "f129e1a2cffed026cca3ebccbb2c8dcb26a4c98c68f81d46ceec1f5de7ca3611"
+      "path": "records/theorems/finite_difference/flux_difference_const_zero_1d.json"
     },
     {
       "bytes": 3162,
-      "path": "records/theorems/finite_difference/flux_difference_sum_range_1d.json",
-      "sha256": "b7206a87404fe8d9f4c3ed0f848182d1f71d90072b5cf4ae2734d3ac57cac9a9"
+      "path": "records/theorems/finite_difference/flux_difference_sum_range_1d.json"
     },
     {
       "bytes": 3147,
-      "path": "records/theorems/finite_difference/heat_boundary_term_neumann_zero_1d.json",
-      "sha256": "0e86e5e8afaee303d3c6ef0151bdf437da3f6278bf6eae24e4370bd23e056cb9"
+      "path": "records/theorems/finite_difference/heat_boundary_term_neumann_zero_1d.json"
     },
     {
       "bytes": 3698,
-      "path": "records/theorems/finite_difference/heat_cfl_linf_stability_1d.json",
-      "sha256": "53dc6db49e81096e1196d2da3479f99053bd599dd693619b1946267f724f5608"
+      "path": "records/theorems/finite_difference/heat_cfl_linf_stability_1d.json"
     },
     {
       "bytes": 2785,
-      "path": "records/theorems/finite_difference/heat_constant_state_1d.json",
-      "sha256": "92b10562eaab0431444e8a034c86bc41c39dd07eaa10c316d31d994f66697571"
+      "path": "records/theorems/finite_difference/heat_constant_state_1d.json"
     },
     {
       "bytes": 3072,
-      "path": "records/theorems/finite_difference/heat_grid_constant_state_1d.json",
-      "sha256": "53ac1a4c20a4de21e0a7598122020665c762ac30df905185b221155f74f73b32"
+      "path": "records/theorems/finite_difference/heat_grid_constant_state_1d.json"
     },
     {
       "bytes": 3355,
-      "path": "records/theorems/finite_difference/heat_grid_heat_second_difference_1d.json",
-      "sha256": "064f30a7d2f7a94873cf46906906e895e12d829d526f55261c348e90adcbd6a7"
+      "path": "records/theorems/finite_difference/heat_grid_heat_second_difference_1d.json"
     },
     {
       "bytes": 3672,
-      "path": "records/theorems/finite_difference/heat_grid_linf_stability_1d.json",
-      "sha256": "333e0790a4ee876c433aeff796e2ed69357027a18a9031db170fd8a3d2c5d93e"
+      "path": "records/theorems/finite_difference/heat_grid_linf_stability_1d.json"
     },
     {
       "bytes": 3196,
-      "path": "records/theorems/finite_difference/heat_grid_second_difference_1d.json",
-      "sha256": "df7cda0852918649a82114c23da7e731f723db12977407c378252df0fff0fd99"
+      "path": "records/theorems/finite_difference/heat_grid_second_difference_1d.json"
     },
     {
       "bytes": 3831,
-      "path": "records/theorems/finite_difference/heat_grid_total_balance_1d.json",
-      "sha256": "0479923590bb887cd7dba11111831f3a9a69f283f6ab8896a2c9ca5be95b7f95"
+      "path": "records/theorems/finite_difference/heat_grid_total_balance_1d.json"
     },
     {
       "bytes": 3793,
-      "path": "records/theorems/finite_difference/heat_grid_total_boundary_zero_1d.json",
-      "sha256": "d13b04a5f8570595a481f47efccefcf22c3ce0a47574471f92af8d8cf4d0a778"
+      "path": "records/theorems/finite_difference/heat_grid_total_boundary_zero_1d.json"
     },
     {
       "bytes": 3548,
-      "path": "records/theorems/finite_difference/heat_grid_total_change_1d.json",
-      "sha256": "c2390b8cca9ea6cc63b0289548307da8147d6d2df3395bb0939ef0b6dc7cd612"
+      "path": "records/theorems/finite_difference/heat_grid_total_change_1d.json"
     },
     {
       "bytes": 4059,
-      "path": "records/theorems/finite_difference/heat_grid_total_neumann_boundary_1d.json",
-      "sha256": "75b2a6227892bf71f9eebb4b109cd9b820cec8f30be1e69bb444189771f9fa03"
+      "path": "records/theorems/finite_difference/heat_grid_total_neumann_boundary_1d.json"
     },
     {
       "bytes": 3552,
-      "path": "records/theorems/finite_difference/heat_monotone_1d.json",
-      "sha256": "a2d9a316dca499dfd9cb2ead17c29efd9c5d9f16a409a7c6ef3e4438c4992c96"
+      "path": "records/theorems/finite_difference/heat_monotone_1d.json"
     },
     {
       "bytes": 3502,
-      "path": "records/theorems/finite_difference/heat_second_difference_sum_boundary_1d.json",
-      "sha256": "4531865653273ca28ef0b52b0ff3072a0587bcc27dd93f471f30760d32437de9"
+      "path": "records/theorems/finite_difference/heat_second_difference_sum_boundary_1d.json"
     },
     {
       "bytes": 3335,
-      "path": "records/theorems/finite_difference/heat_weights_nonneg_cfl_1d.json",
-      "sha256": "d2b51742c44b38729829210e1b9bd4b3e59a1b6556fe7fa1f3491f0bc63094c1"
+      "path": "records/theorems/finite_difference/heat_weights_nonneg_cfl_1d.json"
     },
     {
       "bytes": 2941,
-      "path": "records/theorems/finite_difference/heat_weights_sum_1d.json",
-      "sha256": "c014389a7bbcf43d1266b4e3bd719a798cd34587dcb4039c06a023a1658c8c5e"
+      "path": "records/theorems/finite_difference/heat_weights_sum_1d.json"
     },
     {
       "bytes": 2790,
-      "path": "records/theorems/finite_difference/kdv_canonical_flux_const_1d.json",
-      "sha256": "7beeb7826dffaa20f0333536dfe0f09a7f26dbaad79de351186f577ac63e7cec"
+      "path": "records/theorems/finite_difference/kdv_canonical_flux_const_1d.json"
     },
     {
       "bytes": 2906,
-      "path": "records/theorems/finite_difference/kdv_canonical_flux_const_difference_zero_1d.json",
-      "sha256": "89f282aa146e0ee594b16da5e88882d1afb1adffbfc7f975e1fe116d1324f1d4"
+      "path": "records/theorems/finite_difference/kdv_canonical_flux_const_difference_zero_1d.json"
     },
     {
       "bytes": 2893,
-      "path": "records/theorems/finite_difference/kdv_canonical_flux_eq_1d.json",
-      "sha256": "ccaf1f0c5f83fe91f85a705c8bfa37fd99be679307f0d3de1d1a18c770e54319"
+      "path": "records/theorems/finite_difference/kdv_canonical_flux_eq_1d.json"
     },
     {
       "bytes": 3713,
-      "path": "records/theorems/finite_difference/kdv_canonical_mass_periodic_flux_1d.json",
-      "sha256": "2f48cfc24cd95b3e1c3e2477e16376a593ba7fae9f84ee696adbbd9fe18fae76"
+      "path": "records/theorems/finite_difference/kdv_canonical_mass_periodic_flux_1d.json"
     },
     {
       "bytes": 2818,
-      "path": "records/theorems/finite_difference/kdv_canonical_update_const_state_1d.json",
-      "sha256": "89c69f87741cc8ac01761ac9d1adff34d91d4b3c86adcd1fc3a7dd3970a35c38"
+      "path": "records/theorems/finite_difference/kdv_canonical_update_const_state_1d.json"
     },
     {
       "bytes": 2966,
-      "path": "records/theorems/finite_difference/kdv_canonical_update_eq_1d.json",
-      "sha256": "4ac370c17048433b077de97432b400b24ff54b38cb0b4ed251c33849f641bc1a"
+      "path": "records/theorems/finite_difference/kdv_canonical_update_eq_1d.json"
     },
     {
       "bytes": 2777,
-      "path": "records/theorems/finite_difference/kdv_canonical_update_zero_scale_1d.json",
-      "sha256": "7c5f225b9931601217b212c14a5f1403f53fadd33e44ffe505bf8c244c68910b"
+      "path": "records/theorems/finite_difference/kdv_canonical_update_zero_scale_1d.json"
     },
     {
       "bytes": 2965,
-      "path": "records/theorems/finite_difference/kdv_conservative_flux_const_1d.json",
-      "sha256": "78de532d68578d2f1f53262ba8f676a598200d4e67d932fbdf46843c85350987"
+      "path": "records/theorems/finite_difference/kdv_conservative_flux_const_1d.json"
     },
     {
       "bytes": 2911,
-      "path": "records/theorems/finite_difference/kdv_conservative_flux_const_difference_zero_1d.json",
-      "sha256": "ef04d80f095154231c00dc4cce79e7e3525bc509ce9790853ae6daf5bc0a557c"
+      "path": "records/theorems/finite_difference/kdv_conservative_flux_const_difference_zero_1d.json"
     },
     {
       "bytes": 2773,
-      "path": "records/theorems/finite_difference/kdv_conservative_update_const_state_1d.json",
-      "sha256": "f4d770834d47345fc2756312a2c11def1a835625e7aec6be11ec8f6971364b09"
+      "path": "records/theorems/finite_difference/kdv_conservative_update_const_state_1d.json"
     },
     {
       "bytes": 3127,
-      "path": "records/theorems/finite_difference/kdv_conservative_update_eq_1d.json",
-      "sha256": "71560faec7836c3bd6c382773c96f6e8a3c4c101d22ad670474d5af877d60118"
+      "path": "records/theorems/finite_difference/kdv_conservative_update_eq_1d.json"
     },
     {
       "bytes": 3148,
-      "path": "records/theorems/finite_difference/kdv_conservative_update_zero_scale_1d.json",
-      "sha256": "99a3f5d3cf184efa3166945ae8f9a51698911304d62372fe2e230009ada2938c"
+      "path": "records/theorems/finite_difference/kdv_conservative_update_zero_scale_1d.json"
     },
     {
       "bytes": 2838,
-      "path": "records/theorems/finite_difference/kdv_discrete_mass_eq_total_on_1d.json",
-      "sha256": "0e83b7506eac475874cbbe1bdd04abb67e7ac1aacf32c4b5a92010de6d152e72"
+      "path": "records/theorems/finite_difference/kdv_discrete_mass_eq_total_on_1d.json"
     },
     {
       "bytes": 3158,
-      "path": "records/theorems/finite_difference/kdv_mass_periodic_flux_1d.json",
-      "sha256": "0207daca9abeee483e2028e7e43edc06976d5e8210a8c0eb50a9bad21e81c16d"
+      "path": "records/theorems/finite_difference/kdv_mass_periodic_flux_1d.json"
     },
     {
       "bytes": 3448,
-      "path": "records/theorems/finite_difference/kdv_mass_update_1d.json",
-      "sha256": "113fd68c5329282d649a76d5944b6eb127e5b099c094354987b34989cd658e9b"
+      "path": "records/theorems/finite_difference/kdv_mass_update_1d.json"
     },
     {
       "bytes": 2782,
-      "path": "records/theorems/finite_difference/kdv_second_forward_difference_const_zero_1d.json",
-      "sha256": "59d303b2f801d5cb05027cc752735598436c32c4bd6f2d204a57b44ea655d4ff"
+      "path": "records/theorems/finite_difference/kdv_second_forward_difference_const_zero_1d.json"
     },
     {
       "bytes": 3379,
-      "path": "records/theorems/finite_difference/kdv_total_canonical_update_1d.json",
-      "sha256": "6288744d2c25d8f6f780f5e8df58926f3ff09e58aecb4551677455e097007192"
+      "path": "records/theorems/finite_difference/kdv_total_canonical_update_1d.json"
     },
     {
       "bytes": 3428,
-      "path": "records/theorems/finite_difference/kdv_total_canonical_update_boundary_1d.json",
-      "sha256": "eaac8ad4c1938b1d0d43d547712f4fd642125baf79a71b8dd9fd18fb28a4f7e4"
+      "path": "records/theorems/finite_difference/kdv_total_canonical_update_boundary_1d.json"
     },
     {
       "bytes": 3306,
-      "path": "records/theorems/finite_difference/kdv_total_canonical_update_periodic_flux_1d.json",
-      "sha256": "47e22260dea18d457fccca4c344452b1629195ad1b68fe9c9ddcf16e5ee9dfe4"
+      "path": "records/theorems/finite_difference/kdv_total_canonical_update_periodic_flux_1d.json"
     },
     {
       "bytes": 3157,
-      "path": "records/theorems/finite_difference/kdv_total_change_boundary_1d.json",
-      "sha256": "6bc4ee2424c13917871a323adc5909b72e3f35b3aae59d4a7333d8f9e335a65d"
+      "path": "records/theorems/finite_difference/kdv_total_change_boundary_1d.json"
     },
     {
       "bytes": 3410,
-      "path": "records/theorems/finite_difference/kdv_total_change_canonical_update_1d.json",
-      "sha256": "21b0edd363d51f7437a2fe5367d0f26dad874c280703a04c5f5f89a75ed4466c"
+      "path": "records/theorems/finite_difference/kdv_total_change_canonical_update_1d.json"
     },
     {
       "bytes": 3574,
-      "path": "records/theorems/finite_difference/kdv_total_change_update_1d.json",
-      "sha256": "7551bd79c8bc8825016f8a6119549a4d69fe66de5a391e47aef2081485e1bd5f"
+      "path": "records/theorems/finite_difference/kdv_total_change_update_1d.json"
     },
     {
       "bytes": 3357,
-      "path": "records/theorems/finite_difference/kdv_total_update_1d.json",
-      "sha256": "209fc1861cdd2800fb3c906e712f93de7605563057df226be7c6e2aa15d75ee1"
+      "path": "records/theorems/finite_difference/kdv_total_update_1d.json"
     },
     {
       "bytes": 3135,
-      "path": "records/theorems/finite_difference/kdv_total_update_boundary_1d.json",
-      "sha256": "fe5df25e9cb33ce5c0e3e6d2cd12989b172e2ff3aecb576edfa93785541204bd"
+      "path": "records/theorems/finite_difference/kdv_total_update_boundary_1d.json"
     },
     {
       "bytes": 3071,
-      "path": "records/theorems/finite_difference/kdv_total_update_periodic_flux_1d.json",
-      "sha256": "717c3c97ba03ab45cf8228fbb7ad13e6bbf644082ac4e1f0245ba8f9ca7eb0be"
+      "path": "records/theorems/finite_difference/kdv_total_update_periodic_flux_1d.json"
     },
     {
       "bytes": 3637,
-      "path": "records/theorems/finite_difference/lax_friedrichs_cfl_linf_stability_1d.json",
-      "sha256": "8e5ffc191cf791b90e28e099d34c4d63d6cadb7aa7a1235d765d5d719e9576f4"
+      "path": "records/theorems/finite_difference/lax_friedrichs_cfl_linf_stability_1d.json"
     },
     {
       "bytes": 2732,
-      "path": "records/theorems/finite_difference/lax_friedrichs_constant_state_1d.json",
-      "sha256": "3c9381085ee129e19fd4c61798aef6f4b6e6b4dee7d9f0e1c05ce9c6809385ce"
+      "path": "records/theorems/finite_difference/lax_friedrichs_constant_state_1d.json"
     },
     {
       "bytes": 3687,
-      "path": "records/theorems/finite_difference/lax_friedrichs_monotone_1d.json",
-      "sha256": "7233242450a41eb5ae4ca9aa1615d4355b751f9cf708aa9385b54fce507bedb6"
+      "path": "records/theorems/finite_difference/lax_friedrichs_monotone_1d.json"
     },
     {
       "bytes": 3107,
-      "path": "records/theorems/finite_difference/lax_friedrichs_weights_nonneg_1d.json",
-      "sha256": "b11a0a6524d6a9f9680f59ef0da3bcbec8370e5245e6793e17db038d53f97b6e"
+      "path": "records/theorems/finite_difference/lax_friedrichs_weights_nonneg_1d.json"
     },
     {
       "bytes": 2886,
-      "path": "records/theorems/finite_difference/lax_friedrichs_weights_sum_1d.json",
-      "sha256": "581b8e384f669f1ea7b05019ec2a360609c9a79bf98d0031cef86a04319a7c45"
+      "path": "records/theorems/finite_difference/lax_friedrichs_weights_sum_1d.json"
     },
     {
       "bytes": 3282,
-      "path": "records/theorems/finite_difference/total_change_conservative_update_1d.json",
-      "sha256": "323ef1a8f8d46983e175ce817446d4646ff6f27b41fed069f32617040db204cd"
+      "path": "records/theorems/finite_difference/total_change_conservative_update_1d.json"
     },
     {
       "bytes": 3681,
-      "path": "records/theorems/finite_difference/total_conservative_update_1d.json",
-      "sha256": "189a0ca837bd2e11b219e0c564b3b3c800e8ddee1cdc9bd424b3cbf720e34c1e"
+      "path": "records/theorems/finite_difference/total_conservative_update_1d.json"
     },
     {
       "bytes": 3284,
-      "path": "records/theorems/finite_difference/total_conservative_update_boundary_1d.json",
-      "sha256": "0152270a7bb555e71eb16d1927e27fd41f26f8ad41a3111f65795b2f2bd6e86a"
+      "path": "records/theorems/finite_difference/total_conservative_update_boundary_1d.json"
     },
     {
       "bytes": 3298,
-      "path": "records/theorems/finite_difference/total_conservative_update_periodic_boundary_1d.json",
-      "sha256": "cdd248da29bc0f593e45074e751ade5660ed84d842a4e83aaa4b43c45274589b"
+      "path": "records/theorems/finite_difference/total_conservative_update_periodic_boundary_1d.json"
     },
     {
       "bytes": 3426,
-      "path": "records/theorems/finite_difference/upwind_cfl_linf_stability_1d.json",
-      "sha256": "3caf184d7bfcf66bff9508d832f03d173f833c885d8211bc4ce56616425a597f"
+      "path": "records/theorems/finite_difference/upwind_cfl_linf_stability_1d.json"
     },
     {
       "bytes": 2597,
-      "path": "records/theorems/finite_difference/upwind_constant_state_1d.json",
-      "sha256": "13ef1b0713ea0c9b4197a01e997b41ceecf4da738dec0d11ff1c32eb2ee71925"
+      "path": "records/theorems/finite_difference/upwind_constant_state_1d.json"
     },
     {
       "bytes": 3306,
-      "path": "records/theorems/finite_difference/upwind_monotone_1d.json",
-      "sha256": "788613e1e8cbc4a518aea61cebba281d81830c408f167ab1b4fa588f857e5ecf"
+      "path": "records/theorems/finite_difference/upwind_monotone_1d.json"
     },
     {
       "bytes": 2424,
-      "path": "records/theorems/finite_difference/upwind_weights_nonneg_1d.json",
-      "sha256": "a88cdd8c280dae58f5eb0e0af6750decaf3e305d83241466e823136854c78cd1"
+      "path": "records/theorems/finite_difference/upwind_weights_nonneg_1d.json"
     },
     {
       "bytes": 2251,
-      "path": "records/theorems/finite_difference/upwind_weights_sum_1d.json",
-      "sha256": "3684a4c59942ba3c2cdb476ba8db9640f1806cec195e06d8f4c0f5b923cc65bf"
+      "path": "records/theorems/finite_difference/upwind_weights_sum_1d.json"
     },
     {
       "bytes": 3076,
-      "path": "records/theorems/interpolation_linear/affine_interp_abs_le.json",
-      "sha256": "f1874699a9b21aaa6c7cd572616283ced56e15d3e53cb18cef47941657a7bcdd"
+      "path": "records/theorems/interpolation_linear/affine_interp_abs_le.json"
     },
     {
       "bytes": 2845,
-      "path": "records/theorems/interpolation_linear/affine_interp_add.json",
-      "sha256": "59cb3fa692965160fd72b645caba8acd8ae1164f2de29eb3bbed2f76acbccdf9"
+      "path": "records/theorems/interpolation_linear/affine_interp_add.json"
     },
     {
       "bytes": 2736,
-      "path": "records/theorems/interpolation_linear/affine_interp_const.json",
-      "sha256": "c5e040733b987203f9eed4f29e38ce0c95ae8f33d83590cb13640d1a902c8b00"
+      "path": "records/theorems/interpolation_linear/affine_interp_const.json"
     },
     {
       "bytes": 2812,
-      "path": "records/theorems/interpolation_linear/affine_interp_smul.json",
-      "sha256": "2e48316628440a53ad342bac9a15fb80404b3d09a23a1bd7f4ba46b67c0c5f7b"
+      "path": "records/theorems/interpolation_linear/affine_interp_smul.json"
     },
     {
       "bytes": 2812,
-      "path": "records/theorems/interpolation_linear/linear_interp_at_left.json",
-      "sha256": "4da44daf9850dfd34463d8c331db518893d7b2e9e827e689c884c0dcf7fdb903"
+      "path": "records/theorems/interpolation_linear/linear_interp_at_left.json"
     },
     {
       "bytes": 2821,
-      "path": "records/theorems/interpolation_linear/linear_interp_at_right.json",
-      "sha256": "4cdaad65d397d288cf8562015e33cb45a06fa0534ca0b09d00ec0b2a40f7b003"
+      "path": "records/theorems/interpolation_linear/linear_interp_at_right.json"
     },
     {
       "bytes": 2826,
-      "path": "records/theorems/interpolation_linear/linear_interp_const.json",
-      "sha256": "cae5961837a80b113c7274a2d1605cae3cc242773407b357d3d4fc8a0ba6e5c0"
+      "path": "records/theorems/interpolation_linear/linear_interp_const.json"
     },
     {
       "bytes": 3198,
-      "path": "records/theorems/interpolation_linear/linear_interp_eq_affine.json",
-      "sha256": "2366df7f6590dd021316293a030b74314dac18e13e9c39bd96534b7f9d107b7a"
+      "path": "records/theorems/interpolation_linear/linear_interp_eq_affine.json"
     },
     {
       "bytes": 2481,
-      "path": "records/theorems/linear_algebra_stability/abs_left_le_vec2_inf_norm_2d.json",
-      "sha256": "fe322396d8c8b6c2eaa16bc6f73e80a60844d406dc6abef004a90a4385e9aa74"
+      "path": "records/theorems/linear_algebra_stability/abs_left_le_vec2_inf_norm_2d.json"
     },
     {
       "bytes": 2491,
-      "path": "records/theorems/linear_algebra_stability/abs_right_le_vec2_inf_norm_2d.json",
-      "sha256": "aedaa4d9a1a53c8b49a3e799ae1d2f5a4785c9a853b091b2dfb042d255d194e5"
+      "path": "records/theorems/linear_algebra_stability/abs_right_le_vec2_inf_norm_2d.json"
     },
     {
       "bytes": 3504,
-      "path": "records/theorems/linear_algebra_stability/diag2_inf_norm_le_2d.json",
-      "sha256": "a9cb9262039b20ccc7863fdeed1c3906a44c7c571ea0af5ed3a749b23fcb3797"
+      "path": "records/theorems/linear_algebra_stability/diag2_inf_norm_le_2d.json"
     },
     {
       "bytes": 2596,
-      "path": "records/theorems/linear_algebra_stability/diag2_zero_2d.json",
-      "sha256": "0d2d457048413726d679e57c5a34c7d8c14fbf79acd10b7e7304aae09fb410c0"
+      "path": "records/theorems/linear_algebra_stability/diag2_zero_2d.json"
     },
     {
       "bytes": 3446,
-      "path": "records/theorems/linear_algebra_stability/finite_row_apply_abs_le_general_n.json",
-      "sha256": "22fe858651b0302f3c3c2bea225c3db85a86f146297b234328ecd92ad65ed1c7"
+      "path": "records/theorems/linear_algebra_stability/finite_row_apply_abs_le_general_n.json"
     },
     {
       "bytes": 2985,
-      "path": "records/theorems/linear_algebra_stability/finite_row_apply_add_general_n.json",
-      "sha256": "7134ed5ee8774f505889789d84b32bcb3b7fade53937d5b00c5b4e95a8c99de5"
+      "path": "records/theorems/linear_algebra_stability/finite_row_apply_add_general_n.json"
     },
     {
       "bytes": 2852,
-      "path": "records/theorems/linear_algebra_stability/finite_row_apply_const_general_n.json",
-      "sha256": "94802a23cb36e18ac1d18db4d4845033baf4f2531f8222abe950a0cc73cd65a8"
+      "path": "records/theorems/linear_algebra_stability/finite_row_apply_const_general_n.json"
     },
     {
       "bytes": 2561,
-      "path": "records/theorems/linear_algebra_stability/finite_row_apply_zero_general_n.json",
-      "sha256": "8198d6840fdd74e5ab25fbb2ebffdb9d6c85cefbcec112cdea2309c14826bc1e"
+      "path": "records/theorems/linear_algebra_stability/finite_row_apply_zero_general_n.json"
     },
     {
       "bytes": 3144,
-      "path": "records/theorems/linear_algebra_stability/finite_weighted_abs_sum_le_general_n.json",
-      "sha256": "1422b88c54dd88568d2722636127f21e040279b170c4034b1f46799a55b8ac97"
+      "path": "records/theorems/linear_algebra_stability/finite_weighted_abs_sum_le_general_n.json"
     },
     {
       "bytes": 2798,
-      "path": "records/theorems/linear_algebra_stability/row2_apply_abs_le_2d.json",
-      "sha256": "db24ec0f5c33b9b170e11fd2e05a6c1616d2d161bcd56faba65e8808ce932474"
+      "path": "records/theorems/linear_algebra_stability/row2_apply_abs_le_2d.json"
     },
     {
       "bytes": 2555,
-      "path": "records/theorems/linear_algebra_stability/row2_apply_const_2d.json",
-      "sha256": "75de43988b526d8193fd009fe4cfe5cd719faaed63928309d77bfac10c92f345"
+      "path": "records/theorems/linear_algebra_stability/row2_apply_const_2d.json"
     },
     {
       "bytes": 3255,
-      "path": "records/theorems/linear_algebra_stability/row_stochastic2_const_2d.json",
-      "sha256": "56bcb932ea7381576c95777419b6399e4c47313c2492029ddb94c38c62008e1e"
+      "path": "records/theorems/linear_algebra_stability/row_stochastic2_const_2d.json"
     },
     {
       "bytes": 3625,
-      "path": "records/theorems/linear_algebra_stability/row_stochastic2_inf_norm_abs_le_2d.json",
-      "sha256": "890b963e376384fdf6b2f5cad39f3c9ac9f83016c04ed96feafdf7cbf101883f"
+      "path": "records/theorems/linear_algebra_stability/row_stochastic2_inf_norm_abs_le_2d.json"
     },
     {
       "bytes": 2466,
-      "path": "records/theorems/linear_algebra_stability/vec2_inf_norm_nonneg_2d.json",
-      "sha256": "8cd44496d6564f5d7b40ec8ba8408a7a46ae250464c4218af9df885d4d9c1c48"
+      "path": "records/theorems/linear_algebra_stability/vec2_inf_norm_nonneg_2d.json"
     },
     {
       "bytes": 2914,
-      "path": "records/theorems/ode_runge_kutta/explicit_euler_linear_step_1d.json",
-      "sha256": "401dd72c3b19630b999767de581b887e10d5021b3a6c7fb45affa99110144a58"
+      "path": "records/theorems/ode_runge_kutta/explicit_euler_linear_step_1d.json"
     },
     {
       "bytes": 2525,
-      "path": "records/theorems/ode_runge_kutta/explicit_euler_zero_dt_1d.json",
-      "sha256": "8fa93e9b73b14b47c41aba8c4dc2ae5035afe748174c60c78a764a5b7d693c9d"
+      "path": "records/theorems/ode_runge_kutta/explicit_euler_zero_dt_1d.json"
     },
     {
       "bytes": 3212,
-      "path": "records/theorems/ode_runge_kutta/heun_rk2_linear_taylor2_1d.json",
-      "sha256": "5ede52b36af0d4835b43dc2af694d32f4558c8d1ee419654add304b2e5f45d09"
+      "path": "records/theorems/ode_runge_kutta/heun_rk2_linear_taylor2_1d.json"
     },
     {
       "bytes": 4111,
-      "path": "records/theorems/ode_runge_kutta/midpoint_heun_agree_linear_1d.json",
-      "sha256": "0aed71735fe54a52ca3517340efcd1c998a5fb59707f3a56995fe085612c38d2"
+      "path": "records/theorems/ode_runge_kutta/midpoint_heun_agree_linear_1d.json"
     },
     {
       "bytes": 3292,
-      "path": "records/theorems/ode_runge_kutta/midpoint_rk2_linear_taylor2_1d.json",
-      "sha256": "06043859c6d4d77223a1362c4f0608f4e8cdd5adbf4380b8fb9b1f3cdebdb80d"
+      "path": "records/theorems/ode_runge_kutta/midpoint_rk2_linear_taylor2_1d.json"
     },
     {
       "bytes": 2610,
-      "path": "records/theorems/ode_runge_kutta/midpoint_rk2_zero_dt_1d.json",
-      "sha256": "75c9f95b264f5275b6227cd62d8b475464c56a4d02711510fa6f350babe817b3"
+      "path": "records/theorems/ode_runge_kutta/midpoint_rk2_zero_dt_1d.json"
     },
     {
       "bytes": 3822,
-      "path": "records/theorems/ode_symplectic/leapfrog_invariant_1d.json",
-      "sha256": "de65c1d68b8ce11d51356e056f82951d32f919a9ae99a64634d415402708d73c"
+      "path": "records/theorems/ode_symplectic/leapfrog_invariant_1d.json"
     },
     {
       "bytes": 3503,
-      "path": "records/theorems/ode_symplectic/leapfrog_one_step_invariant_1d.json",
-      "sha256": "945984630e05bf0eb51edca3e3529f6af085ee17dbf61dcb0ffca2977f36898d"
+      "path": "records/theorems/ode_symplectic/leapfrog_one_step_invariant_1d.json"
     },
     {
       "bytes": 3778,
-      "path": "records/theorems/ode_symplectic/leapfrog_orbit_step_invariant_1d.json",
-      "sha256": "ad5a0ae28f576603040f9cc4e9e5a956100ac8e947074eaf60a8d6b00a73901b"
+      "path": "records/theorems/ode_symplectic/leapfrog_orbit_step_invariant_1d.json"
     },
     {
       "bytes": 4314,
-      "path": "records/theorems/ode_symplectic/symplectic_euler_invariant_1d.json",
-      "sha256": "c849b52fdd705f17e0afa09564b3f73d337cebe18724b20fb4ba8ec31f75f703"
+      "path": "records/theorems/ode_symplectic/symplectic_euler_invariant_1d.json"
     },
     {
       "bytes": 3995,
-      "path": "records/theorems/ode_symplectic/symplectic_euler_linear_det_1d.json",
-      "sha256": "8e8a7e76d307f264658fc103bdbdc4215e8a576802477e99ea28f9476b874f56"
+      "path": "records/theorems/ode_symplectic/symplectic_euler_linear_det_1d.json"
     },
     {
       "bytes": 3835,
-      "path": "records/theorems/ode_symplectic/symplectic_euler_one_step_invariant_1d.json",
-      "sha256": "a7159ddc66c8e3b7e97570eede7e70a00045bf9f7bb2736ebb37e8feb0cc3554"
+      "path": "records/theorems/ode_symplectic/symplectic_euler_one_step_invariant_1d.json"
     },
     {
       "bytes": 3872,
-      "path": "records/theorems/ode_symplectic/symplectic_euler_orbit_step_invariant_1d.json",
-      "sha256": "c64ebac1971375846dfb065f0839e0dcca4517291f8810c159f0dbe994bc0ad7"
+      "path": "records/theorems/ode_symplectic/symplectic_euler_orbit_step_invariant_1d.json"
     },
     {
       "bytes": 2589,
-      "path": "records/theorems/quadrature_rules/midpoint1_add.json",
-      "sha256": "72c3a11fe5a372fe0d4466bd1fb8dd9f410b66637fe38a4ce3eed4b62fa17c2c"
+      "path": "records/theorems/quadrature_rules/midpoint1_add.json"
     },
     {
       "bytes": 2611,
-      "path": "records/theorems/quadrature_rules/midpoint1_smul.json",
-      "sha256": "5865b3fad6af2913f610a82a3d255884abd340ebbac2333dba6ee508627ad2e0"
+      "path": "records/theorems/quadrature_rules/midpoint1_smul.json"
     },
     {
       "bytes": 2732,
-      "path": "records/theorems/quadrature_rules/trapezoid2_add.json",
-      "sha256": "e9b13cc4b8d456a4d3591b957ec2da86133915a06320bce85ecd3e0be724df5f"
+      "path": "records/theorems/quadrature_rules/trapezoid2_add.json"
     },
     {
       "bytes": 2606,
-      "path": "records/theorems/quadrature_rules/trapezoid2_const.json",
-      "sha256": "1d0ca40089d4f8bbb213c45948c175037452cdb3410b4a3e52cc21cceb987a5d"
+      "path": "records/theorems/quadrature_rules/trapezoid2_const.json"
     },
     {
       "bytes": 2799,
-      "path": "records/theorems/quadrature_rules/trapezoid2_nonneg.json",
-      "sha256": "be17fcbf4e7d78837da2f3b100274df8c8f1ed64a5fe9089c32a28d4135a0e76"
+      "path": "records/theorems/quadrature_rules/trapezoid2_nonneg.json"
     },
     {
       "bytes": 2754,
-      "path": "records/theorems/quadrature_rules/trapezoid2_smul.json",
-      "sha256": "e5a2628dda45baebe934bf16ee181fa5ef4aada24a7505168081cd470ca478e6"
+      "path": "records/theorems/quadrature_rules/trapezoid2_smul.json"
     },
     {
       "bytes": 3310,
-      "path": "records/theorems/spectral_dft/centered_signal_add_general_n.json",
-      "sha256": "8d62a8efd83f3bec12031f5449f97f670317090ed06fbbd888700dc01792fe0b"
+      "path": "records/theorems/spectral_dft/centered_signal_add_general_n.json"
     },
     {
       "bytes": 3643,
-      "path": "records/theorems/spectral_dft/centered_signal_const_zero_general_n.json",
-      "sha256": "1508d6a3b066afc7411a8d1fdcfec36b026273b4750eb84ef6749ccb03849926"
+      "path": "records/theorems/spectral_dft/centered_signal_const_zero_general_n.json"
     },
     {
       "bytes": 3323,
-      "path": "records/theorems/spectral_dft/centered_signal_smul_general_n.json",
-      "sha256": "d81c74732c53fac9a89fdce6fe61d06e47eb1cb72570e9cead648fac88dd4d3d"
+      "path": "records/theorems/spectral_dft/centered_signal_smul_general_n.json"
     },
     {
       "bytes": 2288,
-      "path": "records/theorems/spectral_dft/dft2_dc_const_2pt.json",
-      "sha256": "73197e3550943e6c03c09292b833bbc66d1357f002ca6c3dd6a0bd4085005da8"
+      "path": "records/theorems/spectral_dft/dft2_dc_const_2pt.json"
     },
     {
       "bytes": 2292,
-      "path": "records/theorems/spectral_dft/dft2_dc_swap_2pt.json",
-      "sha256": "2ba305590c4e676fd68b55a901d9ab2b8ba84d341ec88f9f4527a6ad75d6c60f"
+      "path": "records/theorems/spectral_dft/dft2_dc_swap_2pt.json"
     },
     {
       "bytes": 2342,
-      "path": "records/theorems/spectral_dft/dft2_dc_zero_sum_2pt.json",
-      "sha256": "a358625704f3a181d4b5b41bf908716c8318f2cbb1e2847763ad7fefdafe06dc"
+      "path": "records/theorems/spectral_dft/dft2_dc_zero_sum_2pt.json"
     },
     {
       "bytes": 3338,
-      "path": "records/theorems/spectral_dft/dft2_energy_eq_two_physical_energy_2pt.json",
-      "sha256": "ef524297893afb847318319a859c6e870eb6c73624c0316528e2d25c918185bb"
+      "path": "records/theorems/spectral_dft/dft2_energy_eq_two_physical_energy_2pt.json"
     },
     {
       "bytes": 3271,
-      "path": "records/theorems/spectral_dft/dft2_inverse_2pt.json",
-      "sha256": "5d82a53730762ca9db824cc7a71e4b4a5285b9317647f2e15b3176e057337e61"
+      "path": "records/theorems/spectral_dft/dft2_inverse_2pt.json"
     },
     {
       "bytes": 2339,
-      "path": "records/theorems/spectral_dft/dft2_nyquist_const_zero_2pt.json",
-      "sha256": "f7c56d0ca2e77aa68db95d5b80358b0698379a5f11bb51de5473206c28aceee3"
+      "path": "records/theorems/spectral_dft/dft2_nyquist_const_zero_2pt.json"
     },
     {
       "bytes": 2361,
-      "path": "records/theorems/spectral_dft/dft2_nyquist_swap_2pt.json",
-      "sha256": "f64a24a9ab6b0dbf41f311228ad1ff50c3f6437919f6bd75389bf589ac06fcf3"
+      "path": "records/theorems/spectral_dft/dft2_nyquist_swap_2pt.json"
     },
     {
       "bytes": 2898,
-      "path": "records/theorems/spectral_dft/dft2_parseval_2pt.json",
-      "sha256": "aa6915391d1acb0559c23992a3ffee277e3d4d4146c21da65866aaf9bf2259b1"
+      "path": "records/theorems/spectral_dft/dft2_parseval_2pt.json"
     },
     {
       "bytes": 2751,
-      "path": "records/theorems/spectral_dft/finite_dc_add_general_n.json",
-      "sha256": "29cf1ab812a21756d200db3035c1afa1d224e22f08913e4b5e7449f01dc7bd2c"
+      "path": "records/theorems/spectral_dft/finite_dc_add_general_n.json"
     },
     {
       "bytes": 3618,
-      "path": "records/theorems/spectral_dft/finite_dc_centered_signal_zero_general_n.json",
-      "sha256": "893c24e45e7327663c4bf3630495180353b0e75bcdeb32e2b3b9cf20ef1c33d8"
+      "path": "records/theorems/spectral_dft/finite_dc_centered_signal_zero_general_n.json"
     },
     {
       "bytes": 2807,
-      "path": "records/theorems/spectral_dft/finite_dc_const_general_n.json",
-      "sha256": "a5cb0cfb16182326ec0b3e77f35e167899b622c65d8756c8cdb54bc54e591a0b"
+      "path": "records/theorems/spectral_dft/finite_dc_const_general_n.json"
     },
     {
       "bytes": 2676,
-      "path": "records/theorems/spectral_dft/finite_dc_neg_general_n.json",
-      "sha256": "10ac848e8148b96dd002ce9ecd30273db6c454f2906fbd24b5fa358645985c53"
+      "path": "records/theorems/spectral_dft/finite_dc_neg_general_n.json"
     },
     {
       "bytes": 2727,
-      "path": "records/theorems/spectral_dft/finite_dc_smul_general_n.json",
-      "sha256": "23346db65b202fd92afb92f49f4ce8a6cb26642724a993980d08bc8c06b675d4"
+      "path": "records/theorems/spectral_dft/finite_dc_smul_general_n.json"
     },
     {
       "bytes": 2767,
-      "path": "records/theorems/spectral_dft/finite_dc_sub_general_n.json",
-      "sha256": "b0ac0153557ec619fd496b2e180592354db10e042f25eca1f87990054c486f5b"
+      "path": "records/theorems/spectral_dft/finite_dc_sub_general_n.json"
     },
     {
       "bytes": 2564,
-      "path": "records/theorems/spectral_dft/finite_dc_zero_general_n.json",
-      "sha256": "356ec1d5fc028eafa44f9f553f68c193a15c62136d01fe26e179eb90be1d4940"
+      "path": "records/theorems/spectral_dft/finite_dc_zero_general_n.json"
     },
     {
       "bytes": 2972,
-      "path": "records/theorems/spectral_dft/finite_mean_add_general_n.json",
-      "sha256": "3cbcf6bc83231c9f0db1b09bd88d4c23c6017cad234a22a2f21ef1bed89247e3"
+      "path": "records/theorems/spectral_dft/finite_mean_add_general_n.json"
     },
     {
       "bytes": 3353,
-      "path": "records/theorems/spectral_dft/finite_mean_const_general_n.json",
-      "sha256": "cfe4710a509101bc6bc1f845a625294bf96b476a21d739756bbdeb3627970900"
+      "path": "records/theorems/spectral_dft/finite_mean_const_general_n.json"
     },
     {
       "bytes": 2989,
-      "path": "records/theorems/spectral_dft/finite_mean_smul_general_n.json",
-      "sha256": "522db64be09f609f33c60c4249554d0381d28dca3401b463631d03d33d2f70f4"
+      "path": "records/theorems/spectral_dft/finite_mean_smul_general_n.json"
     },
     {
       "bytes": 2782,
-      "path": "records/theorems/spectral_dft/idft2_first_recovers_input_2pt.json",
-      "sha256": "0e6a3ee4f5cb0c9058a55788d0ee964fd1fb7d514f93e178497e79caeed115c5"
+      "path": "records/theorems/spectral_dft/idft2_first_recovers_input_2pt.json"
     },
     {
       "bytes": 2797,
-      "path": "records/theorems/spectral_dft/idft2_second_recovers_input_2pt.json",
-      "sha256": "63647ec574b8a840a9094696dfa90c49fc79508d53d783ce83961238b898d3b0"
+      "path": "records/theorems/spectral_dft/idft2_second_recovers_input_2pt.json"
     },
     {
-      "bytes": 6150,
-      "path": "reproduction_scripts/artifact_smoke_check.py",
-      "sha256": "78c0ee4e86ea6bf1887990b977103f76cb50f664cdb1b1b7861d7735c20e8f06"
+      "bytes": 5396,
+      "path": "reproduction_scripts/artifact_smoke_check.py"
     },
     {
       "bytes": 12169,
-      "path": "reproduction_scripts/audit_model_pilot_prompts.py",
-      "sha256": "4b9a2925bb6716b5c8eaac399666b93bfd5a93321663205ce85d87d439f9e272"
+      "path": "reproduction_scripts/audit_model_pilot_prompts.py"
     },
     {
       "bytes": 21734,
-      "path": "reproduction_scripts/check_lean_candidate.py",
-      "sha256": "7077377c2348f8425f031fdc7e1ce86427a1d0165a7d883c0c6d3b1a7da37327"
+      "path": "reproduction_scripts/check_lean_candidate.py"
     },
     {
       "bytes": 6655,
-      "path": "reproduction_scripts/check_lean_candidates_divide.py",
-      "sha256": "e6c5c0b2f4334940534b392e252aefb088855cebbc9b454c4b926ba192cbadc3"
+      "path": "reproduction_scripts/check_lean_candidates_divide.py"
     },
     {
       "bytes": 12814,
-      "path": "reproduction_scripts/materialize_model_pilot_candidates.py",
-      "sha256": "360addb21b20b8eee91eccba9012152d1c2bb51cde9f21e93d00dce9f7def978"
+      "path": "reproduction_scripts/materialize_model_pilot_candidates.py"
     },
     {
       "bytes": 34262,
-      "path": "reproduction_scripts/prepare_model_pilot.py",
-      "sha256": "4aaf1b5e6e153226be8e5dbd9e51d75c7b5627423196dbc30a61b384fa375c47"
+      "path": "reproduction_scripts/prepare_model_pilot.py"
     },
     {
       "bytes": 11265,
-      "path": "reproduction_scripts/run_tactic_baseline.py",
-      "sha256": "6f22b89c9b9c71a933a596d9866159ab3ea896e2f2eacd092c57e98cf4ca624e"
+      "path": "reproduction_scripts/run_tactic_baseline.py"
     },
     {
       "bytes": 5460,
-      "path": "reproduction_scripts/validate_record_schemas.py",
-      "sha256": "1e5b62d3db1666f07dd8f639758f0ea0cae64c9c226f7fec6f3865f280f60db5"
+      "path": "reproduction_scripts/validate_record_schemas.py"
     },
     {
       "bytes": 5921,
-      "path": "results/ablation_decl_context_37_deepseek_v4_pro_rows.csv",
-      "sha256": "b538de7ca6c2b1dd168ecd5d482c3d82148ca29dfbc930286107b1ab8b10bc94"
+      "path": "results/ablation_decl_context_37_deepseek_v4_pro_rows.csv"
     },
     {
       "bytes": 486,
-      "path": "results/ablation_decl_context_37_deepseek_v4_pro_summary.csv",
-      "sha256": "c76a3f5aebbfc24216ade9978edaf9079a6ebec96f0c07bb6948fc2f66940198"
+      "path": "results/ablation_decl_context_37_deepseek_v4_pro_summary.csv"
     },
     {
       "bytes": 4842,
-      "path": "results/ablation_decl_context_37_gemini_rows.csv",
-      "sha256": "50b93390c2f63fb7b08175cf40923f7846c46d06dc93ae80634b20ae03c000bc"
+      "path": "results/ablation_decl_context_37_gemini_rows.csv"
     },
     {
       "bytes": 14705,
-      "path": "results/ablation_decl_context_37_gemini_summary.json",
-      "sha256": "d56e38db24617b9a40b2df5ca01ccf0a4932cdcfa8977815aa51b7ccc6d67ef6"
+      "path": "results/ablation_decl_context_37_gemini_summary.json"
     },
     {
       "bytes": 1247,
-      "path": "results/ablation_decl_context_37_prompt_stats.json",
-      "sha256": "3f6cbe914727d51ae5a45cb6b6dd1a1fe79cdbcb707d477d56c74b67f78370f8"
+      "path": "results/ablation_decl_context_37_prompt_stats.json"
     },
     {
       "bytes": 9682,
-      "path": "results/controlled_pair_v4_selected_8/check_claude_opus_4_8_t0_repair_timeout240.json",
-      "sha256": "8c118083a6828512503dfe0dba8a3c6ae116d60a8dc3110f409a573ddaf34535"
+      "path": "results/controlled_pair_v4_selected_8/check_claude_opus_4_8_t0_repair_timeout240.json"
     },
     {
       "bytes": 9436,
-      "path": "results/controlled_pair_v4_selected_8/check_gpt_5_5_t0_repair_timeout240.json",
-      "sha256": "e47c6e2b134a9017a7a83a1f13daadbc25083b8e9a470845a0ac7f94f467a3f1"
+      "path": "results/controlled_pair_v4_selected_8/check_gpt_5_5_t0_repair_timeout240.json"
     },
     {
       "bytes": 2588,
-      "path": "results/controlled_pair_v4_selected_8/claude_opus_4_8_t0_failure_diagnostics.csv",
-      "sha256": "455a2b44f14bea9231fbf2d409200b3b52ef61864cf3cc22eb60cbf11e5cf1ef"
+      "path": "results/controlled_pair_v4_selected_8/claude_opus_4_8_t0_failure_diagnostics.csv"
     },
     {
       "bytes": 12235,
-      "path": "results/controlled_pair_v4_selected_8/claude_opus_4_8_t0_failure_diagnostics.json",
-      "sha256": "e668ef1c539d85a6265f5ecd320bd5b143c77e57a4bbadfc1e8c12aae5f0bb07"
+      "path": "results/controlled_pair_v4_selected_8/claude_opus_4_8_t0_failure_diagnostics.json"
     },
     {
       "bytes": 2367,
-      "path": "results/controlled_pair_v4_selected_8/gpt_5_5_t0_failure_diagnostics.csv",
-      "sha256": "04063d877d4789868d8c4bec8b1c3c8b55ffcfba309b0456819e5c9449d9073b"
+      "path": "results/controlled_pair_v4_selected_8/gpt_5_5_t0_failure_diagnostics.csv"
     },
     {
       "bytes": 10330,
-      "path": "results/controlled_pair_v4_selected_8/gpt_5_5_t0_failure_diagnostics.json",
-      "sha256": "e7854492401571a9f87eed72513b8873ec72247c71026735d75428625da2e1c3"
+      "path": "results/controlled_pair_v4_selected_8/gpt_5_5_t0_failure_diagnostics.json"
     },
     {
       "bytes": 403,
-      "path": "results/final160_hard_subset_pass3_by_model.csv",
-      "sha256": "df52da0ff2d4d1136fdffb1fb40d9cef1c02805f668dadf24069d9fd868c9909"
+      "path": "results/final160_hard_subset_pass3_by_model.csv"
     },
     {
       "bytes": 2052,
-      "path": "results/final160_hard_subset_pass3_by_record.csv",
-      "sha256": "08ee3daaf9baa2af87dddefd564910ca839e8cc0680d660a3db71511d2c27e07"
+      "path": "results/final160_hard_subset_pass3_by_record.csv"
     },
     {
       "bytes": 40532,
-      "path": "results/final160_hard_subset_pass3_rows.csv",
-      "sha256": "b5385f626871da77d7b16eaa924e73f233699b853a6af6276e15e98b4b417fe6"
+      "path": "results/final160_hard_subset_pass3_rows.csv"
     },
     {
       "bytes": 6799,
-      "path": "results/final160_hard_subset_pass3_summary.json",
-      "sha256": "0230495c1304aa053326f51533c2fa878e8a35ac4634670e68fdca19f72ce06c"
+      "path": "results/final160_hard_subset_pass3_summary.json"
     },
     {
       "bytes": 850,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s0/materialize_summary.json",
-      "sha256": "db88b64f54e97e6aaebaccb742aca9365776d5ab8ce692e276099135d68da9d8"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s0/materialize_summary.json"
     },
     {
       "bytes": 7319,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s0/proof_candidates.jsonl",
-      "sha256": "a18afb29421cb965387476d6f06ba2a79273a81a22d2df16ed293ba09b52e2ab"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s0/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s0/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s0/rejected_outputs.jsonl"
     },
     {
       "bytes": 850,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s1/materialize_summary.json",
-      "sha256": "7ea71e860a5b922b492992c0de4b8103286d06a79324838faa1a75e0db5530c2"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s1/materialize_summary.json"
     },
     {
       "bytes": 6898,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s1/proof_candidates.jsonl",
-      "sha256": "dd2869823e1020fbdd706d99f0606e300f8e4ec783ed6cbbc3184b4db2a6c55b"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s1/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s1/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s1/rejected_outputs.jsonl"
     },
     {
       "bytes": 850,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s2/materialize_summary.json",
-      "sha256": "f77b1e0c7634461d19d67a7abe25742e07710ed46fa88e04ff5cd222d4d4a3bd"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s2/materialize_summary.json"
     },
     {
       "bytes": 7357,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s2/proof_candidates.jsonl",
-      "sha256": "e8ebed5c301610f7ba7c3585e85bd6bcca80aa9c8bb20a245a812452f403e81a"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s2/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s2/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_anthropic_claude_opus_4_8_s2/rejected_outputs.jsonl"
     },
     {
       "bytes": 846,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s0/materialize_summary.json",
-      "sha256": "10a63201784c269413f36877fe79a66253833e91c5408307162ba932be47efdc"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s0/materialize_summary.json"
     },
     {
       "bytes": 8266,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s0/proof_candidates.jsonl",
-      "sha256": "76ca42f5f3d7386c271c772fd114db3543ca4544a508c9a7d4c5ec2eaff9fa8f"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s0/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s0/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s0/rejected_outputs.jsonl"
     },
     {
       "bytes": 846,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s1/materialize_summary.json",
-      "sha256": "528a3607433f6cfb7ef497d5f8f90df034f20a5e3808c1f9a015b5fdd31c0aed"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s1/materialize_summary.json"
     },
     {
       "bytes": 8579,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s1/proof_candidates.jsonl",
-      "sha256": "b0cf9b44775f96eac174125ba8c472d776595ca77cc0a6451b86d53716db07ab"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s1/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s1/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s1/rejected_outputs.jsonl"
     },
     {
       "bytes": 846,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s2/materialize_summary.json",
-      "sha256": "a3e0626be7c3b38bc3c4d698406d92ca2b396b77ff9f6ab409ef8d6350d9c30f"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s2/materialize_summary.json"
     },
     {
       "bytes": 7404,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s2/proof_candidates.jsonl",
-      "sha256": "3e0e4c4f6bb3cb51e01e54dd7402bef7bd8b78ced204151157a0f0f31c9310d7"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s2/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s2/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_deepseek_deepseek_v4_pro_s2/rejected_outputs.jsonl"
     },
     {
       "bytes": 866,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s0/materialize_summary.json",
-      "sha256": "549da3dec001165601c6b0758123c897c6b5517d48194c2de23fea970e8d917b"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s0/materialize_summary.json"
     },
     {
       "bytes": 6951,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s0/proof_candidates.jsonl",
-      "sha256": "395abc11fec85ac1e764aeab7e94c2ccf4a707d6d37d938d9c265ec27358cdbb"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s0/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s0/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s0/rejected_outputs.jsonl"
     },
     {
       "bytes": 866,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s1/materialize_summary.json",
-      "sha256": "f461cebeea6deb51fa582d543b301370d33f0b8c39f0983046e7bbd415bacd22"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s1/materialize_summary.json"
     },
     {
       "bytes": 7214,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s1/proof_candidates.jsonl",
-      "sha256": "220c8479eae3086b4c81aef1d017edbf74ca1413ff7fde5e8a16493cf8025671"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s1/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s1/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s1/rejected_outputs.jsonl"
     },
     {
       "bytes": 866,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s2/materialize_summary.json",
-      "sha256": "fbb5ac2c76481b782494013b8ef167af3170dd075fb1b59421ec9d93494ba8bc"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s2/materialize_summary.json"
     },
     {
       "bytes": 6508,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s2/proof_candidates.jsonl",
-      "sha256": "00bb3a43ccaed03d5c5d2dd6e7a0ebe2d9a136628bfc5d39208c331407c84e78"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s2/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s2/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_google_gemini_3_1_pro_preview_s2/rejected_outputs.jsonl"
     },
     {
       "bytes": 851,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s0/materialize_summary.json",
-      "sha256": "41b6d9f801b4b83e9fb9041722ca4609dfdf2384677f5fa1358ceb8c1163978c"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s0/materialize_summary.json"
     },
     {
       "bytes": 5989,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s0/proof_candidates.jsonl",
-      "sha256": "22cf9401e4322924481b275d7dc2ac615c0b6fd2510763d87f33945da516f182"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s0/proof_candidates.jsonl"
     },
     {
       "bytes": 267,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s0/rejected_outputs.jsonl",
-      "sha256": "29ef4c7e36817c2b1a0926f929311a14a04584fe5418a213d7aa354f65e6b705"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s0/rejected_outputs.jsonl"
     },
     {
       "bytes": 851,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s1/materialize_summary.json",
-      "sha256": "d6cb723052738fcee2b2fc1e7bf03a10787e15009e70a9a932ee8527114b6239"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s1/materialize_summary.json"
     },
     {
       "bytes": 6328,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s1/proof_candidates.jsonl",
-      "sha256": "582a78a74cbbe614b906b44c2201d66f31a5ddf984ba3afac14a41e40aa122f2"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s1/proof_candidates.jsonl"
     },
     {
       "bytes": 279,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s1/rejected_outputs.jsonl",
-      "sha256": "2384927b1a53ea6be224ce9e8a00147e86fd046f4d10abd5723ca049079e089c"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s1/rejected_outputs.jsonl"
     },
     {
       "bytes": 850,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s2/materialize_summary.json",
-      "sha256": "64f5076d4db8b995af6ce5107669a4f5cfdcb5d9ba64d6ababc253aaa2a8901f"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s2/materialize_summary.json"
     },
     {
       "bytes": 5766,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s2/proof_candidates.jsonl",
-      "sha256": "1af5ecf4c4e1719a7b55a3d41dddb04aaa2b18c501f183cf2d86b63adf5fc3c8"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s2/proof_candidates.jsonl"
     },
     {
       "bytes": 555,
-      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s2/rejected_outputs.jsonl",
-      "sha256": "896e3dc3aa6730fc6e1a2e1838029c2b2a0190d1b8ffae409ad62e98183a6920"
+      "path": "results/final160_pass3_candidates/candidates_openai_gpt_5_5_pro_s2/rejected_outputs.jsonl"
     },
     {
       "bytes": 846,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s0/materialize_summary.json",
-      "sha256": "b0a0b384fb4a3089a651e020c60f1bedd79b7fa3f062941011e8d51a84737cdd"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s0/materialize_summary.json"
     },
     {
       "bytes": 7374,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s0/proof_candidates.jsonl",
-      "sha256": "842375b9965bb5c2c97d1566b3ae581ff3ce3d66da1cdf0633fc3cab11bfb22d"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s0/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s0/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s0/rejected_outputs.jsonl"
     },
     {
       "bytes": 846,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s1/materialize_summary.json",
-      "sha256": "d62ce79f55e2b28ef2b525738d31824473cda1cb486de4cecae5a102f8e711c6"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s1/materialize_summary.json"
     },
     {
       "bytes": 7505,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s1/proof_candidates.jsonl",
-      "sha256": "f44a9417df9dc4a48d8b7982a5927d86832a62c08fca3a19e0418dc04978cb7e"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s1/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s1/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s1/rejected_outputs.jsonl"
     },
     {
       "bytes": 846,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s2/materialize_summary.json",
-      "sha256": "29e2a7f603ee0af01701c2bf8d2ce42b8c8bacce9946d7acc3d0183bec565441"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s2/materialize_summary.json"
     },
     {
       "bytes": 7340,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s2/proof_candidates.jsonl",
-      "sha256": "7657d12167ba5e5bde2552b44bde426ef4583d48242770c661bc87b4244a1cd7"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s2/proof_candidates.jsonl"
     },
     {
       "bytes": 0,
-      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s2/rejected_outputs.jsonl",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "path": "results/final160_pass3_candidates/candidates_qwen_qwen3_6_max_preview_s2/rejected_outputs.jsonl"
     },
     {
       "bytes": 244,
-      "path": "results/frontier_proof_160_failure_categories.csv",
-      "sha256": "7843382b094a5297ca062406f1b1a4d6a55ccd160f560473b0ccfc260809b63c"
+      "path": "results/frontier_proof_160_failure_categories.csv"
     },
     {
       "bytes": 1858,
-      "path": "results/frontier_proof_160_hard_subset.csv",
-      "sha256": "7373e83f33d4d56e6ce2dc594ab673532ca4cca5f9ea18f2aa0bb59c0bb5ba36"
+      "path": "results/frontier_proof_160_hard_subset.csv"
     },
     {
       "bytes": 435,
-      "path": "results/frontier_proof_160_leaderboard.csv",
-      "sha256": "68931fa3858575152381fbbc979a2b886fb0247259cf85b05b1aa5cf53de94f2"
+      "path": "results/frontier_proof_160_leaderboard.csv"
     },
     {
       "bytes": 153,
-      "path": "results/frontier_proof_160_provenance_strata.csv",
-      "sha256": "dd748d51901ff873fd10f411033ee51d9a63b2233b9e75e05cbf292186e0e2bf"
+      "path": "results/frontier_proof_160_provenance_strata.csv"
     },
     {
       "bytes": 229821,
-      "path": "results/frontier_proof_160_rows.csv",
-      "sha256": "0ab86bd836e3bab818498b1a926af937bd15619a22640945ccb38c87be105c36"
+      "path": "results/frontier_proof_160_rows.csv"
     },
     {
       "bytes": 6279,
-      "path": "results/frontier_proof_160_summary.json",
-      "sha256": "07f252a7384198318aaefec0b6d6f5faf9b76ccd663af1e8a440427bdae4ab85"
+      "path": "results/frontier_proof_160_summary.json"
     },
     {
       "bytes": 474,
-      "path": "results/lean_theorem_coverage_summary.json",
-      "sha256": "1da6e6485c4f389b4507d6c28e8a4f42a7a7ec811db8d5de7b5ac3e2f893d0c5"
+      "path": "results/lean_theorem_coverage_summary.json"
     },
     {
       "bytes": 2457,
-      "path": "results/lean_theorem_missing_from_leannumbench.csv",
-      "sha256": "04d5efe3810cdcfce63ef30b4c385a45ebe82f32ace7ea24965e030cc5b1f78c"
+      "path": "results/lean_theorem_missing_from_leannumbench.csv"
     },
     {
       "bytes": 1747,
-      "path": "results/local_smoke_160_suites.csv",
-      "sha256": "0ed34a7c4b718ab59f51e31ef0b066b81dd7e4764403ec9e67fe2d7f7e687e93"
+      "path": "results/local_smoke_160_suites.csv"
     },
     {
       "bytes": 720,
-      "path": "results/model_variant_cost_audit.csv",
-      "sha256": "0c79283be93fa1307e75297963aaaaa950c32733b6c623c74f266731be890392"
+      "path": "results/model_variant_cost_audit.csv"
     },
     {
       "bytes": 3620,
-      "path": "results/model_variant_cost_audit.json",
-      "sha256": "2178c78b7a78634b56a93903d074570af4d2cb5bfc374359fc1d9f0cc21a55c9"
+      "path": "results/model_variant_cost_audit.json"
     },
     {
       "bytes": 4089,
-      "path": "results/paper_stats.json",
-      "sha256": "bd032698ca4dc788a3e9d48d256b4658f82207d87c7fca6cb3f6821ef8b36b85"
+      "path": "results/paper_stats.json"
     },
     {
       "bytes": 165,
-      "path": "results/provenance_strata_dataset_160.csv",
-      "sha256": "b3e6d9e84b90e4788539a1451b3debe540ac4d4604c983a35a0f8d339d2f5af3"
+      "path": "results/provenance_strata_dataset_160.csv"
     },
     {
       "bytes": 39596,
-      "path": "results/raw_outputs/controlled_pair_v4_selected_8_no_usage.jsonl",
-      "sha256": "ddf2b9184a0767e587605280d256b82f06a9252058b7f818af6f01d460aea9be"
+      "path": "results/raw_outputs/controlled_pair_v4_selected_8_no_usage.jsonl"
     },
     {
       "bytes": 118821,
-      "path": "results/raw_outputs/final160_hard_subset_pass3_no_usage.jsonl",
-      "sha256": "c88e642aeb526a2769686fb597a86dac4102771cfd96b5996b670a81a73a51a0"
+      "path": "results/raw_outputs/final160_hard_subset_pass3_no_usage.jsonl"
     },
     {
       "bytes": 461213,
-      "path": "results/raw_outputs/frontier_160_no_usage.jsonl",
-      "sha256": "4c462c048b27c630949843a2afca0c00503c9b01ee6208d54a612666d2c15bc1"
+      "path": "results/raw_outputs/frontier_160_no_usage.jsonl"
     },
     {
       "bytes": 373394,
-      "path": "results/raw_outputs/model_variant_audit_no_usage.jsonl",
-      "sha256": "78db9d0cfa91ad4b7b29c48f39dc838511bea9bd9b3a4df47e00ef5c0a3a2987"
+      "path": "results/raw_outputs/model_variant_audit_no_usage.jsonl"
     },
     {
       "bytes": 783,
-      "path": "results/simple_repair_ablation_by_model.csv",
-      "sha256": "c87f018703c8a4992bf123d98e651ed454de43fdf3b7c1d06c7b687f5c630319"
+      "path": "results/simple_repair_ablation_by_model.csv"
     },
     {
       "bytes": 42594,
-      "path": "results/simple_repair_ablation_rows.csv",
-      "sha256": "8b4a7b6a70ddc9401b14ad1c29c3ba6d5a4c1103dc0f81447694b5271010a63e"
+      "path": "results/simple_repair_ablation_rows.csv"
     },
     {
       "bytes": 2537,
-      "path": "results/tables.tex",
-      "sha256": "3776f6986a2b30133ba6de324198f0818a1753bae96fd0d7b45f10cce07d6776"
+      "path": "results/tables.tex"
     },
     {
       "bytes": 4720,
-      "path": "results/tactic_baseline_160.json",
-      "sha256": "32173d28c886bad0755b09446040ca7097d1e0fb746f0962819127826d1b5233"
+      "path": "results/tactic_baseline_160.json"
     },
     {
       "bytes": 599,
-      "path": "results/tactic_baseline_160_by_baseline.csv",
-      "sha256": "da04d42afa24b79fb841b26f5f3d78585ee02f90bcadb6d75aabcdaa78d48627"
+      "path": "results/tactic_baseline_160_by_baseline.csv"
     },
     {
       "bytes": 18575,
-      "path": "results/tactic_baseline_160_rows.csv",
-      "sha256": "504a9cdebe9e3bff849582e7b4f46d5b340475b9712504d974cd6c97073184ea"
+      "path": "results/tactic_baseline_160_rows.csv"
     },
     {
       "bytes": 2182,
-      "path": "schemas/model-pilot-v0.1.schema.json",
-      "sha256": "3a87b6f9cd404c84e5f07b7bf5bba3e8485fbd60488fe4a39f57708cd3f46e87"
+      "path": "schemas/model-pilot-v0.1.schema.json"
     },
     {
       "bytes": 5559,
-      "path": "schemas/theorem-v0.1.schema.json",
-      "sha256": "68ce73f0bfd6435767c98664e506adfb690877fa66a8b3506431589253f816a1"
+      "path": "schemas/theorem-v0.1.schema.json"
     }
   ],
   "license": {

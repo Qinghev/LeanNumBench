@@ -81,7 +81,7 @@ Expected summary:
 
 The artifact contains frozen records, prompt packs, usage-stripped model
 outputs, materialized-candidate scripts, row-level summaries, checker logs,
-generated table data, hashes, and offline replay scripts.
+generated table data, benchmark metadata, and offline replay scripts.
 
 To rerun local Lean checking, use the companion Lean project shipped inside
 `paper/arxiv2026/release_artifact/companion_lean`:
