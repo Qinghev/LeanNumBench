@@ -21,6 +21,7 @@ check.
 - `main.tex`: top-level arXiv source file.
 - `appendix.tex`: appendix body loaded by `main.tex`.
 - `references.bib`: bibliography database.
+- `main.bbl`: bibliography generated from the bundled source.
 - `figures/`: TikZ/PGFPlots figure sources loaded by `main.tex`.
 - `anc/LeanNumBench_arxiv2026_release_artifact.zip`: arXiv ancillary
   reproducibility artifact.

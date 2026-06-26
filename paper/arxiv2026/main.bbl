@@ -1,0 +1,126 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Azerbayev et~al.(2023)Azerbayev, Piotrowski, Schoelkopf, Ayers, and
+  Radev]{azerbayev2023proofnet}
+Zhangir Azerbayev, Bartosz Piotrowski, Hailey Schoelkopf, Edward~W. Ayers, and
+  Dragomir Radev.
+\newblock {ProofNet}: Autoformalizing and formally proving undergraduate-level
+  mathematics.
+\newblock In \emph{Proceedings of the 2nd Workshop on Mathematical Reasoning
+  and AI at NeurIPS}, 2023.
+
+\bibitem[Boldo and Melquiond(2011)]{boldo2011flocq}
+Sylvie Boldo and Guillaume Melquiond.
+\newblock {Flocq}: A unified library for proving floating-point algorithms in
+  {Coq}.
+\newblock In \emph{2011 IEEE 20th Symposium on Computer Arithmetic}, pages
+  243--252. IEEE, 2011.
+
+\bibitem[Boldo et~al.(2017)Boldo, Cl{\'e}ment, Faissole, Martin, and
+  Mayero]{boldo2017laxmilgram}
+Sylvie Boldo, Fr{\'e}d{\'e}ric Cl{\'e}ment, Florian Faissole, Vincent Martin,
+  and Micaela Mayero.
+\newblock A {Coq} formal proof of the {Lax--Milgram} theorem.
+\newblock In \emph{Proceedings of the 6th ACM SIGPLAN Conference on Certified
+  Programs and Proofs}, pages 79--89. ACM, 2017.
+
+\bibitem[de~Moura and Ullrich(2021)]{demoura2021lean4}
+Leonardo de~Moura and Sebastian Ullrich.
+\newblock The {Lean} 4 theorem prover and programming language.
+\newblock In \emph{Automated Deduction -- CADE 28}, pages 625--635. Springer,
+  2021.
+
+\bibitem[Immler and H{\"o}lzl(2012)]{immler2012ode}
+Fabian Immler and Johannes H{\"o}lzl.
+\newblock Numerical analysis of ordinary differential equations in
+  {Isabelle/HOL}.
+\newblock In \emph{Interactive Theorem Proving}, pages 377--392. Springer,
+  2012.
+
+\bibitem[Long et~al.(2026)Long, Zhang, Li, Zhou, Sun, and
+  Wen]{long2026cambench}
+Wentao Long, Yunfei Zhang, Chenyi Li, Li~Zhou, Chumin Sun, and Zaiwen Wen.
+\newblock {CAM-Bench}: A benchmark for computational and applied mathematics in
+  {Lean}, 2026.
+
+\bibitem[Pham et~al.(2026)Pham, Karimov, Galichin, and
+  Oseledets]{pham2026theorembench}
+QuocViet Pham, Elvir Karimov, Andrey Galichin, and Ivan Oseledets.
+\newblock {TheoremBench}: Evaluating {LLMs} on theorem proving in formal
+  mathematics, 2026.
+
+\bibitem[Ren et~al.(2025)Ren, Shao, Song, Xin, Wang, Zhao, Zhang, Fu, Zhu,
+  Yang, Wu, Gou, Ma, Tang, Liu, Gao, Guo, and Ruan]{ren2025deepseekproverv2}
+Z.~Z. Ren, Zhihong Shao, Junxiao Song, Huajian Xin, Haocheng Wang, Wanjia Zhao,
+  Liyue Zhang, Zhe Fu, Qihao Zhu, Dejian Yang, Z.~F. Wu, Zhibin Gou, Shirong
+  Ma, Hongxuan Tang, Yuxuan Liu, Wenjun Gao, Daya Guo, and Chong Ruan.
+\newblock {DeepSeek-Prover-V2}: Advancing formal mathematical reasoning via
+  reinforcement learning for subgoal decomposition, 2025.
+
+\bibitem[Song et~al.(2024)Song, Yang, and Anandkumar]{song2024leancopilot}
+Peiyang Song, Kaiyu Yang, and Anima Anandkumar.
+\newblock {LeanCopilot}: Large language models as copilots for theorem proving
+  in {Lean}, 2024.
+
+\bibitem[Tekriwal et~al.(2021)Tekriwal, Lelay, Dubois, K{\"u}ndig, and
+  Giorgino]{tekriwal2021lax}
+Sahil Tekriwal, Catherine Lelay, Catherine Dubois, David K{\"u}ndig, and Toni
+  Giorgino.
+\newblock A {Coq} formal proof of the {Lax} equivalence theorem.
+\newblock In \emph{NASA Formal Methods}, pages 322--339. Springer, 2021.
+
+\bibitem[{The mathlib Community}(2020)]{mathlib2020}
+{The mathlib Community}.
+\newblock The {Lean} mathematical library.
+\newblock In \emph{Proceedings of the 9th ACM SIGPLAN International Conference
+  on Certified Programs and Proofs}, pages 367--381. ACM, 2020.
+
+\bibitem[Tsoukalas et~al.(2024)Tsoukalas, Lee, Jennings, Xin, Ding, Jennings,
+  Thakur, and Chaudhuri]{tsoukalas2024putnambench}
+George Tsoukalas, Jasper Lee, John Jennings, Jimmy Xin, Michelle Ding, Michael
+  Jennings, Amitayush Thakur, and Swarat Chaudhuri.
+\newblock {PutnamBench}: Evaluating neural theorem-provers on the {Putnam}
+  mathematical competition, 2024.
+
+\bibitem[Xin et~al.(2024)Xin, Ren, Song, Shao, Zhao, Wang, Liu, Zhang, Lu, Du,
+  Gao, Zhu, Yang, Gou, Wu, Luo, and Ruan]{xin2024deepseekprover}
+Huajian Xin, Z.~Z. Ren, Junxiao Song, Zhihong Shao, Wanjia Zhao, Haocheng Wang,
+  Bo~Liu, Liyue Zhang, Xuan Lu, Qiushi Du, Wenjun Gao, Qihao Zhu, Dejian Yang,
+  Zhibin Gou, Z.~F. Wu, Fuli Luo, and Chong Ruan.
+\newblock {DeepSeek-Prover-V1.5}: Harnessing proof assistant feedback for
+  reinforcement learning and {Monte-Carlo} tree search, 2024.
+
+\bibitem[Yang et~al.(2026)Yang, Yuan, Li, Wang, Li, Zhang, Li, and
+  Wen]{yang2026constructionverification}
+Bowen Yang, Yi~Yuan, Chenyi Li, Ziyu Wang, Liangqi Li, Bo~Zhang, Zhe Li, and
+  Zaiwen Wen.
+\newblock Construction-verification: A benchmark for applied mathematics in
+  {Lean} 4, 2026.
+
+\bibitem[Yang et~al.(2023)Yang, Swope, Gu, Chalamalasetti, Song, Yu, Godil,
+  Prenger, and Anandkumar]{yang2023leandojo}
+Kaiyu Yang, Ariana Swope, Alex Gu, Rahul Chalamalasetti, Peiyang Song, Shixing
+  Yu, Saad Godil, Ryan Prenger, and Anima Anandkumar.
+\newblock {LeanDojo}: Theorem proving with retrieval-augmented language models.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2023.
+
+\bibitem[Yu et~al.(2025)Yu, Peng, Ding, Li, Peng, Liu, Zhang, Yuan, Xin, Huang,
+  Wen, Zhang, and Liu]{yu2025formalmath}
+Zhouliang Yu, Ruotian Peng, Keyi Ding, Yizhe Li, Zhongyuan Peng, Minghao Liu,
+  Yifan Zhang, Zheng Yuan, Huajian Xin, Wenhao Huang, Yandong Wen, Ge~Zhang,
+  and Weiyang Liu.
+\newblock {FormalMATH}: Benchmarking formal mathematical reasoning of large
+  language models, 2025.
+
+\bibitem[Zheng et~al.(2022)Zheng, Han, and Polu]{zheng2022minif2f}
+Kunhao Zheng, Jesse~Michael Han, and Stanislas Polu.
+\newblock {miniF2F}: A cross-system benchmark for formal olympiad-level
+  mathematics.
+\newblock In \emph{International Conference on Learning Representations}, 2022.
+
+\end{thebibliography}

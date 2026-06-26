@@ -76,22 +76,23 @@ values, \texttt{max\_le}, \texttt{mul\_le\_mul}, and arithmetic tactics. A
 model that recognizes the mathematics can still fail to compose a
 Lean-checking proof.
 
-Current theorem-proving benchmarks do not isolate this numerical-analysis
-surface. Broad formal-mathematics benchmarks, contest-math datasets, and
-newer computational/applied-mathematics Lean benchmarks are valuable for
-measuring general progress, but they answer different questions. Recent
-applied-mathematics Lean benchmarks such as CAM-Bench
-\citep{long2026cambench} emphasize broad coverage across computational and
-applied mathematics. LeanNumBench addresses a complementary question: whether
-models can complete local Lean proof bodies for numerical-analysis lemmas
-under frozen declaration context, and which proof-engineering patterns fail.
-It deliberately trades breadth for record-level provenance, frozen local
-context, Lean-checked proof bodies, hard-subset analysis, ablations, and a
-failure taxonomy. It is not intended to be the broadest applied-math benchmark,
-a complete numerical-analysis library, or an agentic proof-search environment.
-It asks a narrower question: when dated model endpoints receive a theorem
-statement and relevant local Lean context, which numerical-analysis proof
-patterns still break, and why?
+Current formal-proving benchmarks have made rapid progress, but they emphasize
+different evaluation surfaces. Contest-style and undergraduate benchmarks
+stress standalone mathematical problem solving; large Lean benchmarks stress
+scale, retrieval, or broad domain coverage; applied-mathematics benchmarks
+stress either broad computational coverage or construction-verification
+workflows. LeanNumBench isolates a narrower surface: proof-body completion for
+numerical-analysis lemmas under frozen local declaration context. This setting
+is close to the day-to-day proof-engineering bottleneck in verified scientific
+computing: the model is not asked to discover a theorem statement or construct
+a global proof-search strategy, but to compose a Lean-checking local proof from
+available definitions, helper lemmas, and Mathlib APIs. It deliberately trades
+breadth for record-level provenance, frozen local context, Lean-checked proof
+bodies, hard-subset analysis, ablations, and a failure taxonomy. It is not
+intended to be the broadest applied-math benchmark, a complete numerical-analysis
+library, or an agentic proof-search environment. It asks a narrower question:
+when dated model endpoints receive a theorem statement and relevant local Lean
+context, which numerical-analysis proof patterns still break, and why?
 
 \begin{table}[H]
 \centering
@@ -557,39 +558,51 @@ Lean 4 and Mathlib provide the proof-assistant substrate for LeanNumBench
 benchmarking because proof candidates must check against a precise local
 environment rather than only satisfy a natural-language judge.
 
-Formal theorem-proving and autoformalization benchmarks such as miniF2F,
-LeanDojo, and ProofNet measure broad theorem-proving ability, retrieval, and
-formalization across mathematical domains
-\citep{zheng2022minif2f,yang2023leandojo,azerbayev2023proofnet}. LeanNumBench is
-narrower by design. It isolates numerical-analysis proof patterns: CFL
-inequalities, finite-sum normalization, boundary bookkeeping, projection
-orthogonality, definition unfolding, and norm/API choreography.
+Formal theorem-proving and autoformalization benchmarks have expanded along
+several axes. miniF2F provides a cross-system benchmark for Olympiad-level
+formal mathematics, while ProofNet aligns informal and formal undergraduate
+mathematics for autoformalization and proof generation
+\citep{zheng2022minif2f,azerbayev2023proofnet}. LeanDojo makes Lean theorem
+proving reproducible at Mathlib scale by exposing programmatic Lean
+interaction, premise annotations, retrieval-augmented proving tools, and
+generalization splits \citep{yang2023leandojo}. More recent benchmarks such as
+PutnamBench and FormalMATH increase the scale and difficulty of Lean-based
+formal reasoning, covering undergraduate competition mathematics and thousands
+of Lean 4 problems across broad mathematical domains
+\citep{tsoukalas2024putnambench,yu2025formalmath}. LeanNumBench is narrower by
+design: it isolates numerical-analysis proof-body completion under fixed local
+declaration context, rather than broad standalone theorem proving.
 
 LeanNumBench is also related to LLM-assisted prover systems, including
-proof-assistant-feedback and Lean-copilot-style approaches
-\citep{xin2024deepseekprover,song2024leancopilot}. The present paper does not
-introduce a new prover. It evaluates direct proof completion so that the
-observed failures can be attributed to local proof-engineering behavior
-rather than to a larger agentic search stack. Agentic Lean-feedback systems
-are therefore downstream users of the benchmark, not baselines that v1 claims
-to dominate.
+proof-assistant-feedback, Lean-copilot-style approaches, and modern
+subgoal-decomposition prover systems
+\citep{xin2024deepseekprover,ren2025deepseekproverv2,song2024leancopilot}.
+The present paper does not introduce a new prover. It evaluates direct proof
+completion so that failures can be attributed to local proof-engineering
+behavior rather than to a larger agentic search stack. Agentic Lean-feedback
+systems are therefore downstream users of LeanNumBench, not baselines that v1
+claims to dominate.
 
 Applied-mathematics Lean benchmarks have recently expanded. CAM-Bench
 \citep{long2026cambench} provides a broad computational and applied
 mathematics benchmark, while Construction-Verification/AMBER
 \citep{yang2026constructionverification} stresses tasks where a model must
-construct explicit objects or algorithms before proving correctness. LeanNumBench
-does not claim to be broader than these benchmarks. Its role is a focused
-numerical-analysis proof-completion diagnostic: a smaller Lean-checked suite
-whose contribution is curated local proof completion, dated endpoint
-protocols, hard-subset analysis, pass@3 robustness probes,
-declaration-context ablation, simple-repair ablation, and a failure taxonomy
-for local numerical-analysis proof patterns. It also releases usage-stripped
-model outputs, materialized candidate scripts, and row-level failure summaries
-so that the reported mechanisms can be audited without new model calls. In
-short, CAM-Bench measures
-broad applied-math coverage; LeanNumBench tries to explain why apparently routine
-numerical-analysis proof completions still fail the Lean checker.
+construct explicit objects or algorithms before proving correctness.
+TheoremBench is another neighboring diagnostic benchmark: it moves beyond
+standalone contest-style statements by building plain and premised Lean 4
+instances from dependency-rich classical theorem developments, and reports
+theorem-level coverage and token-efficiency metrics
+\citep{pham2026theorembench}. LeanNumBench is complementary to all three: it is
+smaller, domain-specific, and focused on row-level proof-completion failures in
+numerical-analysis theorem families such as CFL inequalities, finite-sum
+normalization, projection residuals, boundary bookkeeping, and norm/API
+choreography. It also releases usage-stripped model outputs, materialized
+candidate scripts, and row-level failure summaries so that the reported
+mechanisms can be audited without new model calls. In short, CAM-Bench measures
+broad applied-math coverage; AMBER stresses construction-verification;
+TheoremBench studies premise-aware theorem-development structure; LeanNumBench
+tries to explain why apparently routine numerical-analysis proof completions
+still fail the Lean checker.
 
 Finally, LeanNumBench connects to formal verification of numerical methods and
 scientific computing, including verified floating-point infrastructure,
